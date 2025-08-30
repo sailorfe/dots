@@ -1,0 +1,29 @@
+#EXTM3U
+#EXTINF:150,Taylor Swift - It’s Nice to Have a Friend
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/Taylor Swift/Lover/17 It’s Nice to Have a Friend.flac
+#EXTINF:225,Nick Cave & the Bad Seeds - Deanna
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/Nick Cave & the Bad Seeds/Tender Prey/03 Deanna.flac
+#EXTINF:247,Lana Del Rey - Mariners apartment complex
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/Lana Del Rey/Norman Fucking Rockwell!/02 Mariners apartment complex.flac
+#EXTINF:173,Japanese Breakfast - Rugged Country
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/Japanese Breakfast/Psychopomp/03 Rugged Country.flac
+#EXTINF:145,Mitski - Dan the Dancer
+file:///home/spica/m/mus/Mitski/Puberty 2/02 Dan the Dancer.flac
+#EXTINF:295,Snail Mail - Pristine
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/Snail Mail/Lush/02 Pristine.mp3
+#EXTINF:226,PJ Harvey - This Is Love
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/PJ Harvey/Stories From the City, Stories From the Sea/10 This Is Love.flac
+#EXTINF:197,Lucy Dacus - Talk
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/Lucy Dacus/Forever Is a Feeling/06 Talk.flac
+#EXTINF:161,Luna Li - Confusion Song
+#EXTVLCOPT:file-caching=1000
+file:///home/spica/m/mus/Luna Li/When a Thought Grows Wings/01 Confusion Song.flac
+#EXTINF:137,Mitski - Goodbye, My Danish Sweetheart
+file:///home/spica/m/mus/Mitski/Retired from Sad, New Career in Business/01 Goodbye, My Danish Sweetheart.flac

@@ -1,0 +1,9 @@
+directory: ~/m/mus
+library: ~/m/lib.db
+
+asciify_paths: yes
+
+plugins: fetchart
+
+fetchart:
+  auto: yes

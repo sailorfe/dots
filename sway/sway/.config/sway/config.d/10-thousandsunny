@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------------- // foot
+
+set $term foot --config ~/.config/foot/themes/luna.ini
+
+# -------------------------------------------------------------------- // output
+
+output $builtin mode 1920x1080 bg /home/sailorfe/.config/sway/config.d/wall/page009.jpg fill
+output $tv mode 3840x2160 bg /home/sailorfe/.config/sway/config.d/wall/page009.jpg fill
+
+
+# ---------------------------------------------------------------- // workspaces
+
+workspace 1 output $builtin
+workspace 2 output $builtin
+workspace 3 output $builtin
+workspace 4 output $tv
+
+# -*- browsers
+assign [app_id="org.qutebrowser.qutebrowser"]				$ws2
+assign [app_id="librewolf"]													$ws2
+assign [app_id="firefox-esr"]												$ws2
+assign [app_id="Tor Browser"]												$ws2
+
+# -*- GUIs
+assign [class="com.github.johnfactotum.Foliate"]		$ws3
+assign [app_id="gimp"]															$ws3
+assign [class="obsidian"]														$ws3
+assign [class="REAPER"]															$ws3
+assign [class="discord"]														$ws3
+assign [app_id="org.kde.kdeconnect.app"]						$ws3
+
+# -*- background
+assign [app_id="mpv"]																$ws4

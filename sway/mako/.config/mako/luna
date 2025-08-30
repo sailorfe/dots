@@ -1,0 +1,30 @@
+font=Cozette 8
+
+width=360
+progress-color=over #736490
+height=540
+padding=12
+margin=12
+max-icon-size=70
+layer=overlay
+
+border-size=2
+border-radius=0
+
+default-timeout=10000
+
+[urgency=normal]
+background-color=#6a56aa
+border-color=#9c84eb
+text-color=#ddcdfe
+
+[urgency=low]
+background-color=#362753
+border-color=#513b7d
+text-color=#ddcdfe
+
+[urgency=high]
+background-color=#93255c
+border-color=#b5407a
+text-color=#f1ebff
+ignore-timeout=1

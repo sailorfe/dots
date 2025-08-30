@@ -1,0 +1,66 @@
+# ---------------------------------------------------------------------- // luna
+set $base00 #432b50
+set $base01 #543663
+set $base02 #764b8b
+set $base03 #826490
+set $base04 #a181b1
+set $base05 #dbc8e5
+set $base06 #ead9f2
+set $base07 #654077
+
+set $base08 #e25057
+set $base09 #8dafe2
+set $base0A #efbb43
+set $base0B #b6ca68
+set $base0C #c0a7f1
+set $base0D #eb84c2
+set $base0E #a98de2
+set $base0F #d65ca5
+
+
+# -------------------------------------------------------------------- // # idle
+exec swayidle -w \
+	timeout 3000 'swaylock -f -c 2d1d35' \
+  timeout 6000 'swaymsg "output * dpms off"' \
+		resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -c 2d1d35'
+
+
+# ------------------------------------------------------------------- // swaybar
+
+bar {
+	colors {
+		background	$base00
+		statusline	$base0C
+		separator		$base03
+
+#												border	bg			fg
+		focused_workspace		$base0E	$base0E	$base00
+		active_workspace		$base0C	$base0C	$base05
+		inactive_workspace	$base01	$base01	$base05
+		urgent_workspace		$base08	$base08	$base05
+		binding_mode				$base0F	$base0F	$base01
+	}
+	font Cozette 11
+	position top
+  status_command while ~/.config/sway/laptop.sh; do sleep 1; done
+}
+
+
+# -------------------------------------------------------------------- // wmenu
+
+set $menu wmenu-run -f 'Cozette 11' -l 12 \
+	-N '$base00' -n '$base06' \
+	-M '$base0E' -m '$base00' \
+	-S '$base02' -s '$base05' \
+	-p 'wmenu '
+
+
+# -------------------------------------------------------------------- // output
+#												border	bg			fg			indicator		child_border
+client.focused          $base0E	$base0E	$base00	$base0E	$base0E
+client.focused_inactive $base02	$base02	$base06	$base02	$base02
+client.unfocused        $base01	$base01	$base05	$base01	$base01
+client.urgent           $base08	$base08	$base05	$base08	$base08
+client.placeholder      $base00	$base00	$base05	$base00	$base00
+client.background       $base07

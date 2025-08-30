@@ -1,0 +1,3 @@
+return {
+	"Ullreich/wordcount.nvim"
+}
