@@ -91,7 +91,7 @@ filetree() {
     mkdir -p "$user_home/.local/{bin,lib,share,cache,state}"
     mkdir -p "$user_home/.local/state/{bash,zsh}"
 
-    chown -R "${username}:${username}" "$user_home"/{a,d,m,p,s,v,w,.config,.local}
+    chown -R "${username}:${username}" "$user_home"/{a,d,m,p,s,v,.config,.local}
     echo "File tree created!"
 }
 
@@ -168,7 +168,6 @@ echo "  m/    -> media library"
 echo "  p/    -> projects (dotfiles cloned here)"
 echo "  s/    -> source code"
 echo "  v/    -> volume mount points"
-echo "  w/    -> markdown notes"
 echo "  .config/                            -> XDG_CONFIG_HOME"
 echo "  .local/bin                          -> built binaries and pipx apps"
 echo "  .local/{lib,share,cache,state}      -> standard XDG dirs"

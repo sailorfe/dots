@@ -70,7 +70,6 @@ i follow the [xdg base directory specification](https://specifications.freedeskt
 ├── s/                            => not-my source code
 │   └── neovim
 ├── v/
-├── w/                            => markdown notes; used to be a wiki with kiwi.nvim (hence w)
 └── .profile                      => referenced by bash and zsh
 ```
 
