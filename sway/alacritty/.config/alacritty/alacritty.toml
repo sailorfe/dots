@@ -2,7 +2,7 @@
 term = "xterm-256color"
 
 [general]
-import = [ "~/.config/alacritty/perona.toml" ]
+import = [ "~/.config/alacritty/moonqueen.toml" ]
 
 [font]
 normal = { family = "Cozette" }

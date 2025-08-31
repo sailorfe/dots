@@ -7,5 +7,4 @@
 config_version: 2
 settings:
   content.javascript.clipboard:
-    https://claude.ai: access-paste
     https://emojipedia.org: access-paste

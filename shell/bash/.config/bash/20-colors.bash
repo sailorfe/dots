@@ -2,7 +2,7 @@
 
 # --------------------------------------------------------------- // tty colors
 
-source $HOME/.config/bash/${THEME}-colors
+source $HOME/.config/themes/${THEME}-colors
 
 # ------------------------------------------------------------- // shell colors
 # load palette
