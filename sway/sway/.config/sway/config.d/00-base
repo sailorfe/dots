@@ -44,7 +44,8 @@ bindsym $mod+n exec wiki
 bindsym $mod+t exec tarot
 bindsym $mod+Shift+t exec timer
 bindsym $mod+Shift+b exec qutebrowser
-bindsym $mod+m exec foot --config ~/.config/foot/themes/moonqueen.ini
+#bindsym $mod+m exec foot --config ~/.config/foot/themes/moonqueen.ini
+bindsym $mod+m exec alacritty --config-file ~/.config/alacritty/moonqueen.toml
 
 floating_modifier $mod normal
 

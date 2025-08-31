@@ -18,6 +18,13 @@ set $base0E #8877f8
 set $base0F #f7a1d5
 
 
+
+# ---------------------------------------------------------------------- // foot
+
+#set $term foot --config ~/.config/foot/themes/moonqueen.ini
+set $term alacritty --config-file ~/.config/alacritty/moonquen.toml
+
+
 # --------------------------------------------------------------------- // idle
 exec swayidle -w \
 	timeout 3000 'swaylock -f -c 1b142a' \

@@ -1,9 +1,6 @@
 [env]
 term = "xterm-256color"
 
-[general]
-import = [ "~/.config/alacritty/moonqueen.toml" ]
-
 [font]
 normal = { family = "Cozette" }
 size = 11.0

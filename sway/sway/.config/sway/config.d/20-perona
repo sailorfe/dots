@@ -20,8 +20,8 @@ set $base0F #b54067
 
 # ---------------------------------------------------------------------- // foot
 
-set $term foot --config ~/.config/foot/themes/perona.ini
-
+#set $term foot --config ~/.config/foot/themes/perona.ini
+set $term alacritty --config-file ~/.config/alacritty/perona.toml
 
 # --------------------------------------------------------------------- // idle
 exec swayidle -w \
