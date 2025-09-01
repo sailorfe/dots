@@ -1,67 +1,75 @@
 # type: ignore config
+# type: ignore config
+import socket
 
-# ----------------------------------------------------------------- // palettes
+hostname = socket.gethostname()
 
-# luna
-# background = '#432b50'
-# foreground = '#dbc8e5'
-# color0 = '#2d1d35'
-# color1 = '#e25057'
-# color2 = '#b6ca68'
-# color3 = '#efbb43'
-# color4 = '#8dafe2'
-# color5 = '#d65ca5'
-# color6 = '#a98de2'
-# color7 = '#826490'
-# color8 = '#654077'
-# color9 = '#f8777e'
-# color10 = '#ccda95'
-# color11 = '#f4d07c'
-# color12 = '#b9d0f4'
-# color13 = '#eb84c2'
-# color14 = '#c0a7f1'
-# color15 = '#ead9f2'
+palettes = {
+    "luna": {
+        "background": "#432b50",
+        "foreground": "#dbc8e5",
+        "color0": "#2d1d35",
+        "color1": "#e25057",
+        "color2": "#b6ca68",
+        "color3": "#efbb43",
+        "color4": "#8dafe2",
+        "color5": "#d65ca5",
+        "color6": "#a98de2",
+        "color7": "#826490",
+        "color8": "#654077",
+        "color9": "#f8777e",
+        "color10": "#ccda95",
+        "color11": "#f4d07c",
+        "color12": "#b9d0f4",
+        "color13": "#eb84c2",
+        "color14": "#c0a7f1",
+        "color15": "#ead9f2",
+    },
+    "perona": {
+        "background": "#281520",
+        "foreground": "#f4b9dc",
+        "color0": "#24141e",
+        "color1": "#c4314e",
+        "color2": "#bb68ca",
+        "color3": "#d65c5c",
+        "color4": "#5c8dd6",
+        "color5": "#b54067",
+        "color6": "#f269ad",
+        "color7": "#90647f",
+        "color8": "#532742",
+        "color9": "#e2506d",
+        "color10": "#e28dde",
+        "color11": "#eb8484",
+        "color12": "#8dafe2",
+        "color13": "#d65c85",
+        "color14": "#ff99cc",
+        "color15": "#f8d3e9",
+    }
+}
 
+if hostname == "thousandsunny":
+    colors = palettes["luna"]
+else:
+    colors = palettes["perona"]
 
-# perona
-background = '#281520'
-foreground = '#f4b9dc'
-color0 = '#24141e'
-color1 = '#c4314e'
-color2 = '#bb68ca'
-color3 = '#d65c5c'
-color4 = '#5c8dd6'
-color5 = '#b54067'
-color6 = '#f269ad'
-color7 = '#90647f'
-color8 = '#532742'
-color9 = '#e2506d'
-color10 = '#e28dde'
-color11 = '#eb8484'
-color12 = '#8dafe2'
-color13 = '#d65c85'
-color14 = '#ff99cc'
-color15 = '#f8d3e9'
-
-# moonqueen
-# background = '#241a37'
-# foreground = '#ccb9f4'
-# color0 = '#362753'
-# color1 = '#ef434c'
-# color2 = '#6ca522'
-# color3 = '#f7bb31'
-# color4 = '#508ae2'
-# color5 = '#8877f8'
-# color6 = '#e873b9'
-# color7 = '#736490'
-# color8 = '#433168'
-# color9 = '#fc737a'
-# color10 = '#b6ca68'
-# color11 = '#ffd470'
-# color12 = '#7cacf4'
-# color13 = '#b9affd'
-# color14 = '#f7a1d5'
-# color15 = '#ddcdfe'
+background = colors["background"]
+foreground = colors["foreground"]
+color0 = colors["color0"]
+color1 = colors["color1"]
+color2 = colors["color2"]
+color3 = colors["color3"]
+color4 = colors["color4"]
+color5 = colors["color5"]
+color6 = colors["color6"]
+color7 = colors["color7"]
+color8 = colors["color8"]
+color9 = colors["color9"]
+color10 = colors["color10"]
+color11 = colors["color11"]
+color12 = colors["color12"]
+color13 = colors["color13"]
+color14 = colors["color14"]
+color15 = colors["color15"]
 
 # ----------------------------------------------------------------- // settings
 
