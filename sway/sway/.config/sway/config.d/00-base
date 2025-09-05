@@ -27,8 +27,6 @@ default_border pixel 2
 exec swaymsg "exec $term"
 exec swaybar
 exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id)
-exec playerctld daemon
-exec mpd-mpris
 
 # for alpine linux/openrc
 # exec /usr/libexec/pipewire-launcher
