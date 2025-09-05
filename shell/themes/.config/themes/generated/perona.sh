@@ -2,14 +2,14 @@
 export THEME_NAME=perona
 export COLOR_FG=#f4b9dc
 export COLOR_BG=#281520
-export COLOR_BLACK=#532742
+export COLOR_BLACK=#3e1d31
 export COLOR_RED=#c4314e
 export COLOR_GREEN=#bb68ca
 export COLOR_YELLOW=#d65c5c
 export COLOR_BLUE=#5c8dd6
 export COLOR_MAGENTA=#b54067
 export COLOR_CYAN=#f269ad
-export COLOR_WHITE=#b1819e
+export COLOR_WHITE=#f4b9dc
 export COLOR_BRIGHT_BLACK=#683152
 export COLOR_BRIGHT_RED=#e2506d
 export COLOR_BRIGHT_GREEN=#e28dde
