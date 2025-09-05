@@ -8,8 +8,8 @@
 term = "xterm-256color"
 
 [font]
-normal = { family = "Cozette" }
-size = 11.0
+normal = { family = "JetBrains Mono" }
+size = 9.0
 
 [window]
 dimensions = { columns = 120, lines = 28 }
@@ -28,7 +28,7 @@ foreground = '#ddcdfe'
 
 # Normal colors
 [colors.normal]
-black = '#433168'
+black = '#362753'
 red = '#ef434c'
 green = '#6ca522'
 yellow = '#f7bb31'
@@ -39,7 +39,7 @@ white = '#ddcdfe'
 
 # Bright colors
 [colors.bright]
-black = '#513b7d'
+black = '#6c4ea6'
 red = '#fc737a'
 green = '#b6ca68'
 yellow = '#ffd470'

@@ -6,9 +6,8 @@
 
 config_version: 2
 settings:
-  colors.webpage.darkmode.enabled:
-    global: true
   content.javascript.clipboard:
     https://chatgpt.com: access-paste
     https://claude.ai: access-paste
-    https://emojipedia.org: access-paste
+    https://codeberg.org: access-paste
+    https://colorpicker.dev: access-paste
