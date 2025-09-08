@@ -21,3 +21,7 @@ assign [class="REAPER"]															$ws3
 assign [class="discord"]														$ws4
 assign [app_id="org.kde.kdeconnect.app"]						$ws4
 assign [app_id="mpv"]																$ws4
+
+# -*- gaming
+assign [class="Stardew Valley"]											$ws5
+assign [class="steam"]															$ws6
