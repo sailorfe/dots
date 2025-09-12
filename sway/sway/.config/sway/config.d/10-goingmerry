@@ -16,6 +16,7 @@ assign [class="com.github.johnfactotum.Foliate"]		$ws3
 assign [app_id="gimp"]															$ws3
 assign [class="obsidian"]														$ws3
 assign [class="REAPER"]															$ws3
+assign [class="Code"]																$ws3
 
 # -*- background
 assign [class="discord"]														$ws4
