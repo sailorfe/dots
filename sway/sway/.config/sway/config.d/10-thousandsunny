@@ -27,3 +27,7 @@ assign [app_id="org.kde.kdeconnect.app"]						$ws3
 
 # -*- background
 assign [app_id="mpv"]																$ws4
+
+# -*- gaming
+assign [class="Stardew Valley"]											$ws5
+assign [class="steam"]															$ws6
