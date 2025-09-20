@@ -123,7 +123,7 @@ the script has a few optional flags for whether this is a server or desktop inst
 
 i keep both zsh and bash configured. i'm not totally sure why, but i use bash on my dev box server but zsh on my environments with sway. i've made my shell config pretty much plug-and-play by hardcoding my prompts' hex codes and automating their selection by hostname with a case statement because i need at minimum three visual cues to know where tf i am.
 
-i have a stack of git aliases i lifted from [xero](https://github.com/xero/dotfiles). otherwise one of my quirks is i changed all variations of `ls` to use `--group-directories-first`, which just makes sense to me. i'm a fan of `fish`-like `zsh-syntax-highlighting`, too. i am always in a [tmux](https://github.com/tmux/tmux) session for the practical reason of walking away from venv work in my dev box, and the silly reason of constantly having [mpv](https://mpv.io/) or [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) open on my desktop.
+i have a stack of git aliases i lifted from [xero](https://github.com/xero/dotfiles). otherwise one of my quirks is i changed all variations of `ls` to use `--group-directories-first`, which just makes sense to me. i'm a fan of `fish`-like `zsh-syntax-highlighting`, too. i am always in a [tmux](https://github.com/tmux/tmux) session for the practical reason of walking away from venv work in my dev box (though i'm migrating my projects to uv now...), and the silly reason of constantly having [mpv](https://mpv.io/) or [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) open on my desktop.
 
 <a name="sway"></a>
 ## sway

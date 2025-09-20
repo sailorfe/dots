@@ -8,6 +8,3 @@ config_version: 2
 settings:
   content.javascript.clipboard:
     https://chatgpt.com: access-paste
-    https://emojipedia.org: access-paste
-    https://grok.com: access-paste
-    https://www.tumblr.com: access-paste

@@ -42,15 +42,15 @@ packages_base() {
             gnupg pass stow tmux \
             python3 python3-pip python3-venv pipx \
             btop ranger fastfetch \
-            fonts-jetbrains-mono fonts-font-awesome fonts-unifont fonts-noto-color-emoji
+            fonts-jetbrains-mono fonts-font-awesome fonts-unifont fonts-noto-color-emoji fonts-3270
     elif [ "$DISTRO" = "arch" ]; then
         $PKG_INSTALL \
             bash-completion jq rsync sshfs \
             git curl ninja cmake base-devel \
             gnupg pass stow tmux \
-            python python-pip python-pipx \
+            python python-pip python-pipx uv \
             btop ranger fastfetch \
-            ttf-jetbrains-mono ttf-font-awesome unifont noto-fonts-emoji
+            ttf-jetbrains-mono ttf-font-awesome unifont noto-fonts-emoji ttf-3270-nerd
     fi
 }
 
@@ -75,7 +75,8 @@ packages_sway() {
             mpd mpc mpv ncmpcpp \
             qutebrowser \
             wayland-protocols wayland-utils \
-            xdg-desktop-portal-wlr xorg-xwayland
+            xdg-desktop-portal-wlr xorg-xwayland \
+						ghostty rio wezterm alacritty
     fi
 }
 
