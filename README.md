@@ -25,7 +25,7 @@
                   '   *           +       +                           +       *
 ```
 
-these are my dotfiles for a linux ecosystem that currently includes a debian 13 desktop, a debian 13 dev server on a macbook air 2017, and an endeavourOS thinkpad. on my desktop and thinkpad, i run [sway](https://swaywm.org), and wayland gives me no real issues besides with electron apps for some reason.
+these are my dotfiles for a linux ecosystem that currently includes a debian 13 desktop, a debian 13 dev server on a macbook air 2017, and an endeavourOS thinkpad. on my desktop and thinkpad, i run [sway](https://swaywm.org), and wayland gives me no real issues besides with flatpak electron apps.
 
 this repo is designed to be modular and minimal. i'm neither or a gamer or a sysadmin or even that serious a ricer, just someone who frequently nukes my installations for no real reason.
 
@@ -146,11 +146,15 @@ i don't toil away at ricing linux, but what i do have are three custom neovim co
 └── laptop.sh            => swaybar status scripts
 ```
 
-where `config` is only a few lines to `include` relevant files from `config.d`. `10-$hostname` differ only by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. `20-$palette` correspond to my nvim schemes.
+where `config` is only a few lines to `include` relevant files from `config.d`. `10-$hostname` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. `20-$palette` correspond to my nvim schemes.
 
-i switch between [alacritty](https://alacritty.org) and the default wayland terminal emulator [foot](https://codeberg.org/dnkl/foot) by binding a config file for each colorscheme to use to `Super + Return`, so with alacritty this looks like `alacritty --config-file ~/.config/alacritty/perona.toml`
+i switch between [alacritty](https://alacritty.org) and the default wayland terminal emulator [foot](https://codeberg.org/dnkl/foot) by binding a config file for each colorscheme to use to `Super + Return`, so with alacritty this looks like `alacritty --config-file ~/.config/alacritty/perona.toml`. i also spin up [wezterm](https://wezterm.org/) on occassion. but on my endeavourOS laptop, i test drive exciting new emulators like [rio](https://rioterm.com) and [ghostty](https://ghostty.org), which i have no real reason to stray to or integrate into my desktop usage since managing apt external repos for newer packages is my longtime nemesis.
 
-these days my two favorite fonts perhaps couldn't be more different. i use [cozette](https://github.com/the-moonwitch/Cozette) at 11px because i have a 1080p monitor and it makes looking at two-to-four nvim windows lovely, but on my laptop or if i'm writing prose i opt for [ibm 3270](https://packages.debian.org/source/trixie/3270font) or [3270 nerd font](https://www.programmingfonts.org/#font3270). switching between them is... maybe silly.
+fonts are one of my greatest passions. these days i rotate between
+
+- [cozette](https://github.com/the-moonwitch/Cozette)
+- [ibm 3270](https://packages.debian.org/source/trixie/3270font) or [3270 nerd font](https://www.programmingfonts.org/#font3270)
+- [recursive mono casual](https://www.recursive.design/)
 
 <a name="previews"></a>
 ## previews
