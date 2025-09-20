@@ -15,7 +15,6 @@ alias vdir='vdir --color=auto'
 alias cp='cp -r'
 alias scp='scp -r'
 alias mkdir='mkdir -p'
-alias wc='wc -w <'
 
 # -*- shortcuts -*-
 alias c='clear'
