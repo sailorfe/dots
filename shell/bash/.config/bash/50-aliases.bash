@@ -24,6 +24,11 @@ alias ..='cd ..'
 alias ....='cd ....'
 alias ~='cd ~'
 
+# -*-- tmux -*-
+alias tl="tmux list-sessions"
+alias tn="tmux new-session"
+alias tc="tmux new-session -c"
+
 # -*- git -*-
 alias ga='git add'
 alias gb='git branch'
