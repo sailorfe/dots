@@ -8,23 +8,22 @@
 term = "xterm-256color"
 
 [font]
-normal = { family = "IBM 3270" }
-size = 13.0
+normal = { family = "Cozette" }
+size = 11.0
 
 [window]
 dimensions = { columns = 120, lines = 28 }
 
 [colors]
 draw_bold_text_with_bright_colors = true
+selection = { text = '#281520', background = '#ff99cc'}
+vi_mode_cursor = { text = '#281520', cursor = '#ff99cc'}
+cursor = { text = '#281520', cursor = "#f4b9dc"}
 
 # Default colors
 [colors.primary]
 background = '#281520'
 foreground = '#f4b9dc'
-
-#[colors.cursor]
-#cursor = '#f4b9dc'
-#text = '#281520'
 
 # Normal colors
 [colors.normal]

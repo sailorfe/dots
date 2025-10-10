@@ -44,7 +44,7 @@ bindsym $mod+Shift+t exec timer
 bindsym $mod+Shift+b exec qutebrowser
 #bindsym $mod+p exec foot
 bindsym $mod+p exec alacritty
-bindsym $mod+m exec alacritty --config-file ~/.config/alacritty/moonqueen.toml
+bindsym $mod+Shift+a exec alacritty --config-file ~/.config/alacritty/moonqueen.toml
 
 floating_modifier $mod normal
 
