@@ -5,12 +5,13 @@ BG_USER=$(theme_color bright_black)
 BG_DIR=$(theme_color magenta)
 FG_HOST=$(theme_color fg)
 FG_DIR=$(theme_color bg)
+FG_VENV=$(theme_color bright_magenta)
 FG_GIT=$(theme_color white)
 FG_GLYPH=$(theme_color cyan)
 
 venv_prompt() {
   if [[ -n "$VIRTUAL_ENV" ]]; then
-    echo " ($(basename "$VIRTUAL_ENV")) "
+		echo " $(color_fg $FG_VENV)($(basename "$VIRTUAL_ENV")) $(color_reset)"
   fi
 }
 
