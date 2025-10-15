@@ -8,6 +8,7 @@ BG_TIME=$(theme_color black)
 BG_USER=$(theme_color bright_black)
 BG_DIR=$(theme_color magenta)
 FG_DIR=$(theme_color fg)
+FG_VENV=$(theme_color bright_cyan)
 FG_GIT=$(theme_color white)
 FG_GLYPH=$(theme_color cyan)
 NEWLINE=$'\n'
@@ -28,15 +29,24 @@ git_info() {
   echo "%F{$FG_GIT}$branch$symbol%f"
 }
 
+# helper for virtualenv
+venv_info() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo "%F{$FG_VENV}($(basename $VIRTUAL_ENV))%f "
+  fi
+}
+
 set_prompt() {
-  local hostname prompt_user current_dir fun_glyph
+  local hostname prompt_user current_dir fun_glyph venv gitinfo
 
   hostname="%K{$BG_TIME} $HOSTNAME %k"
   prompt_user="%K{$BG_USER} %n %k"
   current_dir="%K{$BG_DIR} %F{$FG_DIR}%~%f %k"
+  venv="%F$(venv_info)"
+  gitinfo="$(git_info)"
   fun_glyph="%F{$FG_GLYPH}  %f"
 
-  PROMPT="${NEWLINE}$hostname$prompt_user$current_dir $(git_info)$fun_glyph"
+  PROMPT="${NEWLINE}${hostname}${prompt_user}${current_dir} ${venv}${gitinfo}${fun_glyph}"
 }
 
 precmd_functions+=(set_prompt)
