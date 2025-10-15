@@ -21,3 +21,5 @@ HISTFILESIZE=1000
 if [[ -r /usr/share/bash-completion/bash_completion ]]; then
 		source /usr/share/bash-completion/bash_completion
 fi
+
+. "$HOME/.local/share/../bin/env"
