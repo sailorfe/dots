@@ -28,3 +28,5 @@ if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 elif [ -f $HOME/s/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 	source $HOME/s/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+. "$HOME/.local/share/../bin/env"

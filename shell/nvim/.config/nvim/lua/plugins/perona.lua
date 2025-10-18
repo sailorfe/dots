@@ -1,7 +1,7 @@
 return {
 	"sailorfe/perona.nvim",
 	branch = main,
-	enabled = true,
+	enabled = false,
 	lazy = true,
   priority = 1000,
 	opts = {
