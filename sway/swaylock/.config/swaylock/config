@@ -3,29 +3,29 @@
 # daemonize
 indicator-caps-lock
 # datestr=%A
-color=#2d1d35
+color=#21121b
 font=Cozette
 font-size=26
 
 # Ring
 indicator-radius=144
 line-uses-ring
-line-color=#432b50
-text-color=#debeef
-inside-color=#c0a7f1
-ring-color=#432b50
-text-caps-lock-color=#432b50
-key-hl-color=#a98de2
-bs-hl-color=#d75ca5
-caps-lock-bs-hl-color=#e25057
-separator-color=#432b50
-layout-text-color=#debeef
-inside-ver-color=#b9d0f4
+line-color=#281520
+text-color=#f4b9dc
+inside-color=#ff99cc
+ring-color=#281520
+text-caps-lock-color=#281520
+key-hl-color=#f269ad
+bs-hl-color=#b54067
+caps-lock-bs-hl-color=#a90f30
+separator-color=#281520
+layout-text-color=#f4b9dc
+inside-ver-color=#b4cff8
 ring-ver-color=#8dafe2cc
-inside-wrong-color=#eb8489
-ring-wrong-color=#e25057cc
-caps-lock-key-hl-color=#efbb43
-inside-caps-lock-color=#f4d07c
-ring-caps-lock-color=#f4d07caa
-inside-clear-color=#ccda95
-ring-clear-color=#b6ca68cc
+inside-wrong-color=#de3557
+ring-wrong-color=#a90f30cc
+caps-lock-key-hl-color=#e65667
+inside-caps-lock-color=#eb8490
+ring-caps-lock-color=#eb8490aa
+inside-clear-color=#de91da
+ring-clear-color=#a75fb4cc
