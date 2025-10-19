@@ -1,3 +1,5 @@
 shell/bash/.config/bash/60-tokens.bash
 shell/nvim/.config/nvim/lazy-lock.json
 shell/zsh/.config/zsh/.zshcompdump
+sway/qutebrowser/.config/qutebrowser/autoconfig.yml
+sway/qutebrowser/.config/qutebrowser/qsettings/QProject.conf

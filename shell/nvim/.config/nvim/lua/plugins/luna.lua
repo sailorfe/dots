@@ -1,7 +1,8 @@
 return {
 	"sailorfe/luna.nvim",
 	branch = main,
-	enabled = true,
+	enabled = false,
+--	enabled = true,
 	lazy = true,
   priority = 1000,
 	opts = {
