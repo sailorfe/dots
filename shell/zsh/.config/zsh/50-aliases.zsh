@@ -30,8 +30,8 @@ alias ~='cd ~'
 
 # -*-- tmux -*-
 alias tl="tmux list-sessions"
-alias tn="tmux new-session"
-alias tc="tmux new-session -c"
+alias tn="tmux new-session -s"
+alias tv="tmux new -s vault -c ~/d/flor"
 
 # -*- git
 alias ga='git add'
