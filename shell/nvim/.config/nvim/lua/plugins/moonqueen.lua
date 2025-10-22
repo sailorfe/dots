@@ -1,12 +1,8 @@
 return {
 	"sailorfe/moonqueen.nvim",
-	branch = main,
+	dependencies = "rktjmp/lush.nvim",
 	enabled = false,
-	lazy = true,
-  priority = 1000,
-	opts = {
-		transparent = false,
-	},
+--	enabled = true,
   init = function()
     vim.cmd.colorscheme("moonqueen")
   end,

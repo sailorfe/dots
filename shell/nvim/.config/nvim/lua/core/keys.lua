@@ -11,10 +11,37 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 
--- time and date
-vim.keymap.set("n", "<leader>F", "<Cmd>pu=strftime('%F')<CR>")
-vim.keymap.set("n", "<leader>dt", "<Cmd>pu=strftime('%F %R')<CR>")
-vim.keymap.set("n", "<leader>ap", "<Cmd>pu=strftime('%A, %B %D at %r')<CR>")
+-- formatted time inline at cursor
+local function insert_date(fmt, use_utc)
+  local prefix = use_utc and "!" or ""
+  local date_str = vim.fn.strftime(prefix .. fmt)
+  vim.api.nvim_feedkeys("i" .. date_str .. vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end
+
+-- ISO date only (YYYY-MM-DD)
+vim.keymap.set("n", "<leader>F", function()
+  insert_date("%F")
+end, { desc = "Insert ISO date (YYYY-MM-DD)" })
+
+-- ISO date + time (YYYY-MM-DD HH:MM)
+vim.keymap.set("n", "<leader>dt", function()
+  insert_date("%F %R")
+end, { desc = "Insert date + time (YYYY-MM-DD HH:mm)" })
+
+-- Full ISO timestamp to minute with offset
+vim.keymap.set("n", "<leader>is", function()
+  insert_date("%FT%R%z")
+end, { desc = "Insert ISO 8601 timestamp (minutes)" })
+
+-- Full ISO timestamp to second with offset
+vim.keymap.set("n", "<leader>is", function()
+  insert_date("%FT%T%z")
+end, { desc = "Insert ISO 8601 timestamp (seconds)" })
+
+-- "AP style"
+vim.keymap.set("n", "<leader>ap", function()
+  insert_date("%A, %B %d at %r")
+end, { desc = "Insert long-form date" })
 
 -- indent in visual mode
 vim.keymap.set("v", "<Tab>", ">gv")
