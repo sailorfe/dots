@@ -20,6 +20,7 @@ assign [class="Code"]																$ws3
 assign [class="libreoffice-startcenter"]						$ws3
 
 # -*- background
+assign [class="slack"]														$ws4
 assign [class="discord"]														$ws4
 assign [app_id="org.kde.kdeconnect.app"]						$ws4
 assign [app_id="mpv"]																$ws4
