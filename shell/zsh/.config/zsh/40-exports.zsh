@@ -9,6 +9,7 @@ export ME='sailorfe'
 case "$HOST" in
   goingmerry) export HOSTNAME=merrygo ;;
   thousandsunny) export HOSTNAME=sunnygo ;;
+  localhost) export HOSTNAME=termux ;;
   *) export HOSTNAME="$HOST" ;;
 esac
 
@@ -16,6 +17,7 @@ esac
 # --------------------------------------------------------------- // timestamps
 export NOW="$(date '+%F_%T')ET"
 export UTC="$(date -u '+%F_%T')UTC"
+export ISO="$(date -Is)"
 
 # -------------------------------------------------------- // xdg specification
 export XDG_CACHE_HOME=$HOME/.local/cache

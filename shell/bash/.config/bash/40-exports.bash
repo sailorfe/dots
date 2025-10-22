@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
 
-#-*- user
+# -*- per host
 export ME='sailorfe'
-export HOSTNAME='compaq'
+
+case "$HOST" in
+  goingmerry) export HOSTNAME=merrygo ;;
+  thousandsunny) export HOSTNAME=sunnygo ;;
+  localhost) export HOSTNAME=termux ;;
+  *) export HOSTNAME="$HOST" ;;
+esac
+
+# -*- timestamps
 export NOW="$(date '+%F_%T')ET"
 export UTC="$(date -u '+%F_%T')UTC"
+export ISO="$(date -Is)"
 
-#-*- xdg
+# -*- xdg
 export XDG_CACHE_HOME=$HOME/.local/cache
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
@@ -19,15 +28,15 @@ export XDG_PICTURES_DIR=$HOME/m/img
 export XDG_VIDEOS_DIR=$HOME/m/vid
 export GRIM_DEFAULT_DIR=$HOME/m/cap
 
-#-*- env
+# -*- env
 export CARGO_HOME=$HOME/.local/lib/cargo
 export GNUPGHOME=$XDG_DATA_HOME/gpg
 export RUSTUP_HOME=$HOME/.local/lib/rustup
 export GOPATH=$HOME/.local/lib/go
 
-#-*- path
+# -*- path
 . $HOME/.profile
 
-#-*- programs
+# -*- programs
 export EDITOR=nvim
 export VISUAL=nvim
