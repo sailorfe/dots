@@ -31,7 +31,7 @@ alias ~='cd ~'
 # -*-- tmux -*-
 alias tl="tmux list-sessions"
 alias tn="tmux new-session -s"
-alias tv="tmux new -s vault -c ~/d/flor"
+alias tv="tmux new -s vault -c /home/sailorfe/.local/doc/flor"
 
 # -*- git
 alias ga='git add'
