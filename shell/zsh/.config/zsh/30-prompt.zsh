@@ -23,7 +23,7 @@ git_info() {
   branch=$(git symbolic-ref --short HEAD 2>/dev/null) || return
   git_status=$(git status --porcelain 2>/dev/null)
   [[ -n $git_status ]] && symbol="*" || symbol=""
-  echo "%F{$FG_GIT}$branch$symbol%f"
+  echo " %F{$FG_GIT}$branch$symbol%f"
 }
 
 # helper for virtualenv
@@ -36,15 +36,15 @@ venv_info() {
 set_prompt() {
   local hostname prompt_user current_dir fun_glyph venv gitinfo
 
-  venv="%F$(venv_info)"
+  venv=$(venv_info)
   current_dir="%F{$FG_DIR}%~%f"
-  gitinfo=" $(git_info)"
+  gitinfo=$(git_info)
   fun_glyph=" %F{$FG_GLYPH}%f "
 
-  PROMPT="${venv}${current_dir}${gitinfo}${fun_glyph}"
+  PROMPT="$NEWLINE${venv}${current_dir}${gitinfo}${fun_glyph}"
 }
 
 precmd_functions+=(set_prompt)
 
 # Host info banner (runs once)
-echo -e "\e[1;40m $(hostname) \e[0m\e[1;46m\e[30m $(uptime -p | cut -c 4-) \e[0m \e[0m\e[1;36m$(uname -r)\e[0m $NEWLINE"
+echo -e "\e[1;40m $(hostname) \e[0m\e[1;46m\e[30m $(uptime -p | cut -c 4-) \e[0m \e[0m\e[1;36m$(uname -r)\e[0m"
