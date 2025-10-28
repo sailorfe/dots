@@ -1,3 +1,6 @@
+exec pipewire
+exec pipewire-pulse
+
 # -------------------------------------------------------------------- // output
 
 output $builtin mode 1920x1080 bg /home/sailorfe/.config/sway/config.d/wall/page009.jpg fill
@@ -12,7 +15,7 @@ workspace 3 output $builtin
 workspace 4 output $tv
 
 # -*- browsers
-assign [app_id="org.qutebrowser.qutebrowser"]				$ws2
+assign [class="qutebrowser"]												$ws2
 assign [app_id="librewolf"]													$ws2
 assign [app_id="firefox-esr"]												$ws2
 assign [app_id="Tor Browser"]												$ws2
