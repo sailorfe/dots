@@ -6,3 +6,6 @@ dimensions = { columns = 120, lines = 28 }
 
 [colors]
 draw_bold_text_with_bright_colors = true
+
+[general]
+import = ["~/.config/alacritty/perona.toml"]

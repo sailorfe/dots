@@ -37,7 +37,7 @@ set_prompt() {
   local hostname prompt_user current_dir fun_glyph venv gitinfo
 
   venv=$(venv_info)
-  current_dir="%F{$FG_DIR}%~%f"
+  current_dir="%F{$FG_DIR}%2~%f"
   gitinfo=$(git_info)
   fun_glyph=" %F{$FG_GLYPH}%f "
 
