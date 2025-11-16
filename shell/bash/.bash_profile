@@ -23,4 +23,4 @@ if [[ -r /usr/share/bash-completion/bash_completion ]]; then
 fi
 
 . "$HOME/.local/share/../bin/env"
-. "/home/sailorfe/.local/lib/cargo/env"
+#. "/home/sailorfe/.local/lib/cargo/env"

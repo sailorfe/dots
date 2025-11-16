@@ -29,7 +29,7 @@ export XDG_VIDEOS_DIR=$HOME/m/vid
 export GRIM_DEFAULT_DIR=$HOME/m/cap
 
 # -*- env
-export CARGO_HOME=$HOME/.local/lib/cargo
+#export CARGO_HOME=$HOME/.local/lib/cargo
 export GNUPGHOME=$XDG_DATA_HOME/gpg
 export RUSTUP_HOME=$HOME/.local/lib/rustup
 export GOPATH=$HOME/.local/lib/go
