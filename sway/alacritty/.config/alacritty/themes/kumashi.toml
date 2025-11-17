@@ -1,0 +1,38 @@
+# -----------------------------------------------------------------------------
+# Kumashi Alacritty Colors
+# Theme: Kumashi
+# Upstream: https://codeberg.org/spica/perona.nvim/src/branch/main/extras/alacritty/kumashi.toml
+# -----------------------------------------------------------------------------
+
+[colors]
+draw_bold_text_with_bright_colors = true
+selection = { text = '#fecdea', background = '#fc73b8'}
+vi_mode_cursor = { text = '#fecdea', cursor = '#e2508a'}
+cursor = { text = '#fecdea', cursor = "#a64e83"}
+
+# Default colors
+[colors.primary]
+background = '#fecdea'
+foreground = '#a64e83'
+
+# Normal colors
+[colors.normal]
+black = '#fd9bd6'
+red = '#d32246'
+green = '#ae31c4'
+yellow = '#e76a6a'
+blue = '#316cc4'
+magenta = '#d32269'
+cyan = '#ef4399'
+white = '#7d3b62'
+
+# Bright colors
+[colors.bright]
+black = '#feb9e2'
+red = '#e2506d'
+green = '#c45cd6'
+yellow = '#eb8484'
+blue = '#5c8dd6'
+magenta = '#e2508a'
+cyan = '#fc73b8'
+white = '#a64e83'

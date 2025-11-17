@@ -3,9 +3,14 @@ term = "xterm-256color"
 
 [window]
 dimensions = { columns = 120, lines = 28 }
+padding = { x = 12, y = 0}
 
 [colors]
 draw_bold_text_with_bright_colors = true
 
 [general]
-import = ["~/.config/alacritty/perona.toml"]
+import = ["~/.config/alacritty/current-theme.toml"]
+
+[font]
+normal = { family = "RecMono Casual", style = "Regular" }
+size = 10.0
