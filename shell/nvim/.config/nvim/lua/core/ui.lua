@@ -25,6 +25,7 @@ vim.opt.colorcolumn = "80,120"
 vim.opt.cursorline = true
 vim.opt.fillchars = { vert = "▒" }
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.signcolumn = "auto:2"
 vim.opt.splitbelow = true
 vim.opt.splitright = true

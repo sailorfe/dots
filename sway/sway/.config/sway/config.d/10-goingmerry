@@ -12,19 +12,21 @@ assign [app_id="firefox-esr"]												$ws2
 assign [app_id="Tor Browser"]												$ws2
 
 # -*- GUIs
-assign [class="com.github.johnfactotum.Foliate"]		$ws3
 assign [app_id="gimp"]															$ws3
 assign [app_id="obsidian"]													$ws3
 assign [class="REAPER"]															$ws3
 assign [class="Code"]																$ws3
 assign [class="libreoffice-startcenter"]						$ws3
 
-# -*- background
-assign [class="slack"]														$ws4
-assign [class="discord"]														$ws4
-assign [app_id="org.kde.kdeconnect.app"]						$ws4
+# -*- fullscreen
+assign [class="com.github.johnfactotum.Foliate"]		$ws4
 assign [app_id="mpv"]																$ws4
+assign [class="Stardew Valley"]											$ws4
 
-# -*- gaming
-assign [class="Stardew Valley"]											$ws5
-assign [class="steam"]															$ws6
+# -*- background
+assign [class="steam"]															$ws5
+assign [app_id="org.kde.kdeconnect.app"]						$ws5
+
+# -*- chat
+assign [class="slack"]															$ws6
+assign [class="discord"]														$ws6

@@ -15,8 +15,8 @@ esac
 
 
 # --------------------------------------------------------------- // timestamps
-export NOW="$(date '+%F_%T')ET"
-export UTC="$(date -u '+%F_%T')UTC"
+export NOW="$(date '+%F_%T') ET"
+export UTC="$(date -u '+%F_%T') UTC"
 export ISO="$(date -Is)"
 
 # -------------------------------------------------------- // xdg specification

@@ -9,7 +9,7 @@ return {
           clear_suggestion = "<C-]>",
           accept_word = "<C-j>",
         },
-        ignore_filetypes = { "markdown", "text" },
+        ignore_filetypes = { "markdown", "text", "csv" },
       })
     end,
   },
