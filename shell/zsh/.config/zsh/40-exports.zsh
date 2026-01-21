@@ -13,12 +13,6 @@ case "$HOST" in
   *) export HOSTNAME="$HOST" ;;
 esac
 
-
-# --------------------------------------------------------------- // timestamps
-export NOW="$(date '+%F_%T') ET"
-export UTC="$(date -u '+%F_%T') UTC"
-export ISO="$(date -Is)"
-
 # -------------------------------------------------------- // xdg specification
 export XDG_CACHE_HOME=$HOME/.local/cache
 export XDG_CONFIG_HOME=$HOME/.config
@@ -45,6 +39,6 @@ export GOPATH=$HOME/.local/lib/go
 
 # ----------------------------------------------------------// default programs
 . $HOME/.profile
-export BROWSER=qutebrowser
+# export BROWSER=qutebrowser
 export EDITOR=nvim
 export VISUAL=nvim
