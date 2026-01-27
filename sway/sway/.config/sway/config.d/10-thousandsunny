@@ -15,7 +15,7 @@ workspace 3 output $builtin
 workspace 4 output $tv
 
 # -*- browsers
-assign [class="qutebrowser"]												$ws2
+assign [app_id="org.qutebrowser.qutebrowser"]												$ws2
 assign [app_id="librewolf"]													$ws2
 assign [app_id="firefox-esr"]												$ws2
 assign [app_id="Tor Browser"]												$ws2
