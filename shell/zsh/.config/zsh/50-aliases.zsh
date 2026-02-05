@@ -29,4 +29,4 @@ alias ~='cd ~'
 
 # -*-- tmux -*-
 alias tl="tmux list-sessions"
-alias tv="tmux new -s vault -c /home/sailorfe/.local/doc/flor"
+alias tv="tmux new -s vault -c /home/sailorfe/d/flor"
