@@ -21,12 +21,12 @@ export XDG_STATE_HOME=$HOME/.local/state
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 
-export XDG_DOCUMENTS_DIR=$HOME/.local/doc
-export XDG_DOWNLOAD_DIR=$HOME/.local/media
-export XDG_MUSIC_DIR=$HOME/.local/media/mus
-export XDG_PICTURES_DIR=$HOME/.local/media/img
-export XDG_VIDEOS_DIR=$HOME/.local/media/vid
-export GRIM_DEFAULT_DIR=$HOME/.local/media/cap
+export XDG_DOCUMENTS_DIR=$HOME/d
+export XDG_DOWNLOAD_DIR=$HOME/m
+export XDG_MUSIC_DIR=$HOME/m/mus
+export XDG_PICTURES_DIR=$HOME/m/img
+export XDG_VIDEOS_DIR=$HOME/m/vid
+export GRIM_DEFAULT_DIR=$HOME/m/img/cap
 
 # ---------------------------------------------------------------- // libraries
 export CARGO_HOME=$HOME/.local/lib/cargo
