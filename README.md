@@ -3,29 +3,20 @@
 ![perona](./perona.png)
 
 ```
-     '                                                     .         o
- '                                    .*   '    o
-                          .  |
-          *         *+     - o -                                              .
-*  +    +           /        |               +   |       +~~                 ''
-      '            /            o   '           -+-  +  .           .
-                  *                          .   |         .
-  .                           sailorfe's dotfiles                        +*
-         +                                    .       .      +   '      .
-        '        *  '    ':.    ' .   '      '        _..                    o
-  '                        '::._  .           +   + '`-. `.             +
-                             '._)                       \  \
-  o                       *       '                     |  |                 '
-   +                   '         '     '                /  /
-           +   .                            .       _.-`_.`                   .
-                     '                               '''     '        '
-.       '         |                                    +  .
-'                -+-                                  .          .
-                  |                                 .                   +  .
-                  '   *           +       +                           +       *
+                                                                
+               ▄▄               ▄▄           █                  
+                ██             ██           █  █▄       █▄      
+             ▀▀ ██       ▄    ▄██▄         █   ██      ▄██▄     
+ ▄██▀█ ▄▀▀█▄ ██ ██ ▄███▄ ████▄ ██ ▄█▀█▄   █ ▄████ ▄███▄ ██ ▄██▀█
+ ▀███▄ ▄█▀██ ██ ██ ██ ██ ██    ██ ██▄█▀  █  ██ ██ ██ ██ ██ ▀███▄
+█▄▄██▀▄▀█▄██▄██▄██▄▀███▀▄█▀   ▄██▄▀█▄▄▄ █  ▄█▀███▄▀███▀▄███▄▄██▀
+                               ██                               
+                              ▀▀                                
 ```
 
-these are my dotfiles for a linux ecosystem that currently includes a debian 13 desktop, a debian 13 dev server on a macbook air 2017, a void linux thinkpad, a termux for android. on my desktop and thinkpad, i run [sway](https://swaywm.org), and wayland gives me no real issues besides with flatpak electron apps.
+these are my configuration files for an overwhelmingly debian linux ecosystem across four devices: an hp compaq elite usdt 8000, a clamshelled macbook air 2017, a thinkpad t480s, and termux on android.
+
+the desktop and thinkpad use [sway](https://swaywm.org). wayland is pretty good these days, but needy in that on debian it requires a slew of helper packages to cooperate with electron apps and the like.
 
 this repo is designed to be modular and minimal. i'm neither or a gamer or a sysadmin or even that serious a ricer, just someone who frequently nukes my installations for no real reason.
 
@@ -41,11 +32,11 @@ this repo is designed to be modular and minimal. i'm neither or a gamer or a sys
 <a name="homedir"></a>
 ## homedir layout
 
-i follow the [xdg base directory specification](https://specifications.freedesktop.org/basedir-spec/latest/) and try my best to keep hidden files tamed. i shove my [xdg-user-dirs](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/) under `.local`.
+i follow the [xdg base directory specification](https://specifications.freedesktop.org/basedir-spec/latest/) and try my best to keep hidden files tamed. i keep [xdg-user-dirs](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/) under `.local` and the more colloquial `$XDG_{DOCUMENTS,MUSIC,PICTURES,VIDEOS}_DIR` visible at `~` with single-letter toplevels.
 
-```
+```sh
 ~
-|-- .config/
+|-- .config/        => $XDG_CONFIG_HOME
 |   |-- bash/
 |   |-- ranger/
 |   |-- sway/
@@ -54,58 +45,62 @@ i follow the [xdg base directory specification](https://specifications.freedeskt
 |       `-- .zshrc
 |-- .local
 |   |-- bin/
-|   |-- doc/        => $XDG_DOCUMENTS_DIR
-|   |   |-- flor/   => notes vault (florilegium)
-|   |   |-- log/    => cron job logs
-|   |   |-- sys/    => extraneous sysadmin stuff
-|   |   `-- etc...
 |   |-- cache/      => $XDG_CACHE_HOME
 |   |-- lib/
 |   |   |-- $CARGO_HOME
 |   |   |-- $GOPATH
 |   |   `-- etc...
-|   |-- media/
-|   |   |-- aud/
-|   |   |-- cap/    => GRIM_DEFAULT_DIR
-|   |   |-- den_den_mushi/  => kdeconnect file transfer
-|   |   |-- doc/
-|   |   |-- font/
-|   |   |-- img/    => $XDG_PICTURES_DIR
-|   |   |-- mus/    => $XDG_MUSIC_DIR
-|   |   `-- vid/    => $XDG_VIDEOS_DIR
 |   |-- share/      => $XDG_DATA_HOME
-|   |-- src/
-|   |   |-- p/      => my source code
-|   |   |-- s/      = not-my source code
-|   `-- vol/        => mountpoints
-|-- .bashrc
-|-- .bash_profile
+|   |   |-- fonts
+|   |   `-- gpg
+|   `-- state/      => $XDG_STATE_HOME
 |-- .password-store/
-|-- .profile
-`-- .ssh/
+|-- .ssh/
+|-- d/                  => $XDG_DOCUMENTS_DIR
+|   |-- flor{illegium}  => notes + syncthing
+|   |-- log             => logs from ~/.local/bin backups
+|   `-- etc...
+|-- m/
+|   |-- app/            => *.deb, *.iso
+|   |-- den_den_mushi/  => kdeconnect file transfer
+|   |-- doc/            => *.cbz, *.epub, *.pdf
+|   |-- img/            => $XDG_PICTURES_DIR
+|   |   `-- cap/            => $GRIM_DEFAULT_DIR
+|   |-- mus/            => $XDG_MUSIC_DIR + syncthing
+|   `-- vid/            => $XDG_VIDEOS_DIR
+|-- p/                  => my source code
+|   |-- dots/               => this repo!
+|   |-- lua/
+|   |-- py/
+|   `-- www/
+`-- s/                  => not-my source code
+    `-- neovim/
 ```
-
 
 so before i even clone this repo, i run a command like this:
 
 ```sh
 mkdir ~/.config &&
-    mkdir -p ~/.local/{bin,cache,doc,lib,media,share,src/p,src/s} &&
-    mkdir -p ~/.local/state/{bash,zsh}
+    mkdir -p ~/.local/{bin,cache,lib,share,state} &&
+    mkdir -p ~/.local/state/{bash,zsh} &&
+    mkdir -p ~/{d,m,p,s}
 ```
+
+this has gone through some evolution through the years, but it's the combined influence of [xero](https://github.com/xero/dotfiles) and [elly](https://elly.town/d/blog/2021-10-06-homedir.txt).
 
 <a name="dependencies"></a>
 ## dependencies
 
-it goes without saying that this setup depends on git, and with it [gnu stow](https://www.gnu.org/software/stow/), which basically manages a mess of symlinks from this repository into my `.config` and home directories. the package name in the same for `apt` and `pacman`:
+it goes without saying that this setup depends on git, and with it [gnu stow](https://www.gnu.org/software/stow/), which basically manages a mess of symlinks from this repository into my `.config` and home directories. i pretty much run debian all the time out of package manager muscle memory, and if i ever stray it's to alpine or something arch-based:
 
 - `apt install git stow`
+- `apk add git stow`
 - `pacman -S git stow`
 
 <a name="installation"></a>
 ## installation
 
-once you've made the base directory structure, you can run `install.sh` at the root of this repository or run its functions manually like
+once you've made the base directory structure, you can run `debian.sh` at the root of this repository or run its functions manually like
 
 ```sh
 # move zsh home
@@ -125,9 +120,9 @@ cd ~/p &&
 the script has a few optional flags for whether this is a server or desktop installation:
 
 ```sh
-./install.sh --minimal      # only shell, ranger, and tmux
-./install.sh --sway         # only sway
-./install.sh --full         # shell with sway environment
+./debian.sh --minimal      # only shell, ranger, and tmux
+./debian.sh --sway         # only sway
+./debian.sh --full         # shell with sway environment
 ```
 
 <a name="shell"></a>
@@ -144,23 +139,23 @@ i don't toil away at ricing linux, but what i do have are three custom neovim co
 
 ```
 .config/sway/
-├── config.d/
-│   ├── wall/
-│   │   └── {wallpapers}
-│   ├── 00-base
-│   ├── 10-goingmerry      => desktop
-│   ├── 10-thousandsunny   => thinkpad
-│   ├── 20-luna
-│   ├── 20-moonqueen
-│   └── 20-perona
-├── config
-├── desktop.sh
-└── laptop.sh            => swaybar status scripts
+|-- config.d/
+|   |-- wall/
+|   |   `-- {wallpapers}
+|   |-- 00-base
+|   |-- 10-goingmerry      => desktop
+|   |-- 10-thousandsunny   => thinkpad
+|   |-- 20-luna
+|   |-- 20-moonqueen
+|   `-- 20-perona
+|-- config
+|-- desktop.sh
+`-- laptop.sh            => swaybar status scripts
 ```
 
 where `config` is only a few lines to `include` relevant files from `config.d`. `10-$hostname` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. `20-$palette` correspond to my nvim schemes.
 
-i love [foot](https://codeberg.org/dnkl/foot), the default wayland terminal emulator, but i sometimes switch to [alacritty](https://alacritty.org) on my desktop. i also test drive weird new ones on my void laptop like [rio](https://rioterm.com) or [ghostty](https://ghostty.org).
+i love [foot](https://codeberg.org/dnkl/foot), the default wayland terminal emulator, but i sometimes switch to [alacritty](https://alacritty.org) on my desktop. i also test drive weird new ones on my alpine laptop like [rio](https://rioterm.com) or [ghostty](https://ghostty.org).
 
 fonts are some of my greatest passions. these days i rotate between
 
