@@ -1,0 +1,13 @@
+☉ 2609 Sun
+☽ 263D First Quarter Moon
+☾ 263E Last Quarter Moon
+☿ 263F Mercury
+♀ 2640 Venus
+♂ 2642 Mars
+♃ 2643 Jupiter
+♄ 2644 Saturn
+♅ 2645 Uranus
+♆ 2646 Neptune
+♇ 2647 Pluto
+☊ 260A Ascending Node
+☋ 250B Descending Node
