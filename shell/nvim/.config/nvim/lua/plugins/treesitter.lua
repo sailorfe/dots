@@ -14,7 +14,9 @@ return {
 			"json",
 			"javascript",
 			"yaml",
-			"markdown"
+			"markdown",
+			"markdown_inline",
+			"c"
 		}
 	}
 }
