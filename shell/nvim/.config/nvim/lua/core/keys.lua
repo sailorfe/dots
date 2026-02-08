@@ -19,7 +19,7 @@ local function insert_date(fmt, use_utc)
 end
 
 -- ISO date only (YYYY-MM-DD)
-vim.keymap.set("n", "<leader>F", function()
+vim.keymap.set("n", "<leader>id", function()
   insert_date("%F")
 end, { desc = "Insert ISO date (YYYY-MM-DD)" })
 
@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>dt", function()
 end, { desc = "Insert date + time (YYYY-MM-DD HH:mm)" })
 
 -- Full ISO timestamp to minute with offset
-vim.keymap.set("n", "<leader>is", function()
+vim.keymap.set("n", "<leader>im", function()
   insert_date("%FT%R%z")
 end, { desc = "Insert ISO 8601 timestamp (minutes)" })
 
@@ -37,6 +37,11 @@ end, { desc = "Insert ISO 8601 timestamp (minutes)" })
 vim.keymap.set("n", "<leader>is", function()
   insert_date("%FT%T%z")
 end, { desc = "Insert ISO 8601 timestamp (seconds)" })
+
+-- chil and wee
+vim.keymap.set("n", "<leader>td", function()
+	insert_date("%m/%d")
+end, { desc = "Insert date as MM/DD"})
 
 -- "AP style"
 vim.keymap.set("n", "<leader>ap", function()
@@ -76,7 +81,25 @@ vim.keymap.set("n", "tq", "<Cmd>tabclose<CR>")
 
 -- plugins
 vim.keymap.set("n", "<leader>nnp", "<Cmd>NoNeckPain<CR>", opts)
-vim.keymap.set("n", "<leader>ww", ":lua require(\"kiwi\").open_wiki_index()<cr>")
-vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('n', '<A-f>', '<cmd>:lua MiniFiles.open()<cr>')
+
+
+-- LSP
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(event)
+    local opts = { buffer = event.buf }
+
+    -- navigation
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts, { desc = "Go to definition" })
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts, { desc = "Find references" })
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts, { desc = "Go to implementation" })
+
+    -- docs
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts, { desc = "Hover" })
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts, { desc = "Signature help" })
+
+    -- refactoring
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts, { desc = "Rename" })
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts, { desc = "Code action" })
+  end,
+})
