@@ -8,7 +8,8 @@ return {
 	vim.lsp.enable('html'),
 	vim.lsp.enable('lua_ls'),
 	vim.lsp.enable('marksman'),
-	vim.lsp.enable('pyright'),
+	vim.lsp.enable('ty'),
 	vim.lsp.enable('somesass_ls'),
-	vim.lsp.enable('gopls')
+	vim.lsp.enable('gopls'),
+	vim.lsp.enable('clangd')
 }

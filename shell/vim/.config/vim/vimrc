@@ -1,0 +1,83 @@
+" this is from 2024-11-24...
+set nocompatible
+set hidden
+
+" ============= editing ============
+
+filetype on
+filetype plugin on
+set background=dark
+" colorscheme moonqueen
+syntax on
+
+set autoindent
+set backspace	  =indent,eol,start
+set breakindent
+set expandtab
+set re          =0
+set softtabstop =4
+set shiftwidth	=4
+set shiftround
+set showmatch
+
+" ============= display ============
+
+set colorcolumn =80,120
+set display     =lastline
+set nonumber
+set nomodeline
+set report      =0
+set showcmd
+set showmode
+set ruler
+set textwidth   =120
+set t_Co        =16
+set visualbell
+set noerrorbells
+
+" ============= plugins ============
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
+Plug 'preservim/vim-markdown'
+let g:polyglot_disabled = ['markdown']
+Plug 'sheerun/vim-polyglot'
+" Plug 'xavierd/clang_complete'
+call plug#end()
+
+" ========== navigation ============
+
+set scrolloff   =4
+set ttyfast
+set lazyredraw
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" ============= changes ============
+
+set autoread
+set backup
+set writebackup
+set backupdir   =~/.local/state/vim/backup
+set backupext   =-vimbackup
+set backupskip  =~/.vim/files/swap/
+set history     =1000
+set updatecount =100
+set undodir     =~/.local/state/vim/undo
+set undofile
+set undolevels  =1000
+
+" ============ libraries ============
+
+" arch
+" let g:clang_library_path='/usr/lib/libclang.so.18'
