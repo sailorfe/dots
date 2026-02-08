@@ -11,5 +11,5 @@ return {
 	vim.lsp.enable('ty'),
 	vim.lsp.enable('somesass_ls'),
 	vim.lsp.enable('gopls'),
-	vim.lsp.enable('clangd')
+	vim.lsp.enable('clangd'),
 }

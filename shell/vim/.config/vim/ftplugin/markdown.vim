@@ -1,7 +1,5 @@
-"set columns     =80
-set linebreak
 setlocal spell spelllang=en_us
-set textwidth   =0
+set colorcolumn =0
 set wrap
 set wrapmargin  =0
 
