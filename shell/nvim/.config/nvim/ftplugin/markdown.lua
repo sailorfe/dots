@@ -1,4 +1,4 @@
-local spell_dir = vim.fn.stdpath('share') .. '/spell'
+local spell_dir = vim.fn.stdpath('data') .. '/spell'
 
 if vim.fn.isdirectory(spell_dir) == 0 then
     vim.fn.mkdir(spell_dir, 'p')
