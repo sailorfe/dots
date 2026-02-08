@@ -53,9 +53,9 @@ zdotdir() {
 filetree() {
 	echo "Creating file tree..."
 	mkdir -p "$user_home/.config"
-	mkdir -p "$user_home/.local/{bin,cache,doc,media,share,src,state}"
+	mkdir -p "$user_home/.local/{bin,cache,lib,share,state}"
 	mkdir -p "$user_home/.local/state/{bash,zsh}"
-	mkdir -p "$user_home/.local/src/{p,s}"
+	mkdir -p "$user_home/{d,m,p,s}"
 	chown -R "${username}:${username}" "$user_home"/{.config,.local}
 	echo "File tree created!"
 }
@@ -63,7 +63,7 @@ filetree() {
 stow_dotfiles() {
 	echo "Cloning and setting up dotfiles..."
 	sudo -u "$username" bash << 'EOF'
-		cd "$HOME/.local/src/p"
+		cd "$HOME/p"
 
 		if [ ! -d "dots" ]; then
 			git clone https://codeberg.org/sailorfe/dots.git
@@ -106,7 +106,7 @@ if [ "$install_sway" = true ]; then
     packages_sway
 fi
 
-if [ "$setup_homedir"] = true ]; then
+if [ "$setup_homedir" = true ]; then
     zdotdir
 		filetree
 		stow_dotfiles
