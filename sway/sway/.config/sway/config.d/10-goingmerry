@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------- // output
 
-output * mode 1920x1080 pos 0 0 bg /home/sailorfe/.config/sway/config.d/wall/mihopero-alt.png fill
+output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/mihopero-alt.png fill
 
 
 # ---------------------------------------------------------------- // workspaces
