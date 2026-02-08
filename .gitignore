@@ -4,6 +4,8 @@ shell/nvim/.config/nvim/lua/plugins/luna.lua
 shell/nvim/.config/nvim/lua/plugins/moonqueen.lua
 shell/nvim/.config/nvim/lua/plugins/perona.lua
 shell/zsh/.config/zsh/.zshcompdump
+.zcompdump*
+sway/mpd/.config/mpd/database
 sway/qutebrowser/.config/qutebrowser/bookmarks/urls
 sway/qutebrowser/.config/qutebrowser/autoconfig.yml
 sway/qutebrowser/.config/qutebrowser/qsettings/QProject.conf
