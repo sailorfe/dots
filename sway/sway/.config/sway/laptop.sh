@@ -9,7 +9,7 @@ asc="$(asc)"
 et="$(date +'%a %F %H:%M')"
 utc="$(date -u +' %H:%M')"
 
-wifi="󰖩  $(nmcli device | awk '/^wlp61s0/ {print $1}') $(nmcli device | awk '/^wlp61s0/ {print $3}') $(ip addr | grep 'inet 192' | awk '{print $2}')"
+wifi="󰖩  $(nmcli device | awk '/^wlan0/ {print $1}') $(nmcli device | awk '/^wlan0/ {print $3}') $(ip addr | grep 'inet 192' | awk '{print $2}')"
 battery="󱐋 $(cat /sys/class/power_supply/BAT0/capacity)% $(cat /sys/class/power_supply/BAT0/status)"
 
 # if [[ -f "/tmp/timer" ]]; then

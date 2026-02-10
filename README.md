@@ -1,23 +1,53 @@
 ![perona](./perona.png)
 
-these are my configuration files for an overwhelmingly [debian linux](https://debian.org) ecosystem across four devices of advancing age. the newest is termux on android and the oldest is an hp compaq elite 8000 usdt.
+these are my configuration files for an overwhelmingly [debian linux](https://debian.org) ecosystem across four devices of advancing age. the newest is termux on android; the oldest is an hp compaq elite 8000 usdt; and the outlier is a thinkpad on [alpine linux](https://alpinelinux.org).
 
-my desktop and laptop use [sway](https://swaywm.org). wayland is pretty good these days, but needy in that on debian it requires a slew of helper packages to cooperate with electron apps and the like.
+my desktop and laptop use [sway](https://swaywm.org). wayland is pretty good these days with the help of `xwayland` and `xdg-desktop-portal-*` to fill some gaps.
 
 this repo is designed to be modular and minimal. i'm neither or a gamer or a sysadmin or even that serious a ricer, just someone who frequently nukes my installations (i swear by separate `/home` and `/`).
 
 ### table of contents
 
-- [homedir](#homedir)
-- [dependencies](#dependencies)
 - [installation](#installation)
+- [dependencies](#dependencies)
+- [homedir](#homedir)
 - [shell](#shell)
 - [neovim](#neovim)
 - [sway](#sway)
 - [previews](#previews)
 
+
+<a name="installation"></a>
+## installation
+
+**the install scripts at the root of this repository are iterated through a few installations, so proceed with caution! i haven't actually run them in their current form.**
+
+they have a few optional flags for whether this is a server or desktop installation:
+
+```sh
+{doas,sudo} ./$DISTRO.sh                # base packages
+{doas,sudo} ./$DISTRO.sh --sway         # only sway
+{doas,sudo} ./$DISTRO.sh --homedir      # sets up homedir and zdotdir
+```
+
+but if you want to move a bit slower than a script that i haven't fully tested (need to set up VMs or something for that), the order of operations is really:
+
+1. install base packages, most importantly zsh and neovim dependencies
+2. create file tree
+3. clone and stow dotfiles
+
+<a name="dependencies"></a>
+### dependencies
+
+it goes without saying that this setup depends on git, and with it [gnu stow](https://www.gnu.org/software/stow/), which basically manages a mess of symlinks from this repository into my `.config` and home directories.
+
+- debian: `apt install git stow`
+- alpine: `apk add git stow`
+
+ostensibly, you could install `curl` only and run `curl -LO https://codeberg.org/sailorfe/dots/raw/branch/main/$DISTRO.sh`, `chmod +x $DISTRO.sh`, and it'll install git and stow for you before anything else. there are many ways to go about this.
+
 <a name="homedir"></a>
-## homedir layout
+### homedir layout
 
 i follow the [xdg base directory specification](https://specifications.freedesktop.org/basedir-spec/latest/) and try my best to keep hidden files tamed. i keep [xdg-user-dirs](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/) under `.local` and the more colloquial `$XDG_{DOCUMENTS,MUSIC,PICTURES,VIDEOS}_DIR` visible at `~` with single-letter toplevels.
 
@@ -36,7 +66,7 @@ i follow the [xdg base directory specification](https://specifications.freedeskt
 |   |-- lib/        => $GOPATH, $CARGO_HOME, etc
 |   |-- share/      => $XDG_DATA_HOME
 |   `-- state/      => $XDG_STATE_HOME
-|-- d/
+|-- d/              => personal documents
 |   |-- flor{ilegium}   => notes -> syncthing
 |   `-- etc...
 |-- m/
@@ -51,7 +81,7 @@ i follow the [xdg base directory specification](https://specifications.freedeskt
 `-- s/                  => not-my source code
 ```
 
-before i even clone this repo, i run a command like this:
+before i even clone this repo, i run a command like this to make sure the XDG directories themselves don't become symlinks:
 
 ```sh
 mkdir ~/.config &&
@@ -62,44 +92,11 @@ mkdir ~/.config &&
 
 this has gone through some evolution through the years, but it's the combined influence of [xero](https://github.com/xero/dotfiles) and [elly](https://elly.town/d/blog/2021-10-06-homedir.txt). i feel especially strongly about xdg and develop and configure with it in mind!
 
-<a name="dependencies"></a>
-## dependencies
-
-it goes without saying that this setup depends on git, and with it [gnu stow](https://www.gnu.org/software/stow/), which basically manages a mess of symlinks from this repository into my `.config` and home directories. i pretty much run debian all the time out of package manager muscle memory, and if i ever stray it's to alpine or something arch-based:
-
-- `apt install git stow`
-- `apk add git stow`
-- `pacman -S git stow`
-
-once you've made the above filetree or at least decided where you want this repo to go, run `git clone https://codeberg.org/sailorfe/dots.git ~/p/dots`.
-
-<a name="installation"></a>
-## installation
-
-you can run `debian.sh` at the root of this repository or run its functions manually like
+once you've made a filetree of a kind, you're free to run `git clone https://codeberg.org/sailorfe/dotfiles.git` and stow away:
 
 ```sh
-# move zsh home
-sudo echo "export ZDOTDIR='$HOME'/.config/zsh" >> /etc/zsh/zshenv
-
-# clone & stow dotfiles
-cd ~/p &&
-    git clone ssh://git@codeberg.org/sailorfe/dots.git &&
-    cd dots/shell &&
-    stow -t ~ *
-
-    # if with a visual environment
-    cd ~/p/dots/sway &&
-    stow -t ~ *
-```
-
-the script has a few optional flags for whether this is a server or desktop installation:
-
-```sh
-./debian.sh --minimal       # only shell, ranger, and tmux
-./debian.sh --sway          # only sway
-./debian.sh --full          # shell with sway environment
-./debian.sh --homedir       # sets up homedir and zdotdir
+cd dots/shell && stow -t ~ *
+cd ../sway && stow -t ~ *
 ```
 
 <a name="shell"></a>
@@ -114,7 +111,7 @@ one of my quirks is i changed all variations of `ls` to use `--group-directories
 
 i use neovim for writing prose and code, and i do more of the former than the latter, with the combined might of [the built-in lsp](https://github.com/neovim/nvim-lspconfig) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). i manage plugins with [lazy](https://github.com/folke/lazy.nvim), but i've been curious about [forgoing a plugin manager altogether](https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/)...
 
-- **language servers**: [ty](https://docs.astral.sh/ty/features/language-server/), [clangd](https://clangd.llvm.org/), [Marksman](https://github.com/artempyanykh/marksman), among others
+- **language servers + linters**: [ty](https://docs.astral.sh/ty/features/language-server/), [ruff](https://astral.sh/ruff), [clangd](https://clangd.llvm.org/), [Marksman](https://github.com/artempyanykh/marksman), [bashls](https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#neovim), among others
 - **notable plugins**:
     * [bullets.vim](https://github.com/bullets-vim/bullets.vim): for the markdown-pilled
     * [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): indentation guides, very important for python and yaml
@@ -171,8 +168,8 @@ i don't toil away at ricing linux, but what i do have are three custom neovim co
 .config/sway
 |-- config.d/
 |   |-- 00-base
-|   |-- 10-goingmerry      => desktop
-|   |-- 10-thousandsunny   => thinkpad
+|   |-- 10-goingmerry      => debian desktop
+|   |-- 10-thousandsunny   => alpine laptop; exec's a few background services
 |   |-- 20-luna
 |   |-- 20-moonqueen
 |   `-- 20-perona
@@ -183,15 +180,23 @@ i don't toil away at ricing linux, but what i do have are three custom neovim co
 
 where `config` is only a few lines to `include` relevant files from `config.d`. `10-$hostname` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. `20-$palette` correspond to my nvim schemes.
 
-my browser of choice is either [qutebrowser](https://qutebrowser.org/) or [librewolf](https://librewolf.net/). qutebrowser is written and configured with python, so it's a lot of fun.
+### browsers
 
-i love [foot](https://codeberg.org/dnkl/foot), the default wayland terminal emulator, but i sometimes switch to [alacritty](https://alacritty.org) on my desktop. i also test drive weird new ones like [rio](https://rioterm.com) or [ghostty](https://ghostty.org).
+my browser of choice is either [qutebrowser](https://qutebrowser.org/) or [librewolf](https://librewolf.net/). qutebrowser is written and configured with python, so it's a lot of fun. i also sometime go rogue and use [w3m](https://github.com/tats/w3m).
+
+### terminal emulator
+
+i love [foot](https://codeberg.org/dnkl/foot), the default wayland terminal emulator, but i sometimes switch to [alacritty](https://alacritty.org) when utf-8 gets weird. i also test drive newer ones like [rio](https://rioterm.com) or [ghostty](https://ghostty.org) and used [wezterm](https://wezterm.org) for a long time.
+
+### fonts
 
 fonts are some of my greatest passions. these days i rotate between
 
-- [recursive mono casual](https://www.recursive.design/)
-- [cozette](https://github.com/the-moonwitch/Cozette)
-- [ibm 3270](https://packages.debian.org/source/trixie/3270font) or [3270 nerd font](https://www.programmingfonts.org/#font3270)
+- [recursive mono casual](https://www.recursive.design/): very fun and almost pen-like with great italics. i also use the sans serif for my resumes.
+- [cozette](https://github.com/the-moonwitch/Cozette): takes enabling bitmapped fonts on debian and alpine. i use this in my swaybar, wmenu, and rarely-seen sway window titles. it's also my cope for having 1080p monitors. i will sincerely look at 11pt bitmaps to get 3 neovim windows side by side.
+- [ibm 3270](https://packages.debian.org/source/trixie/3270font) or [3270 nerd font](https://www.programmingfonts.org/#font3270): honestly? extremely readable.
+
+in the past, i've gotten a lot of mileage out of [iosevka](https://typeof.net/Iosevka/) and [jetbrains mono](https://www.jetbrains.com/lp/mono/).
 
 <a name="previews"></a>
 ## previews
