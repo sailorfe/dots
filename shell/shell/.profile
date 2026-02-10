@@ -10,3 +10,8 @@ if test -z "${XDG_RUNTIME_DIR}"; then
       chmod 0700 "${XDG_RUNTIME_DIR}"
     fi
 fi
+
+# launches syncthing on alpine
+if ! pgrep -x syncthing > /dev/null; then
+	syncthing > /dev/null 2>&1 &
+fi
