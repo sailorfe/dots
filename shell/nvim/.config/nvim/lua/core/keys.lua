@@ -1,11 +1,5 @@
--- ________   _______   ________  ___      ___ ___  _____ ______
---|\   ___  \|\  ___ \ |\   __  \|\  \    /  /|\  \|\   _ \  _   \
---\ \  \\ \  \ \   __/|\ \  \|\  \ \  \  /  / | \  \ \  \\\__\ \  \
--- \ \  \\ \  \ \  \_|/_\ \  \\\  \ \  \/  / / \ \  \ \  \\|__| \  \
---  \ \  \\ \  \ \  \_|\ \ \  \\\  \ \    / /   \ \  \ \  \    \ \  \
---   \ \__\\ \__\ \_______\ \_______\ \__/ /     \ \__\ \__\    \ \__\
---    \|__| \|__|\|_______|\|_______|\|__|/       \|__|\|__|     \|__|
-
+local vim = vim
+--
 -- set leader key to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -59,10 +53,10 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 -- resize windows
-vim.keymap.set("n", "H", "1<C-w>>")
-vim.keymap.set("n", "J", "1<C-w>-")
-vim.keymap.set("n", "K", "1<C-w>+")
-vim.keymap.set("n", "L", "1<C-w><")
+vim.keymap.set("n", "<A-h>", "1<C-w>>")
+vim.keymap.set("n", "<A-j>", "1<C-w>-")
+vim.keymap.set("n", "<A-k>", "1<C-w>+")
+vim.keymap.set("n", "<A-l>", "1<C-w><")
 -- term windows
 vim.keymap.set("n", "st", "<Cmd>split | term<CR>")
 vim.keymap.set("n", "vt", "<Cmd>vsplit | term<CR>")
@@ -77,29 +71,3 @@ vim.keymap.set("n", "bq", "<Cmd>bdelete<CR>")
 vim.keymap.set("n", "tn", "<Cmd>tabnext<CR>")
 vim.keymap.set("n", "tp", "<Cmd>tabprev<CR>")
 vim.keymap.set("n", "tq", "<Cmd>tabclose<CR>")
-
-
--- plugins
-vim.keymap.set("n", "<leader>nnp", "<Cmd>NoNeckPain<CR>", opts)
-vim.keymap.set('n', '<A-f>', '<cmd>:lua MiniFiles.open()<cr>')
-
-
--- LSP
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(event)
-    local opts = { buffer = event.buf }
-
-    -- navigation
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts, { desc = "Go to definition" })
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts, { desc = "Find references" })
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts, { desc = "Go to implementation" })
-
-    -- docs
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts, { desc = "Hover" })
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts, { desc = "Signature help" })
-
-    -- refactoring
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts, { desc = "Rename" })
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts, { desc = "Code action" })
-  end,
-})
