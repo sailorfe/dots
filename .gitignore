@@ -6,6 +6,7 @@ shell/nvim/.config/nvim/lua/plugins/perona.lua
 shell/zsh/.config/zsh/.zshcompdump
 .zcompdump*
 sway/mpd/.config/mpd/database
+sway/mpd/.config/mpd/pid
 sway/qutebrowser/.config/qutebrowser/bookmarks/urls
 sway/qutebrowser/.config/qutebrowser/autoconfig.yml
 sway/qutebrowser/.config/qutebrowser/qsettings/QProject.conf
