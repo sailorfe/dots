@@ -49,5 +49,10 @@ set_prompt() {
 
 precmd_functions+=(set_prompt)
 
-# Host info banner (runs once)
-echo -e "\e[1;40m $(hostname) \e[0m\e[1;46m\e[30m $(uptime -p | cut -c 4-) \e[0m \e[0m\e[1;36m$(uname -r)\e[0m"
+if uptime -p >/dev/null 2>&1; then
+  up="$(uptime -p | cut -c 4-)"
+else
+  up="$(uptime | sed 's/.* up \([^,]*\),.*/\1/')"
+fi
+
+echo -e "\e[1;40m $(hostname) \e[0m\e[1;46m\e[30m $up \e[0m \e[0m\e[1;36m$(uname -r)\e[0m"

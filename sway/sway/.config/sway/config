@@ -1,5 +1,5 @@
 include config.d/00-base
-include config.d/10-thousandsunny
-include config.d/20-luna
+include config.d/10-goingmerry
+include config.d/20-perona
 
 include /etc/sway/config.d/*

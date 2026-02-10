@@ -1,11 +1,4 @@
--- ___       ________  ________      ___    ___
---|\  \     |\   __  \|\_____  \    |\  \  /  /|
---\ \  \    \ \  \|\  \\|___/  /|   \ \  \/  / /
--- \ \  \    \ \   __  \   /  / /    \ \    / /
---  \ \  \____\ \  \ \  \ /  /_/__    \/  /  /
---   \ \_______\ \__\ \__\\________\__/  / /
---    \|_______|\|__|\|__|\|_______|\___/ /
---                                 \|___|/
+local vim = vim
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -27,6 +20,5 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  install = { colorscheme = { "perona" } },
   checker = { enabled = true },
 })

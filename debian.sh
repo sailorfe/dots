@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# usage: ./debian.sh [--sway] [--homedir]
+
 set -e
 
 username="$(logname)"
@@ -22,7 +24,6 @@ packages_base() {
         gnupg pass stow tmux \
         python3-full \
         btop ranger fastfetch \
-        fonts-jetbrains-mono fonts-font-awesome fonts-unifont fonts-noto-color-emoji \
 				zip unzip \
 				zsh zsh-autosuggestions zsh-syntax-highlighting \
     curl -fsSL https://tailscale.com/install.sh | sh \
@@ -38,6 +39,7 @@ packages_sway() {
         mpd mpc mpv ncmpcpp \
         wayland-protocols wayland-utils \
         xdg-desktop-portal-wlr xwayland xwaylandvideobridge \
+        fonts-3270 fonts-jetbrains-mono fonts-font-awesome fonts-unifont fonts-noto-color-emoji \
 				pipewire \
 				extrepo \
     extrepo enable librewolf \
@@ -53,17 +55,17 @@ zdotdir() {
 filetree() {
 	echo "Creating file tree..."
 	mkdir -p "$user_home/.config"
-	mkdir -p "$user_home/.local/{bin,cache,doc,media,share,src,state}"
+	mkdir -p "$user_home/.local/{bin,cache,lib,share,state}"
 	mkdir -p "$user_home/.local/state/{bash,zsh}"
-	mkdir -p "$user_home/.local/src/{p,s}"
-	chown -R "${username}:${username}" "$user_home"/{.config,.local}
+	mkdir -p "$user_home/{d,m,p,s}"
+	chown -R "${username}:${username}" "$user_home"/{.config,.local,d,m,p,s}
 	echo "File tree created!"
 }
 
 stow_dotfiles() {
 	echo "Cloning and setting up dotfiles..."
 	sudo -u "$username" bash << 'EOF'
-		cd "$HOME/.local/src/p"
+		cd "$HOME/p"
 
 		if [ ! -d "dots" ]; then
 			git clone https://codeberg.org/sailorfe/dots.git
@@ -71,42 +73,34 @@ stow_dotfiles() {
 
 		cd dots
 
-		# Always stow shell configs
 		cd shell && stow -t "$HOME" *
 
-		# Stow sway if flag is set
 		if [ "$1" = "true" ]; then
 			cd ../sway && stow -t "$HOME" *
 		fi
 EOF
 }
 
-install_minimal=false
 install_sway=false
-install_full=false
 setup_homedir=false
 
 for arg in "$@"; do
 	case "$arg" in
-		--minimal) install_minimal=true ;;
 		--sway) install_sway=true ;;
 		--homedir) setup_homedir=true ;;
-		--full) install_full=true; install_sway=true ;;
 		*) echo "Unknown option: $arg"; exit 1 ;;
 	esac
 done
 
 check_sudo
 
-if [ "$install_minimal" = true ] || [ "$install_full" = true ]; then
-    packages_base
-fi
+packages_base
 
 if [ "$install_sway" = true ]; then
     packages_sway
 fi
 
-if [ "$setup_homedir"] = true ]; then
+if [ "$setup_homedir" = true ]; then
     zdotdir
 		filetree
 		stow_dotfiles
