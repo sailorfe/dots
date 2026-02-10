@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# usage: ./debian.sh [--sway] [--homedir]
+# usage: sudo ./debian.sh [--sway] [--homedir]
 
 set -e
 
