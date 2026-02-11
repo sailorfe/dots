@@ -3,3 +3,5 @@
 	email = sailorfe@proton.me
 [init]
 	defaultBranch = main
+[color]
+	ui = auto

@@ -4,8 +4,7 @@
 #/__/___/_//_/_/  \__/
 #
 # ------------------------------------------------------------- // shell prompt
-BG_HOST=$(theme_color magenta)
-FG_HOST=$(theme_color black)
+FG_TIME=$(theme_color magenta)
 FG_DIR=$(theme_color white)
 FG_VENV=$(theme_color bright_cyan)
 FG_GIT=$(theme_color bright_magenta)
@@ -36,15 +35,15 @@ venv_info() {
 }
 
 set_prompt() {
-  local hostname prompt_user current_dir fun_glyph venv gitinfo
+  local clock prompt_user current_dir fun_glyph venv gitinfo
 
-	cute_host="%K{$BG_HOST} %F{$FG_HOST}%B$HOSTNAME%b%f %k "
+	clock="%B%F{$FG_TIME}$(date +%H:%M:%S)%f%b "
   venv=$(venv_info)
   current_dir="%F{$FG_DIR}%2~%f"
   gitinfo=$(git_info)
   fun_glyph=" %F{$FG_GLYPH}%f "
 
-  PROMPT="$NEWLINE${venv}${cute_host}${current_dir}${gitinfo}${fun_glyph}"
+  PROMPT="$NEWLINE${venv}${clock}${current_dir}${gitinfo}${fun_glyph}"
 }
 
 precmd_functions+=(set_prompt)

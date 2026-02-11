@@ -11,3 +11,8 @@
 ♇ 2647 Pluto
 ☊ 260A Ascending Node
 ☋ 250B Descending Node
+☌	260C Conjunction
+⚹ 26B9 Sextile
+□ 25A1 Square
+△ 25B3 Trine
+☍ 260D Opposition
