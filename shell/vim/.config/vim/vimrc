@@ -6,7 +6,7 @@ set hidden
 filetype on
 filetype plugin on
 set background=dark
-colorscheme luna
+colorscheme moonqueen
 syntax on
 
 set autoindent
