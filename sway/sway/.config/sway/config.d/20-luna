@@ -4,7 +4,7 @@ set $base01 #422f4c
 set $base02 #4d3659
 set $base03 #583e65
 set $base04 #9f87ab
-set $base05 #bcabc4
+set $base05 #dbc8e5
 set $base06 #ead9f2
 set $base07 #654077
 
@@ -57,7 +57,7 @@ bar {
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-N '$base00' -n '$base06' \
 	-M '$base0E' -m '$base00' \
-	-S '$base02' -s '$base05' \
+	-S '$base07' -s '$base05' \
 	-p 'wmenu '
 
 
