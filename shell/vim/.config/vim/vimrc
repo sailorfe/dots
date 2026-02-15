@@ -1,13 +1,12 @@
-" this is from 2024-11-24...
 set nocompatible
 set hidden
 
-" ============= editing ============
+" == editing =======================
 
 filetype on
 filetype plugin on
 set background=dark
-" colorscheme moonqueen
+colorscheme luna
 syntax on
 
 set autoindent
@@ -22,21 +21,21 @@ set shiftround
 set showmatch
 set wrap
 
-" ============= display ============
+" == display =======================
 
 set colorcolumn =80,100
 set display     =lastline
-set nonumber
-set nomodeline
+set number 
+set modeline
 set report      =0
 set showcmd
 set showmode
 set ruler
 set t_Co        =16
-set visualbell
+set novisualbell
 set noerrorbells
 
-" ============= plugins ============
+" == plugins =======================
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -54,7 +53,7 @@ Plug 'sheerun/vim-polyglot'
 " Plug 'xavierd/clang_complete'
 call plug#end()
 
-" ========== navigation ============
+" == navigation ====================
 
 set scrolloff   =4
 set ttyfast
@@ -64,7 +63,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-" ============= changes ============
+" == changes =======================
 
 set autoread
 set backup
@@ -78,8 +77,3 @@ set updatecount =100
 set undodir     =~/.local/state/vim/undo
 set undofile
 set undolevels  =1000
-
-" ============ libraries ============
-
-" arch
-" let g:clang_library_path='/usr/lib/libclang.so.18'
