@@ -1,5 +1,5 @@
 return {
-	"sailorfe/moonqueen.nvim",
+	"https://codeberg.org/sailorfe/moonqueen.nvim",
 	dependencies = "rktjmp/lush.nvim",
 --	enabled = false,
 	enabled = true,

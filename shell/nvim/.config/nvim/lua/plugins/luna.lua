@@ -1,5 +1,5 @@
 return {
-	"sailorfe/luna.nvim",
+	"https://codeberg.org/sailorfe/luna.nvim",
 	branch = main,
 	enabled = false,
 --	enabled = true,

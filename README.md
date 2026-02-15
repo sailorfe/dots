@@ -25,9 +25,10 @@ this repo is designed to be modular and minimal. i'm neither or a gamer or a sys
 they have a few optional flags for whether this is a server or desktop installation:
 
 ```sh
-{doas,sudo} ./$DISTRO.sh                # base packages
-{doas,sudo} ./$DISTRO.sh --sway         # only sway
-{doas,sudo} ./$DISTRO.sh --homedir      # sets up homedir and zdotdir
+# if on alpine, doas apk add bash
+{doas bash,sudo} ./$DISTRO.sh                # base packages
+{doas bash,sudo} ./$DISTRO.sh --sway         # only sway
+{doas bash,sudo} ./$DISTRO.sh --homedir      # sets up homedir and zdotdir
 ```
 
 but if you want to move a bit slower than a script that i haven't fully tested (need to set up VMs or something for that), the order of operations is really:
