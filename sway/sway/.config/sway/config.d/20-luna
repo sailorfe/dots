@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------- // luna
-set $base00 #432b50
-set $base01 #543663
-set $base02 #764b8b
-set $base03 #826490
-set $base04 #a181b1
-set $base05 #dbc8e5
+set $base00 #37273f
+set $base01 #422f4c
+set $base02 #4d3659
+set $base03 #583e65
+set $base04 #9f87ab
+set $base05 #bcabc4
 set $base06 #ead9f2
 set $base07 #654077
 
