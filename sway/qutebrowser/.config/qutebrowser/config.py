@@ -6,17 +6,17 @@ hostname = socket.gethostname()
 
 palettes = {
     "luna": {
-        "background": "#432b50",
+        "background": "#37273f",
         "foreground": "#dbc8e5",
-        "color0": "#2d1d35",
+        "color0": "#211726",
         "color1": "#e25057",
         "color2": "#b6ca68",
         "color3": "#efbb43",
         "color4": "#8dafe2",
         "color5": "#d65ca5",
         "color6": "#a98de2",
-        "color7": "#826490",
-        "color8": "#654077",
+        "color7": "#9f87ab",
+        "color8": "#432b50",
         "color9": "#f8777e",
         "color10": "#ccda95",
         "color11": "#f4d07c",
