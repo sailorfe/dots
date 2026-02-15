@@ -45,6 +45,7 @@ packages_base() {
 		networkmanager networkmanager-wifi networkmanager-cli \
 		uuidgen \
 		syncthing \
+		mandoc man-pages man-apropos \
 	doas -u "$username" curl -LsSf https://astral.sh/uv/install.sh | sh \
 	curl -fsSL https://tailscale.com/install.sh | sh
 }
