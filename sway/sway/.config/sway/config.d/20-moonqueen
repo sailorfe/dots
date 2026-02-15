@@ -21,8 +21,7 @@ set $base0F #f7a1d5
 
 # ---------------------------------------------------------------------- // foot
 
-#set $term foot --config ~/.config/foot/themes/moonqueen.ini
-set $term alacritty --config-file ~/.config/alacritty/moonquen.toml
+set $term foot --config ~/.config/foot/themes/moonqueen.ini
 
 
 # --------------------------------------------------------------------- // idle
