@@ -6,7 +6,7 @@ set hidden
 filetype on
 filetype plugin on
 set background=dark
-colorscheme moonqueen
+colorscheme luna
 syntax on
 
 set autoindent
@@ -66,14 +66,44 @@ set smartcase
 " == changes =======================
 
 set autoread
+
 set backup
 set writebackup
-set backupdir   =~/.local/state/vim/backup
-set backupext   =-vimbackup
-set backupskip  =~/local/state/vim/swap/
-set history     =1000
-set spellfile   =~/.local/share/vim/spell/en.utf-8.add
-set updatecount =100
-set undodir     =~/.local/state/vim/undo
+set noswapfile
+
+set backupdir=~/.local/state/vim/backup//
+set undodir=~/.local/state/vim/undo//
 set undofile
-set undolevels  =1000
+
+set backupext=-vimbackup
+set history=1000
+set updatecount=100
+set undolevels=1000
+
+" == keybindings ==================
+
+let mapleader = " "
+
+" buffers
+nnoremap <leader>bn :next<CR>
+nnoremap <leader>bp :prev<CR>
+nnoremap <leader>bd :bdelete<CR>
+
+" windows
+nnoremap <leader>vs :vsplit<CR>
+" move between
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" resize
+nnoremap <A-h> 1<C-w>>
+nnoremap <A-j> 1<C-w>-
+nnoremap <A-k> 1<C-w>+
+nnoremap <A-l> 1<C-w><
+" close
+nnoremap <leader>x :close<CR>
+
+" indent in visual mode
+vnoremap <Tab> >
+vnoremap <S-Tab> <
