@@ -39,6 +39,6 @@ export GOPATH=$HOME/.local/lib/go
 
 # ----------------------------------------------------------// default programs
 . $HOME/.profile
-# export BROWSER=qutebrowser
-export EDITOR=nvim
-export VISUAL=nvim
+export BROWSER=qutebrowser
+export EDITOR=vim
+export VISUAL=vim

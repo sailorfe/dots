@@ -85,9 +85,9 @@ set undolevels=1000
 let mapleader = " "
 
 " buffers
-nnoremap <leader>bn :next<CR>
-nnoremap <leader>bp :prev<CR>
-nnoremap <leader>bd :bdelete<CR>
+nnoremap bn :next<CR>
+nnoremap bp :prev<CR>
+nnoremap bd :bdelete<CR>
 
 " windows
 nnoremap <leader>vs :vsplit<CR>
@@ -107,3 +107,6 @@ nnoremap <leader>x :close<CR>
 " indent in visual mode
 vnoremap <Tab> >
 vnoremap <S-Tab> <
+
+" date
+inoremap <C-d> <C-r>=strftime('%Y-%m-%dT%H:%M:%S%z')<CR>

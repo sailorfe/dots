@@ -21,7 +21,7 @@ alias mkdir='mkdir -p'
 
 # -*- shortcuts
 alias c='clear'
-alias e='$EDITOR'
+#alias e='$EDITOR'
 alias ZZ='exit'
 alias ..='cd ..'
 alias ....='cd ....'

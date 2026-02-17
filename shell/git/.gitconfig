@@ -4,4 +4,6 @@
 [init]
 	defaultBranch = main
 [color]
-	ui = auto
+	ui = true
+[core]
+	pager = more
