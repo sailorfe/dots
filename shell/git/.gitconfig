@@ -1,9 +1,14 @@
 [user]
 	name = sailorfe
 	email = 40738758+sailorfe@users.noreply.github.com
+	signingkey = /home/sailorfe/.ssh/id_ed25519.pub
 [init]
 	defaultBranch = main
 [color]
 	ui = true
 [core]
 	pager = more
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
