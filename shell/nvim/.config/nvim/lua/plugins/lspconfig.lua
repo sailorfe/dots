@@ -14,6 +14,7 @@ return {
 	vim.lsp.enable('gopls'),
 	vim.lsp.enable('clangd'),
 	vim.lsp.enable('somesass_ls'),
+  vim.lsp.enable('html-lsp'),
 	-- uv tool
 	vim.lsp.enable('ty'),
 	vim.lsp.enable('ruff'),
