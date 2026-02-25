@@ -15,7 +15,7 @@ this repo is designed to be modular and minimal. i'm neither or a gamer or a sys
 - [neovim](#neovim)
 - [sway](#sway)
 - [previews](#previews)
-
+- [license](#license)
 
 <a name="installation"></a>
 ## installation
@@ -203,3 +203,10 @@ in the past, i've gotten a lot of mileage out of [iosevka](https://typeof.net/Io
 ## previews
 
 ![moonqueen](./moonqueen.png)
+
+<a name="license"></a>
+## license
+
+these configs and scripts are released with [the unlicense](https://unlicense.org) / [kopimi](https://kopimi.com).
+
+![kopimi](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Kopimi_k.svg/250px-Kopimi_k.svg.png)
