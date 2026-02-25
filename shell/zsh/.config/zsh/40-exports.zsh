@@ -13,7 +13,7 @@ case "$HOST" in
   *) export HOSTNAME="$HOST" ;;
 esac
 
-# -------------------------------------------------------- // xdg specification
+# ----------------------------------------------------- // xdg user directories
 export XDG_CACHE_HOME=$HOME/.local/cache
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
@@ -38,7 +38,6 @@ export GOPATH=$HOME/.local/lib/go
 . $HOME/.profile
 
 # ----------------------------------------------------------// default programs
-. $HOME/.profile
 export BROWSER=qutebrowser
 export EDITOR=vim
 export VISUAL=vim
