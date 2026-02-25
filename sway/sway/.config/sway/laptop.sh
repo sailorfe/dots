@@ -18,4 +18,4 @@ battery="󱐋 $(cat /sys/class/power_supply/BAT0/capacity)% $(cat /sys/class/pow
 # 	echo "$mpd $volume | $disk | $memory | $wifi | $battery | $asc | $et ET$utc UTC"
 # fi
 
-echo "$mpd $volume | $disk | $memory | $wifi | $battery | $asc | $et ET$utc UTC"
+echo "$mpd | $volume | $disk | $memory | $wifi | $battery | $asc | $et ET$utc UTC"

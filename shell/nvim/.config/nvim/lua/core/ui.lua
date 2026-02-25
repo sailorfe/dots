@@ -9,7 +9,7 @@ vim.opt.synmaxcol = 512
 vim.opt.showmatch = true
 vim.opt.listchars = { tab = "  ", trail = "·", extends = "»", precedes = "«", nbsp = "░" }
 vim.opt.list = true
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
  
 -- disable startup message
 vim.opt.shortmess:append("sI")

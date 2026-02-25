@@ -1,6 +1,6 @@
 [user]
 	name = sailorfe
-	email = sailorfe@noreply.codeberg.org
+  email = sailorfe@noreply.codeberg.org
 	signingkey = /home/sailorfe/.ssh/id_ed25519.pub
 
 [init]
