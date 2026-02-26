@@ -219,7 +219,7 @@ config.set('fonts.web.family.standard', 'monospace')
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     '!aw': 'https://wiki.archlinux.org/?search={}',
-    '!apkg': 'https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=',
+    '!apk': 'https://pkgs.alpinelinux.org/packages?name={}&branch=edge&repo=&arch=x86_64&origin=&flagged=&maintainer=',
     '!gh': 'https://github.com/search?o=desc&q={}&s=stars',
     '!yt': 'https://www.youtube.com/results?search_query={}',
     '!wiki': 'https://en.wikipedia.org/w/index.php?search={}',

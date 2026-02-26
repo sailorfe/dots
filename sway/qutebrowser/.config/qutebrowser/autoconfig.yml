@@ -7,7 +7,4 @@
 config_version: 2
 settings:
   colors.webpage.darkmode.enabled:
-    global: false
-  content.javascript.clipboard:
-    https://chatgpt.com: access-paste
-    https://emojipedia.org: access-paste
+    global: true
