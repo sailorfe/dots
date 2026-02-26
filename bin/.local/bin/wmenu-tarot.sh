@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source "$HOME/.config/wmenu/colors.sh"
+
+WMENU_SCHEME="${WMENU_SCHEME:-perona}"
+declare -n scheme="$WMENU_SCHEME"
+
+pips=(Ace Two Three Four Five Six Seven Eight Nine Ten Page Knight Queen King)
+
+suits=(Swords Cups Wands Coins)
+
+majors=(
+  'The Fool' 'The Magician' 'The High Priestess' 'The Empress' 'The Emperor' 'The Hierophant'
+  'The Lovers' 'The Chariot' 'Strength' 'The Hermit' 'Wheel of Fortune' 'Justice' 'The Hanged Man'
+  'Death' 'Temperance' 'The Devil' 'The Tower' 'The Star' 'The Moon' 'The Sun' 'Judgment' 'The World'
+)
+
+deck() {
+  for pip in "${pips[@]}"; do
+    for suit in "${suits[@]}"; do
+      minors+=("$pip of $suit")
+    done
+  done
+  arcana+=("${minors[@]}" "${majors[@]}")
+}
+
+draw() {
+  cards=$(wmenu -i -f 'Cozette 11' "${scheme[@]}" -p "tarot " <&-) || exit 0
+  cards=${cards:=1}
+  shuffle=$(shuf -e -n "$cards" "${arcana[@]}" -n 78)
+  notify-send -w -t 12000 "${shuffle[@]}"
+}
+
+deck
+draw

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source "$HOME/.config/wmenu/colors.sh"
+
+WMENU_SCHEME="${WMENU_SCHEME:-luna}"
+declare -n scheme="$WMENU_SCHEME"
+
+EMOJI_FILE="$HOME/.config/wmenu/emojis.txt"
+GLYPH_FILE="$HOME/.config/wmenu/glyphs.txt"
+
+CHOICE=$(cat "$GLYPH_FILE" "$EMOJI_FILE" | wmenu -l 20 -i -f 'Cozette 11' "${scheme[@]}" -p "unicode ")
+
+if [ -z "$CHOICE" ]; then
+    exit 1
+fi
+
+echo "$CHOICE" | awk '{print $1}' | tr -d '\n' | wl-copy
+
+notify-send "Copied to clipboard" "$(wl-paste)"
