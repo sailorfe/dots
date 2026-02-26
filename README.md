@@ -1,136 +1,95 @@
 ![perona](./perona.png)
 
-these are my configuration files for an overwhelmingly [debian linux](https://debian.org) ecosystem across four devices of advancing age. the newest is termux on android; the oldest is an hp compaq elite 8000 usdt; and the outlier is a thinkpad on [alpine linux](https://alpinelinux.org).
+# dotfiles
 
-my desktop and laptop use [sway](https://swaywm.org). wayland is pretty good these days with the help of `xwayland` and `xdg-desktop-portal-*` to fill some gaps.
-
-this repo is designed to be modular and minimal. i'm neither or a gamer or a sysadmin or even that serious a ricer, just someone who frequently nukes my installations (i swear by separate `/home` and `/`).
+personal config files for python development and writing across [debian 13](https://debian.org), [alpine linux](https://alpinelinux.org), and [termux](https://termux.dev).
 
 ### table of contents
 
+<!-- toc -->
+
 - [installation](#installation)
-- [dependencies](#dependencies)
-- [homedir](#homedir)
 - [shell](#shell)
-- [neovim](#neovim)
+    * [tmux](#tmux)
+    * [editor(s)](#editors)
 - [sway](#sway)
+    * [browsers](#browsers)
+    * [terminal emulator](#terminal-emulator)
+    * [fonts](#fonts)
+- [scripts](#scripts)
 - [previews](#previews)
 - [license](#license)
 
-<a name="installation"></a>
+<!-- tocstop -->
+
 ## installation
 
-**the install scripts at the root of this repository are iterated through a few installations, so proceed with caution! i haven't actually run them in their current form.**
+there are three `setup-*.sh` scripts at the root of this repository with the optional flags `--sway`, `--homedir`, and for termux only, `--syncthing`. without an argument, they install base packages for shell functionality. each has usage comments at the top.
 
-they have a few optional flags for whether this is a server or desktop installation:
+but, to install these dotfiles manually, you'll need **git** and **gnu stow**.
 
-```sh
-# if on alpine, doas apk add bash
-{doas bash,sudo} ./$DISTRO.sh                # base packages
-{doas bash,sudo} ./$DISTRO.sh --sway         # only sway
-{doas bash,sudo} ./$DISTRO.sh --homedir      # sets up homedir and zdotdir
-```
+- debian: `sudo apt install git stow`
+- alpine: `doas aptk add git stow`
+- termux: `pkg -i git stow`
 
-but if you want to move a bit slower than a script that i haven't fully tested (need to set up VMs or something for that), the order of operations is really:
-
-1. install base packages, most importantly zsh and neovim dependencies
-2. create file tree
-3. clone and stow dotfiles
-
-<a name="dependencies"></a>
-### dependencies
-
-it goes without saying that this setup depends on git, and with it [gnu stow](https://www.gnu.org/software/stow/), which basically manages a mess of symlinks from this repository into my `.config` and home directories.
-
-- debian: `apt install git stow`
-- alpine: `apk add git stow`
-
-ostensibly, you could install `curl` only and run `curl -LO https://codeberg.org/sailorfe/dots/raw/branch/main/$DISTRO.sh`, `chmod +x $DISTRO.sh`, and it'll install git and stow for you before anything else. there are many ways to go about this.
-
-<a name="homedir"></a>
-### homedir layout
-
-i follow the [xdg base directory specification](https://specifications.freedesktop.org/basedir-spec/latest/) and try my best to keep hidden files tamed. i keep [xdg-user-dirs](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/) under `.local` and the more colloquial `$XDG_{DOCUMENTS,MUSIC,PICTURES,VIDEOS}_DIR` visible at `~` with single-letter toplevels.
+> [!NOTE]
+> the default login shell on alpine is ash, which doesn't have brace expansion.
 
 ```sh
-~
-|-- .config/        => $XDG_CONFIG_HOME
-|   |-- bash/
-|   |-- nvim/
-|   |-- sway/
-|   |-- tmux/
-|   `-- zsh/        => $ZDOTDIR
-|       `-- .zshrc
-|-- .local
-|   |-- bin/
-|   |-- cache/      => $XDG_CACHE_HOME
-|   |-- lib/        => $GOPATH, $CARGO_HOME, etc
-|   |-- share/      => $XDG_DATA_HOME
-|   `-- state/      => $XDG_STATE_HOME
-|-- d/              => personal documents
-|   |-- flor{ilegium}   => notes -> syncthing
-|   `-- etc...
-|-- m/
-|   |-- app/            => *.deb, *.iso
-|   |-- doc/            => *.cbz, *.epub, *.pdf
-|   |-- img/
-|   |   `-- cap/            => $GRIM_DEFAULT_DIR
-|   |-- mus/            => music library -> syncthing
-|   `-- vid/
-|-- p/                  => my source code
-|   `-- dots/               => this repo!
-`-- s/                  => not-my source code
+# set up homedir
+mkdir -p .config .local/{bin,cache,lib,share,state} d p m s
+mkdir -p .local/state/{bash,zsh}
+
+# clone and stow
+git clone https://codeberg.org/sailorfe/dots.git p/dots
+cd p/dots/shell && stow -t ~ bash git nvim shell themes tmux vim zsh
+cd ../sway && stow -t ~ beets foot mako mpd mpv ncmpcpp qutebrowser sway swaylock wmenu
+cd .. && stow -t ~ bin
+
+# set zsh home (alpine 3.23 preconfigures this)
+# debian: sudo echo "export ZDOTDIR='$HOME/.config/zsh'" >> /etc/zsh/zshenv
+# termux: "export ZDOTDIR='/data/data/com.termux/files/home/.config/zsh'" >> .zshenv
+
+# change shell
+chsh -s /bin/zsh
+# termux: chsh -s $PREFIX/bin/zsh
 ```
 
-before i even clone this repo, i run a command like this to make sure the XDG directories themselves don't become symlinks:
-
-```sh
-mkdir ~/.config &&
-    mkdir -p ~/.local/{bin,cache,lib,share,state} &&
-    mkdir -p ~/.local/state/{bash,zsh} &&
-    mkdir -p ~/{d,m,p,s}
-```
-
-this has gone through some evolution through the years, but it's the combined influence of [xero](https://github.com/xero/dotfiles) and [elly](https://elly.town/d/blog/2021-10-06-homedir.txt). i feel especially strongly about xdg and develop and configure with it in mind!
-
-once you've made a filetree of a kind, you're free to run `git clone https://codeberg.org/sailorfe/dotfiles.git` and stow away:
-
-```sh
-cd dots/shell && stow -t ~ *
-cd ../sway && stow -t ~ *
-```
-
-<a name="shell"></a>
 ## shell
 
-i use zsh on all devices, though i keep a close-enough bash config. i've made my shell config pretty much plug-and-play by hardcoding my prompts' hex codes and automating their selection by hostname with a case statement because i need at minimum three visual cues to know where tf i am.
+i use [zsh](https://zsh.org) as my login shell and script in [bash](https://www.gnu.org/software/bash). i don't use anything beyond `zsh-autosuggestions`, `zsh-completions`, and `zsh-syntax-highlighting`. i've made my shell config pretty much plug-and-play by hardcoding my prompts' hex codes and automating their selection by hostname with a case statement because i need at minimum three visual cues to know where tf i am.
 
-one of my quirks is i changed all variations of `ls` to use `--group-directories-first`, which just makes sense to me. i'm a fan of `fish`-like `zsh-syntax-highlighting`, too. i am always in a [tmux](https://github.com/tmux/tmux) session for the practical reason of walking away from venv work in my dev box, and the silly reason of constantly having [mpv](https://mpv.io/) or [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) open on my desktop.
+i'm trying to move away from using relying on aliases, so now all i have is `--color` and `--group-directories-first` appended to all `ls` variations. previously, i lifted a bunch of git aliases from [xero](zsh/.config/zsh/06-aliases.zsh), but they weren't helpful to me for actually intimately learning the git cli.
 
-<a name="neovim"></a>
-## neovim
+### tmux
+
+i use tmux on machines without GUIs, so my clamshelled macbook air 2017 devbox and termux, or if i've booted one of my sway machine for just a second to do something in the tty. i also have some convoluted scripts on my desktop for opening tmux sessions with mpv, but i'm trying to make more use of sway's scratchpad for keeping terminals in the background.
+
+tmux is best on the devbox where i do more prolonged python work. i will activate a virtual environment outside of tmux and then `tmux -new -s $PROJECT` in the project directory, but this rarely happens because sessions persist for days if not weeks. 
+
+### editor(s)
 
 i use neovim for writing prose and code, and i do more of the former than the latter, with the combined might of [the built-in lsp](https://github.com/neovim/nvim-lspconfig) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). i manage plugins with [lazy](https://github.com/folke/lazy.nvim), but i've been curious about [forgoing a plugin manager altogether](https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/)...
 
-- **language servers + linters**: [ty](https://docs.astral.sh/ty/features/language-server/), [ruff](https://astral.sh/ruff), [clangd](https://clangd.llvm.org/), [Marksman](https://github.com/artempyanykh/marksman), [bashls](https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#neovim), among others
+- **language servers + linters**: [ty](https://docs.astral.sh/ty/features/language-server/), [clangd](https://clangd.llvm.org/), [Marksman](https://github.com/artempyanykh/marksman), [bashls](https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#neovim), [shellcheck](https://shellcheck.net), among others
+- **formatters**: [ruff](https://astral.sh/ruff), [prettierd](https://github.com/fsouza/prettierd)/[prettier](https://github.com/prettier/prettier), [shfmt](https://github.com/mvdan/sh), [markdown-toc](https://github.com/jonschlinkert/markdown-toc)
 - **notable plugins**:
     * [bullets.vim](https://github.com/bullets-vim/bullets.vim): for the markdown-pilled
+    * [conform.nvim](https://github.com/stevearc/conform.nvim): configured to format on `:w`
     * [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): indentation guides, very important for python and yaml
     * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): unobtrusive git diff in the number gutter
-    * my own colorschemes made with [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim):
-        + [perona](https://codeberg.org/sailorfe/perona.nvim)
-        + [luna](https://codeberg.org/sailorfe/luna.nvim)
-        + [moonqueen](https://codeberg.org/sailorfe/moonqueen.nvim)
-    * [mason.nvim](https://github.com/mason-org/mason.nvim): manages language servers that i find annoying to hunt down or don't want from debian repositories or other package managers. so basically anything that i can't get with `uv`
+    * my own colorschemes made with [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim): [perona](https://codeberg.org/sailorfe/perona.nvim), [luna](https://codeberg.org/sailorfe/luna.nvim), [moonqueen](https://codeberg.org/sailorfe/moonqueen.nvim)
+    * [mason.nvim](https://github.com/mason-org/mason.nvim): manages language servers/linters/formatters that i find annoying to hunt down or don't want from debian repositories or other package managers. so basically anything that i can't get with `uv`
     * [mini.nvim](https://github.com/nvim-mini/mini.nvim): comment, completion, files, git, icons, notify, pairs, pick, snippets, splitjoin, surround, starter, statusline
     * [no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): 👵🏼
     * [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): really great for codeblocks and such
     * [telescope.nvim](https:///github.com/nvim-telescope/telescope.nvim): tbh i mostly use this for `:Telescope lsp_document_symbols`
     * [trouble.nvim](https://github.com/folke/trouble.nvim): diagnostics
+    * [wordcount.nvim](https://codeberg.org/saiilorfe/wordcount.nvim): my `g <C-g` workaround for ignoring fenced YAML in markdown files
 
 i have `Space` as my leader key in part because i use [a 40% mechanical keyboard](https://codeberg.org/sailorfe/qmk-planck) that puts `\` and `|` on the same key as `'`/`"`.
 
-i have a fair bit of config geared toward writing markdown, which i've been doing in neo/vim for years before i started programming. it all relies on vim's built-in spellcheck and a Markdown `ftplugin` i've tinkered with longer than anything. i make liberal use of neovim's `runtimepath` and love squirreling stuff away in `XDG_{DATA,STATE}_HOME`.
+a fair bit of my config is geared toward writing markdown, which i've been doing in neo/vim for years before i started programming. it all relies on vim's built-in spellcheck and a Markdown `ftplugin` i've tinkered with longer than anything. i make liberal use of neovim's `runtimepath` and love squirreling stuff away in `$XDG_{DATA,STATE}_HOME`.
 
 ```sh
 ~
@@ -149,18 +108,36 @@ i have a fair bit of config geared toward writing markdown, which i've been doin
     `-- nvim/
         |-- ftplugin/
         |   |-- markdown.lua
-        |-- lua/
-        |   |-- core/
-        |   |   |-- editor.lua
-        |   |   |-- keys.lua
-        |   |   |-- lazy.lua
-        |   |   `-- ui.lua
-        |   `-- plugins/
-        |       `-- {not too many!}
-        `-- init.lua
+        |   `-- python.lua
+        |-- init.lua
+        `-- lua/
+            |-- core/
+            |   |-- editor.lua
+            |   |-- keys.lua
+            |   |-- lazy.lua
+            |   `-- ui.lua
+            |-- plugins/
+            |   `-- {not too many!}
+            `-- wordcount/
+                `-- init.lua
 ```
 
-<a name="sway"></a>
+i also keep a light `vimrc` for when any of the above feels too busy or opinionated.
+
+```sh
+.config/vim
+|-- autoload
+|   `-- plug.vim
+|-- colors
+|   |-- luna.vim
+|   |-- moonqueen.vim
+|   `-- perona.vim
+|-- ftplugin
+|   |-- markdown.vim
+|   `-- python.vim
+`-- vimrc
+```
+
 ## sway
 
 i don't toil away at ricing linux, but what i do have are three custom neovim colorschemes that serve the functional purpose of reminding me what host i'm on, and which i want my machines with [sway](https://swaywm.org/) to match. besides colors, this customization takes different swaybar scripts per device (i don't need battery on desktop, for example). my modular sway setup looks like
@@ -179,7 +156,7 @@ i don't toil away at ricing linux, but what i do have are three custom neovim co
 `-- laptop.sh           => swaybar status scripts
 ```
 
-where `config` is only a few lines to `include` relevant files from `config.d`. `10-$hostname` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. `20-$palette` correspond to my nvim schemes.
+where `config` is only a few lines to `include` relevant files from `config.d`. `10-$HOSTNAME` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. `20-$PALETTE` correspond to my nvim schemes.
 
 ### browsers
 
@@ -187,7 +164,7 @@ my browser of choice is either [qutebrowser](https://qutebrowser.org/) or [libre
 
 ### terminal emulator
 
-i love [foot](https://codeberg.org/dnkl/foot), the default wayland terminal emulator, but i sometimes switch to [alacritty](https://alacritty.org) when utf-8 gets weird. i also test drive newer ones like [rio](https://rioterm.com) or [ghostty](https://ghostty.org) and used [wezterm](https://wezterm.org) for a long time.
+i love [foot](https://codeberg.org/dnkl/foot), the default wayland terminal emulator, but i sometimes switch to [alacritty](https://alacritty.org) when utf-8 gets weird. there is config for [rio](https://rioterm.com), [ghostty](https://ghostty.org), and [wezterm](https://wezterm.org) in here, but i generally stick to foot.
 
 ### fonts
 
@@ -199,12 +176,14 @@ fonts are some of my greatest passions. these days i rotate between
 
 in the past, i've gotten a lot of mileage out of [iosevka](https://typeof.net/Iosevka/) and [jetbrains mono](https://www.jetbrains.com/lp/mono/).
 
-<a name="previews"></a>
+## scripts
+
+most of the scripts in the `bin` package are for sway, swaybar, and [mako](https://github.com/emersion/mako). the coolest ones are probably `player-status.sh` for use with [playerctl](https://github.com/altdesktop/playerctl) and `tarot.sh` [from my hello, world project](https://codeberg.org/sailorfe/tarot).
+
 ## previews
 
 ![moonqueen](./moonqueen.png)
 
-<a name="license"></a>
 ## license
 
 these configs and scripts are released with [the unlicense](https://unlicense.org) / [kopimi](https://kopimi.com).
