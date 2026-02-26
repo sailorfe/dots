@@ -3,7 +3,7 @@ set -euo pipefail
 
 source "$HOME/.config/wmenu/colors.sh"
 
-WMENU_SCHEME="${WMENU_SCHEME:-perona}"
+WMENU_SCHEME="${WMENU_SCHEME:-luna}"
 declare -n scheme="$WMENU_SCHEME"
 
 pips=(Ace Two Three Four Five Six Seven Eight Nine Ten Page Knight Queen King)
