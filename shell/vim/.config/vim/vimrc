@@ -51,6 +51,14 @@ set background=dark
 colorscheme luna
 syntax on
 
+if $HOSTNAME == 'sunnygo'
+    colorscheme luna
+elseif $HOSTNAME == 'merrygo'
+    colorscheme perona
+else
+    colorscheme rosepine
+endif
+
 set autoindent
 set backspace	  =indent,eol,start
 set breakindent
