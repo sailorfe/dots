@@ -1,16 +1,13 @@
-local vim = vim
-
--- enable mouse
-vim.opt.mouse = "nv"
-
--- highlights
+vim.env.COLORTERM = "truecolor"
 vim.opt.termguicolors = true
+
+-- syntax
 vim.opt.synmaxcol = 512
 vim.opt.showmatch = true
 vim.opt.listchars = { tab = "  ", trail = "·", extends = "»", precedes = "«", nbsp = "░" }
 vim.opt.list = true
 vim.opt.conceallevel = 0
- 
+
 -- disable startup message
 vim.opt.shortmess:append("sI")
 
@@ -22,3 +19,6 @@ vim.opt.number = true
 vim.opt.signcolumn = "auto:2"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- enable mouse
+vim.opt.mouse = "nv"
