@@ -1,0 +1,50 @@
+# ------------------------------------------------------------------- // perona
+set $base00 #281520
+set $base01 #3e1d31
+set $base02 #683152
+set $base03 #90647f
+set $base04 #b1819e
+set $base05 #f4b9dc
+set $base06 #f8d3e9
+set $base07 #532742
+
+set $base08 #de3557
+set $base09 #b4cff8
+set $base0A #eb8490
+set $base0B #de91da
+set $base0C #ff99cc
+set $base0D #d65c85
+set $base0E #f269ad
+set $base0F #b54067
+
+# ------------------------------------------------------------------- // output
+
+output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/mihopero-alt.png fill
+
+# --------------------------------------------------------------------- // foot
+
+set $term foot --config ~/.config/foot/themes/perona.ini
+
+# --------------------------------------------------------------------- // idle
+exec swayidle -w \
+	timeout 3000 'swaylock -f -c 2d1d35' \
+  timeout 6000 'swaymsg "output * dpms off"' \
+		resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -c 2d1d35'
+
+# -------------------------------------------------------------------- // wmenu
+
+set $menu wmenu-run -f 'Cozette 11' -l 12 \
+	-N '$base00' -n '$base06' \
+	-M '$base0E' -m '$base00' \
+	-S '$base02' -s '$base05' \
+	-p 'wmenu '
+
+# ------------------------------------------------------------------ // windows
+#												border	bg			fg			indicator		child_border
+client.focused          $base0E	$base0E	$base00	$base0E	$base0E
+client.focused_inactive $base02	$base02	$base06	$base02	$base02
+client.unfocused        $base01	$base01	$base05	$base01	$base01
+client.urgent           $base08	$base08	$base05	$base08	$base08
+client.placeholder      $base00	$base00	$base05	$base00	$base00
+client.background       $base07

@@ -17,12 +17,9 @@ set $base0D #e873b9
 set $base0E #8877f8
 set $base0F #f7a1d5
 
-
-
 # ---------------------------------------------------------------------- // foot
 
 set $term foot --config ~/.config/foot/themes/moonqueen.ini
-
 
 # --------------------------------------------------------------------- // idle
 exec swayidle -w \
@@ -31,28 +28,6 @@ exec swayidle -w \
 		resume 'swaymsg "output * dpms on"' \
   before-sleep 'swaylock -f -c 1b142a'
 
-
-# ------------------------------------------------------------------- // swaybar
-
-bar {
-	colors {
-		background	$base00
-		statusline	$base0C
-		separator		$base03
-
-#												border	bg			fg
-		focused_workspace		$base0E	$base0E	$base00
-		active_workspace		$base0C	$base0C	$base05
-		inactive_workspace	$base01	$base01	$base05
-		urgent_workspace		$base08	$base08	$base05
-		binding_mode				$base0F	$base0F	$base01
-	}
-	font Cozette 11
-	position top
-  status_command while ~/.config/sway/bar.sh; do sleep 1; done
-}
-
-
 # -------------------------------------------------------------------- // wmenu
 
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
@@ -60,7 +35,6 @@ set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-M '$base0E' -m '$base00' \
 	-S '$base02' -s '$base05' \
 	-p 'wmenu '
-
 
 # ------------------------------------------------------------------ // windows
 #												border	bg			fg			indicator		child_border

@@ -1,26 +1,30 @@
-# -------------------------------------------------------------------- // perona
-set $base00 #281520
-set $base01 #3e1d31
-set $base02 #683152
-set $base03 #90647f
-set $base04 #b1819e
-set $base05 #f4b9dc
-set $base06 #f8d3e9
-set $base07 #532742
+# ---------------------------------------------------------------------- // luna
+set $base00 #37273f
+set $base01 #422f4c
+set $base02 #4d3659
+set $base03 #583e65
+set $base04 #9f87ab
+set $base05 #dbc8e5
+set $base06 #ead9f2
+set $base07 #654077
 
-set $base08 #de3557
-set $base09 #b4cff8
-set $base0A #eb8490
-set $base0B #de91da
-set $base0C #ff99cc
-set $base0D #d65c85
-set $base0E #f269ad
-set $base0F #b54067
+set $base08 #e25057
+set $base09 #8dafe2
+set $base0A #efbb43
+set $base0B #b6ca68
+set $base0C #c0a7f1
+set $base0D #eb84c2
+set $base0E #a98de2
+set $base0F #d65ca5
 
+# ------------------------------------------------------------------- // output
+
+output $builtin mode 1920x1080 bg /home/sailorfe/m/img/wall/page009.jpg fill
+output $tv mode 3840x2160 bg /home/sailorfe/m/img/wall/page009.jpg fill
 
 # ---------------------------------------------------------------------- // foot
 
-set $term foot --config ~/.config/foot/themes/perona.ini
+set $term foot --config ~/.config/foot/themes/luna.ini
 
 # --------------------------------------------------------------------- // idle
 exec swayidle -w \
@@ -29,36 +33,13 @@ exec swayidle -w \
 		resume 'swaymsg "output * dpms on"' \
   before-sleep 'swaylock -f -c 2d1d35'
 
-
-# ------------------------------------------------------------------- // swaybar
-
-bar {
-	colors {
-		background	$base00
-		statusline	$base0C
-		separator		$base03
-
-#												border	bg			fg
-		focused_workspace		$base0E	$base0E	$base00
-		active_workspace		$base0C	$base0C	$base05
-		inactive_workspace	$base01	$base01	$base05
-		urgent_workspace		$base08	$base08	$base05
-		binding_mode				$base0F	$base0F	$base01
-	}
-	font Cozette 11
-	position top
-  status_command while ~/.config/sway/desktop.sh; do sleep 1; done
-}
-
-
 # -------------------------------------------------------------------- // wmenu
 
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-N '$base00' -n '$base06' \
 	-M '$base0E' -m '$base00' \
-	-S '$base02' -s '$base05' \
+	-S '$base07' -s '$base05' \
 	-p 'wmenu '
-
 
 # ------------------------------------------------------------------ // windows
 #												border	bg			fg			indicator		child_border
