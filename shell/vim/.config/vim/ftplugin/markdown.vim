@@ -3,7 +3,6 @@ set colorcolumn =0
 set wrap
 set wrapmargin  =0
 " https://stackoverflow.com/questions/36950231/auto-wrap-lines-in-vim-without-inserting-newlines
-set columns     =100
 
 let g:vim_markdown_folding_disabled = 1
 
