@@ -1,9 +1,23 @@
-# -------------------------------------------------------------------- // output
+# ------------------------------------------------------------------ // swaybar
+bar {
+	colors {
+		background	$base00
+		statusline	$base0C
+		separator		$base03
 
-output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/mihopero-alt.png fill
+#												border	bg			fg
+		focused_workspace		$base0E	$base0E	$base00
+		active_workspace		$base0C	$base0C	$base05
+		inactive_workspace	$base01	$base01	$base05
+		urgent_workspace		$base08	$base08	$base05
+		binding_mode				$base0F	$base0F	$base01
+	}
+	font Cozette 11
+	position top
+  status_command while ~/.config/sway/desktop.sh; do sleep 1; done
+}
 
-
-# ---------------------------------------------------------------- // workspaces
+# --------------------------------------------------------------- // workspaces
 
 # -*- browsers
 assign [app_id="org.qutebrowser.qutebrowser"]				$ws2
