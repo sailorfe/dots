@@ -1,10 +1,10 @@
 return {
-    "norcalli/nvim-colorizer.lua",
+	"norcalli/nvim-colorizer.lua",
 	config = function()
-		require 'colorizer'.setup {
-			'*';
-			markdown = { names = false };
-			html = { names = false } ;
-		}
+		require("colorizer").setup({
+			"*",
+			markdown = { names = false },
+			html = { names = false },
+		})
 	end,
 }
