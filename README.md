@@ -1,6 +1,6 @@
-![luna](perona.png)
+![luna](luna.png)
 
-# dotfiles
+# dots
 
 personal config files for python development and writing across [debian 13](https://debian.org), [alpine linux](https://alpinelinux.org), and [termux](https://termux.dev).
 
@@ -10,12 +10,12 @@ personal config files for python development and writing across [debian 13](http
 
 - [installation](#installation)
 - [shell](#shell)
-    * [tmux](#tmux)
-    * [editor(s)](#editors)
+  - [tmux](#tmux)
+  - [editor(s)](#editors)
 - [sway](#sway)
-    * [browsers](#browsers)
-    * [terminal emulator](#terminal-emulator)
-    * [fonts](#fonts)
+  - [browsers](#browsers)
+  - [terminal emulator](#terminal-emulator)
+  - [fonts](#fonts)
 - [scripts](#scripts)
 - [previews](#previews)
 - [license](#license)
@@ -24,13 +24,13 @@ personal config files for python development and writing across [debian 13](http
 
 ## installation
 
-there are three `setup-*.sh` scripts at the root of this repository with the optional flags `--sway`, `--homedir`, and for termux only, `--syncthing`. without an argument, they install base packages for shell functionality. each has usage comments at the top.
+there are three `setup-*.sh` scripts at the root of this repository with the optional flags `--sway`, `--homedir`, and for termux only, `--syncthing`. without an argument, they install base packages for shell functionality. each script has usage comments at the top.
 
-but, to install these dotfiles manually, you'll need **git** and **gnu stow**.
+but, to install these dotfiles manually, you'll need [**git**](https://git-scm.com) and [**gnu stow**](https://www.gnu.org/software/stow).
 
 - debian: `sudo apt install git stow`
 - alpine: `doas aptk add git stow`
-- termux: `pkg -i git stow`
+- termux: `pkg install git stow`
 
 > [!NOTE]
 > the default login shell on alpine is ash, which doesn't have brace expansion.
@@ -178,7 +178,7 @@ in the past, i've gotten a lot of mileage out of [iosevka](https://typeof.net/Io
 
 ## scripts
 
-most of the scripts in the `bin` package are for sway, swaybar, and [mako](https://github.com/emersion/mako). the coolest ones are probably `player-status.sh` for use with [playerctl](https://github.com/altdesktop/playerctl) and `tarot.sh` [from my hello, world project](https://codeberg.org/sailorfe/tarot).
+most of the scripts in the `bin` package are for sway, swaybar, and [mako](https://github.com/emersion/mako). the coolest ones are probably `player-status` for use with [playerctl](https://github.com/altdesktop/playerctl) and `tarot` [from my hello, world project](https://codeberg.org/sailorfe/tarot).
 
 ## previews
 
