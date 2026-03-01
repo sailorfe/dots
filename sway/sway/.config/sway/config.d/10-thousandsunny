@@ -2,7 +2,7 @@
 
 exec openrc -U gui
 exec_always mpd-mpris
-exec_always battery-alert.sh
+exec_always battery-alert
 
 # -------------------------------------------------------------------- // output
 

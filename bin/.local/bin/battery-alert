@@ -1,15 +1,27 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-THRESHOLD=20
+LOW_THRESHOLD=20
+CRITICAL_THRESHOLD=5
 CHECK_INTERVAL=60
 
 while true; do
-    BATTERY_LEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
-    STATUS=$(cat /sys/class/power_supply/BAT0/status)
+  BAT_PATH="/sys/class/power_supply/BAT0"
+  BATTERY_LEVEL=$(cat "$BAT_PATH/capacity")
+  STATUS=$(cat "$BAT_PATH/status")
 
-    if [ "$BATTERY_LEVEL" -le "$THRESHOLD" ] && [ "$STATUS" = "Discharging" ]; then
-        notify-send -u critical "Battery Low" "Level: ${BATTERY_LEVEL}%"
+  if [ "$STATUS" = "Discharging" ]; then
+
+    if [ "$BATTERY_LEVEL" -le "$CRITICAL_THRESHOLD" ]; then
+      notify-send -u critical "EMERGENCY" "Battery at ${BATTERY_LEVEL}%. Hibernating now..."
+      sleep 2
+      systemctl hibernate
+
+    elif [ "$BATTERY_LEVEL" -le "$LOW_THRESHOLD" ]; then
+      notify-send -u critical "Battery Low" "Level: ${BATTERY_LEVEL}%"
+      sleep 5m
     fi
+  fi
 
-    sleep "$CHECK_INTERVAL"
+  sleep "$CHECK_INTERVAL"
 done
