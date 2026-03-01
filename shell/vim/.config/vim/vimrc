@@ -23,18 +23,24 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin(data_dir . '/plugged')
-    Plug 'rose-pine/vim', { 'as': 'rose-pine' }
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
+    " linter
     Plug 'dense-analysis/ale'
+    " completion
     Plug 'davidhalter/jedi-vim'
     Plug 'alvan/vim-closetag'
     Plug 'jiangmiao/auto-pairs'
+    " syntax highligthing
     Plug 'sheerun/vim-polyglot'
+    " markdown
     Plug 'preservim/vim-markdown'
     Plug 'bullets-vim/bullets.vim'
-    Plug 'lifepillar/vim-devel'
-    Plug 'https://codeberg.org/sailorfe/luna.nvim', { 'as': 'luna' }
+    " colorschemes
+    Plug 'rose-pine/vim'
+    Plug 'https://codeberg.org/sailorfe/luna.nvim'
+    Plug 'https://codeberg.org/sailorfe/moonqueen.nvim'
+    Plug 'https://codeberg.org/sailorfe/perona.nvim'
 call plug#end()
 
 " == editing =======================
@@ -88,6 +94,7 @@ set backup
 set writebackup
 set noswapfile
 
+set spellfile=$XDG_DATA_HOME/vim/spell/en.utf-8.add
 set viminfofile=$XDG_STATE_HOME/vim/viminfo
 set backupdir=$XDG_STATE_HOME/vim/backup//
 set undodir=$XDG_STATE_HOME/vim/undo//
