@@ -1,3 +1,3 @@
 return {
-	"https://codebeg.org/sailorfe/luna.nvim",
+	"https://codeberg.org/sailorfe/luna.nvim",
 }
