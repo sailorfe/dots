@@ -4,7 +4,7 @@ local host_themes = {
 	["sunnygo"] = "luna",
 	["merrygo"] = "perona",
 	["minimerry"] = "moonqueen",
-	["default"] = "rose-pine",
+	["termux"] = "rose-pine",
 }
 
 local theme = host_themes[host] or "habamax"
