@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------- // luna
-set $base #37273f
-set $surface #422f4c
-set $overlay #4d3659
-set $text #dbc8e5
-set $red #e25057
-set $accent #a98de2
-set $light #c0a7f1
+set $base #2c1f33
+set $surface #422e4d
+set $overlay #533960
+set $text #ead9f2
+set $red #f87575
+set $accent #b27de8
+set $light #c99df6
 
 # ------------------------------------------------------------------- // output
 

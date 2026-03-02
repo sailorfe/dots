@@ -6,8 +6,8 @@
 # ------------------------------------------------------------- // shell prompt
 FG_TIME=$(theme_color magenta)
 FG_DIR=$(theme_color white)
-FG_VENV=$(theme_color bright_cyan)
-FG_GIT=$(theme_color bright_magenta)
+FG_VENV=$(theme_color brightCyan)
+FG_GIT=$(theme_color brightMagenta)
 FG_GLYPH=$(theme_color magenta)
 NEWLINE=$'\n'
 
@@ -54,4 +54,4 @@ else
   up="$(uptime | sed 's/.* up \([^,]*\),.*/\1/')"
 fi
 
-echo -e "\e[1;40m $(hostname) \e[0m\e[1;46m\e[30m $up \e[0m \e[0m\e[1;36m$(uname -r)\e[0m"
+echo -e "\e[1;40m $(hostname) \e[0m\e[0;46m\e[30m $up \e[0m \e[0m\e[1;36m$(uname -r)\e[0m"
