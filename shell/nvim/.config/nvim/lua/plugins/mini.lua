@@ -1,7 +1,11 @@
 return {
 	"echasnovski/mini.nvim",
-	verson = "*",
+	lazy = false,
+	priority = 1000,
+	version = "*",
 	config = function()
+		require("mini.starter").setup({})
+		require("mini.statusline").setup({})
 		require("mini.comment").setup({})
 		require("mini.completion").setup({})
 		require("mini.files").setup({})
@@ -13,8 +17,6 @@ return {
 		require("mini.snippets").setup({})
 		require("mini.splitjoin").setup({})
 		require("mini.surround").setup({})
-		require("mini.starter").setup({})
-		require("mini.statusline").setup({})
 	end,
 	keys = {
 		{ "<A-f>", "<cmd>:lua MiniFiles.open()<cr>" },

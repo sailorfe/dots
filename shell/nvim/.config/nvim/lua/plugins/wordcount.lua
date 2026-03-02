@@ -1,5 +1,6 @@
 return {
 	dir = "~/.config/nvim/lua/wordcount",
+	ft = { "markdown", "text" },
 	name = "wordcount",
 	config = function()
 		vim.api.nvim_create_user_command("WordCount", function()

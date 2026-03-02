@@ -1,6 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPre" },
 	opts = {
 		formatters_by_ft = {
 			css = { "prettierd", "prettier", stop_after_first = true },
