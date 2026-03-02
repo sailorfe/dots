@@ -10,12 +10,12 @@ personal config files for python development and writing across [debian 13](http
 
 - [installation](#installation)
 - [shell](#shell)
-  - [tmux](#tmux)
-  - [editor(s)](#editors)
+    * [tmux](#tmux)
+    * [editor(s)](#editors)
 - [sway](#sway)
-  - [browsers](#browsers)
-  - [terminal emulator](#terminal-emulator)
-  - [fonts](#fonts)
+    * [browsers](#browsers)
+    * [terminal emulator](#terminal-emulator)
+    * [fonts](#fonts)
 - [scripts](#scripts)
 - [previews](#previews)
 - [license](#license)
@@ -29,7 +29,7 @@ there are three `setup-*.sh` scripts at the root of this repository with the opt
 but, to install these dotfiles manually, you'll need [**git**](https://git-scm.com) and [**gnu stow**](https://www.gnu.org/software/stow).
 
 - debian: `sudo apt install git stow`
-- alpine: `doas aptk add git stow`
+- alpine: `doas apk add git stow`
 - termux: `pkg install git stow`
 
 > [!NOTE]
@@ -89,53 +89,39 @@ i use neovim for writing prose and code, and i do more of the former than the la
 
 i have `Space` as my leader key in part because i use [a 40% mechanical keyboard](https://codeberg.org/sailorfe/qmk-planck) that puts `\` and `|` on the same key as `'`/`"`.
 
-a fair bit of my config is geared toward writing markdown, which i've been doing in neo/vim for years before i started programming. it all relies on vim's built-in spellcheck and a Markdown `ftplugin` i've tinkered with longer than anything. i make liberal use of neovim's `runtimepath` and love squirreling stuff away in `$XDG_{DATA,STATE}_HOME`.
+a fair bit of my config is geared toward writing markdown, which i've been doing in neo/vim for years before i started programming. it all relies on vim's built-in spellcheck and a Markdown `ftplugin` i've tinkered with longer than anything.
+
+i make liberal use of neovim's `runtimepath` and love squirreling stuff away in `XDG_{DATA,STATE}_HOME/nvim`.
 
 ```sh
-~
-|-- .local/
-|   |-- share/
-|   |   `-- nvim/
-|   |       |-- lazy/
-|   |       |-- mason/
-|   |       |-- spell/
-|   |       `-- undo/
-|   `-- state/
-|       `-- nvim/
-|           |-- lsp.log
-|           `-- mason.log
-`-- .config/
-    `-- nvim/
-        |-- ftplugin/
-        |   |-- markdown.lua
-        |   `-- python.lua
-        |-- init.lua
-        `-- lua/
-            |-- core/
-            |   |-- editor.lua
-            |   |-- keys.lua
-            |   |-- lazy.lua
-            |   `-- ui.lua
-            |-- plugins/
-            |   `-- {not too many!}
-            `-- wordcount/
-                `-- init.lua
+.config/nvim
+├── ftplugin
+│   ├── markdown.lua
+│   └── python.lua
+├── init.lua
+├── lazy-lock.json
+└── lua
+    ├── core
+    │   ├── editor.lua
+    │   ├── init.lua    => load order for core
+    │   ├── keys.lua
+    │   ├── lazy.lua
+    │   ├── theme.lua
+    │   └── ui.lua
+    ├── plugins
+    │   └── {21 and four are colorschemes!}
+    └── wordcount
+        └── init.lua
 ```
 
-i also keep a light `vimrc` for when any of the above feels too busy or opinionated.
+i also keep a light `vimrc` for when any of the above feels too busy or opinionated. i have aggressively moved most vim state files to `XDG_STATE_HOME/vim`:
 
 ```sh
 .config/vim
-|-- autoload
-|   `-- plug.vim
-|-- colors
-|   |-- luna.vim
-|   |-- moonqueen.vim
-|   `-- perona.vim
-|-- ftplugin
-|   |-- markdown.vim
-|   `-- python.vim
-`-- vimrc
+├── ftplugin
+│   ├── markdown.vim
+│   └── python.vim
+└── vimrc
 ```
 
 ## sway
@@ -143,20 +129,20 @@ i also keep a light `vimrc` for when any of the above feels too busy or opiniona
 i don't toil away at ricing linux, but what i do have are three custom neovim colorschemes that serve the functional purpose of reminding me what host i'm on, and which i want my machines with [sway](https://swaywm.org/) to match. besides colors, this customization takes different swaybar scripts per device (i don't need battery on desktop, for example). my modular sway setup looks like
 
 ```sh
-.config/sway
-|-- config.d/
-|   |-- 00-base
-|   |-- 10-goingmerry      => debian desktop
-|   |-- 10-thousandsunny   => alpine laptop; exec's a few background services
-|   |-- 20-luna
-|   |-- 20-moonqueen
-|   `-- 20-perona
-|-- config
-|-- desktop.sh
-`-- laptop.sh           => swaybar status scripts
+.
+├── config
+├── config.d
+│   ├── 00-base             => keybindings
+│   ├── 10-luna             => colorschemes
+│   ├── 10-moonqueen
+│   ├── 10-perona
+│   ├── 20-goingmerry       => device-specici workspaces
+│   └── 20-thousandsunny    => exec's user services on alpine
+├── desktop.sh
+└── laptop.sh
 ```
 
-where `config` is only a few lines to `include` relevant files from `config.d`. `10-$HOSTNAME` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. `20-$PALETTE` correspond to my nvim schemes.
+where `config` is only a few lines to `include` relevant files from `config.d` in load order. `10-$PALETTE` correspond to my nvim schemes. `20-$HOSTNAME` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi.
 
 ### browsers
 
