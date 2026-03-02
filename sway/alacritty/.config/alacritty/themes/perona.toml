@@ -4,44 +4,33 @@
 # Upstream: https://codeberg.org/spica/perona.nvim/src/branch/main/extras/alacritty/perona.toml
 # -----------------------------------------------------------------------------
 
-[colors]
-draw_bold_text_with_bright_colors = true
-selection = { text = '#281520', background = '#ff99cc'}
-vi_mode_cursor = { text = '#281520', cursor = '#ff99cc'}
-cursor = { text = '#281520', cursor = "#f4b9dc"}
-
 # Default colors
 [colors.primary]
-background = '#281520'
-foreground = '#f4b9dc'
+background = '#261720'
+foreground = '#efd2e3'
+
+[colors.cursor]
+cursor = '#efd2e3'
+text = '#261720'
 
 # Normal colors
 [colors.normal]
-black = '#532742'
-red = '#c4314e'
-green = '#bb68ca'
-yellow = '#d65c5c'
-blue = '#5c8dd6'
-magenta = '#b54067'
-cyan = '#f269ad'
-white = '#f4b8dc'
+black = '#331f2b'
+red = '#d0435f'
+green = '#d18de2'
+yellow = '#e28d8d'
+blue = '#8dafe2'
+magenta = '#d65c8d'
+cyan = '#e28dc0'
+white = '#efd2e3'
 
 # Bright colors
 [colors.bright]
-black = '#683152'
-red = '#e2506d'
-green = '#e288de'
-yellow = '#eb8484'
-blue = '#8dafe2'
-magenta = '#d65c85'
-cyan = '#ff99cc'
-white = '#f8d3e9'
-
-# Indexed Colors
-[[colors.indexed_colors]]
-index = 16
-color = '#51c291'
-
-[[colors.indexed_colors]]
-index = 17
-color = '#f8d3e9'
+black = '#3f2735'
+red = '#f47c94'
+green = '#ebb4f8'
+yellow = '#f8b4b4'
+blue = '#b4cff8'
+magenta = '#f47cac'
+cyan = '#f4b9dc'
+white = '#ffebf7'

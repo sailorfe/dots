@@ -8,9 +8,8 @@ exec_always battery-alert
 bar {
 	colors {
 		background	$base
-		statusline	$accent
+		statusline	$light
 		separator		$overlay
-
 #												border	  bg			  fg
 		focused_workspace		$accent	  $accent	  $base
 		active_workspace		$accent	  $accent	  $text
@@ -35,6 +34,7 @@ assign [app_id="org.qutebrowser.qutebrowser"]				$ws2
 assign [app_id="librewolf"]													$ws2
 
 # -*- GUIs
+assign [app_id="org.pwmt.zathura"]									$ws3
 assign [app_id="gimp"]															$ws3
 assign [class="obsidian"]														$ws3
 assign [class="REAPER"]															$ws3

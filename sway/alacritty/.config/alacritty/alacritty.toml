@@ -9,13 +9,8 @@ padding = { x = 12, y = 0}
 draw_bold_text_with_bright_colors = true
 
 [general]
-import = ["~/.config/alacritty/themes/luna.toml"]
+import = ["~/.config/alacritty/themes/perona.toml"]
 
 [font]
 normal = { family = "Cozette", style = "Regular" }
 size = 10.0
-
-[bell]
-animation = "EaseOutExpo"
-duration = 100
-color = "#ff0000"

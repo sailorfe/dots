@@ -1,0 +1,30 @@
+set recolor true
+set recolor-darkcolor "#000000"
+set recolor-lightcolor "#ffffff"
+set default-bg "#000000"
+set default-fg "#ffffff"
+set statusbar-bg "#000000"
+set statusbar-fg "#ffffff"
+set inputbar-bg "#000000"
+set inputbar-fg "#ffffff"
+set notification-bg "#000000"
+set notification-fg "#ffffff"
+set notification-error-bg "#000000"
+set notification-error-fg "#ffffff"
+set notification-warning-bg "#000000"
+set notification-warning-fg "#ffffff"
+set notification-font "monospace 10"
+set recolor-keephue false
+set recolor-keepsat false
+set recolor-keeplum false
+set recolor-offset "0x00000000"
+set recolor-method "hard"
+set recolor-srgb true
+set render-loading-spinner true
+set render-loading-spinner-delay 100
+set render-loading-spinner-color "#ffffff"
+set default-mode "presentation"
+set default-mode-presentation-border-width 10
+set default-mode-presentation-border-color "#ffffff"
+set default-mode-presentation-border-radius 10
+set default-mode-presentation-

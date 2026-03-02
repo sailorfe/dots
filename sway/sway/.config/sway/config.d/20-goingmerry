@@ -1,16 +1,17 @@
 # ------------------------------------------------------------------ // swaybar
+
 bar {
 	colors {
-		background	$base00
-		statusline	$base0C
-		separator		$base03
+		background	$base
+		statusline	$light
+		separator		$overlay
 
 #												border	bg			fg
-		focused_workspace		$base0E	$base0E	$base00
-		active_workspace		$base0C	$base0C	$base05
-		inactive_workspace	$base01	$base01	$base05
-		urgent_workspace		$base08	$base08	$base05
-		binding_mode				$base0F	$base0F	$base01
+		focused_workspace		$accent	$accent	$base
+		active_workspace		$accent	$accent	$text
+		inactive_workspace	$surface	$surface	$text
+		urgent_workspace		$red	$red	$text
+		binding_mode				$accent	$accent	$surface
 	}
 	font Cozette 11
 	position top
