@@ -19,8 +19,8 @@ background-color=#362853
 text-color=#e1d9f2
 
 [urgency=normal]
-border-color=#9470db
-background-color=#b293ed
+border-color=#8f7de8
+background-color=#ac9df6
 text-color=#1b1429
 
 [urgency=high]
