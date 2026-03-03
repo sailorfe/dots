@@ -17,10 +17,10 @@ set $term foot --config ~/.config/foot/themes/perona.ini
 
 # --------------------------------------------------------------------- // idle
 exec swayidle -w \
-	timeout 3000 'swaylock -f -c 2d1d35' \
+	timeout 3000 'swaylock -f -c 261720' \
   timeout 6000 'swaymsg "output * dpms off"' \
 		resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 2d1d35'
+  before-sleep 'swaylock -f -c 261720'
 
 # -------------------------------------------------------------------- // wmenu
 

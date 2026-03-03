@@ -1,21 +1,11 @@
-# ----------------------------------------------------------------- // moonqueen
-set $base00 #241a37
-set $base01 #362753
-set $base02 #513b7d
-set $base03 #736490
-set $base04 #9181b1
-set $base05 #ddcdfe
-set $base06 #f1ebff
-set $base07 #433168
-
-set $base08 #ef434c
-set $base09 #508ae2
-set $base0A #f7bb31
-set $base0B #6ca522
-set $base0C #9f91fd
-set $base0D #e873b9
-set $base0E #8877f8
-set $base0F #f7a1d5
+# ---------------------------------------------------------------------- // luna
+set $base #1b1429
+set $surface #291e2e
+set $overlay #362853
+set $text #e1d9f2
+set $red #d65c5c
+set $accent #9470db
+set $light #b293ed
 
 # ---------------------------------------------------------------------- // foot
 
@@ -23,10 +13,10 @@ set $term foot --config ~/.config/foot/themes/moonqueen.ini
 
 # --------------------------------------------------------------------- // idle
 exec swayidle -w \
-	timeout 3000 'swaylock -f -c 1b142a' \
+	timeout 3000 'swaylock -f -c 1b1429' \
   timeout 6000 'swaymsg "output * dpms off"' \
 		resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 1b142a'
+  before-sleep 'swaylock -f -c 1b1429'
 
 # -------------------------------------------------------------------- // wmenu
 
@@ -37,10 +27,10 @@ set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-p 'wmenu '
 
 # ------------------------------------------------------------------ // windows
-#												border	bg			fg			indicator		child_border
-client.focused          $base0E	$base0E	$base00	$base0E	$base0E
-client.focused_inactive $base02	$base02	$base06	$base02	$base02
-client.unfocused        $base01	$base01	$base05	$base01	$base01
-client.urgent           $base08	$base08	$base05	$base08	$base08
-client.placeholder      $base00	$base00	$base05	$base00	$base00
-client.background       $base07
+#												border	  bg			  fg		indicator		child_border
+client.focused          $accent	  $accent	  $base $accent	    $accent
+client.focused_inactive $overlay	$overlay	$text	$overlay	  $overlay
+client.unfocused        $surface	$surface	$text	$surface	  $surface
+client.urgent           $red	    $red	    $text	$red	      $red
+client.placeholder      $base	    $base	    $text	$base	      $base
+client.background       $overlay

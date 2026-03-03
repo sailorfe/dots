@@ -1,7 +1,7 @@
 font=Cozette 8
 
 width=360
-progress-color=over #736490
+progress-color=over #533960
 height=540
 padding=12
 margin=12
@@ -14,17 +14,18 @@ border-radius=0
 default-timeout=10000
 
 [urgency=low]
-background-color=#654077
-border-color=#87569f
-text-color=#dbc8e5
+border-color=#422e4d
+background-color=#533960
+text-color=#ead9f2
 
 [urgency=normal]
-background-color=#a98de2
-border-color=#c0a7f1
-text-color=#211726
+border-color=#b27de8
+background-color=#c99df6
+text-color=#2c1f33
 
 [urgency=high]
-background-color=#e25057
-border-color=#f8777e
-text-color=#211726
+background-color=#f07575
+border-color=#fd9696
+text-color=#2c1f33
+
 ignore-timeout=1

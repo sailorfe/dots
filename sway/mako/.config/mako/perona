@@ -14,17 +14,17 @@ border-radius=0
 default-timeout=10000
 
 [urgency=normal]
-background-color=#f269ad
-border-color=#ff99cc
-text-color=#281520
+background-color=#e28dc0
+border-color=#f47cac
+text-color=#261720
 
 [urgency=low]
-background-color=#3e1d31
-border-color=#683152
-text-color=#f4b9dc
+background-color=#331f2b
+border-color=#3f2735
+text-color=#efd2e3
 
 [urgency=high]
-background-color=#a90f30
-border-color=#de3557
-text-color=#f8d3e9
+background-color=#d0435f
+border-color=#f47c94
+text-color=#261720
 ignore-timeout=1
