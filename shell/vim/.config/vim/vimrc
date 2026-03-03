@@ -38,9 +38,9 @@ call plug#begin(data_dir . '/plugged')
     Plug 'bullets-vim/bullets.vim'
     " colorschemes
     Plug 'rose-pine/vim', { 'as': 'rose-pine' }
-    Plug 'https://codeberg.org/sailorfe/luna.nvim'
-    Plug 'https://codeberg.org/sailorfe/moonqueen.nvim'
-    Plug 'https://codeberg.org/sailorfe/perona.nvim'
+    Plug 'https://codeberg.org/sailorfe/luna.nvim', { 'as': 'luna' }
+    Plug 'https://codeberg.org/sailorfe/moonqueen.nvim', { 'as': 'moonqueen' }
+    Plug 'https://codeberg.org/sailorfe/perona.nvim', { 'as': 'perona' }
 call plug#end()
 
 " == editing =======================
@@ -48,7 +48,6 @@ call plug#end()
 filetype on
 filetype plugin on
 set background=dark
-colorscheme luna
 syntax on
 
 if $HOSTNAME == 'sunnygo'
