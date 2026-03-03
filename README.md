@@ -1,4 +1,4 @@
-![luna](luna.png)
+![luna](previews/luna.png)
 
 # dots
 
@@ -17,7 +17,6 @@ personal config files for python development and writing across [debian 13](http
     * [terminal emulator](#terminal-emulator)
     * [fonts](#fonts)
 - [scripts](#scripts)
-- [previews](#previews)
 - [license](#license)
 
 <!-- tocstop -->
@@ -77,10 +76,9 @@ i use neovim for writing prose and code, and i do more of the former than the la
   - [bullets.vim](https://github.com/bullets-vim/bullets.vim): for the markdown-pilled
   - [conform.nvim](https://github.com/stevearc/conform.nvim): configured to format on `:w`
   - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): indentation guides, very important for python and yaml
-  - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): unobtrusive git diff in the number gutter
   - my own colorschemes made with [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim): [perona](https://codeberg.org/sailorfe/perona.nvim), [luna](https://codeberg.org/sailorfe/luna.nvim), [moonqueen](https://codeberg.org/sailorfe/moonqueen.nvim)
   - [mason.nvim](https://github.com/mason-org/mason.nvim): manages language servers/linters/formatters that i find annoying to hunt down or don't want from debian repositories or other package managers. so basically anything that i can't get with `uv`
-  - [mini.nvim](https://github.com/nvim-mini/mini.nvim): comment, completion, files, git, icons, notify, pairs, pick, snippets, splitjoin, surround, starter, statusline
+  - [mini.nvim](https://github.com/nvim-mini/mini.nvim): comment, completion, diff, files, git, icons, notify, pairs, pick, snippets, splitjoin, surround, starter, statusline.
   - [no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): 👵🏼
   - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): really great for codeblocks and such
   - [telescope.nvim](https:///github.com/nvim-telescope/telescope.nvim): tbh i mostly use this for `:Telescope lsp_document_symbols`
@@ -126,6 +124,10 @@ i also keep a light `vimrc` for when any of the above feels too busy or opiniona
 
 ## sway
 
+| moonqueen                                 | luna                            | perona                              |
+| ----------------------------------------- | ------------------------------- | ----------------------------------- |
+| ![moonqueen](previews/term-moonqueen.png) | ![luna](previews/term-luna.png) | ![perona](previews/term-perona.png) |
+
 i don't toil away at ricing linux, but what i do have are three custom neovim colorschemes that serve the functional purpose of reminding me what host i'm on, and which i want my machines with [sway](https://swaywm.org/) to match. besides colors, this customization takes different swaybar scripts per device (i don't need battery on desktop, for example). my modular sway setup looks like
 
 ```sh
@@ -136,7 +138,7 @@ i don't toil away at ricing linux, but what i do have are three custom neovim co
 │   ├── 10-luna             => colorschemes
 │   ├── 10-moonqueen
 │   ├── 10-perona
-│   ├── 20-goingmerry       => device-specici workspaces
+│   ├── 20-goingmerry       => device-specific workspaces
 │   └── 20-thousandsunny    => exec's user services on alpine
 ├── desktop.sh
 └── laptop.sh
@@ -164,12 +166,11 @@ in the past, i've gotten a lot of mileage out of [iosevka](https://typeof.net/Io
 
 ## scripts
 
-most of the scripts in the `bin` package are for sway, swaybar, and [mako](https://github.com/emersion/mako). the coolest ones are probably `player-status` for use with [playerctl](https://github.com/altdesktop/playerctl) and `tarot` [from my hello, world project](https://codeberg.org/sailorfe/tarot).
+most of the scripts in the `bin` package are for sway, swaybar, wmenu, and make use of libnotify through [mako](https://github.com/emersion/mako). some are just trying to get things to work on alpine and sway, e.g. with openrc/busybox and wayland. highlights:
 
-## previews
-
-![moonqueen](moonqueen.png)
-![perona](perona.png)
+- `battery-alert`: for alpine laptop, requires `elogind` as a boot service.
+- `player-status`: displays audio/video player information as plain text for swaybar. requires playerctl and mpd-mpris.
+- `wl-colorpick`: hex code picker for wayland. depends on grim, slurp, imagemagick, libnotify + a notification daemon.
 
 ## license
 
