@@ -1,11 +1,15 @@
-# ---------------------------------------------------------------------- // luna
+# ---------------------------------------------------------------- // moonqueen
 set $base #1b1429
 set $surface #291e2e
 set $overlay #362853
 set $text #e1d9f2
 set $red #d65c5c
-set $accent #9470db
+set $accent #8f7de8
 set $light #b293ed
+
+# ------------------------------------------------------------------- // output
+
+output $builtin mode 1920x1080 bg /home/sailorfe/m/img/wall/poster4.jpg fill
 
 # ---------------------------------------------------------------------- // foot
 
@@ -21,9 +25,9 @@ exec swayidle -w \
 # -------------------------------------------------------------------- // wmenu
 
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
-	-N '$base00' -n '$base06' \
-	-M '$base0E' -m '$base00' \
-	-S '$base02' -s '$base05' \
+	-N '$base' -n '$text' \
+	-M '$accent' -m '$base' \
+	-S '$overlay' -s '$text' \
 	-p 'wmenu '
 
 # ------------------------------------------------------------------ // windows

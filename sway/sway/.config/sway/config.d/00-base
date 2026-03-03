@@ -39,7 +39,7 @@ bindsym $mod+t exec wmenu-tarot
 bindsym $mod+u exec unicode-menu
 bindsym $mod+Shift+b exec qutebrowser
 #bindsym $mod+p exec foot
-bindsym $mod+p exec alacritty
+bindsym $mod+p exec wl-colorpick
 bindsym $mod+Shift+a exec alacritty --config-file ~/.config/alacritty/moonqueen.toml
 
 floating_modifier $mod normal
