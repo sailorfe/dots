@@ -6,15 +6,15 @@ return {
 		-- mason
 		vim.lsp.enable("bashls")
 		vim.lsp.enable("lua_ls")
-		vim.lsp.enable("marksman")
 		vim.lsp.enable("html")
 		vim.lsp.enable("gopls")
 		vim.lsp.enable("clangd")
 		vim.lsp.enable("somesass_ls")
 		vim.lsp.enable("html-lsp")
-		-- uv tool
+		-- manually installed
 		vim.lsp.enable("ty")
 		vim.lsp.enable("ruff")
+		vim.lsp.enable("marksman") -- musl version for alpine; mason fine for debian
 
 		-- buffer-local LSP keymaps
 		vim.api.nvim_create_autocmd("LspAttach", {
