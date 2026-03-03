@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+# elogind must be part of boot runlevel
 set -euo pipefail
 
 LOW_THRESHOLD=20
 CRITICAL_THRESHOLD=5
-CHECK_INTERVAL=60
+CHECK_INTERVAL=300 # 5 minutes
 
 while true; do
   BAT_PATH="/sys/class/power_supply/BAT0"
@@ -15,11 +16,15 @@ while true; do
     if [ "$BATTERY_LEVEL" -le "$CRITICAL_THRESHOLD" ]; then
       notify-send -u critical "EMERGENCY" "Battery at ${BATTERY_LEVEL}%. Hibernating now..."
       sleep 2
-      systemctl hibernate
+      if rc-service elogind status >/dev/null 2>&1; then
+        loginctl hibernate
+      else
+        doas sh -c 'echo mem > /sys/power/state'
+      fi
 
     elif [ "$BATTERY_LEVEL" -le "$LOW_THRESHOLD" ]; then
       notify-send -u critical "Battery Low" "Level: ${BATTERY_LEVEL}%"
-      sleep 5m
+      sleep 2
     fi
   fi
 

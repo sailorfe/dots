@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# gets charm VHS working on alpine
+# set -euo pipefail
+
+export BROWSER_PATH=/usr/bin/chromium-browser
+vhs "$@"

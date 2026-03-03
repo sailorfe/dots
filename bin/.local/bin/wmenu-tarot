@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# older than tarot script; doesn't take reversals
 set -euo pipefail
 
 source "$HOME/.config/wmenu/colors.sh"
@@ -29,7 +30,7 @@ draw() {
   cards=$(wmenu -i -f 'Cozette 11' "${scheme[@]}" -p "tarot " <&-) || exit 0
   cards=${cards:=1}
   shuffle=$(shuf -e -n "$cards" "${arcana[@]}" -n 78)
-  notify-send -w -t 12000 "${shuffle[@]}"
+  notify-send -w -t 12000 "${shuffle[@]}" -u low
 }
 
 deck

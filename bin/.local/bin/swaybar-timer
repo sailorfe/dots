@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# i do not even use this anymore
 set -euo pipefail
 
 source "$HOME/.config/wmenu/colors.sh"

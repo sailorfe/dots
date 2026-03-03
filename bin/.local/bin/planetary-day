@@ -1,22 +1,16 @@
 #!/usr/bin/env bash
+# prints the planetary day (silly)
+set -euo pipefail
 
 planet() {
+  declare -A symbols=(
+    [Sun]="☉" [Mon]="☽" [Tue]="♂" [Wed]="☿"
+    [Thu]="♃" [Fri]="♀" [Sat]="♄"
+  )
+
+  local day
   day=$(date +%a)
-  if [ "$day" == "Sun" ]; then
-    echo "☉"
-  elif [ "$day" == "Mon" ]; then
-    echo "☽"
-  elif [ "$day" == "Tue" ]; then
-    echo "♂"
-  elif [ "$day" == "Wed" ]; then
-    echo "☿"
-  elif [ "$day" == "Thu" ]; then
-    echo "♃"
-  elif [ "$day" == "Fri" ]; then
-    echo "♀"
-  elif [ "$day" == "Sat" ]; then
-    echo "♄"
-  fi
+  echo "${symbols[$day]}"
 }
 
 planet

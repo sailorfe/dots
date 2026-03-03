@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# copy a unicode character to the clipboard
+set -euo pipefail
 
 source "$HOME/.config/wmenu/colors.sh"
 
@@ -11,7 +13,7 @@ GLYPH_FILE="$HOME/.config/wmenu/glyphs.txt"
 CHOICE=$(cat "$GLYPH_FILE" "$EMOJI_FILE" | wmenu -l 20 -i -f 'Cozette 11' "${scheme[@]}" -p "unicode ")
 
 if [ -z "$CHOICE" ]; then
-    exit 1
+  exit 1
 fi
 
 echo "$CHOICE" | awk '{print $1}' | tr -d '\n' | wl-copy

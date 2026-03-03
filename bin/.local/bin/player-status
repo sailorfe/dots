@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# prints the current track and player status
+# inspired by Bread: https://github.com/BreadOnPenguins/scripts/blob/4aada30abdea93c838ab65e90c7ae1a2863ac6de/statusbar/musicplaying
+# depends on playerctl, mpd-mpris
 set -euo pipefail
 
 players=(firefox chromium mpv mpd)

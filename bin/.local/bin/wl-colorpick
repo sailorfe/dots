@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# colorpicker for wayland
+# depends on slurp, grim, wl-clipboard, notify-send, imagemagick
+set -euo pipefail
+
+PIXEL=$(slurp -p) || exit 1
+COLOR=$(grim -g "$PIXEL" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4)
+
+# generate swatch icon
+SWATCH="/tmp/color_swatch.png"
+magick -size 32x32 xc:"$COLOR" "$SWATCH"
+
+# copy hex to clipboard
+echo -n "$COLOR" | wl-copy
+
+# show the notif with swatch
+notify-send "Color Picked" "$COLOR" \
+  -i "$SWATCH" \
+  -a "Color Picker" \
+  -u low
