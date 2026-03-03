@@ -17,6 +17,7 @@ return {
 		require("mini.snippets").setup({})
 		require("mini.splitjoin").setup({})
 		require("mini.surround").setup({})
+		require("mini.diff").setup({})
 	end,
 	keys = {
 		{ "<A-f>", "<cmd>:lua MiniFiles.open()<cr>" },
