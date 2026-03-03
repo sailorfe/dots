@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------- // luna
-set $base #2c1f33
-set $surface #422e4d
-set $overlay #533960
+set $base #271b2d
+set $surface #372640
+set $overlay #483253
 set $text #ead9f2
 set $red #f87575
 set $accent #b27de8

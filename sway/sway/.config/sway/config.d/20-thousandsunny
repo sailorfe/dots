@@ -3,6 +3,7 @@
 exec openrc -U gui
 exec_always mpd-mpris
 exec_always battery-alert
+exec_always kdeconnectd
 
 # ------------------------------------------------------------------ // swaybar
 bar {
