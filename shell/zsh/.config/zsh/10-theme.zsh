@@ -5,14 +5,7 @@
 #
 # ---------------------------------------------------------- // per-host colors
 case "$HOST" in
-  goingmerry)
-    THEME_FILE="$HOME/.config/themes/current-theme.txt"
-    if [[ -f "$THEME_FILE" ]]; then
-      THEME=$(cat "$THEME_FILE")
-    else
-      THEME=perona
-    fi
-    ;;
+  goingmerry) THEME=perona ;;
   thousandsunny) THEME=luna ;;
   *) THEME=moonqueen ;;
 esac

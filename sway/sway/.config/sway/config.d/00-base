@@ -34,9 +34,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+g exec slurp | grim -g - - | wl-copy
 bindsym $mod+g exec grim
-bindsym $mod+n exec flor
+bindsym $mod+n exec wmenu-notes
 bindsym $mod+t exec wmenu-tarot
-bindsym $mod+u exec unicode-menu
+bindsym $mod+u exec wmenu-unicode
 bindsym $mod+Shift+b exec qutebrowser
 #bindsym $mod+p exec foot
 bindsym $mod+p exec wl-colorpick

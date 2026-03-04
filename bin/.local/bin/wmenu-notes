@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+source "$HOME/.config/wmenu/colors.sh"
+
+case "$HOSTNAME" in
+  merrygo)  THEME="perona"    ;;
+  sunnygo)  THEME="luna"      ;;
+  *)        THEME="moonqueen" ;;
+esac
+
+WMENU_SCHEME=${WMENU_SCHEME:-"$THEME"}
+declare -n scheme="$WMENU_SCHEME"
+
+FOLDER="$HOME/d/flor"
+TERMINAL="foot"
+CONFIG="$HOME/.config/foot/themes/$THEME.ini"
+EDITOR=nvim
+
+newnote() {
+  name="$(echo "" | wmenu -f 'Cozette 11' "${scheme[@]}" -p "filename ")" || exit 0
+  : "${name:=$(date +%F)}"
+  setsid -f "$TERMINAL" --config="$CONFIG" -e "$EDITOR" "$FOLDER/notes/daily/$name.md" >/dev/null 2>&1
+}
+
+selected() {
+  choice=$(
+    { echo "󰐕 new note"
+      find "$FOLDER" -type f -name "*.md" | sed "s|$FOLDER/||" | sort -r
+    } | wmenu -l 20 -i -f 'Cozette 11' "${scheme[@]}" -p "florilegium "
+  )
+  case $choice in
+    " new note") newnote ;;
+    *.md) setsid -f "$TERMINAL" --config="$CONFIG" -e "$EDITOR" "$FOLDER/$choice" >/dev/null 2>&1 ;;
+    *) exit ;;
+  esac
+}
+
+selected

@@ -4,7 +4,7 @@
 #/__/___/_//_/_/  \__/
 #
 # --------------------------------------------------------------- // tty colors
-. $HOME/.config/themes/${THEME}-colors.conf
+. $HOME/.config/themes/${THEME}.conf
 
 # ------------------------------------------------------------- // shell colors
 theme_color() {

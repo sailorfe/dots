@@ -4,8 +4,8 @@ set $surface #331f2b
 set $overlay #3f2735
 set $text #efd2e3
 set $red #d0435f
-set $accent #e28dc0
-set $light #f4b9dc
+set $accent #ed82c2
+set $light #fa9ed5
 
 # ------------------------------------------------------------------- // output
 

@@ -1,5 +1,5 @@
-directory: ~/.local/media/mus
-library: ~/.local/media/mus/lib.db
+directory: ~/m/mus
+library: ~/m/mus/lib.db
 
 asciify_paths: yes
 
