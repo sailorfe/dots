@@ -55,7 +55,7 @@ if $HOSTNAME == 'sunnygo'
 elseif $HOSTNAME == 'merrygo'
     colorscheme perona
 else
-    colorscheme rosepine
+    colorscheme moonqueen
 endif
 
 set autoindent

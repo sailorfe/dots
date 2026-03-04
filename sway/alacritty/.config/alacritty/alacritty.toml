@@ -9,11 +9,8 @@ padding = { x = 12, y = 0}
 draw_bold_text_with_bright_colors = true
 
 [general]
-import = ["~/.config/alacritty/themes/luna.toml"]
+import = ["~/.config/alacritty/themes/perona.toml"]
 
 [font]
-normal = { family = "RecMono Casual", style = "Regular" }
-italic = { family = "RecMono Casual", style = "Italic" }
-bold = { family = "RecMono Casual", style = "Bold" }
-bold_italic = { family = "RecMono Casual", style = "Bold Italic" }
+normal = { family = "Cozette", style = "Regular" }
 size = 12.0

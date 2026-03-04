@@ -14,8 +14,7 @@ case "$HOST" in
     fi
     ;;
   thousandsunny) THEME=luna ;;
-  minimerry) THEME=moonqueen ;;
-  *) THEME=rose-pine ;;
+  *) THEME=moonqueen ;;
 esac
 
 source "$HOME/.config/themes/generated/$THEME.sh"
