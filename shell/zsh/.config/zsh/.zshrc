@@ -3,7 +3,7 @@ export ZDOTDIR=$HOME/.config/zsh
 for config (~/.config/zsh/*.zsh)
 	source $config
 
-$ history
+# history
 HISTFILE=~/.local/state/zsh/history
 HISTSIZE=10000
 SAVEHIST=12000
