@@ -6,7 +6,7 @@ if [ -e "$XDG_DATA_HOME"/../bin/env ]; then
 fi
 
 # from rust
-if command -v cargo >/dev/null 2>&1; then
+if [ -e "$XDG_DATA_HOME"/../lib/cargo/env ]; then
   source "$HOME"/.local/lib/cargo/env
 fi
 
