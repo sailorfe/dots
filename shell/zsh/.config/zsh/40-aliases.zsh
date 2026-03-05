@@ -1,9 +1,4 @@
-#          __
-# ___ ___ / /  ________
-#/_ /(_-</ _ \/ __/ __/
-#/__/___/_//_/_/  \__/
-#
-# -*- colors
+# just colors and grouping dirs first
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -14,6 +9,6 @@ alias l='ls -hF --color=auto --group-directories-first'
 alias dir='dir --color=auto --group-directories-first'
 alias vdir='vdir --color=auto --group-directories-first'
 
-# -*-- tmux -*-
+# tmux
 alias tl="tmux list-sessions"
 alias tv="tmux new -s vault -c /home/sailorfe/d/flor"

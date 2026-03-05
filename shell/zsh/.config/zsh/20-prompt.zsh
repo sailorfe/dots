@@ -1,9 +1,3 @@
-#          __
-# ___ ___ / /  ________
-#/_ /(_-</ _ \/ __/ __/
-#/__/___/_//_/_/  \__/
-#
-# ------------------------------------------------------------- // shell prompt
 FG_TIME=$(theme_color magenta)
 FG_DIR=$(theme_color white)
 FG_VENV=$(theme_color brightCyan)
