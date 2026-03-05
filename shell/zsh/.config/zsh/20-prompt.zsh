@@ -1,8 +1,8 @@
-FG_TIME=$(theme_color magenta)
-FG_DIR=$(theme_color white)
-FG_VENV=$(theme_color brightCyan)
-FG_GIT=$(theme_color brightMagenta)
-FG_GLYPH=$(theme_color magenta)
+FG_TIME=$COLOR_MAGENTA
+FG_DIR=$COLOR_WHITE
+FG_VENV=$COLOR_BRIGHTCYAN
+FG_GIT=$COLOR_BRIGHTMAGENTA
+FG_GLYPH=$COLOR_MAGENTA
 NEWLINE=$'\n'
 
 # helper for colors
