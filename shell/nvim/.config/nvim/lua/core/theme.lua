@@ -1,10 +1,10 @@
-local host = vim.env.HOSTNAME or vim.fn.expand("$HOSTNAME")
+local host = vim.fn.expand("$HOST")
 
 local host_themes = {
-	["sunnygo"] = "luna",
-	["merrygo"] = "perona",
-	["minimerry"] = "moonqueen",
-	["termux"] = "rose-pine",
+  ["thousandsunny"] = "luna",
+  ["goingmerry"] = "perona",
+  ["minimerry"] = "moonqueen",
+  ["localhost"] = "moonqueen",
 }
 
 local theme = host_themes[host] or "habamax"

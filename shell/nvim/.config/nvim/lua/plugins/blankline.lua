@@ -1,8 +1,18 @@
 return {
-	"lukas-reineke/indent-blankline.nvim",
-	event = "BufReadPost",
-	main = "ibl",
-	---@module "ibl"
-	---@type ibl.config
-	opts = {},
+  "lukas-reineke/indent-blankline.nvim",
+  event = "VeryLazy",
+  config = function()
+    require("ibl").setup({
+      indent = {
+        highlight = { "IblIndent" }
+      },
+      scope = {
+        enabled = true,
+        highlight = { "IblScope" }
+      },
+      whitespace = {
+        highlight = { "IblWhitespace" }
+      }
+    })
+  end,
 }
