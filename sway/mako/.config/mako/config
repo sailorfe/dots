@@ -1,31 +1,28 @@
-font=Cozette 8
+font=Cozette 11
 
 width=360
-progress-color=over #533960
 height=540
-padding=12
-margin=12
+padding=18
+margin=18
 max-icon-size=70
 layer=overlay
-
 border-size=2
 border-radius=0
 
 default-timeout=10000
 
-[urgency=low]
-border-color=#422e4d
-background-color=#533960
-text-color=#ead9f2
+# colors
+
+progress-color=source #48323F
+background-color=#261720
+text-color=#eac3da
 
 [urgency=normal]
-border-color=#b27de8
-background-color=#c99df6
-text-color=#2c1f33
+border-color=#e28d8d
 
-[urgency=high]
-background-color=#f07575
-border-color=#fd9696
-text-color=#2c1f33
+[urgency=low]
+border-color=#8DAFE2
 
+[urgency=critical]
+border-color=#d0435f
 ignore-timeout=1
