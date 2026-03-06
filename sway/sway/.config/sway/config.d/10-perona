@@ -1,4 +1,5 @@
-# ------------------------------------------------------------------- // perona
+# == colors =============================================================
+
 set $base #261720
 set $surface #331f2b
 set $overlay #3f2735
@@ -7,30 +8,17 @@ set $red #d0435f
 set $accent #ed82c2
 set $light #fa9ed5
 
-# ------------------------------------------------------------------- // output
-
-output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/mihopero-alt.png fill
-
-# --------------------------------------------------------------------- // foot
-
+# -*- terminal -*-
 set $term foot --config ~/.config/foot/themes/perona.ini
 
-# --------------------------------------------------------------------- // idle
-exec swayidle -w \
-	timeout 3000 'swaylock -f -c 261720' \
-  timeout 6000 'swaymsg "output * dpms off"' \
-		resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 261720'
-
-# -------------------------------------------------------------------- // wmenu
-
+# -*- wmenu -*-
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-N '$base' -n '$text' \
 	-M '$accent' -m '$base' \
 	-S '$overlay' -s '$text' \
 	-p 'wmenu '
 
-# ------------------------------------------------------------------ // windows
+# -*- windows -*-
 #												border	  bg			  fg		indicator		child_border
 client.focused          $accent	  $accent	  $base $accent	    $accent
 client.focused_inactive $overlay	$overlay	$text	$overlay	  $overlay
@@ -38,3 +26,15 @@ client.unfocused        $surface	$surface	$text	$surface	  $surface
 client.urgent           $red	    $red	    $text	$red	      $red
 client.placeholder      $base	    $base	    $text	$base	      $base
 client.background       $overlay
+
+# == (g)i-dle  ===========================================================
+
+exec swayidle -w \
+	timeout 3000 'swaylock -f -c 261720' \
+  timeout 6000 'swaymsg "output * dpms off"' \
+		resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -c 261720'
+
+# == output ==============================================================
+
+output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/mihopero-alt.png fill

@@ -1,4 +1,4 @@
-# ------------------------------------------------------------------ // swaybar
+# == swaybar =============================================================
 
 bar {
 	colors {
@@ -18,30 +18,30 @@ bar {
   status_command while ~/.config/sway/desktop.sh; do sleep 1; done
 }
 
-# --------------------------------------------------------------- // workspaces
+# == workspaces ==========================================================
 
-# -*- browsers
+# -*- browsers -*-
 assign [app_id="org.qutebrowser.qutebrowser"]				$ws2
 assign [app_id="librewolf"]													$ws2
 assign [app_id="firefox-esr"]												$ws2
 assign [app_id="Tor Browser"]												$ws2
 
-# -*- GUIs
+# -*- GUIs -*-
 assign [app_id="gimp"]															$ws3
 assign [app_id="obsidian"]													$ws3
 assign [class="REAPER"]															$ws3
 assign [class="Code"]																$ws3
 assign [class="libreoffice-startcenter"]						$ws3
 
-# -*- fullscreen
+# -*- fullscreen -*-
 assign [class="com.github.johnfactotum.Foliate"]		$ws4
 assign [app_id="mpv"]																$ws4
 assign [class="Stardew Valley"]											$ws4
 
-# -*- background
+# -*- background -*-
 assign [class="steam"]															$ws5
 assign [app_id="org.kde.kdeconnect.app"]						$ws5
 
-# -*- chat
+# -*- chat -*-
 assign [class="slack"]															$ws6
 assign [class="discord"]														$ws6

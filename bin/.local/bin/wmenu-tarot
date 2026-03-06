@@ -4,12 +4,6 @@ set -euo pipefail
 
 source "$HOME/.config/wmenu/colors.sh"
 
-case "$HOSTNAME" in
-  merrygo)  THEME="perona"    ;;
-  sunnygo)  THEME="luna"      ;;
-  *)        THEME="moonqueen" ;;
-esac
-
 WMENU_SCHEME=${WMENU_SCHEME:-"$THEME"}
 declare -n scheme="$WMENU_SCHEME"
 
