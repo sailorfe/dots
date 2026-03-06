@@ -1,5 +1,11 @@
 #!/bin/sh
 
+case "$HOSTNAME" in
+  merrygo) THEME=perona;;
+  sunnygo) THEME=luna;;
+  *) THEME=moonqueen;;
+esac
+
 perona=(
   -N '#261720'
   -n '#eac3da'
