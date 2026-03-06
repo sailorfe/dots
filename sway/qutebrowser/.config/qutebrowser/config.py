@@ -1,5 +1,4 @@
 # type: ignore config
-# type: ignore config
 import socket
 
 hostname = socket.gethostname()
@@ -8,42 +7,42 @@ palettes = {
     "luna": {
         "background": "#271b2d",
         "foreground": "#ead9f2",
-        "color0": "#372640",
-        "color1": "#f07575",
-        "color2": "#d1f075",
-        "color3": "#f0d175",
-        "color4": "#7db2e8",
-        "color6": "#b27de8",
-        "color5": "#e87db3",
-        "color7": "#b99fc6",
-        "color8": "#483253",
-        "color9": "#fa9e9e",
-        "color10": "#e3fa9e",
-        "color11": "#fae39e",
-        "color12": "#a3ccf5",
-        "color14": "#cca3f5",
-        "color13": "#f5a3cc",
-        "color15": "#ead9f2",
+        "black": "#372640",
+        "red": "#f07575",
+        "green": "#d1f075",
+        "yellow": "#f0d175",
+        "blue": "#7db2e8",
+        "cyan": "#b27de8",
+        "magenta": "#e87db3",
+        "white": "#b99fc6",
+        "brightBlack": "#483253",
+        "brightRed": "#fa9e9e",
+        "brightGreen": "#e3fa9e",
+        "brightYellow": "#fae39e",
+        "brightBlue": "#a3ccf5",
+        "brightCyan": "#cca3f5",
+        "brightMagenta": "#f5a3cc",
+        "brightWhite": "#ead9f2",
     },
     "perona": {
         "background": "#261720",
         "foreground": "#eac3da",
-        "color0": "#331f2b",
-        "color1": "#d0435f",
-        "color2": "#d18de2",
-        "color3": "#e28d8d",
-        "color4": "#8dafe2",
-        "color5": "#d65c8d",
-        "color6": "#ed82c2",
-        "color7": "#896c7d",
-        "color8": "#3f2735",
-        "color9": "#f76e89",
-        "color10": "#e4a3f5",
-        "color11": "#f5a3a3",
-        "color12": "#a3c4f5",
-        "color13": "#f76ea5",
-        "color14": "#fa9ed5",
-        "color15": "#eac3da",
+        "black": "#331f2b",
+        "red": "#d0435f",
+        "green": "#d18de2",
+        "yellow": "#e28d8d",
+        "blue": "#8dafe2",
+        "magenta": "#d65c8d",
+        "cyan": "#ed82c2",
+        "white": "#896c7d",
+        "brightBlack": "#3f2735",
+        "brightRed": "#f76e89",
+        "brightGreen": "#e4a3f5",
+        "brightYellow": "#f5a3a3",
+        "brightBlue": "#a3c4f5",
+        "brightCyan": "#f76ea5",
+        "brightMagenta": "#fa9ed5",
+        "brightWhite": "#eac3da",
     }
 }
 
@@ -54,22 +53,22 @@ else:
 
 background = colors["background"]
 foreground = colors["foreground"]
-color0 = colors["color0"]
-color1 = colors["color1"]
-color2 = colors["color2"]
-color3 = colors["color3"]
-color4 = colors["color4"]
-color5 = colors["color5"]
-color6 = colors["color6"]
-color7 = colors["color7"]
-color8 = colors["color8"]
-color9 = colors["color9"]
-color10 = colors["color10"]
-color11 = colors["color11"]
-color12 = colors["color12"]
-color13 = colors["color13"]
-color14 = colors["color14"]
-color15 = colors["color15"]
+black = colors["black"]
+red = colors["red"]
+green = colors["green"]
+yellow = colors["yellow"]
+blue = colors["blue"]
+magenta = colors["magenta"]
+cyan = colors["cyan"]
+white = colors["white"]
+brightBlack = colors["brightBlack"]
+brightRed = colors["brightRed"]
+brightGreen = colors["brightGreen"]
+brightYellow = colors["brightYellow"]
+brightBlue = colors["brightBlue"]
+brightCyan = colors["brightCyan"]
+brightMagenta = colors["brightMagenta"]
+brightWhite = colors["brightWhite"]
 
 # ----------------------------------------------------------------- // settings
 
@@ -110,96 +109,96 @@ config.set('statusbar.padding', {
 config.set('colors.completion.even.bg', background)
 config.set('colors.completion.odd.bg', background)
 config.set('colors.completion.fg', foreground)
-config.set('colors.completion.match.fg', color6)
-config.set('colors.completion.category.bg', color0)
-config.set('colors.completion.category.border.bottom', color0)
-config.set('colors.completion.category.border.top', color0)
+config.set('colors.completion.match.fg', cyan)
+config.set('colors.completion.category.bg', black)
+config.set('colors.completion.category.border.bottom', black)
+config.set('colors.completion.category.border.top', black)
 config.set('colors.completion.category.fg', foreground)
-config.set('colors.completion.item.selected.bg', color14)
-config.set('colors.completion.item.selected.border.bottom', color14)
-config.set('colors.completion.item.selected.border.top', color14)
-config.set('colors.completion.item.selected.fg', color0)
+config.set('colors.completion.item.selected.bg', brightMagenta)
+config.set('colors.completion.item.selected.border.bottom', brightMagenta)
+config.set('colors.completion.item.selected.border.top', brightMagenta)
+config.set('colors.completion.item.selected.fg', black)
 config.set('colors.completion.item.selected.match.fg', background)
 config.set('colors.completion.scrollbar.bg', background)
 config.set('colors.completion.scrollbar.fg', foreground)
 
 config.set('colors.contextmenu.disabled.bg', background)
-config.set('colors.contextmenu.disabled.fg', color7)
+config.set('colors.contextmenu.disabled.fg', white)
 config.set('colors.contextmenu.menu.bg', background)
 config.set('colors.contextmenu.menu.fg', foreground)
-config.set('colors.contextmenu.selected.bg', color5)
+config.set('colors.contextmenu.selected.bg', magenta)
 config.set('colors.contextmenu.selected.fg', background)
 
 config.set('colors.downloads.bar.bg', background)
 config.set('colors.downloads.start.bg', foreground)
-config.set('colors.downloads.stop.bg', color14)
+config.set('colors.downloads.stop.bg', brightMagenta)
 config.set('colors.downloads.start.fg', background)
 config.set('colors.downloads.stop.fg', background)
 
 config.set('colors.hints.bg', background)
 config.set('colors.hints.fg', foreground)
-config.set('colors.hints.match.fg', color12)
+config.set('colors.hints.match.fg', brightBlue)
 
 config.set('colors.keyhint.bg', background)
 config.set('colors.keyhint.fg', foreground)
-config.set('colors.keyhint.suffix.fg', color4)
+config.set('colors.keyhint.suffix.fg', blue)
 
-config.set('colors.messages.error.bg', color0)
-config.set('colors.messages.error.border', color0)
-config.set('colors.messages.error.fg', color11)
-config.set('colors.messages.info.bg', color0)
-config.set('colors.messages.info.border', color0)
+config.set('colors.messages.error.bg', black)
+config.set('colors.messages.error.border', black)
+config.set('colors.messages.error.fg', brightYellow)
+config.set('colors.messages.info.bg', black)
+config.set('colors.messages.info.border', black)
 config.set('colors.messages.info.fg', foreground)
-config.set('colors.messages.warning.bg', color0)
-config.set('colors.messages.warning.border', color0)
-config.set('colors.messages.warning.fg', color9)
+config.set('colors.messages.warning.bg', black)
+config.set('colors.messages.warning.border', black)
+config.set('colors.messages.warning.fg', brightRed)
 
-config.set('colors.prompts.bg', color0)
-config.set('colors.prompts.border', color0)
-config.set('colors.prompts.fg', color15)
-config.set('colors.prompts.selected.bg', color14)
+config.set('colors.prompts.bg', black)
+config.set('colors.prompts.border', black)
+config.set('colors.prompts.fg', brightWhite)
+config.set('colors.prompts.selected.bg', brightMagenta)
 config.set('colors.prompts.selected.fg', background)
 
-config.set('colors.statusbar.normal.bg', color0)
-config.set('colors.statusbar.normal.fg', color6)
-config.set('colors.statusbar.caret.bg', color0)
+config.set('colors.statusbar.normal.bg', black)
+config.set('colors.statusbar.normal.fg', cyan)
+config.set('colors.statusbar.caret.bg', black)
 config.set('colors.statusbar.caret.fg', foreground)
-config.set('colors.statusbar.caret.selection.bg', color0)
-config.set('colors.statusbar.caret.selection.fg', color11)
-config.set('colors.statusbar.insert.bg', color0)
+config.set('colors.statusbar.caret.selection.bg', black)
+config.set('colors.statusbar.caret.selection.fg', brightYellow)
+config.set('colors.statusbar.insert.bg', black)
 config.set('colors.statusbar.insert.fg', foreground)
-config.set('colors.statusbar.command.bg', color0)
+config.set('colors.statusbar.command.bg', black)
 config.set('colors.statusbar.command.fg', foreground)
-config.set('colors.statusbar.command.private.bg', color8)
-config.set('colors.statusbar.command.private.fg', color15)
-config.set('colors.statusbar.passthrough.bg', color0)
-config.set('colors.statusbar.passthrough.fg', color6)
-config.set('colors.statusbar.progress.bg', color4)
-config.set('colors.statusbar.url.fg', color14)
-config.set('colors.statusbar.url.error.fg', color9)
-config.set('colors.statusbar.url.hover.fg', color12)
-config.set('colors.statusbar.url.warn.fg', color11)
-config.set('colors.statusbar.url.success.http.fg', color10)
-config.set('colors.statusbar.url.success.https.fg', color10)
+config.set('colors.statusbar.command.private.bg', brightBlack)
+config.set('colors.statusbar.command.private.fg', brightWhite)
+config.set('colors.statusbar.passthrough.bg', black)
+config.set('colors.statusbar.passthrough.fg', cyan)
+config.set('colors.statusbar.progress.bg', blue)
+config.set('colors.statusbar.url.fg', brightMagenta)
+config.set('colors.statusbar.url.error.fg', brightRed)
+config.set('colors.statusbar.url.hover.fg', brightBlue)
+config.set('colors.statusbar.url.warn.fg', brightYellow)
+config.set('colors.statusbar.url.success.http.fg', brightGreen)
+config.set('colors.statusbar.url.success.https.fg', brightGreen)
 
 config.set('colors.tabs.bar.bg', background)
 config.set('colors.tabs.even.bg', background)
 config.set('colors.tabs.odd.bg', background)
-config.set('colors.tabs.even.fg', color7)
-config.set('colors.tabs.odd.fg', color7)
-config.set('colors.tabs.indicator.start', color0)
-config.set('colors.tabs.indicator.error', color1)
-config.set('colors.tabs.indicator.stop', color14)
-config.set('colors.tabs.selected.even.bg', color6)
-config.set('colors.tabs.selected.odd.bg', color6)
+config.set('colors.tabs.even.fg', white)
+config.set('colors.tabs.odd.fg', white)
+config.set('colors.tabs.indicator.start', black)
+config.set('colors.tabs.indicator.error', red)
+config.set('colors.tabs.indicator.stop', brightMagenta)
+config.set('colors.tabs.selected.even.bg', cyan)
+config.set('colors.tabs.selected.odd.bg', cyan)
 config.set('colors.tabs.selected.even.fg', background)
 config.set('colors.tabs.selected.odd.fg', background)
-config.set('colors.tabs.pinned.even.bg', color8)
-config.set('colors.tabs.pinned.odd.bg', color8)
+config.set('colors.tabs.pinned.even.bg', brightBlack)
+config.set('colors.tabs.pinned.odd.bg', brightBlack)
 config.set('colors.tabs.pinned.even.fg', foreground)
 config.set('colors.tabs.pinned.odd.fg', foreground)
-config.set('colors.tabs.pinned.selected.even.bg', color5)
-config.set('colors.tabs.pinned.selected.odd.bg', color5)
+config.set('colors.tabs.pinned.selected.even.bg', magenta)
+config.set('colors.tabs.pinned.selected.odd.bg', magenta)
 config.set('colors.tabs.pinned.selected.even.fg', foreground)
 config.set('colors.tabs.pinned.selected.odd.fg', foreground)
 
@@ -219,6 +218,7 @@ config.set('fonts.web.family.standard', 'monospace')
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     '!apk': 'https://pkgs.alpinelinux.org/packages?name={}&branch=edge&repo=&arch=x86_64&origin=&flagged=&maintainer=',
+    '!dpkg': 'https://packages.debian.org/search?keywords={}',
     '!cb': "https://codeberg.org/search?q={}",
     '!gh': 'https://github.com/search?o=desc&q={}&s=stars',
     '!yt': 'https://www.youtube.com/results?search_query={}',
