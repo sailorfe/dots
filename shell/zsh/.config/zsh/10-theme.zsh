@@ -8,6 +8,8 @@ esac
 # source theme generated from json
 source "$HOME/.config/themes/generated/$THEME.sh"
 
+source "$HOME/.config/themes/$THEME.conf"
+
 # create theme color function
 theme_color() {
   local varname="COLOR_$1"
