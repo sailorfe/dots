@@ -177,3 +177,4 @@ most of the scripts in the `bin` package are for sway, swaybar, wmenu, and make 
 these configs and scripts are released with [the unlicense](https://unlicense.org) / [kopimi](https://kopimi.com).
 
 ![kopimi](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Kopimi_k.svg/250px-Kopimi_k.svg.png)
+# trigger
