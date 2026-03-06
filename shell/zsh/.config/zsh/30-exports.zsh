@@ -1,9 +1,6 @@
 # paths; also used for bashrc
 source $HOME/.profile
 
-# idk i don't actually use this
-export ME="$(logname)"
-
 # create $HOSTNAME because $HOST is elusive sometimes
 case "$HOST" in
   goingmerry) export HOSTNAME=merrygo ;;

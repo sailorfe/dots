@@ -18,7 +18,7 @@ theme_color() {
 
 # change background when ssh'd(!)
 if [[ -n $SSH_CONNECTION ]]; then
-  echo -ne "\033]11;$(COLOR_BACKGROUND)\007"
+  echo -ne "\033]11;$COLOR_BACKGROUND\007"
 fi
 
 trap 'echo -ne "\033]111\007"' EXIT
