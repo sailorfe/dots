@@ -23,7 +23,7 @@ personal config files for python development and writing across [debian 13](http
 
 ## installation
 
-there are three `setup-*.sh` scripts at the root of this repository with the optional flags `--sway`, `--homedir`, and for termux only, `--syncthing`. without an argument, they install base packages for shell functionality. each script has usage comments at the top.
+there are three `setup-*.sh` scripts at the root of this repository with the optional flags `--sway`, `--dotfiles`, `--laptop`, and for termux only, `--syncthing`. without an argument, they install base packages for shell functionality. each script has usage comments at the top.
 
 but, to install these dotfiles manually, you'll need [**git**](https://git-scm.com) and [**gnu stow**](https://www.gnu.org/software/stow).
 
@@ -42,13 +42,13 @@ mkdir -p .local/state/{bash,zsh}
 # clone and stow
 git clone https://codeberg.org/sailorfe/dots.git p/dots
 
-cd p/dots &&
-    # common packages
-    stow -t ~ bin git nvim ssh themes tmux vim zsh &&
-    # gui packages
-    stow -t ~ beets foot mako qutebrowser sway swaylock wmenu &&
-    # media packages
-    stow -t ~ mpd mpv ncmpcpp zathura
+cd p/dots
+# common packages
+stow -t ~ bin git nvim ssh themes tmux vim zsh
+# gui packages
+stow -t ~ foot mako qutebrowser sway swaylock wmenu
+# media packages
+stow -t ~ beets mpd mpv ncmpcpp zathura
 
 # set zsh home (alpine 3.23 preconfigures this)
 # debian: sudo echo "export ZDOTDIR='$HOME/.config/zsh'" >> /etc/zsh/zshenv
@@ -63,11 +63,11 @@ chsh -s /bin/zsh
 
 i use [zsh](https://zsh.org) as my login shell and script in [bash](https://www.gnu.org/software/bash). i don't use anything beyond `zsh-autosuggestions`, `zsh-completions`, and `zsh-syntax-highlighting`. i've made my shell config pretty much plug-and-play by hardcoding my prompts' hex codes and automating their selection by hostname with a case statement because i need at minimum three visual cues to know where tf i am.
 
-i'm trying to move away from using relying on aliases, so now all i have is `--color` and `--group-directories-first` appended to all `ls` variations. previously, i lifted a bunch of git aliases from [xero](zsh/.config/zsh/06-aliases.zsh), but they weren't helpful to me for actually intimately learning the git cli.
+i'm trying to move away from using relying on aliases, so now all i have is `--color` and `--group-directories-first` appended to all `ls` variations. previously, i lifted a bunch of git aliases from [xero](https://github.com/xero/dotfiles/blob/main/zsh/.config/zsh/06-aliases.zsh), but they weren't helpful to me for actually intimately learning the git cli.
 
 ### tmux
 
-i use tmux on machines without GUIs, so my clamshelled macbook air 2017 devbox and termux, or if i've booted one of my sway machine for just a second to do something in the tty. i also have some convoluted scripts on my desktop for opening tmux sessions with mpv, but i'm trying to make more use of sway's scratchpad for keeping terminals in the background.
+i use tmux on machines without GUIs, so my clamshelled macbook air 2017 devbox and termux, or if i've booted one of my sway machines for just a second to do something in the tty. i also have some convoluted scripts on my desktop for opening tmux sessions with mpv, but i'm trying to make more use of sway's scratchpad for keeping terminals in the background.
 
 tmux is best on the devbox where i do more prolonged python work. i will activate a virtual environment outside of tmux and then `tmux -new -s $PROJECT` in the project directory, but this rarely happens because sessions persist for days if not weeks.
 

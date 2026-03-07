@@ -1,30 +1,39 @@
-set recolor true
-set recolor-darkcolor "#000000"
-set recolor-lightcolor "#ffffff"
-set default-bg "#000000"
-set default-fg "#ffffff"
-set statusbar-bg "#000000"
-set statusbar-fg "#ffffff"
-set inputbar-bg "#000000"
-set inputbar-fg "#ffffff"
-set notification-bg "#000000"
-set notification-fg "#ffffff"
-set notification-error-bg "#000000"
-set notification-error-fg "#ffffff"
-set notification-warning-bg "#000000"
-set notification-warning-fg "#ffffff"
-set notification-font "monospace 10"
-set recolor-keephue false
-set recolor-keepsat false
-set recolor-keeplum false
-set recolor-offset "0x00000000"
-set recolor-method "hard"
-set recolor-srgb true
-set render-loading-spinner true
-set render-loading-spinner-delay 100
-set render-loading-spinner-color "#ffffff"
-set default-mode "presentation"
-set default-mode-presentation-border-width 10
-set default-mode-presentation-border-color "#ffffff"
-set default-mode-presentation-border-radius 10
-set default-mode-presentation-
+set font "Cozette 11"
+
+# luna v0.2.1 by sailorfe
+# built 2026-03-04
+# https://codeberg.org/sailorfe/luna.nvim
+
+set default-bg                  "#271B2D"
+set default-fg                  "#EAD9F2"
+
+set statusbar-fg                "#EAD9F2"
+set statusbar-bg                "#372640"
+
+set inputbar-bg                 "#483253"
+set inputbar-fg                 "#CCA3F5"
+
+set notification-bg             "#EAD9F2"
+set notification-fg             "#372640"
+
+set notification-error-bg       "#B27DE8"
+set notification-error-fg       "#372640"
+
+set notification-warning-bg     "#CCA3F5"
+set notification-warning-fg     "#372640"
+
+set highlight-color             "rgba(245, 163, 204, 0.5)"
+set highlight-active-color      "rgba(232, 125, 179, 0.5)"
+set highlight-fg                "#271B2D"
+
+set completion-bg               "#483253"
+set completion-fg               "#CCA3F5"
+
+set completion-highlight-fg     "#372640"
+set completion-highlight-bg     "#CCA3F5"
+
+set recolor-lightcolor          "#271B2D"
+set recolor-darkcolor           "#EAD9F2"
+
+set recolor                     "false"
+set recolor-keephue             "false"

@@ -13,7 +13,7 @@ bar {
 		urgent_workspace		$red	$red	$text
 		binding_mode				$accent	$accent	$surface
 	}
-	font Cozette 11
+	font pango:Cozette 11
 	position top
   status_command while ~/.config/sway/desktop.sh; do sleep 1; done
 }
