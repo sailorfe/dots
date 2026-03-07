@@ -1,34 +1,38 @@
 #!/usr/bin/env bash
-
 source "$HOME/.config/wmenu/colors.sh"
-
 WMENU_SCHEME=${WMENU_SCHEME:-"$THEME"}
 declare -n scheme="$WMENU_SCHEME"
-
 FOLDER="$HOME/d/flor"
 TERMINAL=(foot --config="$HOME/.config/foot/themes/$THEME.ini")
 EDITOR=nvim
 
-newnote() {
-  name="$(echo "" | wmenu -f 'Cozette 11' "${scheme[@]}" -p "filename ")" || exit 0
-  : "${name:=$(date +%F)}"
-  "${TERMINAL[@]}" -e "$EDITOR" "$FOLDER/notes/daily/$name.md" >/dev/null 2>&1 &
+open_note() {
+  "${TERMINAL[@]}" -e "$EDITOR" "$1" >/dev/null 2>&1 &
   disown
+}
+
+daily() {
+  open_note "$FOLDER/notes/daily/$(date -Id).md"
+}
+
+fleeting() {
+  name="$(echo "" | wmenu -f 'Cozette 11' "${scheme[@]}" -p "filename ")" || exit 0
+  [[ -z "$name" ]] && exit 0
+  open_note "$FOLDER/notes/fleeting/$name.md"
 }
 
 selected() {
   choice=$(
     {
-      echo " new note"
+      echo "☉ open daily note"
+      echo " ☽ create new note"
       find "$FOLDER" -type f -name "*.md" | sed "s|$FOLDER/||" | sort -r
-    } | wmenu -l 20 -i -f 'Cozette 11' "${scheme[@]}" -p "florilegium "
+    } | wmenu -l 20 -i -f 'Cozette 11' "${scheme[@]}" -p "notes "
   )
   case $choice in
-  " new note") newnote ;;
-  *.md)
-    "${TERMINAL[@]}" -e "$EDITOR" "$FOLDER/$choice" >/dev/null 2>&1 &
-    disown
-    ;;
+  "☉ open daily note") daily ;;
+  " ☽ create new note") fleeting ;;
+  *.md) open_note "$FOLDER/$choice" ;;
   *) exit ;;
   esac
 }
