@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# usage: sudo ./setup-debian.sh [--sway] [--homedir]
+# usage: sudo ./setup-debian.sh [--sway] [--dotfiles] [--laptop]
 
-set -e
+set -euo pipefail
 
 USERNAME="$(logname)"
 USER_HOME="/home/$USERNAME"
@@ -25,18 +25,26 @@ packages_base() {
     python3-full \
     btop ranger fastfetch \
     zip unzip \
-    zsh zsh-autosuggestions zsh-syntax-highlighting \
-    curl -fsSL https://tailscale.com/install.sh | sh \
-    sudo -u "$USERNAME" curl -LsSf https://astral.sh/uv/install.sh | sh
+    zsh zsh-autosuggestions zsh-syntax-highlighting
+
+  curl -fsSL https://tailscale.com/install.sh | sh
+  sudo -u "$USERNAME" curl -LsSf https://astral.sh/uv/install.sh | sh
+
+  mkdir -p /etc/apt/keyrings
+  curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+  echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable-v2" | tee /etc/apt/sources.list.d/syncthing.list
+  apt-get update
+  apt-get install syncthing
+  sudo -u "$USERNAME" systemctl --user enable --now syncthing
 }
 
 packages_sway() {
   echo "Installing sway + desktop extras..."
   apt install -y \
-    brightnessctl cliphist wl-clipboard \
+    cliphist wl-clipboard \
     foot sway swaybg swayidle swaylock wmenu \
     gimp grim slurp mako-notifier libnotify-bin \
-    mpd mpc mpv ncmpcpp \
+    mpd mpc mpv ncmpcpp playerctl \
     wayland-protocols wayland-utils \
     xdg-desktop-portal-wlr xwayland xwaylandvideobridge \
     fonts-3270 fonts-jetbrains-mono fonts-font-awesome fonts-unifont fonts-noto-color-emoji \
@@ -44,9 +52,16 @@ packages_sway() {
     extrepo \
     extrepo enable librewolf \
     apt install librewolf -y
+  sudo -u "$USERNAME" systemctl --user restart wireplumber pipewire pipewire-pulse
 }
 
-# only for fresh installs!
+packages_laptop() {
+  echo "Installing laptop-specific packages..."
+  apt install -y acpi brightnessctl network-manager
+  sed -i 's|managed=false|managed=true|' /etc/NetworkManager/NetworkManager.conf
+  systemctl enable NetworkManager
+  systemctl NetworkManager restart
+}
 
 zdotdir() {
   echo "export ZDOTDIR='$HOME/.config/zsh'" >>/etc/zsh/zshenv
@@ -82,12 +97,14 @@ EOF
 }
 
 install_sway=false
-setup_homedir=false
+clone_dotfiles=false
+setup_laptop=false
 
 for arg in "$@"; do
   case "$arg" in
   --sway) install_sway=true ;;
-  --homedir) setup_homedir=true ;;
+  --dotfiles) clone_dotfiles=true ;;
+  --laptop) setup_laptop=true ;;
   *)
     echo "Unknown option: $arg"
     exit 1
@@ -103,10 +120,14 @@ if [ "$install_sway" = true ]; then
   packages_sway
 fi
 
-if [ "$setup_homedir" = true ]; then
+if [ "$clone_dotfiles" = true ]; then
   zdotdir
   filetree
   stow_dotfiles
+fi
+
+if [ "$setup_laptop" = true ]; then
+  packages_laptop
 fi
 
 echo
