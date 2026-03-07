@@ -121,17 +121,10 @@ filetree() {
   echo "File tree created!"
 }
 
-stow_dotfiles() {
-  echo "Cloning and setting up dotfiles..."
+dotfiles() {
+  echo "Cloning dotfiles..."
+  echo "(stow them manually, I can't be bothered/this is really dealer's choice)"
   doas -u "$USERNAME" git -C "$USER_HOME/p" clone https://codeberg.org/sailorfe/dots.git 2>/dev/null || true
-
-  doas -u "$USERNAME" stow --adopt -d "$USER_HOME/p/dots/shell" -t "$USER_HOME" \
-    bash git nvim shell themes tmux vim zsh
-
-  if [ "$install_sway" = "true" ]; then
-    doas -u "$USERNAME" stow --adopt -d "$USER_HOME/p/dots/sway" -t "$USER_HOME" \
-      beets foot mako mpd mpv ncmpcpp qutebrowser sway swaylock wmenu
-  fi
 }
 
 install_sway=false
@@ -160,7 +153,7 @@ fi
 
 if [ "$clone_dotfiles" = "true" ]; then
   filetree
-  stow_dotfiles
+  dotfiles
 fi
 
 if [ "$setup_laptop" = "true" ]; then

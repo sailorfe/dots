@@ -40,17 +40,13 @@ zdotdir() {
 }
 
 dotfiles() {
-  echo "Cloning and stowing dotfiles..."
+  echo "Cloning dotfiles..."
   bash <<'EOF'
   cd "$HOME/p"
 
   if [ ! -d "dots" ]; then
     git clone https://codeberg.org/sailorfe.dots.git
   fi
-
-  cd dots
-
-  cd shell && stow -t "$HOME" bash git nvim shell themes tmux vim zsh
 EOF
 }
 
@@ -72,7 +68,7 @@ stow_dotfiles=false
 for arg in "$@"; do
   case "$arg" in
   --homedir) setup_homedir=true ;;
-  --dotfiles) stow_dotfiles=true ;;
+  --dotfiles) clone_dotfiles=true ;;
   --syncthing) setup_syncthing=true ;;
   *)
     echo "Unkown option: $arg"
@@ -85,7 +81,7 @@ if [ "$setup_homedir" = true ] || [ "$stow_dotfiles" = true ]; then
   filetree
 fi
 
-if [ "$stow_dotfiles" = true ]; then
+if [ "$clone_dotfiles" = true ]; then
   zdotir
   dotfiles
 fi

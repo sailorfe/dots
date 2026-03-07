@@ -65,6 +65,7 @@ packages_laptop() {
 
 zdotdir() {
   echo "export ZDOTDIR='$HOME/.config/zsh'" >>/etc/zsh/zshenv
+  chsh -s /bin/zsh "$USERNAME"
 }
 
 filetree() {
@@ -77,23 +78,10 @@ filetree() {
   echo "File tree created!"
 }
 
-stow_dotfiles() {
-  echo "Cloning and setting up dotfiles..."
-  sudo -u "$USERNAME" bash <<'EOF'
-		cd "$HOME/p"
-
-		if [ ! -d "dots" ]; then
-			git clone https://codeberg.org/sailorfe/dots.git
-		fi
-
-		cd dots
-
-		cd shell && stow -t "$HOME" bash git nvim shell themes tmux vim zsh
-
-		if [ "$1" = "true" ]; then
-			cd ../sway && stow -t "$HOME" beets foot mako mpd mpv ncmpcpp qutebrowser sway swaylock wmenu
-		fi
-EOF
+dotfiles() {
+  echo "Cloning dotfiles..."
+  echo "(stow them manually, I can't be bothered/this is really dealer's choice)"
+  sudo -u "$USERNAME" git -C "$USER_HOME/p" clone https://codeberg.org/sailorfe/dots.git 2>/dev/null || true
 }
 
 install_sway=false
@@ -123,7 +111,7 @@ fi
 if [ "$clone_dotfiles" = true ]; then
   zdotdir
   filetree
-  stow_dotfiles
+  dotfiles
 fi
 
 if [ "$setup_laptop" = true ]; then

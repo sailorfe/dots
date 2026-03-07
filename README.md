@@ -10,12 +10,12 @@ personal config files for python development and writing across [debian 13](http
 
 - [installation](#installation)
 - [shell](#shell)
-  - [tmux](#tmux)
-  - [editor(s)](#editors)
+    * [tmux](#tmux)
+    * [editor(s)](#editors)
 - [sway](#sway)
-  - [browsers](#browsers)
-  - [terminal emulator](#terminal-emulator)
-  - [fonts](#fonts)
+    * [browsers](#browsers)
+    * [terminal emulator](#terminal-emulator)
+    * [fonts](#fonts)
 - [scripts](#scripts)
 - [license](#license)
 
@@ -41,13 +41,18 @@ mkdir -p .local/state/{bash,zsh}
 
 # clone and stow
 git clone https://codeberg.org/sailorfe/dots.git p/dots
-cd p/dots/shell && stow -t ~ bash git nvim shell themes tmux vim zsh
-cd ../sway && stow -t ~ beets foot mako mpd mpv ncmpcpp qutebrowser sway swaylock wmenu
-cd .. && stow -t ~ bin
+
+cd p/dots &&
+    # common packages
+    stow -t ~ bin git nvim ssh themes tmux vim zsh &&
+    # gui packages
+    stow -t ~ beets foot mako qutebrowser sway swaylock wmenu &&
+    # media packages
+    stow -t ~ mpd mpv ncmpcpp zathura
 
 # set zsh home (alpine 3.23 preconfigures this)
 # debian: sudo echo "export ZDOTDIR='$HOME/.config/zsh'" >> /etc/zsh/zshenv
-# termux: "export ZDOTDIR='/data/data/com.termux/files/home/.config/zsh'" >> .zshenv
+# termux: echo "export ZDOTDIR='/data/data/com.termux/files/home/.config/zsh'" >> .zshenv
 
 # change shell
 chsh -s /bin/zsh
