@@ -1,27 +1,27 @@
 -- conform
 require("conform").setup({
-  formatters_by_ft = {
-    css = { "prettierd", "prettier", stop_after_first = true },
-    markdown = { "prettierd", "markdown-toc" },
-    html = { "prettierd", "prettier", stop_after_first = true },
-    htmldjango = { "prettierd", "prettier", stop_after_first = true },
-    python = { "ruff" },
-    bash = { "shfmt" },
-    lua = { "stylua" },
-  },
-  format_after_save = {
-    timeout_ms = 500,
-    lsp_format = "fallback",
-  },
+	formatters_by_ft = {
+		css = { "prettierd", "prettier", stop_after_first = true },
+		markdown = { "prettierd", "markdown-toc" },
+		html = { "prettierd", "prettier", stop_after_first = true },
+		htmldjango = { "prettierd", "prettier", stop_after_first = true },
+		python = { "ruff" },
+		bash = { "shfmt" },
+		lua = { "stylua" },
+	},
+	format_after_save = {
+		timeout_ms = 500,
+		lsp_format = "fallback",
+	},
 })
 
 -- colorizer
 require("colorizer").setup({
-  "*", -- Highlight all files, but customize some others.
-  "!markdown",
-  css = { rgb_fn = true },
-  sass = { rgb_fn = true },
-  lua = { hsl_fn = true },
+	"*", -- Highlight all files, but customize some others.
+	"!markdown",
+	css = { rgb_fn = true },
+	sass = { rgb_fn = true },
+	lua = { hsl_fn = true },
 })
 
 -- lsp
@@ -37,34 +37,34 @@ vim.lsp.enable("ruff")
 vim.lsp.enable("marksman")
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(event)
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if client and client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-    end
+	callback = function(event)
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client and client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+		end
 
-    local function map(lhs, rhs, desc)
-      vim.keymap.set("n", lhs, rhs, { buffer = event.buf, desc = desc })
-    end
-    map("gd", vim.lsp.buf.definition, "Go to definition")
-    map("gr", vim.lsp.buf.references, "Find references")
-    map("gi", vim.lsp.buf.implementation, "Go to implementation")
-    map("ds", vim.lsp.buf.document_symbol, "Document symbols")
-    map("K", vim.lsp.buf.hover, "Hover")
-    map("<C-k>", vim.lsp.buf.signature_help, "Signature help")
-    map("<leader>rn", vim.lsp.buf.rename, "Rename")
-    map("<leader>ca", vim.lsp.buf.code_action, "Code action")
-  end,
+		local function map(lhs, rhs, desc)
+			vim.keymap.set("n", lhs, rhs, { buffer = event.buf, desc = desc })
+		end
+		map("gd", vim.lsp.buf.definition, "Go to definition")
+		map("gr", vim.lsp.buf.references, "Find references")
+		map("gi", vim.lsp.buf.implementation, "Go to implementation")
+		map("ds", vim.lsp.buf.document_symbol, "Document symbols")
+		map("K", vim.lsp.buf.hover, "Hover")
+		map("<C-k>", vim.lsp.buf.signature_help, "Signature help")
+		map("<leader>rn", vim.lsp.buf.rename, "Rename")
+		map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+	end,
 })
 
 -- indent-blankline
 require("ibl").setup({
-  indent = { highlight = { "IblIndent" } },
-  scope = {
-    enabled = true,
-    highlight = { "IblScope" },
-  },
-  whitespace = { highlight = { "IblWhitespace" } },
+	indent = { highlight = { "IblIndent" } },
+	scope = {
+		enabled = true,
+		highlight = { "IblScope" },
+	},
+	whitespace = { highlight = { "IblWhitespace" } },
 })
 
 -- mason
@@ -92,12 +92,12 @@ vim.keymap.set("n", "<leader>nnp", "<cmd>NoNeckPain<cr>")
 
 -- supermaven
 require("supermaven-nvim").setup({
-  keymaps = {
-    accept_suggestion = "<Tab>",
-    clear_suggestion = "<C-]>",
-    accept_word = "<C-j>",
-  },
-  ignore_filetypes = { "markdown", "text", "csv" },
+	keymaps = {
+		accept_suggestion = "<Tab>",
+		clear_suggestion = "<C-]>",
+		accept_word = "<C-j>",
+	},
+	ignore_filetypes = { "markdown", "text", "csv" },
 })
 
 -- telescope
@@ -116,29 +116,31 @@ vim.keymap.set("n", "<leader>ft", "<cmd>Telescope live_grep<cr>", { desc = "Find
 
 -- treesitter
 require("nvim-treesitter").setup({
-  parser_install_dir = vim.fn.stdpath("data") .. "/site",
+	parser_install_dir = vim.fn.stdpath("data") .. "/site",
 })
 
 -- trouble
+require("trouble").setup()
+
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
 vim.keymap.set(
-  "n",
-  "<leader>xX",
-  "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-  { desc = "Buffer Diagnostics (Trouble)" }
+	"n",
+	"<leader>xX",
+	"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+	{ desc = "Buffer Diagnostics (Trouble)" }
 )
 vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)" })
 vim.keymap.set(
-  "n",
-  "<leader>cl",
-  "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-  { desc = "LSP Definitions / references" }
+	"n",
+	"<leader>cl",
+	"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+	{ desc = "LSP Definitions / references" }
 )
 vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
 
 -- wordcount (local plugin)
 vim.api.nvim_create_user_command("WordCount", function()
-  require("wordcount").count()
+	require("wordcount").count()
 end, {})
 vim.keymap.set("n", "<leader>wc", ":WordCount<CR>", { desc = "Word count" })
