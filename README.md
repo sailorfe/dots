@@ -10,12 +10,11 @@ personal config files for python development and writing across [debian 13](http
 
 - [installation](#installation)
 - [shell](#shell)
-    * [tmux](#tmux)
-    * [neovim](#neovim)
+- [tmux](#tmux)
+- [neovim](#neovim)
 - [sway](#sway)
-    * [browsers](#browsers)
-    * [terminal emulator](#terminal-emulator)
-    * [fonts](#fonts)
+- [browsers](#browsers)
+- [fonts](#fonts)
 - [scripts](#scripts)
 - [license](#license)
 
@@ -66,13 +65,13 @@ i use [zsh](https://zsh.org) as my login shell and script in [bash](https://www.
 
 i'm trying to move away from using relying on aliases, so now all i have is `--color` and `--group-directories-first` appended to all `ls` variations. previously, i lifted a bunch of git aliases from [xero](https://github.com/xero/dotfiles/blob/main/zsh/.config/zsh/06-aliases.zsh), but they weren't helpful to me for actually intimately learning the git cli.
 
-### tmux
+## tmux
 
 i use tmux on machines without GUIs, so my clamshelled macbook air 2017 devbox and termux, or if i've booted one of my sway machines for just a second to do something in the tty. i also have some convoluted scripts on my desktop for opening tmux sessions with mpv, but i'm trying to make more use of sway's scratchpad for keeping terminals in the background.
 
 tmux is best on the devbox where i do more prolonged python work. i will activate a virtual environment outside of tmux and then `tmux -new -s $PROJECT` in the project directory, but this rarely happens because sessions persist for days if not weeks.
 
-### neovim
+## neovim
 
 i use neovim for writing prose and code, and i do more of the former than the latter, with the combined might of [the built-in lsp](https://github.com/neovim/nvim-lspconfig) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). i made the jump to skipping a plugin manager entirely in favor of `XDG_DATA_HOME/nvim/site/pack`. i previously used [lazy](https://gitub.com/folke/lazy.nvim), but it complained about me pointing to `ssh://` as a source. i've been curious about this for a while ever since reading [WnyNotHugo's post](https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/) and managing git submodules that rely on my tailnet finally pushed me.
 
@@ -90,27 +89,10 @@ git submodule update --remote --merge
 git submodule update --init --recursive
 ```
 
-the migration from lazy to `pack/` was simple enough for me since i only have 22 plugins. the only issue i ran into was treesitter on alpine, solved by installing individual parsers from the apk repos instead of relying on nvim-treesitter. for `telescope-fzf-native`, i had to run `make` myself.
-
-- **language servers + linters**: [ty](https://docs.astral.sh/ty/features/language-server/), [clangd](https://clangd.llvm.org/), [Marksman](https://github.com/artempyanykh/marksman), [bashls](https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#neovim), [shellcheck](https://shellcheck.net), among others
-- **formatters**: [ruff](https://astral.sh/ruff), [prettierd](https://github.com/fsouza/prettierd)/[prettier](https://github.com/prettier/prettier), [shfmt](https://github.com/mvdan/sh), [markdown-toc](https://github.com/jonschlinkert/markdown-toc)
-- **notable plugins**:
-  - [bullets.vim](https://github.com/bullets-vim/bullets.vim): for the markdown-pilled
-  - [conform.nvim](https://github.com/stevearc/conform.nvim): configured to format on `:w`
-  - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): indentation guides, very important for python and yaml
-  - my own colorschemes made with [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim): [perona](https://codeberg.org/sailorfe/perona.nvim), [luna](https://codeberg.org/sailorfe/luna.nvim), [moonqueen](https://codeberg.org/sailorfe/moonqueen.nvim)
-  - [mason.nvim](https://github.com/mason-org/mason.nvim): manages language servers/linters/formatters that i find annoying to hunt down or don't want from debian repositories or other package managers. so basically anything that i can't get with `uv`
-  - [mini.nvim](https://github.com/nvim-mini/mini.nvim): comment, completion, diff, files, git, icons, notify, pairs, pick, snippets, splitjoin, surround, starter, statusline.
-  - [no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): 👵🏼
-  - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): really great for codeblocks and such
-  - [telescope.nvim](https:///github.com/nvim-telescope/telescope.nvim): tbh i mostly use this for `:Telescope lsp_document_symbols`
-  - [trouble.nvim](https://github.com/folke/trouble.nvim): diagnostics
-  - [wordcount.nvim](https://codeberg.org/saiilorfe/wordcount.nvim): my `g <C-g` workaround for ignoring fenced YAML in markdown files
-
-the structure of my actual stow nvim package is kind of crazy in order to make sure my symlinks land in the right places:
+the migration from lazy to `pack/` was simple enough for me since i only have 22 plugins. the only issue i ran into was treesitter on alpine, solved by installing individual parsers from the apk repos instead of relying on nvim-treesitter. for `telescope-fzf-native`, i had to run `make` myself. the structure of my actual stow nvim package is kind of crazy in order to make sure my symlinks land in the right places:
 
 ```sh
-dots/nvim
+.
 ├── .config
 │   └── nvim
 │       ├── ftplugin
@@ -133,10 +115,52 @@ dots/nvim
                 └── pack
                     └── plugins
                         ├── opt
+                        │   ├── bullets.vim
+                        │   ├── lush.nvim
+                        │   ├── render-markdown.nvim
+                        │   └── shipwright.nvim
                         └── start
+                            ├── conform.nvim
+                            ├── indent-blankline.nvim
+                            ├── luna.nvim
+                            ├── mason.nvim
+                            ├── mini.nvim
+                            ├── moonqueen.nvim
+                            ├── no-neck-pain.nvim
+                            ├── nvim-colorizer.lua
+                            ├── nvim-lspconfig
+                            ├── nvim-treesitter
+                            ├── perona.nvim
+                            ├── plenary.nvim
+                            ├── rose-pine
+                            ├── supermaven-nvim
+                            ├── telescope-fzf-native.nvim
+                            ├── telescope.nvim
+                            └── trouble.nvim
 ```
 
 while with lazy i had to declare and `event` for my plugin load order, the way i manage this now is differentiating between `opt` and `start`. `start` loads no matter what, while `opt` has anything i rarely use/manually toggle or which only needs to be enabled for certain filetypes. which i say coyly, but it's just markdown.
+
+### opt
+
+- [bullets.vim](https://github.com/bullets-vim/bullets.vim): for the markdown-pilled
+- [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim) for interactive colorscheme development. when i work on a colorscheme, i just run `:packadd lush.nvim` and then `:Lushify`.
+- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): really great for codeblocks and such
+
+### start
+
+- [conform.nvim](https://github.com/stevearc/conform.nvim): configured to format on `:w`
+- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): indentation guides, very important for python and yaml
+- [mason.nvim](https://github.com/mason-org/mason.nvim): manages language servers/linters/formatters that i can install without thought. the exceptions are astral's `ty` and `ruff`, and i have to manually install the musl version of `marksman` on my alpine laptop.
+- [mini.nvim](https://github.com/nvim-mini/mini.nvim): comment, completion, diff, files, git, icons, notify, pairs, pick, snippets, splitjoin, surround, starter, statusline.
+- [no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): 👵🏼
+- [telescope.nvim](https:///github.com/nvim-telescope/telescope.nvim): tbh i mostly use this for `:Telescope lsp_document_symbols`
+- [trouble.nvim](https://github.com/folke/trouble.nvim): diagnostics
+- [wordcount.nvim](https://codeberg.org/saiilorfe/wordcount.nvim): my `g <C-g` workaround for ignoring fenced YAML in markdown files
+- my colorschemes:
+  - [perona](https://codeberg.org/sailorfe/perona.nvim)
+  - [luna](https://codeberg.org/sailorfe/luna.nvim)
+  - [moonqueen](https://codeberg.org/sailorfe/moonqueen.nvim)
 
 i also keep a light `vimrc` for when any of the above feels too busy or opinionated. i have aggressively moved most vim state files to `XDG_STATE_HOME/vim`.
 
@@ -160,27 +184,25 @@ i don't toil away at ricing linux, but what i do have are three custom neovim co
 .
 ├── config
 ├── config.d
-│   ├── 00-base             => keybindings
-│   ├── 10-luna             => colorschemes
+│   ├── 00-base         => keybindings
+│   ├── 10-luna         => colorschemes
 │   ├── 10-moonqueen
 │   ├── 10-perona
-│   ├── 20-goingmerry       => device-specific workspaces
-│   └── 20-thousandsunny    => exec's user services on alpine
+│   ├── 20-merrygo      => device-specific workspaces
+│   └── 20-sunnygo      => exec's user services on alpine
 ├── desktop.sh
 └── laptop.sh
 ```
 
-where `config` is only a few lines to `include` relevant files from `config.d` in load order. `10-$PALETTE` correspond to my nvim schemes. `20-$HOSTNAME` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi.
+where `config` is actually generated from a template with `envsubst` from [gettext](https://www.gnu.org/software/gettext/). it's only a few lines to `include` relevant files from `config.d` in load order. `10-$PALETTE` correspond to my nvim schemes. `20-$HOSTNAME` differ mostly by my laptop occasionally being plugged into a 4k tv; otherwise, i give myself six workspaces and the tray at 0 and keep it more or less the same besides sending one to hdmi. i have to export `$HOSTNAME` in zsh because programs that read environmental variables can't seem to find `$HOST`.
 
-### browsers
+i have a script called `switch-theme` that runs `envsubst` for foot, sway, and mako.
+
+## browsers
 
 my browser of choice is either [qutebrowser](https://qutebrowser.org/) or [librewolf](https://librewolf.net/). qutebrowser is written and configured with python, so it's a lot of fun. i also sometime go rogue and use [w3m](https://github.com/tats/w3m).
 
-### terminal emulator
-
-i love [foot](https://codeberg.org/dnkl/foot), the default wayland terminal emulator, but i sometimes switch to [alacritty](https://alacritty.org) when utf-8 gets weird. there is config for [rio](https://rioterm.com), [ghostty](https://ghostty.org), and [wezterm](https://wezterm.org) in here, but i generally stick to foot.
-
-### fonts
+## fonts
 
 fonts are some of my greatest passions. these days i rotate between
 
