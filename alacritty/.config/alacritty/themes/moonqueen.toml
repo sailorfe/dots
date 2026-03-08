@@ -1,6 +1,6 @@
-# Moon Queen for Alacritty
-# Author: sailorfe
-# Upstream: https://codeberg.org/sailorfe/moonqueen.nvim/src/branch/main/extras/alacritty/moonqueen.toml
+# moonqueen v0.2.1 by sailorfe
+# built 2026-03-04
+# https://codeberg.org/sailorfe/moonqueen.nvim
 
 [colors.primary]
 background = "#1B1429"
@@ -8,20 +8,20 @@ foreground = "#E1D9F2"
 
 [colors.normal]
 black = "#291E3E"
-red   = "#D65C5C"
+red = "#D65C5C"
 green = "#85D65C"
 yellow = "#EBB447"
-blue  = "#5CADD6"
-magenta  = "#8F7DE8"
-cyan  = "#DB70B8"
+blue = "#5CADD6"
+magenta = "#8F7DE8"
+cyan = "#DB70B8"
 white = "#E1D9F2"
 
 [colors.bright]
 black = "#362853"
-red   = "#F0A8A8"
+red = "#F0A8A8"
 green = "#C0F0A8"
 yellow = "#FADB9E"
-blue  = "#A8D8F0"
-magenta  = "#B1A3F5"
-cyan  = "#EC93CE"
+blue = "#A8D8F0"
+magenta = "#B1A3F5"
+cyan = "#EC93CE"
 white = "#F1EBFF"
