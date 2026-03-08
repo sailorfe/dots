@@ -1,10 +1,10 @@
 local host = vim.fn.expand("$HOST")
 
 local host_themes = {
-  ["thousandsunny"] = "luna",
-  ["goingmerry"] = "perona",
-  ["minimerry"] = "moonqueen",
-  ["localhost"] = "moonqueen",
+	["thousandsunny"] = "luna",
+	["goingmerry"] = "perona",
+	["minimerry"] = "moonqueen",
+	["localhost"] = "rose-pine",
 }
 
 local theme = host_themes[host] or "habamax"

@@ -2,7 +2,8 @@
 case "$HOST" in
   goingmerry) THEME=perona ;;
   thousandsunny) THEME=luna ;;
-  *) THEME=moonqueen ;;
+  minimerry) THEME=moonqueen ;;
+  *) THEME=rose-pine ;;
 esac
 
 # source theme generated from json
