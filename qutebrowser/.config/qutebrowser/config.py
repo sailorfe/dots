@@ -15,7 +15,7 @@ palettes = {
         "cyan": "#b27de8",
         "magenta": "#e87db3",
         "white": "#b99fc6",
-        "brightBlack": "#483253",
+        "brightBlack": "#523c5d",
         "brightRed": "#fa9e9e",
         "brightGreen": "#e3fa9e",
         "brightYellow": "#fae39e",
@@ -35,7 +35,7 @@ palettes = {
         "magenta": "#d65c8d",
         "cyan": "#ed82c2",
         "white": "#896c7d",
-        "brightBlack": "#3f2735",
+        "brightBlack": "#48323f",
         "brightRed": "#f76e89",
         "brightGreen": "#e4a3f5",
         "brightYellow": "#f5a3a3",
@@ -88,20 +88,20 @@ config.set('auto_save.session', True)
 config.set('tabs.padding', {
     'bottom': 3,
     'left': 6,
-    'right': 6,
-    'top': 3
+    'right': 3,
+    'top': 6
     })
 config.set('tabs.title.format', "{audio}{private}{index} {current_title}")
 config.set('tabs.title.format_pinned', "{index} {current_title}")
-config.set('tabs.position', 'top')
+config.set('tabs.position', 'left')
 config.set('tabs.show', 'multiple')
 config.set('tabs.width', '15%')
 
 config.set('statusbar.padding', {
-    'bottom': 2,
-    'left': 4,
-    'right': 4,
-    'top': 2
+    'bottom': 3,
+    'left': 6,
+    'right': 6,
+    'top': 3
     })
 
 # colors
@@ -174,6 +174,8 @@ config.set('colors.statusbar.command.private.fg', brightWhite)
 config.set('colors.statusbar.passthrough.bg', black)
 config.set('colors.statusbar.passthrough.fg', cyan)
 config.set('colors.statusbar.progress.bg', blue)
+config.set('colors.statusbar.private.bg', brightBlack)
+config.set('colors.statusbar.private.fg', brightWhite)
 config.set('colors.statusbar.url.fg', brightMagenta)
 config.set('colors.statusbar.url.error.fg', brightRed)
 config.set('colors.statusbar.url.hover.fg', brightBlue)
