@@ -1,13 +1,7 @@
 # paths; also used for bashrc
 source $HOME/.profile
 
-# create $HOSTNAME because $HOST is elusive sometimes
-case "$(hostname)" in
-  goingmerry) export HOSTNAME=goingmerry ;;
-  thousandsunny) export HOSTNAME=thousandsunny ;;
-  localhost) export HOSTNAME=termux ;;
-  *) export HOSTNAME="$HOST" ;;
-esac
+export HOSTNAME=$(hostname)
 
 # xdg dirs
 export XDG_CACHE_HOME=$HOME/.local/cache

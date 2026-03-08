@@ -3,7 +3,7 @@
 
 # == path =====================================================================
 
-source $HOME/.profile
+source "$HOME/.profile"
 
 # == history ==================================================================
 
@@ -14,27 +14,21 @@ HISTSIZE=1000
 # == completion ===============================================================
 
 if [[ -r /usr/share/bash-completion/bash_completion ]]; then
-		source /usr/share/bash-completion/bash_completion
+  source /usr/share/bash-completion/bash_completion
 fi
 
 # == theme ====================================================================
 
 case "$HOST" in
-  goingmerry) THEME=perona ;;
-  thousandsunny) THEME=luna ;;
-  *) THEME=moonqueen ;;
+goingmerry) THEME=perona ;;
+thousandsunny) THEME=luna ;;
+*) THEME=moonqueen ;;
 esac
 
 # source theme generated from json
-source "$HOME/.config/themes/generated/$THEME.sh"
+source "$HOME/.config/themes/$THEME.sh"
 
 source "$HOME/.config/themes/$THEME.conf"
-
-# create theme color function
-theme_color() {
-  local varname="COLOR_$1"
-  echo "${(P)varname}"
-}
 
 # change background when ssh'd(!)
 if [[ -n $SSH_CONNECTION ]]; then
@@ -51,10 +45,10 @@ PS1='\[\e[96m\]\W\[\e[0m\] \\$ '
 
 # create $HOSTNAME because $HOST is elusive sometimes
 case "$HOST" in
-  goingmerry) export HOSTNAME=merrygo ;;
-  thousandsunny) export HOSTNAME=sunnygo ;;
-  localhost) export HOSTNAME=termux ;;
-  *) export HOSTNAME="$HOST" ;;
+goingmerry) export HOSTNAME=merrygo ;;
+thousandsunny) export HOSTNAME=sunnygo ;;
+localhost) export HOSTNAME=termux ;;
+*) export HOSTNAME="$HOST" ;;
 esac
 
 # xdg dirs
@@ -107,4 +101,3 @@ alias vdir='vdir --color=auto --group-directories-first'
 
 # tmux
 alias tl="tmux list-sessions"
-alias tv="tmux new -s vault -c /home/sailorfe/d/flor"
