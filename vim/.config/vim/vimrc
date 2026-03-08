@@ -48,6 +48,7 @@ call plug#end()
 filetype on
 filetype plugin on
 set background=dark
+set termguicolors
 syntax on
 
 if $HOSTNAME == 'sunnygo'
