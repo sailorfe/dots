@@ -37,7 +37,7 @@ call plug#begin(data_dir . '/plugged')
     Plug 'preservim/vim-markdown'
     Plug 'bullets-vim/bullets.vim'
     " colorschemes
-    Plug 'rose-pine/neovim', { 'as': 'rosepine' }
+    Plug 'rose-pine/vim', { 'as': 'rose-pine' }
     Plug 'https://codeberg.org/sailorfe/luna.nvim', { 'as': 'luna', 'branch': 'vim' }
     Plug 'https://codeberg.org/sailorfe/moonqueen.nvim', { 'as': 'moonqueen', 'branch': 'vim' }
     Plug 'https://codeberg.org/sailorfe/perona.nvim', { 'as': 'perona', 'branch': 'vim' }
