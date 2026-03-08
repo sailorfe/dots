@@ -51,11 +51,11 @@ set background=dark
 set termguicolors
 syntax on
 
-if $HOSTNAME == 'sunnygo'
+if $HOSTNAME == 'thousandsunny'
     colorscheme luna
-elseif $HOSTNAME == 'merrygo'
+elseif $HOSTNAME == 'goingmerry'
     colorscheme perona
-elseif $HOSTNAME == 'minimeery'
+elseif $HOSTNAME == 'minimerry'
     colorscheme moonqueen
 else
     colorscheme rosepine

@@ -8,9 +8,6 @@ set $red #d0435f
 set $accent #ed82c2
 set $light #fa9ed5
 
-# -*- terminal -*-
-set $term foot --config ~/.config/foot/themes/perona.ini
-
 # -*- wmenu -*-
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-N '$base' -n '$text' \

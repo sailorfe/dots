@@ -8,9 +8,6 @@ set $red #f87575
 set $accent #b27de8
 set $light #c99df6
 
-# -*- terminal -*-
-set $term foot --config ~/.config/foot/themes/luna.ini
-
 # -*- wmenu -*-
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-N '$base' -n '$text' \

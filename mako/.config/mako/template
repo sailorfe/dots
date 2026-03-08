@@ -13,16 +13,16 @@ default-timeout=10000
 
 # colors
 
-progress-color=source #48323F
-background-color=#261720
-text-color=#eac3da
+progress-color=source ${COLOR_BRIGHTBLACK}
+background-color=${COLOR_BACKGROUND}
+text-color=${COLOR_FOREGROUND}
 
 [urgency=normal]
-border-color=#e28d8d
+border-color=${COLOR_YELLOW}
 
 [urgency=low]
-border-color=#8DAFE2
+border-color=${COLOR_BLUE}
 
 [urgency=critical]
-border-color=#d0435f
+border-color=${COLOR_RED}
 ignore-timeout=1

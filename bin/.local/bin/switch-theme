@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+envsubst < ~/.config/sway/template > ~/.config/sway/config
+envsubst < ~/.config/foot/template.ini > ~/.config/foot/foot.ini
+envsubst < ~/.config/mako/template > ~/.config/mako/config

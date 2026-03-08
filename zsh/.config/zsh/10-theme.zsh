@@ -6,9 +6,9 @@ case "$HOST" in
   *) THEME=rose-pine ;;
 esac
 
-# source theme generated from json
-source "$HOME/.config/themes/generated/$THEME.sh"
-
+# env vars
+source "$HOME/.config/themes/$THEME.sh"
+# tty colors
 source "$HOME/.config/themes/$THEME.conf"
 
 # create theme color function
