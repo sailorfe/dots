@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "switching alacritty..."
+envsubst < ~/.config/alacritty/template.toml > ~/.config/alacritty/alacritty.toml
 echo "switching foot..."
 envsubst < ~/.config/foot/template.ini > ~/.config/foot/foot.ini
 echo "switching mako..."
