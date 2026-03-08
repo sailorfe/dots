@@ -11,7 +11,7 @@ personal config files for python development and writing across [debian 13](http
 - [installation](#installation)
 - [shell](#shell)
     * [tmux](#tmux)
-    * [editor(s)](#editors)
+    * [neovim](#neovim)
 - [sway](#sway)
     * [browsers](#browsers)
     * [terminal emulator](#terminal-emulator)
@@ -40,7 +40,8 @@ mkdir -p .config .local/{bin,cache,lib,share,state} d p m s
 mkdir -p .local/state/{bash,zsh}
 
 # clone and stow
-git clone https://codeberg.org/sailorfe/dots.git p/dots
+# recurse for neovim plugins
+git clone --recursive https://codeberg.org/sailorfe/dots.git p/dots
 
 cd p/dots
 # common packages
@@ -71,9 +72,25 @@ i use tmux on machines without GUIs, so my clamshelled macbook air 2017 devbox a
 
 tmux is best on the devbox where i do more prolonged python work. i will activate a virtual environment outside of tmux and then `tmux -new -s $PROJECT` in the project directory, but this rarely happens because sessions persist for days if not weeks.
 
-### editor(s)
+### neovim
 
-i use neovim for writing prose and code, and i do more of the former than the latter, with the combined might of [the built-in lsp](https://github.com/neovim/nvim-lspconfig) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). i manage plugins with [lazy](https://github.com/folke/lazy.nvim), but i've been curious about [forgoing a plugin manager altogether](https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/)...
+i use neovim for writing prose and code, and i do more of the former than the latter, with the combined might of [the built-in lsp](https://github.com/neovim/nvim-lspconfig) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter). i made the jump to skipping a plugin manager entirely in favor of `XDG_DATA_HOME/nvim/site/pack`. i previously used [lazy](https://gitub.com/folke/lazy.nvim), but it complained about me pointing to `ssh://` as a source. i've been curious about this for a while ever since reading [WnyNotHugo's post](https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/) and managing git submodules that rely on my tailnet finally pushed me.
+
+all lazy and other plugin managers really do is fetch remotes and place them somewhere in your runtimepath. [the lazy bootstrap](https://lazy.folke.io/installation) adds `.local/share/nvim/lazy`, for example, while vim-plug creates `.vim/plugged` unless configured otherwise. without a plugin manager, you use git directly:
+
+```sh
+# installing a new plugin
+cd p/dots/nvim/.local/share/nvim/site/pack/plugins
+git submodule add https://github.com... {opt,start}/
+
+# updating plugins
+git submodule update --remote --merge
+
+# initialize if you didn't clone this repo recursively
+git submodule update --init --recursive
+```
+
+the migration from lazy to `pack/` was simple enough for me since i only have 22 plugins. the only issue i ran into was treesitter on alpine, solved by installing individual parsers from the apk repos instead of relying on nvim-treesitter. for `telescope-fzf-native`, i had to run `make` myself.
 
 - **language servers + linters**: [ty](https://docs.astral.sh/ty/features/language-server/), [clangd](https://clangd.llvm.org/), [Marksman](https://github.com/artempyanykh/marksman), [bashls](https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#neovim), [shellcheck](https://shellcheck.net), among others
 - **formatters**: [ruff](https://astral.sh/ruff), [prettierd](https://github.com/fsouza/prettierd)/[prettier](https://github.com/prettier/prettier), [shfmt](https://github.com/mvdan/sh), [markdown-toc](https://github.com/jonschlinkert/markdown-toc)
@@ -90,34 +107,38 @@ i use neovim for writing prose and code, and i do more of the former than the la
   - [trouble.nvim](https://github.com/folke/trouble.nvim): diagnostics
   - [wordcount.nvim](https://codeberg.org/saiilorfe/wordcount.nvim): my `g <C-g` workaround for ignoring fenced YAML in markdown files
 
-i have `Space` as my leader key in part because i use [a 40% mechanical keyboard](https://codeberg.org/sailorfe/qmk-planck) that puts `\` and `|` on the same key as `'`/`"`.
-
-a fair bit of my config is geared toward writing markdown, which i've been doing in neo/vim for years before i started programming. it all relies on vim's built-in spellcheck and a Markdown `ftplugin` i've tinkered with longer than anything.
-
-i make liberal use of neovim's `runtimepath` and love squirreling stuff away in `XDG_{DATA,STATE}_HOME/nvim`.
+the structure of my actual stow nvim package is kind of crazy in order to make sure my symlinks land in the right places:
 
 ```sh
-.config/nvim
-├── ftplugin
-│   ├── markdown.lua
-│   └── python.lua
-├── init.lua
-├── lazy-lock.json
-└── lua
-    ├── core
-    │   ├── editor.lua
-    │   ├── init.lua    => load order for core
-    │   ├── keys.lua
-    │   ├── lazy.lua
-    │   ├── theme.lua
-    │   └── ui.lua
-    ├── plugins
-    │   └── {21 and four are colorschemes!}
-    └── wordcount
-        └── init.lua
+dots/nvim
+├── .config
+│   └── nvim
+│       ├── ftplugin
+│       │   ├── markdown.lua
+│       │   └── python.lua
+│       ├── init.lua
+│       ├── lua
+│       │   ├── editor.lua
+│       │   ├── keys.lua
+│       │   ├── plugins.lua
+│       │   ├── theme.lua
+│       │   ├── ui.lua
+│       │   └── wordcount
+│       │       └── init.lua
+│       └── pack -> /home/sailorfe/.local/share/nvim/site/pack
+└── .local
+    └── share
+        └── nvim
+            └── site
+                └── pack
+                    └── plugins
+                        ├── opt
+                        └── start
 ```
 
-i also keep a light `vimrc` for when any of the above feels too busy or opinionated. i have aggressively moved most vim state files to `XDG_STATE_HOME/vim`:
+while with lazy i had to declare and `event` for my plugin load order, the way i manage this now is differentiating between `opt` and `start`. `start` loads no matter what, while `opt` has anything i rarely use/manually toggle or which only needs to be enabled for certain filetypes. which i say coyly, but it's just markdown.
+
+i also keep a light `vimrc` for when any of the above feels too busy or opinionated. i have aggressively moved most vim state files to `XDG_STATE_HOME/vim`.
 
 ```sh
 .config/vim

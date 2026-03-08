@@ -1,5 +1,0 @@
-require("core.editor")
-require("core.keys")
-require("core.ui")
-require("core.lazy")
-require("core.theme")
