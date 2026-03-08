@@ -8,9 +8,6 @@ set $red #d65c5c
 set $accent #8f7de8
 set $light #b293ed
 
-# -*- terminal -*-
-set $term foot --config ~/.config/foot/themes/moonqueen.ini
-
 # -*- wmenu -*-
 set $menu wmenu-run -f 'Cozette 11' -l 12 \
 	-N '$base' -n '$text' \

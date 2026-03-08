@@ -1,0 +1,20 @@
+# -*- rose pine tty theme -*-
+export THEME_NAME=rose-pine
+export COLOR_FOREGROUND=#e0def4
+export COLOR_BACKGROUND=#191724
+export COLOR_BLACK=#26233a
+export COLOR_RED=#eb6f92
+export COLOR_GREEN=#31748f
+export COLOR_YELLOW=#f6c177
+export COLOR_BLUE=#9ccfd8
+export COLOR_MAGENTA=#c4a7e7
+export COLOR_CYAN=#ebbcba
+export COLOR_WHITE=#e0def4
+export COLOR_BRIGHT_BLACK=#47435d
+export COLOR_BRIGHT_RED=#ff98ba
+export COLOR_BRIGHT_GREEN=#5b9ab7
+export COLOR_BRIGHT_YELLOW=#ffeb9e
+export COLOR_BRIGHT_BLUE=#c5f9ff
+export COLOR_BRIGHT_MAGENTA=#eed0ff
+export COLOR_BRIGHT_CYAN=#ffe5e3
+export COLOR_BRIGHT_WHITE=#fefcff

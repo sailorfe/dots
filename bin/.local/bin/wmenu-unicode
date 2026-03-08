@@ -2,15 +2,21 @@
 # copy a unicode character to the clipboard
 set -euo pipefail
 
-source "$HOME/.config/wmenu/colors.sh"
+source "$HOME/.config/themes/init.sh"
 
-WMENU_SCHEME=${WMENU_SCHEME:-"$THEME"}
-declare -n scheme="$WMENU_SCHEME"
+WMENU_ARGS=(
+  -N "$COLOR_BACKGROUND"
+  -n "$COLOR_FOREGROUND"
+  -S "$COLOR_BRIGHT_BLACK"
+  -s "$COLOR_FOREGROUND"
+  -M "$COLOR_CYAN"
+  -m "$COLOR_BACKGROUND"
+)
 
 EMOJI_FILE="$HOME/.config/wmenu/emojis.txt"
 GLYPH_FILE="$HOME/.config/wmenu/glyphs.txt"
 
-CHOICE=$(cat "$GLYPH_FILE" "$EMOJI_FILE" | wmenu -l 20 -i -f 'Cozette 11' "${scheme[@]}" -p "unicode ")
+CHOICE=$(cat "$GLYPH_FILE" "$EMOJI_FILE" | wmenu -l 20 -i -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "unicode ")
 
 if [ -z "$CHOICE" ]; then
   exit 1

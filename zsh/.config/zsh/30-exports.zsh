@@ -2,9 +2,9 @@
 source $HOME/.profile
 
 # create $HOSTNAME because $HOST is elusive sometimes
-case "$HOST" in
-  goingmerry) export HOSTNAME=merrygo ;;
-  thousandsunny) export HOSTNAME=sunnygo ;;
+case "$(hostname)" in
+  goingmerry) export HOSTNAME=goingmerry ;;
+  thousandsunny) export HOSTNAME=thousandsunny ;;
   localhost) export HOSTNAME=termux ;;
   *) export HOSTNAME="$HOST" ;;
 esac

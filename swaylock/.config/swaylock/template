@@ -1,0 +1,31 @@
+# indicator
+# no-unlock-indicator
+# daemonize
+indicator-caps-lock
+# datestr=%A
+color=${COLOR_BACKGROUND}
+font=Cozette
+font-size=26
+
+# Ring
+indicator-radius=144
+line-uses-ring
+line-color=${COLOR_BLACK}
+text-color=${COLOR_FOREGROUND}
+inside-color=${COLOR_BRIGHT_MAGENTA}
+ring-color=${COLOR_BLACK}
+text-caps-lock-color=${COLOR_BLACK}
+key-hl-color=${COLOR_MAGENTA}
+bs-hl-color=${COLOR_CYAN}
+caps-lock-bs-hl-color=${COLOR_BRIGHT_RED}
+separator-color=${COLOR_BLACK}
+layout-text-color=${COLOR_FOREGROUND}
+inside-ver-color=${COLOR_BRIGHT_BLUE}
+ring-ver-color=${COLOR_BLUE}
+inside-wrong-color=${COLOR_BRIGHT_RED}
+ring-wrong-color=${COLOR_RED}
+caps-lock-key-hl-color=${COLOR_YELLOW}
+inside-caps-lock-color=${COLOR_BRIGHT_YELLOW}
+ring-caps-lock-color=${COLOR_BRIGHT_YELLOW}
+inside-clear-color=${COLOR_BRIGHT_GREEN}
+ring-clear-color=${COLOR_GREEN}

@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
-source "$HOME/.config/wmenu/colors.sh"
-WMENU_SCHEME=${WMENU_SCHEME:-"$THEME"}
-declare -n scheme="$WMENU_SCHEME"
+set -euo pipefail
+
+source "$HOME/.config/themes/init.sh"
+
+WMENU_ARGS=(
+  -N "$COLOR_BACKGROUND"
+  -n "$COLOR_FOREGROUND"
+  -S "$COLOR_BRIGHT_BLACK"
+  -s "$COLOR_FOREGROUND"
+  -M "$COLOR_CYAN"
+  -m "$COLOR_BACKGROUND"
+)
+
 FOLDER="$HOME/d/flor"
-TERMINAL=(foot --config="$HOME/.config/foot/themes/$THEME.ini")
+TERMINAL=foot
 EDITOR=nvim
 
 open_note() {
@@ -16,7 +26,7 @@ daily() {
 }
 
 fleeting() {
-  name="$(echo "" | wmenu -f 'Cozette 11' "${scheme[@]}" -p "filename ")" || exit 0
+  name="$(echo "" | wmenu -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "filename ")" || exit 0
   [[ -z "$name" ]] && exit 0
   open_note "$FOLDER/notes/fleeting/$name.md"
 }
@@ -27,7 +37,7 @@ selected() {
       echo "☉ open daily note"
       echo " ☽ create new note"
       find "$FOLDER" -type f -name "*.md" | sed "s|$FOLDER/||" | sort -r
-    } | wmenu -l 20 -i -f 'Cozette 11' "${scheme[@]}" -p "notes "
+    } | wmenu -l 20 -i -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "notes "
   )
   case $choice in
   "☉ open daily note") daily ;;

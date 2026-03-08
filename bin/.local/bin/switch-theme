@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo "switching foot..."
+envsubst < ~/.config/foot/template.ini > ~/.config/foot/foot.ini
+echo "switching mako..."
+envsubst < ~/.config/mako/template > ~/.config/mako/config
+echo "switching sway..."
+envsubst < ~/.config/sway/template > ~/.config/sway/config
+echo "switching swaylock..."
+envsubst < ~/.config/swaylock/template > ~/.config/swaylock/config
