@@ -2,10 +2,16 @@
 # older than tarot script; doesn't take reversals
 set -euo pipefail
 
-source "$HOME/.config/wmenu/colors.sh"
+source "$HOME/.config/themes/init.sh"
 
-WMENU_SCHEME=${WMENU_SCHEME:-"$THEME"}
-declare -n scheme="$WMENU_SCHEME"
+WMENU_ARGS=(
+  -N "$COLOR_BACKGROUND"
+  -n "$COLOR_FOREGROUND"
+  -S "$COLOR_BRIGHT_BLACK"
+  -s "$COLOR_FOREGROUND"
+  -M "$COLOR_CYAN"
+  -m "$COLOR_BACKGROUND"
+)
 
 pips=(Ace Two Three Four Five Six Seven Eight Nine Ten Page Knight Queen King)
 
@@ -27,7 +33,7 @@ deck() {
 }
 
 draw() {
-  cards=$(wmenu -i -f 'Cozette 11' "${scheme[@]}" -p "tarot " <&-) || exit 0
+  cards=$(wmenu -i -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "tarot " <&-) || exit 0
   cards=${cards:=1}
   shuffle=$(shuf -e -n "$cards" "${arcana[@]}" -n 78)
   notify-send -w -t 12000 "${shuffle[@]}" -u low
