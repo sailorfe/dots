@@ -1,0 +1,69 @@
+[submodule "nvim/.config/nvim/lua/luna.nvim"]
+	path = nvim/.config/nvim/lua/luna.nvim
+	url = ssh://softserve/luna.nvim
+[submodule "nvim/.config/nvim/lua/perona.nvim"]
+	path = nvim/.config/nvim/lua/perona.nvim
+	url = ssh://softserve/perona.nvim
+[submodule "nvim/.config/nvim/lua/moonqueen.nvim"]
+	path = nvim/.config/nvim/lua/moonqueen.nvim
+	url = ssh://softserve/moonqueen.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/luna.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/luna.nvim
+	url = ssh://softserve/luna.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/perona.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/perona.nvim
+	url = ssh://softserve/perona.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/moonqueen.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/moonqueen.nvim
+	url = ssh://softserve/moonqueen.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/mini.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/mini.nvim
+	url = https://github.com/nvim-mini/mini.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/opt/render-markdown.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/opt/render-markdown.nvim
+	url = https://github.com/MeanderingProgrammer/render-markdown.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/opt/bullets.vim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/opt/bullets.vim
+	url = https://github.com/bullets-vim/bullets.vim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/indent-blankline.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/indent-blankline.nvim
+	url = https://github.com/lukas-reineke/indent-blankline.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/nvim-colorizer.lua"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/nvim-colorizer.lua
+	url = https://github.com/norcalli/nvim-colorizer.lua
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/conform.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/conform.nvim
+	url = https://github.com/stevearc/conform.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/mason.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/mason.nvim
+	url = https://github.com/mason-org/mason.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/no-neck-pain.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/no-neck-pain.nvim
+	url = https://github.com/shortcuts/no-neck-pain.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/supermaven-nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/supermaven-nvim
+	url = https://github.com/supermaven-inc/supermaven-nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/nvim-treesitter"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/trouble.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/trouble.nvim
+	url = https://github.com/folke/trouble.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/opt/lush.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/opt/lush.nvim
+	url = https://github.com/rktjmp/lush.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/opt/shipwright.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/opt/shipwright.nvim
+	url = https://github.com/rktjmp/shipwright.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/telescope.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/plenary.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/telescope-fzf-native.nvim"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/telescope-fzf-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim
