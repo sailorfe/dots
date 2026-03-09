@@ -12,3 +12,4 @@ alias vdir='vdir --color=auto --group-directories-first'
 # tmux
 alias tl="tmux list-sessions"
 alias tv="tmux new -s vault -c /home/sailorfe/d/flor"
+alias tmux="tmux -u"
