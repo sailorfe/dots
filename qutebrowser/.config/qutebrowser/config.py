@@ -12,16 +12,16 @@ palettes = {
         "green": "#d1f075",
         "yellow": "#f0d175",
         "blue": "#7db2e8",
-        "cyan": "#b27de8",
-        "magenta": "#e87db3",
+        "magenta": "#b27de8",
+        "cyan": "#e87db3",
         "white": "#b99fc6",
         "brightBlack": "#523c5d",
         "brightRed": "#fa9e9e",
         "brightGreen": "#e3fa9e",
         "brightYellow": "#fae39e",
         "brightBlue": "#a3ccf5",
-        "brightCyan": "#cca3f5",
-        "brightMagenta": "#f5a3cc",
+        "brightMagenta": "#cca3f5",
+        "brightCyan": "#f5a3cc",
         "brightWhite": "#ead9f2",
     },
     "perona": {
@@ -46,10 +46,18 @@ palettes = {
     }
 }
 
-if hostname == "thousandsunny":
-    colors = palettes["luna"]
-else:
+if hostname == "goingmerry":
     colors = palettes["perona"]
+    accent = colors["cyan"]
+    alt = colors["magenta"]
+    brightAccent = colors["brightCyan"]
+    brightAlt = colors["brightMagenta"]
+else:
+    colors = palettes["luna"]
+    accent = colors["magenta"]
+    alt = colors["cyan"]
+    brightAccent = colors["brightMagenta"]
+    brightAlt = colors["brightCyan"]
 
 background = colors["background"]
 foreground = colors["foreground"]
@@ -58,16 +66,12 @@ red = colors["red"]
 green = colors["green"]
 yellow = colors["yellow"]
 blue = colors["blue"]
-magenta = colors["magenta"]
-cyan = colors["cyan"]
 white = colors["white"]
 brightBlack = colors["brightBlack"]
 brightRed = colors["brightRed"]
 brightGreen = colors["brightGreen"]
 brightYellow = colors["brightYellow"]
 brightBlue = colors["brightBlue"]
-brightCyan = colors["brightCyan"]
-brightMagenta = colors["brightMagenta"]
 brightWhite = colors["brightWhite"]
 
 # ----------------------------------------------------------------- // settings
@@ -93,7 +97,7 @@ config.set('tabs.padding', {
     })
 config.set('tabs.title.format', "{audio}{private}{index} {current_title}")
 config.set('tabs.title.format_pinned', "{index} {current_title}")
-config.set('tabs.position', 'left')
+config.set('tabs.position', 'top')
 config.set('tabs.show', 'multiple')
 config.set('tabs.width', '15%')
 
@@ -109,14 +113,14 @@ config.set('statusbar.padding', {
 config.set('colors.completion.even.bg', background)
 config.set('colors.completion.odd.bg', background)
 config.set('colors.completion.fg', foreground)
-config.set('colors.completion.match.fg', cyan)
+config.set('colors.completion.match.fg', accent)
 config.set('colors.completion.category.bg', black)
 config.set('colors.completion.category.border.bottom', black)
 config.set('colors.completion.category.border.top', black)
 config.set('colors.completion.category.fg', foreground)
-config.set('colors.completion.item.selected.bg', brightMagenta)
-config.set('colors.completion.item.selected.border.bottom', brightMagenta)
-config.set('colors.completion.item.selected.border.top', brightMagenta)
+config.set('colors.completion.item.selected.bg', brightAlt)
+config.set('colors.completion.item.selected.border.bottom', brightAlt)
+config.set('colors.completion.item.selected.border.top', brightAlt)
 config.set('colors.completion.item.selected.fg', black)
 config.set('colors.completion.item.selected.match.fg', background)
 config.set('colors.completion.scrollbar.bg', background)
@@ -126,12 +130,12 @@ config.set('colors.contextmenu.disabled.bg', background)
 config.set('colors.contextmenu.disabled.fg', white)
 config.set('colors.contextmenu.menu.bg', background)
 config.set('colors.contextmenu.menu.fg', foreground)
-config.set('colors.contextmenu.selected.bg', magenta)
+config.set('colors.contextmenu.selected.bg', alt)
 config.set('colors.contextmenu.selected.fg', background)
 
 config.set('colors.downloads.bar.bg', background)
 config.set('colors.downloads.start.bg', foreground)
-config.set('colors.downloads.stop.bg', brightMagenta)
+config.set('colors.downloads.stop.bg', brightAlt)
 config.set('colors.downloads.start.fg', background)
 config.set('colors.downloads.stop.fg', background)
 
@@ -156,11 +160,11 @@ config.set('colors.messages.warning.fg', brightRed)
 config.set('colors.prompts.bg', black)
 config.set('colors.prompts.border', black)
 config.set('colors.prompts.fg', brightWhite)
-config.set('colors.prompts.selected.bg', brightMagenta)
+config.set('colors.prompts.selected.bg', brightAlt)
 config.set('colors.prompts.selected.fg', background)
 
 config.set('colors.statusbar.normal.bg', black)
-config.set('colors.statusbar.normal.fg', cyan)
+config.set('colors.statusbar.normal.fg', accent)
 config.set('colors.statusbar.caret.bg', black)
 config.set('colors.statusbar.caret.fg', foreground)
 config.set('colors.statusbar.caret.selection.bg', black)
@@ -172,11 +176,11 @@ config.set('colors.statusbar.command.fg', foreground)
 config.set('colors.statusbar.command.private.bg', brightBlack)
 config.set('colors.statusbar.command.private.fg', brightWhite)
 config.set('colors.statusbar.passthrough.bg', black)
-config.set('colors.statusbar.passthrough.fg', cyan)
+config.set('colors.statusbar.passthrough.fg', accent)
 config.set('colors.statusbar.progress.bg', blue)
 config.set('colors.statusbar.private.bg', brightBlack)
 config.set('colors.statusbar.private.fg', brightWhite)
-config.set('colors.statusbar.url.fg', brightMagenta)
+config.set('colors.statusbar.url.fg', brightAlt)
 config.set('colors.statusbar.url.error.fg', brightRed)
 config.set('colors.statusbar.url.hover.fg', brightBlue)
 config.set('colors.statusbar.url.warn.fg', brightYellow)
@@ -190,17 +194,17 @@ config.set('colors.tabs.even.fg', white)
 config.set('colors.tabs.odd.fg', white)
 config.set('colors.tabs.indicator.start', black)
 config.set('colors.tabs.indicator.error', red)
-config.set('colors.tabs.indicator.stop', brightMagenta)
-config.set('colors.tabs.selected.even.bg', cyan)
-config.set('colors.tabs.selected.odd.bg', cyan)
+config.set('colors.tabs.indicator.stop', brightAlt)
+config.set('colors.tabs.selected.even.bg', accent)
+config.set('colors.tabs.selected.odd.bg', accent)
 config.set('colors.tabs.selected.even.fg', background)
 config.set('colors.tabs.selected.odd.fg', background)
 config.set('colors.tabs.pinned.even.bg', brightBlack)
 config.set('colors.tabs.pinned.odd.bg', brightBlack)
 config.set('colors.tabs.pinned.even.fg', foreground)
 config.set('colors.tabs.pinned.odd.fg', foreground)
-config.set('colors.tabs.pinned.selected.even.bg', magenta)
-config.set('colors.tabs.pinned.selected.odd.bg', magenta)
+config.set('colors.tabs.pinned.selected.even.bg', alt)
+config.set('colors.tabs.pinned.selected.odd.bg', alt)
 config.set('colors.tabs.pinned.selected.even.fg', foreground)
 config.set('colors.tabs.pinned.selected.odd.fg', foreground)
 
@@ -214,14 +218,15 @@ config.set('fonts.default_size', '26px')
 config.set('fonts.web.family.fixed', 'monospace')
 config.set('fonts.web.family.sans_serif', 'sans-serif')
 config.set('fonts.web.family.serif', 'serif')
-config.set('fonts.web.family.standard', 'monospace')
+config.set('fonts.web.family.standard', 'sans-serif')
 
 # search
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-    '!apk': 'https://pkgs.alpinelinux.org/packages?name={}&branch=edge&repo=&arch=x86_64&origin=&flagged=&maintainer=',
+    '!apk': 'https://pkgs.alpinelinux.org/packages?name={}&branch=3.23&repo=&arch=x86_64&origin=&flagged=&maintainer=',
+    '!dd': 'https://devdocs.io/#q={}',
     '!dpkg': 'https://packages.debian.org/search?keywords={}',
-    '!cb': "https://codeberg.org/search?q={}",
+    '!cb': "https://codeberg.org/explore/repos?q={}",
     '!gh': 'https://github.com/search?o=desc&q={}&s=stars',
     '!yt': 'https://www.youtube.com/results?search_query={}',
     '!wiki': 'https://en.wikipedia.org/w/index.php?search={}',
