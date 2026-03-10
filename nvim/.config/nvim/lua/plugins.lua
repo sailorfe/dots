@@ -2,7 +2,6 @@
 require("conform").setup({
   formatters_by_ft = {
     css = { "prettierd" },
-    markdown = { "prettierd" },
     html = { "prettierd" },
     htmldjango = { "prettierd" },
     python = { "ruff" },
