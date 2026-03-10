@@ -1,10 +1,10 @@
 -- conform
 require("conform").setup({
 	formatters_by_ft = {
-		css = { "prettierd", "prettier", stop_after_first = true },
-		markdown = { "prettierd", "markdown-toc" },
-		html = { "prettierd", "prettier", stop_after_first = true },
-		htmldjango = { "prettierd", "prettier", stop_after_first = true },
+		css = { "prettierd" },
+		markdown = { "prettierd" },
+		html = { "prettierd" },
+		htmldjango = { "prettierd" },
 		python = { "ruff" },
 		bash = { "shfmt" },
 		lua = { "stylua" },
