@@ -5,6 +5,10 @@ set -euo pipefail
 source "$HOME/.config/themes/init.sh"
 
 WMENU_ARGS=(
+  -l 20
+  -i
+  -f 'Cozette 11'
+  -p "emojis "
   -N "$COLOR_BACKGROUND"
   -n "$COLOR_FOREGROUND"
   -S "$COLOR_BRIGHT_BLACK"
@@ -14,9 +18,8 @@ WMENU_ARGS=(
 )
 
 EMOJI_FILE="$HOME/.config/wmenu/emojis.txt"
-GLYPH_FILE="$HOME/.config/wmenu/glyphs.txt"
 
-CHOICE=$(cat "$GLYPH_FILE" "$EMOJI_FILE" | wmenu -l 20 -i -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "unicode ")
+CHOICE=$(cat "$EMOJI_FILE" | wmenu "${WMENU_ARGS[@]}")
 
 if [ -z "$CHOICE" ]; then
   exit 1

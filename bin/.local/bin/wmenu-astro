@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# copy a unicode character to the clipboard
+set -euo pipefail
+
+source "$HOME/.config/themes/init.sh"
+
+WMENU_ARGS=(
+  -l 20
+  -i
+  -f 'Cozette 11'
+  -p "astro "
+  -N "$COLOR_BACKGROUND"
+  -n "$COLOR_FOREGROUND"
+  -S "$COLOR_BRIGHT_BLACK"
+  -s "$COLOR_FOREGROUND"
+  -M "$COLOR_CYAN"
+  -m "$COLOR_BACKGROUND"
+)
+
+declare -A GLYPHS=(
+  ["moon"]="\u263d" ["sun"]="\u2609" ["mercury"]="\u263f" ["venus"]="\u2640"
+  ["mars"]="\u2642" ["jupiter"]="\u2643" ["saturn"]="\u2644" ["uranus"]="\u2645"
+  ["neptune"]="\u2646" ["pluto"]="\u2647"
+  ["aries"]="\u2648\ufe0e" ["taurus"]="\u2649\ufe0e" ["gemini"]="\u264a\ufe0e"
+  ["cancer"]="\u264b\ufe0e" ["leo"]="\u264c\ufe0e" ["virgo"]="\u264d\ufe0e"
+  ["libra"]="\u264e\ufe0e" ["scorpio"]="\u264f\ufe0e" ["sagittarius"]="\u2650\ufe0e"
+  ["capricorn"]="\u2651\ufe0e"
+  ["aquarius"]="\u2652\ufe0e" ["pisces"]="\u2653\ufe0e"
+  ["north node"]="\u260a" ["south node"]="\u260b"
+  ["conjunction"]="\u260c" ["opposition"]="\u260d"
+  ["square"]="\u25a1" ["sextile"]="\u26b9" ["trine"]="\u25b3"
+)
+
+choice=$(printf "%s\n" "${!GLYPHS[@]}" | sort | wmenu "${WMENU_ARGS[@]}")
+
+if [ -n "$choice" ]; then
+  printf "%b" "${GLYPHS[$choice]}" | wl-copy
+fi
+
+notify-send "copied to clipboard" "$(wl-paste)"

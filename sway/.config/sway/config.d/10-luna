@@ -32,6 +32,11 @@ exec swayidle -w \
 		resume 'swaymsg "output * dpms on"' \
   before-sleep 'swaylock -f -c 2c1f33'
 
+# == display =============================================================
+
+set $builtin "eDP-1"
+set $tv "HDMI-A-2"
+
 # == output ==============================================================
 
 output $builtin mode 1920x1080 bg /home/sailorfe/m/img/wall/page009-edit.jpg fill

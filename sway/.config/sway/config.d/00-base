@@ -42,7 +42,8 @@ bindsym $mod+g exec grim
 # scripts
 bindsym $mod+n exec wmenu-notes
 bindsym $mod+t exec wmenu-tarot
-bindsym $mod+u exec wmenu-unicode
+bindsym $mod+u exec wmenu-astro
+bindsym $mod+Shift+u exec wmenu-emoji
 bindsym $mod+Shift+b exec qutebrowser
 bindsym $mod+p exec wl-colorpick
 
