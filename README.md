@@ -1,3 +1,5 @@
+[perona](previews/perona.png)
+
 # dots
 
 > [!WARNING]
@@ -12,8 +14,6 @@
 - [shell](#shell)
 - [tmux](#tmux)
 - [neovim](#neovim)
-    * [opt](#opt)
-    * [start](#start)
 - [browsers](#browsers)
 - [fonts](#fonts)
 - [scripts](#scripts)
@@ -124,14 +124,18 @@ all lazy and other plugin managers really do is fetch remotes and place them som
 
 ```sh
 # installing a new plugin
-cd p/dots/nvim/.local/share/nvim/site/pack/plugins
-git submodule add https://github.com... {opt,start}
+cd p/dots/nvim/.local/share/nvim/site/pack/plugins/..
+git submodule add https://github.com..
 
 # updating plugins
 git submodule update --remote --merge
 
 # initialize if you didn't clone this repo recursively
 git submodule update --init --recursive
+
+# remove plugins
+git submodule deinit -f nvim/.local/share/nvim/site/pack/plugins..
+git rm -f nvim/.local/share/nvim/site/pack/plugins..
 ```
 
 the migration from lazy to `pack/` was simple enough for me since i only have 22 plugins. the only issue i ran into was treesitter on alpine, solved by installing individual parsers from the apk repos instead of relying on nvim-treesitter. for `telescope-fzf-native`, i had to run `make` myself. the structure of my actual stow nvim package is kind of crazy in order to make sure my symlinks land in the right places:
@@ -186,26 +190,23 @@ the migration from lazy to `pack/` was simple enough for me since i only have 22
 
 while with lazy i had to declare an `event` for my plugin load order, the way i manage this now is differentiating between `opt` and `start`. `start` loads no matter what, while `opt` has anything i rarely use/manually toggle or which only need to be enabled for certain filetypes. which i say coyly, but it's just markdown.
 
-### opt
-
-- [bullets.vim](https://github.com/bullets-vim/bullets.vim): for the markdown-pilled
-- [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim) for interactive colorscheme development. when i work on a colorscheme, i just run `:packadd lush.nvim` and then `:Lushify`.
-- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): really great for codeblocks and such
-
-### start
-
-- [conform.nvim](https://github.com/stevearc/conform.nvim): configured to format on `:w`
-- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): indentation guides, very important for python and yaml
-- [mason.nvim](https://github.com/mason-org/mason.nvim): manages language servers/linters/formatters that i can install without thought. the exceptions are astral's `ty` and `ruff`, and i have to manually install the musl version of `marksman` on my alpine laptop.
-- [mini.nvim](https://github.com/nvim-mini/mini.nvim): comment, completion, diff, files, git, icons, notify, pairs, pick, snippets, splitjoin, surround, starter, statusline.
-- [no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): 👵🏼
-- [telescope.nvim](https:///github.com/nvim-telescope/telescope.nvim): tbh i mostly use this for `:Telescope lsp_document_symbols`
-- [trouble.nvim](https://github.com/folke/trouble.nvim): diagnostics
-- [wordcount.nvim](https://codeberg.org/saiilorfe/wordcount.nvim): my `g <C-g>` workaround for ignoring fenced YAML in markdown files
-- my colorschemes:
-  - [perona](https://codeberg.org/sailorfe/perona.nvim)
-  - [luna](https://codeberg.org/sailorfe/luna.nvim)
-  - [moonqueen](https://codeberg.org/sailorfe/moonqueen.nvim)
+- opt:
+  - [bullets.vim](https://github.com/bullets-vim/bullets.vim): for the markdown-pilled
+  - [lush.nvim](https://github.com/rktjmp/lush.nvim) and [shipwright.nvim](https://github.com/rktjmp/shipwright.nvim) for interactive colorscheme development. when i work on a colorscheme, i just run `:packadd lush.nvim` and then `:Lushify`.
+  - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): really great for code blocks and such
+- start:
+  - [conform.nvim](https://github.com/stevearc/conform.nvim): configured to format on `:w`
+  - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim): indentation guides, very important for python and yaml
+  - [mason.nvim](https://github.com/mason-org/mason.nvim): manages language servers/linters/formatters that i can install without thought. the exceptions are astral's `ty` and `ruff`, and i have to manually install the musl version of `marksman` on my alpine laptop.
+  - [mini.nvim](https://github.com/nvim-mini/mini.nvim): comment, completion, diff, files, git, icons, notify, pairs, pick, snippets, splitjoin, surround, starter, statusline.
+  - [no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): 👵🏼
+  - [telescope.nvim](https:///github.com/nvim-telescope/telescope.nvim): tbh i mostly use this for `:Telescope lsp_document_symbols`
+  - [trouble.nvim](https://github.com/folke/trouble.nvim): diagnostics
+  - [wordcount.nvim](https://codeberg.org/saiilorfe/wordcount.nvim): my `g <C-g>` workaround for ignoring fenced YAML in markdown files
+  - my colorschemes:
+    - [perona](https://codeberg.org/sailorfe/perona.nvim)
+    - [luna](https://codeberg.org/sailorfe/luna.nvim)
+    - [moonqueen](https://codeberg.org/sailorfe/moonqueen.nvim)
 
 i also keep a light `vimrc` for when any of the above feels too busy or opinionated. i have aggressively moved most vim state files to `XDG_STATE_HOME/vim`.
 
@@ -237,8 +238,15 @@ most of the scripts in the `bin` package are for sway, swaybar, wmenu, and make 
 
 - `battery-alert`: for alpine laptop, requires `elogind` as a boot service.
 - `player-status`: displays audio/video player information as plain text for swaybar. requires playerctl and mpd-mpris.
+- `pubkey`: copies my public ssh key to the wayland clipboard.
 - `switch-theme`: as discussed in [colors](#colors), it relies on [gnu gettext](https://www.gnu.org/software/gettext/)'s `envsubst` command.
 - `wl-colorpick`: hex code picker for wayland. depends on grim, slurp, imagemagick, libnotify + a notification daemon.
+- several wmenu scripts:
+    * `wmenu-astro` copies unicode characters (primarily astrological glyphs) to the wayland clipboard. this is for when i'm on my laptop and without [my mechanical keyboard](https://codeberg.org/sailorfe/qmk-planck). 
+    * `wmenu-custom` is just `wmenu-run` with all my color-conscious flags from the `wmenu` package so it's portable across scripts.
+    * `wmenu-emoji` does the same for emojis. this script kind of sucks because it slowly pipes in an `emojis.txt`.
+    * `wmenu-notes` helps me quickly hop into my notes vault.
+    * `wmenu-tarot` is old, the first version of my [hello, world tarot bash script](https://codeberg.org/sailorfe/tarot) without reversals.
 
 ## license
 
