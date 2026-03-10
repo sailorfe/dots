@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+wl-copy < ".ssh/id_ed25519.pub"
+
+notify-send "pubkey" "id_ed25519.pub copied to clipboard"

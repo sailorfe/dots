@@ -8,13 +8,6 @@ set $red #d65c5c
 set $accent #8f7de8
 set $light #b293ed
 
-# -*- wmenu -*-
-set $menu wmenu-run -f 'Cozette 11' -l 12 \
-	-N '$base' -n '$text' \
-	-M '$accent' -m '$base' \
-	-S '$overlay' -s '$text' \
-	-p 'wmenu '
-
 # -*- windows -*-
 #												border	  bg			  fg		indicator		child_border
 client.focused          $accent	  $accent	  $base $accent	    $accent

@@ -4,18 +4,7 @@ set -euo pipefail
 
 source "$HOME/.config/themes/init.sh"
 
-WMENU_ARGS=(
-  -l 20
-  -i
-  -f 'Cozette 11'
-  -p "astro "
-  -N "$COLOR_BACKGROUND"
-  -n "$COLOR_FOREGROUND"
-  -S "$COLOR_BRIGHT_BLACK"
-  -s "$COLOR_FOREGROUND"
-  -M "$COLOR_CYAN"
-  -m "$COLOR_BACKGROUND"
-)
+source "$HOME/.config/wmenu/args.sh"
 
 declare -A GLYPHS=(
   ["moon"]="\u263d" ["sun"]="\u2609" ["mercury"]="\u263f" ["venus"]="\u2640"
@@ -31,7 +20,7 @@ declare -A GLYPHS=(
   ["square"]="\u25a1" ["sextile"]="\u26b9" ["trine"]="\u25b3"
 )
 
-choice=$(printf "%s\n" "${!GLYPHS[@]}" | sort | wmenu "${WMENU_ARGS[@]}")
+choice=$(printf "%s\n" "${!GLYPHS[@]}" | sort | wmenu "${WMENU_ARGS[@]}" -p "astro ")
 
 if [ -n "$choice" ]; then
   printf "%b" "${GLYPHS[$choice]}" | wl-copy

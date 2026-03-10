@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source "$HOME/.config/wmenu/args.sh"
+
+wmenu-run "${WMENU_ARGS[@]}" -p "run "

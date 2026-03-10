@@ -185,9 +185,6 @@
 🗯 E0.7 right anger bubble
 💭 E1.0 thought balloon
 💤 E0.6 ZZZ
-Smileys & Emotion subtotal:		187
-Smileys & Emotion subtotal:		187	w/o modifiers
-group: People & Body
 👋 E0.6 waving hand
 👋🏻 E1.0 waving hand: light skin tone
 👋🏼 E1.0 waving hand: medium-light skin tone
@@ -3656,8 +3653,6 @@ group: People & Body
 🧑‍🧒‍🧒 E15.1 family: adult, child, child
 👣 E0.6 footprints
 🫆 E16.0 fingerprint
-People & Body subtotal:		3468
-People & Body subtotal:		563	w/o modifiers
 🏻 E1.0 light skin tone
 🏼 E1.0 medium-light skin tone
 🏽 E1.0 medium skin tone
@@ -3667,8 +3662,6 @@ People & Body subtotal:		563	w/o modifiers
 🦱 E11.0 curly hair
 🦳 E11.0 white hair
 🦲 E11.0 bald
-Component subtotal:		4	w/o modifiers
-group: Animals & Nature
 🐵 E0.6 monkey face
 🐒 E0.6 monkey
 🦍 E3.0 gorilla
@@ -3836,9 +3829,6 @@ group: Animals & Nature
 🪺 E14.0 nest with eggs
 🍄 E0.6 mushroom
 🪾 E16.0 leafless tree
-Animals & Nature subtotal:		167
-Animals & Nature subtotal:		167	w/o modifiers
-group: Food & Drink
 🍇 E0.6 grapes
 🍈 E0.6 melon
 🍉 E0.6 watermelon
@@ -3972,9 +3962,6 @@ group: Food & Drink
 🔪 E0.6 kitchen knife
 🫙 E14.0 jar
 🏺 E1.0 amphora
-Food & Drink subtotal:		133
-Food & Drink subtotal:		133	w/o modifiers
-group: Travel & Places
 🌍 E0.7 globe showing Europe-Africa
 🌎 E0.7 globe showing Americas
 🌏 E0.6 globe showing Asia-Australia
@@ -4178,7 +4165,6 @@ group: Travel & Places
 🕥 E0.7 ten-thirty
 🕚 E0.6 eleven o’clock
 🕦 E0.7 eleven-thirty
-subgroup: sky & weather
 🌑 E0.6 new moon
 🌒 E1.0 waxing crescent moon
 🌓 E0.6 first quarter moon
@@ -4244,8 +4230,6 @@ subgroup: sky & weather
 🔥 E0.6 fire
 💧 E0.6 droplet
 🌊 E0.6 water wave
-Travel & Places subtotal:		268
-Travel & Places subtotal:		268	w/o modifiers
 🎃 E0.6 jack-o-lantern
 🎄 E0.6 Christmas tree
 🎆 E0.6 fireworks
@@ -4334,7 +4318,6 @@ Travel & Places subtotal:		268	w/o modifiers
 🃏 E0.6 joker
 🀄 E0.6 mahjong red dragon
 🎴 E0.6 flower playing cards
-subgroup: arts & crafts
 🎭 E0.6 performing arts
 🖼️ E0.7 framed picture
 🖼 E0.7 framed picture
@@ -4343,7 +4326,6 @@ subgroup: arts & crafts
 🪡 E13.0 sewing needle
 🧶 E11.0 yarn
 🪢 E13.0 knot
-Activities subtotal:		96	w/o modifiers
 👓 E0.6 glasses
 🕶️ E0.7 sunglasses
 🕶 E0.7 sunglasses
@@ -4454,7 +4436,6 @@ Activities subtotal:		96	w/o modifiers
 💿 E0.6 optical disk
 📀 E0.6 dvd
 🧮 E11.0 abacus
-subgroup: light & video
 🎥 E0.6 movie camera
 🎞️ E0.7 film frames
 🎞 E0.7 film frames
@@ -4661,7 +4642,6 @@ subgroup: light & video
 🗿 E0.6 moai
 🪧 E13.0 placard
 🪪 E14.0 identification card
-Objects subtotal:		316	w/o modifiers
 🏧 E0.6 ATM sign
 🚮 E1.0 litter in bin sign
 🚰 E1.0 potable water
@@ -4967,7 +4947,6 @@ Objects subtotal:		316	w/o modifiers
 🔘 E0.6 radio button
 🔳 E0.6 white square button
 🔲 E0.6 black square button
-Symbols subtotal:		305	w/o modifiers
 🏁 E0.6 chequered flag
 🚩 E0.6 triangular flag
 🎌 E0.6 crossed flags
@@ -5244,8 +5223,3 @@ Symbols subtotal:		305	w/o modifiers
 🏴󠁧󠁢󠁥󠁮󠁧󠁿 E5.0 flag: England
 🏴󠁧󠁢󠁳󠁣󠁴󠁿 E5.0 flag: Scotland
 🏴󠁧󠁢󠁷󠁬󠁳󠁿 E5.0 flag: Wales
-Flags subtotal:		276	w/o modifiers
-fully-qualified : 3944
-minimally-qualified : 1029
-unqualified : 243
-component : 9

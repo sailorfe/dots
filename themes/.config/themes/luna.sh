@@ -1,5 +1,6 @@
 #!/bin/sh
 export THEME_NAME=luna
+export THEME_ALIAS="Luna"
 export COLOR_BACKGROUND=#271B2D 
 export COLOR_FOREGROUND=#EAD9F2 
 export COLOR_BLACK=#372640

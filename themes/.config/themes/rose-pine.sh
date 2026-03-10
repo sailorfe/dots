@@ -1,5 +1,6 @@
 # -*- rose pine tty theme -*-
 export THEME_NAME=rose-pine
+export THEME_ALIAS="Rose Pine"
 export COLOR_FOREGROUND=#e0def4
 export COLOR_BACKGROUND=#191724
 export COLOR_BLACK=#26233a

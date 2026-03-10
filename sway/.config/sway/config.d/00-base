@@ -14,6 +14,7 @@ set $ws5 workspace 5
 set $ws6 workspace 6
 
 set $term foot
+set $menu wmenu-custom
 
 # == output ================================================================
 
@@ -43,7 +44,7 @@ bindsym $mod+g exec grim
 bindsym $mod+n exec wmenu-notes
 bindsym $mod+t exec wmenu-tarot
 bindsym $mod+u exec wmenu-astro
-bindsym $mod+Shift+u exec wmenu-emoji
+bindsym $mod+m exec wmenu-emoji
 bindsym $mod+Shift+b exec qutebrowser
 bindsym $mod+p exec wl-colorpick
 

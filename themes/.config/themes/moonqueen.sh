@@ -1,5 +1,6 @@
 #!/bin/sh
 export THEME_NAME=moonqueen
+export THEME_ALIAS="Moon Queen"
 export COLOR_BACKGROUND=#1B1429 
 export COLOR_FOREGROUND=#E1D9F2 
 export COLOR_BLACK=#291E3E

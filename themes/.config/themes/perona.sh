@@ -1,5 +1,6 @@
 #!/bin/sh
 export THEME_NAME=perona
+export THEME_ALIAS="Perona"
 export COLOR_BACKGROUND=#261720 
 export COLOR_FOREGROUND=#EAC3DA 
 export COLOR_BLACK=#331F2B

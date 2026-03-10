@@ -3,15 +3,7 @@
 set -euo pipefail
 
 source "$HOME/.config/themes/init.sh"
-
-WMENU_ARGS=(
-  -N "$COLOR_BACKGROUND"
-  -n "$COLOR_FOREGROUND"
-  -S "$COLOR_BRIGHT_BLACK"
-  -s "$COLOR_FOREGROUND"
-  -M "$COLOR_CYAN"
-  -m "$COLOR_BACKGROUND"
-)
+source "$HOME/.config/wmenu/args.sh"
 
 pips=(Ace Two Three Four Five Six Seven Eight Nine Ten Page Knight Queen King)
 

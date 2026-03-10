@@ -10,3 +10,7 @@ echo "switching sway..."
 envsubst < ~/.config/sway/template > ~/.config/sway/config
 echo "switching swaylock..."
 envsubst < ~/.config/swaylock/template > ~/.config/swaylock/config
+echo "switching wezterm..."
+envsubst < ~/.config/wezterm/template.lua > ~/.config/wezterm/wezterm.lua
+
+notify-send "switch theme" "$THEME_NAME"
