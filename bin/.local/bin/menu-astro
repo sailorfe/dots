@@ -2,9 +2,7 @@
 # copy a unicode character to the clipboard
 set -euo pipefail
 
-source "$HOME/.config/themes/init.sh"
-
-source "$HOME/.config/wmenu/args.sh"
+source "$HOME/.config/bemenu/args.sh"
 
 declare -A GLYPHS=(
   ["moon"]="\u263d" ["sun"]="\u2609" ["mercury"]="\u263f" ["venus"]="\u2640"
@@ -18,9 +16,10 @@ declare -A GLYPHS=(
   ["north node"]="\u260a" ["south node"]="\u260b"
   ["conjunction"]="\u260c" ["opposition"]="\u260d"
   ["square"]="\u25a1" ["sextile"]="\u26b9" ["trine"]="\u25b3"
+  ["— em dash"]="\u2014" ["– en dash"]="\u2013"
 )
 
-choice=$(printf "%s\n" "${!GLYPHS[@]}" | sort | wmenu "${WMENU_ARGS[@]}" -p "astro ")
+choice=$(printf "%s\n" "${!GLYPHS[@]}" | sort | bemenu "${BEMENU_ARGS[@]}" -p "astro")
 
 if [ -n "$choice" ]; then
   printf "%b" "${GLYPHS[$choice]}" | wl-copy

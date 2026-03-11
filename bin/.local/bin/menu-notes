@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source "$HOME/.config/themes/init.sh"
-source "$HOME/.config/wmenu/args.sh"
+source "$HOME/.config/bemenu/args.sh"
 
 FOLDER="$HOME/d/flor"
 TERMINAL=foot
@@ -18,7 +17,7 @@ daily() {
 }
 
 fleeting() {
-  name="$(echo "" | wmenu -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "filename ")" || exit 0
+  name="$(echo "" | bemenu -f 'Cozette 11' "${BEMENU_ARGS[@]}" -p "filename ")" || exit 0
   [[ -z "$name" ]] && exit 0
   open_note "$FOLDER/notes/fleeting/$name.md"
 }
@@ -29,7 +28,7 @@ selected() {
       echo "☉ open daily note"
       echo " ☽ create new note"
       find "$FOLDER" -type f -name "*.md" | sed "s|$FOLDER/||" | sort -r
-    } | wmenu -l 20 -i -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "notes "
+    } | bemenu -l 20 -i -f 'Cozette 11' "${BEMENU_ARGS[@]}" -p "notes"
   )
   case $choice in
   "☉ open daily note") daily ;;

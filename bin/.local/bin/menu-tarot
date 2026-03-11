@@ -2,8 +2,7 @@
 # older than tarot script; doesn't take reversals
 set -euo pipefail
 
-source "$HOME/.config/themes/init.sh"
-source "$HOME/.config/wmenu/args.sh"
+source "$HOME/.config/bemenu/args.sh"
 
 pips=(Ace Two Three Four Five Six Seven Eight Nine Ten Page Knight Queen King)
 
@@ -25,10 +24,10 @@ deck() {
 }
 
 draw() {
-  cards=$(wmenu -i -f 'Cozette 11' "${WMENU_ARGS[@]}" -p "tarot " <&-) || exit 0
-  cards=${cards:=1}
-  shuffle=$(shuf -e -n "$cards" "${arcana[@]}" -n 78)
-  notify-send -w -t 12000 "${shuffle[@]}" -u low
+  cards=$(echo "" | bemenu -i -f 'Cozette 11' "${BEMENU_ARGS[@]}" -p "tarot") || exit 0
+  cards=${cards:-1}
+  shuffle=$(shuf -e "${arcana[@]}" | head -n "$cards")
+  notify-send -w -t 12000 "Tarot" "$shuffle" -u low
 }
 
 deck

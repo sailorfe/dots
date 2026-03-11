@@ -2,12 +2,10 @@
 # copy a unicode character to the clipboard
 set -euo pipefail
 
-source "$HOME/.config/themes/init.sh"
+source "$HOME/.config/bemenu/args.sh"
 
-source "$HOME/.config/wmenu/args.sh"
-
-EMOJI_FILE="$HOME/.config/wmenu/emojis.txt"
-FREQ_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/wmenu/emoji-freq.tsv"
+EMOJI_FILE="$HOME/.config/bemenu/emojis.txt"
+FREQ_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/bemenu/emoji-freq.tsv"
 mkdir -p "$(dirname "$FREQ_FILE")"
 
 CHOICE=$(
@@ -16,14 +14,13 @@ CHOICE=$(
     comm -23 \
       <(sort "$EMOJI_FILE") \
       <([ -f "$FREQ_FILE" ] && sort -k2 "$FREQ_FILE" | awk '{print $2}' | sort || true)
-  } | wmenu "${WMENU_ARGS[@]}" -p "emoji "
+  } | bemenu "${BEMENU_ARGS[@]}" -p "emoji"
 )
 
 if [ -n "$CHOICE" ]; then
   entry=$(awk -v c="$CHOICE" '$2==c{print $1+1"\t"$2; found=1} $2!=c{print} END{if(!found) print "1\t"c}' "$FREQ_FILE" 2>/dev/null || echo "1	$CHOICE")
-  echo "$entry" > "$FREQ_FILE"
+  echo "$entry" >"$FREQ_FILE"
 fi
-
 
 if [ -z "$CHOICE" ]; then
   exit 1

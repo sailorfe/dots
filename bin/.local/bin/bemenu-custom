@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+source "$HOME/.config/themes/init.sh"
+source "$HOME/.config/bemenu/args.sh"
+
+bemenu-run "${BEMENU_ARGS[@]}" -p "run"
