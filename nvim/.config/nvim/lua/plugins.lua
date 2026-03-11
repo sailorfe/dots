@@ -25,7 +25,7 @@ require("colorizer").setup({
 
 -- lsp
 vim.lsp.enable("bashls")
-vim.lsp.enable("lua_ls")
+vim.lsp.enable("lua_ls") -- musl seemingly unsupported
 vim.lsp.enable("html")
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
