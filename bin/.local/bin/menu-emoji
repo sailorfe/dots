@@ -4,7 +4,7 @@ set -euo pipefail
 
 source "$HOME/.config/bemenu/args.sh"
 
-EMOJI_FILE="$HOME/.config/wmenu/emojis.txt"
+EMOJI_FILE="$HOME/.config/bemenu/emojis.txt"
 FREQ_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/bemenu/emoji-freq.tsv"
 mkdir -p "$(dirname "$FREQ_FILE")"
 
