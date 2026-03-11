@@ -31,7 +31,7 @@ though i welcome contributions loudly and in great detail, in practice i am a so
 - **laptop** (thousandsunny): lenovo thinkpad t480s, alpine 3.23
 - **phone** (termux): whatever the budget galaxy model is, termux from f-droid. this thing primarily moves files.
 
-the devbox hosts a simple [soft serve](https://github.com/charmbracelet/soft-serve) instance as a `systemd` service on my user account. for most of my personal projects, their origin is a bare repository in my `SOFT_SERVE_DATA_PATH`, which pushes to public hosts (codeberg and github) with [post-receive hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). this architecture is perhaps overkill, but considering the social reality of essentially hermeticism, i'm happy pushing and pulling at the speed of LAN.
+the devbox hosts a simple [soft serve](https://github.com/charmbracelet/soft-serve) instance as a `systemd` service on my user account. for most of my personal projects, their origin is a bare repository in my `SOFT_SERVE_DATA_PATH`, which pushes to public hosts (codeberg and github) with [post-receive hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). this architecture is perhaps overkill, but considering the social reality of essentially anchoritism, i'm happy pushing and pulling at the speed of LAN.
 
 in general, i love the [XDG base directory specification](https://specifications.freedesktop.org/basedir/latest/). my user directories all look like
 
@@ -269,11 +269,10 @@ most of the scripts in the `bin` package are for sway, swaybar, [bemenu](https:/
 - `switch-theme`: as discussed in [colors](#colors), it relies on [gnu gettext](https://www.gnu.org/software/gettext/)'s `envsubst` command.
 - `wl-colorpick`: hex code picker for wayland. depends on grim, slurp, imagemagick, libnotify + a notification daemon.
 - several bemenu scripts:
-    * `menu-custom` is just `wmenu-run` with all my color-conscious flags from the `bemenu` package so it's portable across scripts.
-    * `menu-astro` copies unicode characters (primarily astrological glyphs) to the wayland clipboard. this is for when i'm on my laptop and without [my mechanical keyboard](https://codeberg.org/sailorfe/qmk-planck). 
+    * `bemenu-custom` is just `bemenu-run` with all my color-conscious flags from the `bemenu` package so it's portable across scripts.
+    * `menu-astro` copies unicode characters (primarily astrological glyphs) to the wayland clipboard. this is for when i'm on my laptop and without [my mechanical keyboard](https://codeberg.org/sailorfe/qmk-planck).
     * `menu-emoji` does the same for emojis. this script kind of sucks because it slowly pipes in an `emojis.txt`.
     * `menu-notes` helps me quickly hop into my notes vault.
-    * `menu-tarot` is old, the first version of my [hello, world tarot bash script](https://codeberg.org/sailorfe/tarot) without reversals.
 
 ## license
 
