@@ -1,4 +1,4 @@
-[perona](previews/perona.png)
+![perona](previews/perona.png)
 
 # dots
 
@@ -48,10 +48,8 @@ then clone one of two ways.
 # option A (if you plan to stow nvim): replace my tailnet sources
 git clone https://codeberg.org/sailorfe/dots.git p/dots
 cd p/dots
-git config --file=.gitmodules submodule.nvim/.local/share/nvim/site/pack/plugins/start/luna.nvim.active https://codeberg.org/sailorfe/luna.nvim
-git config --file=.gitmodules submodule.nvim/.local/share/nvim/site/pack/plugins/start/moonqueen.nvim.active https://codeberg.org/sailorfe/moonqueen.nvim
-git config --file=.gitmodules submodule.nvim/.local/share/nvim/site/pack/plugins/start/perona.nvim.active https://codeberg.org/sailorfe/perona.nvim
-git submodule update --init recursive
+git config --global url."https://codeberg.org/sailorfe/".insteadOf "ssh://softserve/"
+it submodule update --init recursive
 
 # option B (for me)
 git clone --recursive ssh://softserve/dotfiles p/dots
@@ -118,7 +116,7 @@ tmux is best on the devbox where i do more prolonged python work. i will activat
 
 ## neovim
 
-i use neovim for writing prose and code, and i do more of the former than the latter. i made the jump to skipping a plugin manager entirely in favor of `XDG_DATA_HOME/nvim/site/pack`. i previously used [lazy](https://gitub.com/folke/lazy.nvim), but it complained about me pointing to `ssh://` as a source. i've been curious about this for a while ever since reading [WhyNotHugo's post](https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/) and managing git submodules that rely on my tailnet finally pushed me.
+i use neovim for writing prose and code, and i do more of the former than the latter. i made the jump to skipping a plugin manager ([lazy](https://gitub.com/folke/lazy.nvim)) in favor of `XDG_DATA_HOME/nvim/site/pack`. i've been curious about this for a while ever since reading [WhyNotHugo's post](https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/) and managing git submodules that pulled from within my tailnet finally pushed me.
 
 all lazy and other plugin managers really do is fetch remotes and place them somewhere in your runtimepath. [the lazy bootstrap](https://lazy.folke.io/installation) prepends `.local/share/nvim/lazy`, for example, while vim-plug creates `.vim/plugged` unless configured otherwise. without a plugin manager, you can use git directly:
 
