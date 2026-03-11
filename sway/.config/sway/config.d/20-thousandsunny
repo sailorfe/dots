@@ -2,6 +2,7 @@
 
 exec openrc -U gui
 
+exec_always dockerd-rootless
 exec_always mpd-mpris
 exec_always battery-alert
 exec_always kdeconnectd
