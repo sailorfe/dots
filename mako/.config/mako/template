@@ -13,7 +13,7 @@ default-timeout=10000
 
 # colors
 
-progress-color=source ${COLOR_BRIGHTBLACK}
+progress-color=source ${COLOR_BRIGHT_BLACK}
 background-color=${COLOR_BACKGROUND}
 text-color=${COLOR_FOREGROUND}
 
