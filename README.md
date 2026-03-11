@@ -49,7 +49,7 @@ then clone one of two ways.
 git clone https://codeberg.org/sailorfe/dots.git p/dots
 cd p/dots
 git config --global url."https://codeberg.org/sailorfe/".insteadOf "ssh://softserve/"
-it submodule update --init recursive
+git submodule update --init recursive
 
 # option B (for me)
 git clone --recursive ssh://softserve/dotfiles p/dots
