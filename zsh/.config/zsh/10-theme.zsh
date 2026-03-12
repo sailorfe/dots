@@ -1,10 +1,13 @@
 # set theme per host
+
 case "$(hostname)" in
   goingmerry) THEME=perona ;;
   thousandsunny) THEME=luna ;;
   minimerry) THEME=moonqueen ;;
   *) THEME=rose-pine ;;
 esac
+
+export THEME
 
 # env vars
 source "$HOME/.config/themes/$THEME.sh"

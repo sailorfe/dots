@@ -1,78 +1,36 @@
 # type: ignore config
-import socket
+import os
 
-hostname = socket.gethostname()
+theme = os.environ['THEME']
+background = os.environ['COLOR_BACKGROUND']
+foreground = os.environ['COLOR_FOREGROUND']
+black = os.environ['COLOR_BLACK']
+red = os.environ['COLOR_RED']
+green = os.environ['COLOR_GREEN']
+yellow = os.environ['COLOR_YELLOW']
+blue = os.environ['COLOR_BLUE']
+magenta = os.environ['COLOR_MAGENTA']
+cyan = os.environ['COLOR_CYAN']
+white = os.environ['COLOR_WHITE']
+brightBlack = os.environ['COLOR_BRIGHT_BLACK']
+brightRed = os.environ['COLOR_BRIGHT_RED']
+brightGreen = os.environ['COLOR_BRIGHT_GREEN']
+brightYellow = os.environ['COLOR_BRIGHT_YELLOW']
+brightBlue = os.environ['COLOR_BRIGHT_BLUE']
+brightMagenta = os.environ['COLOR_BRIGHT_MAGENTA']
+brightCyan = os.environ['COLOR_BRIGHT_CYAN']
+brightWhite = os.environ['COLOR_BRIGHT_WHITE']
 
-palettes = {
-    "luna": {
-        "background": "#271b2d",
-        "foreground": "#ead9f2",
-        "black": "#372640",
-        "red": "#f07575",
-        "green": "#d1f075",
-        "yellow": "#f0d175",
-        "blue": "#7db2e8",
-        "magenta": "#b27de8",
-        "cyan": "#e87db3",
-        "white": "#b99fc6",
-        "brightBlack": "#523c5d",
-        "brightRed": "#fa9e9e",
-        "brightGreen": "#e3fa9e",
-        "brightYellow": "#fae39e",
-        "brightBlue": "#a3ccf5",
-        "brightMagenta": "#cca3f5",
-        "brightCyan": "#f5a3cc",
-        "brightWhite": "#ead9f2",
-    },
-    "perona": {
-        "background": "#261720",
-        "foreground": "#eac3da",
-        "black": "#331f2b",
-        "red": "#d0435f",
-        "green": "#d18de2",
-        "yellow": "#e28d8d",
-        "blue": "#8dafe2",
-        "magenta": "#d65c8d",
-        "cyan": "#ed82c2",
-        "white": "#896c7d",
-        "brightBlack": "#48323f",
-        "brightRed": "#f76e89",
-        "brightGreen": "#e4a3f5",
-        "brightYellow": "#f5a3a3",
-        "brightBlue": "#a3c4f5",
-        "brightCyan": "#f76ea5",
-        "brightMagenta": "#fa9ed5",
-        "brightWhite": "#eac3da",
-    }
-}
-
-if hostname == "goingmerry":
-    colors = palettes["perona"]
-    accent = colors["cyan"]
-    alt = colors["magenta"]
-    brightAccent = colors["brightCyan"]
-    brightAlt = colors["brightMagenta"]
+if theme == "perona":
+    accent = cyan
+    alt = magenta
+    brightAccent = brightCyan
+    brightAlt = brightMagenta
 else:
-    colors = palettes["luna"]
-    accent = colors["magenta"]
-    alt = colors["cyan"]
-    brightAccent = colors["brightMagenta"]
-    brightAlt = colors["brightCyan"]
-
-background = colors["background"]
-foreground = colors["foreground"]
-black = colors["black"]
-red = colors["red"]
-green = colors["green"]
-yellow = colors["yellow"]
-blue = colors["blue"]
-white = colors["white"]
-brightBlack = colors["brightBlack"]
-brightRed = colors["brightRed"]
-brightGreen = colors["brightGreen"]
-brightYellow = colors["brightYellow"]
-brightBlue = colors["brightBlue"]
-brightWhite = colors["brightWhite"]
+    accent = magenta
+    alt = cyan
+    brightAccent = brightMagenta
+    brightAlt = brightCyan
 
 # ----------------------------------------------------------------- // settings
 
@@ -163,7 +121,7 @@ config.set('colors.prompts.fg', brightWhite)
 config.set('colors.prompts.selected.bg', brightAlt)
 config.set('colors.prompts.selected.fg', background)
 
-config.set('colors.statusbar.normal.bg', black)
+config.set('colors.statusbar.normal.bg', background)
 config.set('colors.statusbar.normal.fg', accent)
 config.set('colors.statusbar.caret.bg', black)
 config.set('colors.statusbar.caret.fg', foreground)
@@ -178,7 +136,7 @@ config.set('colors.statusbar.command.private.fg', brightWhite)
 config.set('colors.statusbar.passthrough.bg', black)
 config.set('colors.statusbar.passthrough.fg', accent)
 config.set('colors.statusbar.progress.bg', blue)
-config.set('colors.statusbar.private.bg', brightBlack)
+config.set('colors.statusbar.private.bg', black)
 config.set('colors.statusbar.private.fg', brightWhite)
 config.set('colors.statusbar.url.fg', brightAlt)
 config.set('colors.statusbar.url.error.fg', brightRed)
