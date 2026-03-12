@@ -223,7 +223,7 @@ config.set('fonts.web.family.standard', 'sans-serif')
 # search
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
-    '!apk': 'https://pkgs.alpinelinux.org/packages?name={}&branch=3.23&repo=&arch=x86_64&origin=&flagged=&maintainer=',
+    '!apk': 'https://pkgs.alpinelinux.org/packages?name={}&branch=edge&repo=&arch=x86_64&origin=&flagged=&maintainer=',
     '!dd': 'https://devdocs.io/#q={}',
     '!dpkg': 'https://packages.debian.org/search?keywords={}',
     '!cb': "https://codeberg.org/explore/repos?q={}",
