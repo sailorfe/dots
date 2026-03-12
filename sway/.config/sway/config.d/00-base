@@ -45,6 +45,7 @@ bindsym $mod+n exec menu-notes
 bindsym $mod+t exec menu-tarot
 bindsym $mod+u exec menu-astro
 bindsym $mod+m exec menu-emoji
+bindsym $mod+Shift+p exec menu-pass
 bindsym $mod+Shift+b exec qutebrowser
 bindsym $mod+p exec wl-colorpick
 
