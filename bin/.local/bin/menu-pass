@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# this is just passmenu for bemenu
 
 shopt -s nullglob globstar
 
