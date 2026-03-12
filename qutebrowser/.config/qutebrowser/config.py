@@ -1,6 +1,11 @@
 # type: ignore config
 import os
 
+config.load_autoconfig(False)
+config.set('auto_save.session', True)
+
+# == constants =============================================================
+
 theme = os.environ['THEME']
 background = os.environ['COLOR_BACKGROUND']
 foreground = os.environ['COLOR_FOREGROUND']
@@ -32,42 +37,9 @@ else:
     brightAccent = brightMagenta
     brightAlt = brightCyan
 
-# ----------------------------------------------------------------- // settings
+# == colors ================================================================
 
-config.load_autoconfig(False)
-
-# keybinds
-
-config.bind('gJ', 'tab-move +')
-config.bind('gK', 'tab-move -')
-config.bind('tT', 'config-cycle tabs.position top left')
-config.bind('zl', 'spawn --userscript qute-pass')
-config.bind('zpl', 'spawn --userscript qute-pass --password-only')
-config.bind('tD', 'config-cycle colors.webpage.darkmode.enabled True False')
-
-config.set('auto_save.session', True)
-
-config.set('tabs.padding', {
-    'bottom': 3,
-    'left': 6,
-    'right': 3,
-    'top': 6
-    })
-config.set('tabs.title.format', "{audio}{private}{index} {current_title}")
-config.set('tabs.title.format_pinned', "{index} {current_title}")
-config.set('tabs.position', 'top')
-config.set('tabs.show', 'multiple')
-config.set('tabs.width', '15%')
-
-config.set('statusbar.padding', {
-    'bottom': 3,
-    'left': 6,
-    'right': 6,
-    'top': 3
-    })
-
-# colors
-
+# -*- completion -*-
 config.set('colors.completion.even.bg', background)
 config.set('colors.completion.odd.bg', background)
 config.set('colors.completion.fg', foreground)
@@ -76,14 +48,15 @@ config.set('colors.completion.category.bg', black)
 config.set('colors.completion.category.border.bottom', black)
 config.set('colors.completion.category.border.top', black)
 config.set('colors.completion.category.fg', foreground)
-config.set('colors.completion.item.selected.bg', brightAlt)
-config.set('colors.completion.item.selected.border.bottom', brightAlt)
-config.set('colors.completion.item.selected.border.top', brightAlt)
+config.set('colors.completion.item.selected.bg', alt)
+config.set('colors.completion.item.selected.border.bottom', alt)
+config.set('colors.completion.item.selected.border.top', alt)
 config.set('colors.completion.item.selected.fg', black)
 config.set('colors.completion.item.selected.match.fg', background)
 config.set('colors.completion.scrollbar.bg', background)
 config.set('colors.completion.scrollbar.fg', foreground)
 
+# -*- contextmenu -*-
 config.set('colors.contextmenu.disabled.bg', background)
 config.set('colors.contextmenu.disabled.fg', white)
 config.set('colors.contextmenu.menu.bg', background)
@@ -91,20 +64,22 @@ config.set('colors.contextmenu.menu.fg', foreground)
 config.set('colors.contextmenu.selected.bg', alt)
 config.set('colors.contextmenu.selected.fg', background)
 
+# -*- downloads -*-
 config.set('colors.downloads.bar.bg', background)
 config.set('colors.downloads.start.bg', foreground)
-config.set('colors.downloads.stop.bg', brightAlt)
+config.set('colors.downloads.stop.bg', alt)
 config.set('colors.downloads.start.fg', background)
 config.set('colors.downloads.stop.fg', background)
 
+# -*- hints -*-
 config.set('colors.hints.bg', background)
 config.set('colors.hints.fg', foreground)
 config.set('colors.hints.match.fg', brightBlue)
-
 config.set('colors.keyhint.bg', background)
 config.set('colors.keyhint.fg', foreground)
 config.set('colors.keyhint.suffix.fg', blue)
 
+# -*- messages -*-
 config.set('colors.messages.error.bg', black)
 config.set('colors.messages.error.border', black)
 config.set('colors.messages.error.fg', brightYellow)
@@ -115,12 +90,14 @@ config.set('colors.messages.warning.bg', black)
 config.set('colors.messages.warning.border', black)
 config.set('colors.messages.warning.fg', brightRed)
 
+# -*- prompts -*-
 config.set('colors.prompts.bg', black)
 config.set('colors.prompts.border', black)
 config.set('colors.prompts.fg', brightWhite)
 config.set('colors.prompts.selected.bg', brightAlt)
 config.set('colors.prompts.selected.fg', background)
 
+# -*- statusbar -*-
 config.set('colors.statusbar.normal.bg', background)
 config.set('colors.statusbar.normal.fg', accent)
 config.set('colors.statusbar.caret.bg', black)
@@ -131,20 +108,21 @@ config.set('colors.statusbar.insert.bg', black)
 config.set('colors.statusbar.insert.fg', foreground)
 config.set('colors.statusbar.command.bg', black)
 config.set('colors.statusbar.command.fg', foreground)
-config.set('colors.statusbar.command.private.bg', brightBlack)
-config.set('colors.statusbar.command.private.fg', brightWhite)
 config.set('colors.statusbar.passthrough.bg', black)
 config.set('colors.statusbar.passthrough.fg', accent)
 config.set('colors.statusbar.progress.bg', blue)
 config.set('colors.statusbar.private.bg', black)
-config.set('colors.statusbar.private.fg', brightWhite)
-config.set('colors.statusbar.url.fg', brightAlt)
-config.set('colors.statusbar.url.error.fg', brightRed)
-config.set('colors.statusbar.url.hover.fg', brightBlue)
-config.set('colors.statusbar.url.warn.fg', brightYellow)
-config.set('colors.statusbar.url.success.http.fg', brightGreen)
-config.set('colors.statusbar.url.success.https.fg', brightGreen)
+config.set('colors.statusbar.private.fg', white)
+config.set('colors.statusbar.command.private.bg', brightBlack)
+config.set('colors.statusbar.command.private.fg', brightWhite)
+config.set('colors.statusbar.url.fg', alt)
+config.set('colors.statusbar.url.error.fg', red)
+config.set('colors.statusbar.url.hover.fg', blue)
+config.set('colors.statusbar.url.warn.fg', yellow)
+config.set('colors.statusbar.url.success.http.fg', green)
+config.set('colors.statusbar.url.success.https.fg', green)
 
+# -*- tabs -*-
 config.set('colors.tabs.bar.bg', background)
 config.set('colors.tabs.even.bg', background)
 config.set('colors.tabs.odd.bg', background)
@@ -166,10 +144,11 @@ config.set('colors.tabs.pinned.selected.odd.bg', alt)
 config.set('colors.tabs.pinned.selected.even.fg', foreground)
 config.set('colors.tabs.pinned.selected.odd.fg', foreground)
 
+# -*- tooltips -*-
 config.set('colors.tooltip.bg', background)
 config.set('colors.tooltip.fg', foreground)
 
-# fonts
+# == fonts ================================================================
 
 config.set('fonts.default_family', ['Cozette', 'monospace'])
 config.set('fonts.default_size', '26px')
@@ -178,7 +157,36 @@ config.set('fonts.web.family.sans_serif', 'sans-serif')
 config.set('fonts.web.family.serif', 'serif')
 config.set('fonts.web.family.standard', 'sans-serif')
 
-# search
+# == keybinds ==============================================================
+
+config.bind('gJ', 'tab-move +')
+config.bind('gK', 'tab-move -')
+config.bind('tT', 'config-cycle tabs.position top left')
+config.bind('zl', 'spawn --userscript qute-pass')
+config.bind('zpl', 'spawn --userscript qute-pass --password-only')
+config.bind('tD', 'config-cycle colors.webpage.darkmode.enabled True False')
+
+config.set('tabs.padding', {
+    'bottom': 3,
+    'left': 6,
+    'right': 3,
+    'top': 6
+    })
+config.set('tabs.title.format', "{audio}{private}{index} {current_title}")
+config.set('tabs.title.format_pinned', "{index} {current_title}")
+config.set('tabs.position', 'top')
+config.set('tabs.show', 'multiple')
+config.set('tabs.width', '15%')
+
+config.set('statusbar.padding', {
+    'bottom': 3,
+    'left': 6,
+    'right': 6,
+    'top': 3
+    })
+
+# == search ===============================================================
+
 config.set('url.searchengines', {
     'DEFAULT': 'https://duckduckgo.com/?q={}',
     '!apk': 'https://pkgs.alpinelinux.org/packages?name={}&branch=edge&repo=&arch=x86_64&origin=&flagged=&maintainer=',
@@ -197,7 +205,7 @@ config.set('url.searchengines', {
     '!tap': 'https://theastrologypodcast.com/?s={}'
     })
 
-# privacy - adjust these settings based on your preference
+# == privacy ==============================================================
 # config.set('completion.cmd_history_max_items', 0)
 # config.set('content.private_browsing', True)
 config.set('content.webgl', False, '*')
@@ -207,5 +215,4 @@ config.set('content.webrtc_ip_handling_policy', 'default-public-interface-only')
 config.set('content.cookies.accept', 'all')
 config.set('content.cookies.store', True)
 # config.set('content.javascript.enabled', False) # tsh keybind to toggle
-
 config.set('content.blocking.enabled', True)
