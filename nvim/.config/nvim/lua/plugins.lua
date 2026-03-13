@@ -1,3 +1,18 @@
+-- perona
+require("perona").setup({
+  transparent = true,
+})
+
+-- luna
+require("luna").setup({
+  transparent = true,
+})
+
+-- moonqueen
+require("moonqueen").setup({
+  transparent = true,
+})
+
 -- conform
 require("conform").setup({
   formatters_by_ft = {
