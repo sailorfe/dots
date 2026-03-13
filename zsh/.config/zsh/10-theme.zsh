@@ -1,13 +1,21 @@
 # set theme per host
 
 case "$(hostname)" in
-  goingmerry) THEME=perona ;;
-  thousandsunny) THEME=luna ;;
-  minimerry) THEME=moonqueen ;;
+  goingmerry)
+    THEME=perona
+    TERM_FONT_SIZE=10.0
+    ;;
+  thousandsunny)
+    THEME=luna
+    TERM_FONT_SIZE=14.0
+    ;;
+  minimerry)
+    THEME=moonqueen ;;
   *) THEME=rose-pine ;;
 esac
 
 export THEME
+export TERM_FONT_SIZE
 
 # env vars
 source "$HOME/.config/themes/$THEME.sh"

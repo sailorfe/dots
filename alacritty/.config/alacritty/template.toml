@@ -13,4 +13,4 @@ import = ["~/.config/alacritty/themes/${THEME_NAME}.toml"]
 
 [font]
 normal = { family = "Rec Mono Casual", style = "Regular" }
-size = 11.0
+size = ${TERM_FONT_SIZE}

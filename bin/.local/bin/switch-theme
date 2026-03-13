@@ -1,39 +1,46 @@
 #!/usr/bin/env bash
 
 if [ -f ~/.config/bemenu/template.sh ]; then
-    echo "switching bemenu..."
-    envsubst < ~/.config/bemenu/template.sh > ~/.config/bemenu/args.sh
+  echo "switching bemenu..."
+  envsubst < ~/.config/bemenu/template.sh > ~/.config/bemenu/args.sh
 fi
 
 if [ -f ~/.config/alacritty/template.toml ]; then
-    echo "switching alacritty..."
-    envsubst < ~/.config/alacritty/template.toml > ~/.config/alacritty/alacritty.toml
+  echo "switching alacritty..."
+  envsubst < ~/.config/alacritty/template.toml > ~/.config/alacritty/alacritty.toml
 fi
 
 if [ -f ~/.config/foot/template.ini ]; then
-    echo "switching foot..."
-    envsubst < ~/.config/foot/template.ini > ~/.config/foot/foot.ini
+  echo "switching foot..."
+  envsubst < ~/.config/foot/template.ini > ~/.config/foot/foot.ini
 fi
 
 if [ -f ~/.config/mako/template ]; then
-    echo "switching mako..."
-    envsubst < ~/.config/mako/template > ~/.config/mako/config
+  echo "switching mako..."
+  envsubst < ~/.config/mako/template > ~/.config/mako/config
+  if command -v makoctl >/dev/null 2>&1; then
     makoctl reload
+  fi
+  makoctl reload
 fi
 
 if [ -f ~/.config/sway/template ]; then
-    echo "switching sway..."
-    envsubst < ~/.config/sway/template > ~/.config/sway/config
+  echo "switching sway..."
+  envsubst < ~/.config/sway/template > ~/.config/sway/config
 fi
 
 if [ -f ~/.config/swaylock/template ]; then
-    echo "switching sway..."
-    envsubst < ~/.config/swaylock/template > ~/.config/swaylock/config
+  echo "switching swaylock..."
+  envsubst < ~/.config/swaylock/template > ~/.config/swaylock/config
 fi
 
 if [ -f ~/.config/wezterm/template.lua ]; then
-    echo "switching wezterm..."
-    envsubst < ~/.config/wezterm/template.lua > ~/.config/wezterm/wezterm.lua
+  echo "switching wezterm..."
+  envsubst < ~/.config/wezterm/template.lua > ~/.config/wezterm/wezterm.lua
 fi
 
-notify-send "switch theme" "$THEME"
+if command -v notify-send >/dev/null 2>&1; then
+  notify-send "Switched theme" "$THEME"
+else
+  echo "Switched theme: $THEME"
+fi
