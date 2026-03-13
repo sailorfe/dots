@@ -1,43 +1,25 @@
 #!/usr/bin/env bash
 
-if [ -f ~/.config/bemenu/template.sh ]; then
-  echo "switching bemenu..."
-  envsubst < ~/.config/bemenu/template.sh > ~/.config/bemenu/args.sh
-fi
+render() {
+  local name="$1"
+  local template="$2"
+  local output="$3"
+  local hook="$4"
 
-if [ -f ~/.config/alacritty/template.toml ]; then
-  echo "switching alacritty..."
-  envsubst < ~/.config/alacritty/template.toml > ~/.config/alacritty/alacritty.toml
-fi
-
-if [ -f ~/.config/foot/template.ini ]; then
-  echo "switching foot..."
-  envsubst < ~/.config/foot/template.ini > ~/.config/foot/foot.ini
-fi
-
-if [ -f ~/.config/mako/template ]; then
-  echo "switching mako..."
-  envsubst < ~/.config/mako/template > ~/.config/mako/config
-  if command -v makoctl >/dev/null 2>&1; then
-    makoctl reload
+  if [ -f "$template" ]; then
+    echo "switching $name..."
+    envsubst <"$template" >"$output"
+    [ -n "$hook" ] && eval "$hook"
   fi
-  makoctl reload
-fi
+}
 
-if [ -f ~/.config/sway/template ]; then
-  echo "switching sway..."
-  envsubst < ~/.config/sway/template > ~/.config/sway/config
-fi
-
-if [ -f ~/.config/swaylock/template ]; then
-  echo "switching swaylock..."
-  envsubst < ~/.config/swaylock/template > ~/.config/swaylock/config
-fi
-
-if [ -f ~/.config/wezterm/template.lua ]; then
-  echo "switching wezterm..."
-  envsubst < ~/.config/wezterm/template.lua > ~/.config/wezterm/wezterm.lua
-fi
+render bemenu ~/.config/bemenu/template.sh ~/.config/bemenu/args.sh
+render alacritty ~/.config/alacritty/template.toml ~/.config/alacritty/alacritty.toml
+render foot ~/.config/foot/template.ini ~/.config/foot/foot.ini
+render sway ~/.config/sway/template ~/.config/sway/config "command -v sway >/dev/null 2>&1 && sway & swaymsg reload"
+render swaylock ~/.config/swaylock/template ~/.config/swaylock/config
+render wezterm ~/.config/wezterm/template.lua ~/.config/wezterm/wezterm.lua
+render mako ~/.config/mako/template ~/.config/mako/config "command -v makoctl >/dev/null 2>&1 && makoctl reload"
 
 if command -v notify-send >/dev/null 2>&1; then
   notify-send "Switched theme" "$THEME"
