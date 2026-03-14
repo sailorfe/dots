@@ -28,4 +28,4 @@ fi
 
 echo "$CHOICE" | awk '{print $1}' | tr -d '\n' | wl-copy
 
-notify-send "copied to clipboard" "$(wl-paste)"
+notify-send "Copied to clipboard" "$(wl-paste)"

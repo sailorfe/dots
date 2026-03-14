@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if command -v uuidgen >/dev/null 2>&1; then
+  GEN_UUID=$(uuidgen)
+elif command -v uuid >/dev/null 2>&1; then
+  GEN_UUID=$(uuid)
+else
+  echo "error: no UUID generator found. please install uuidgen or uuid."
+  echo "alpine: apk add uuidgen"
+  echo "debian: apt install uuid"
+  exit 1
+fi
+
+echo -n "$GEN_UUID" | wl-copy
+echo "Copied to clipboard: $(wl-paste)"
+
+if command -v notify-send >/dev/null 2>&1; then
+  notify-send "Copied to clipboard" "$(wl-paste)"
+fi

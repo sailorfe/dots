@@ -17,8 +17,14 @@ daily() {
 }
 
 fleeting() {
-  name="$(echo "" | bemenu -f 'Cozette 11' "${BEMENU_ARGS[@]}" -p "filename ")" || exit 0
+  name="$(echo "" | bemenu "${BEMENU_ARGS[@]}" -p "filename ")" || exit 0
   [[ -z "$name" ]] && exit 0
+  cat <<EOF >"$FOLDER/notes/fleeting/$name.md"
+---
+title: ""
+date_created: '$(date -Is)'
+---
+EOF
   open_note "$FOLDER/notes/fleeting/$name.md"
 }
 

@@ -25,4 +25,4 @@ if [ -n "$choice" ]; then
   printf "%b" "${GLYPHS[$choice]}" | wl-copy
 fi
 
-notify-send "copied to clipboard" "$(wl-paste)"
+notify-send "Copied to clipboard" "$(wl-paste)"
