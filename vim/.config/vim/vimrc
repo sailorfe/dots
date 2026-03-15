@@ -72,6 +72,7 @@ set shiftwidth	=4
 set shiftround
 set showmatch
 set wrap
+set nofoldenable
 
 " == display =======================
 
