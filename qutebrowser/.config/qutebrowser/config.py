@@ -197,6 +197,7 @@ config.set('url.searchengines', {
     '!yt': 'https://www.youtube.com/results?search_query={}',
     '!wiki': 'https://en.wikipedia.org/w/index.php?search={}',
     '!op': 'https://onepiece.fandom.com/wiki/Special:Search?query={}',
+    '!jj': 'https://jojowiki.com/index.php?search={}&title=Special%3ASearch&go=Go',
     '!pin': 'https://pinterest.com/search/pins/?q={}',
     '!uc': 'https://www.compart.com/en/unicode/search?q={}',
     '!ug': 'https://www.ultimate-guitar.com/search.php?search_type=title&value={}',
