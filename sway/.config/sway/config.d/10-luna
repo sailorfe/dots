@@ -32,5 +32,5 @@ set $tv "HDMI-A-2"
 
 # == output ==============================================================
 
-output $builtin mode 1920x1080 bg /home/sailorfe/m/img/wall/page009-edit.jpg fill
+output $builtin mode 1920x1080 bg /home/sailorfe/m/img/wall/page009-crop.jpg fill
 output $tv mode 3840x2160 bg $base solid_color

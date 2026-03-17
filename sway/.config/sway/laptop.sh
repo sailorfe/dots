@@ -14,22 +14,42 @@ STATUS=$(echo "$BATTERY" | awk -F '[, ]' '{print $3}')
 PERCENT=$(echo "$BATTERY" | awk -F '[, %]' '{print $5}')
 REMAINING=$(echo "$BATTERY" | awk -F '[, ]' '{print $7}')
 
-if [[ "$STATUS" == "Charging" ]]; then
-  ICON="󱐋"
+if [ "$PERCENT" -gt 90 ]; then
+  ICON="󰁹"
+elif [ "$PERCENT" -gt 70 ]; then
+  ICON="󰂀"
+elif [ "$PERCENT" -gt 50 ]; then
+  ICON="󰁾"
+elif [ "$PERCENT" -gt 30 ]; then
+  ICON="󰁼"
 else
-  if [ "$PERCENT" -gt 90 ]; then
-    ICON="󰁹"
-  elif [ "$PERCENT" -gt 70 ]; then
-    ICON="󰂀"
-  elif [ "$PERCENT" -gt 50 ]; then
-    ICON="󰁾"
-  elif [ "$PERCENT" -gt 30 ]; then
-    ICON="󰁼"
-  else
-    ICON="󰁺"
-  fi
+  ICON="󰁺"
 fi
 
-juice="$ICON $PERCENT% $REMAINING remaining"
+case "$STATUS" in
+Charging)
+  ICON="󱐋"
+  LABEL="$ICON $PERCENT% $REMAINING until full"
+  ;;
+Full)
+  ICON="󰂄"
+  LABEL="$ICON Full"
+  ;;
+"Not charging")
+  ICON=""
+  LABEL="$ICON $PERCENT% (not charging)"
+  ;;
+Discharging)
+  LABEL="$ICON $PERCENT% $REMAINING remaining"
+  ;;
+Unknown)
+  LABEL="$ICON $PERCENT% (unknown)"
+  ;;
+*)
+  LABEL="$ICON $PERCENT% ($STATUS)"
+  ;;
+esac
 
-echo "$mpd | $volume | $disk | $memory | $wifi | $juice | $asc | $et / $utc"
+juice="$LABEL"
+
+echo "$mpd | $volume | $disk | $memory | $wifi | $juice | $asc | $et | $utc"
