@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$THEME" == "perona" ]; then
+if [ "$THEME" != "perona" ]; then
   BEMENU_ARGS=(
     --tb "${COLOR_BLACK}"
     --tf "${COLOR_BRIGHT_WHITE}"
@@ -10,9 +10,9 @@ if [ "$THEME" == "perona" ]; then
     --nf "${COLOR_FOREGROUND}"
     --ab "${COLOR_BACKGROUND}"
     --af "${COLOR_FOREGROUND}"
-    --hb "${COLOR_CYAN}"
+    --hb "${COLOR_MAGENTA}"
     --hf "${COLOR_BLACK}"
-    --sb "${COLOR_CYAN}"
+    --sb "${COLOR_MAGENTA}"
     --sf "${COLOR_BLACK}"
     --fn "Cozette 11"
     --hp 6
@@ -28,9 +28,9 @@ else
     --nf "${COLOR_FOREGROUND}"
     --ab "${COLOR_BACKGROUND}"
     --af "${COLOR_FOREGROUND}"
-    --hb "${COLOR_MAGENTA}"
+    --hb "${COLOR_CYAN}"
     --hf "${COLOR_BLACK}"
-    --sb "${COLOR_MAGENTA}"
+    --sb "${COLOR_CYAN}"
     --sf "${COLOR_BLACK}"
     --fn "Cozette 11"
     --hp 6

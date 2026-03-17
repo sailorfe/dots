@@ -16,7 +16,7 @@ render() {
 render bemenu ~/.config/bemenu/template.sh ~/.config/bemenu/args.sh
 render alacritty ~/.config/alacritty/template.toml ~/.config/alacritty/alacritty.toml
 render foot ~/.config/foot/template.ini ~/.config/foot/foot.ini
-render sway ~/.config/sway/template ~/.config/sway/config "command -v sway >/dev/null 2>&1 && sway & swaymsg reload"
+render sway ~/.config/sway/template ~/.config/sway/config "command -v sway >/dev/null 2>&1 && sway & swaymsg exit"
 render swaylock ~/.config/swaylock/template ~/.config/swaylock/config
 render wezterm ~/.config/wezterm/template.lua ~/.config/wezterm/wezterm.lua
 render mako ~/.config/mako/template ~/.config/mako/config "command -v makoctl >/dev/null 2>&1 && makoctl reload"
