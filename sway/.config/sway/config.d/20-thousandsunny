@@ -48,6 +48,7 @@ assign [class="obsidian"]														$ws3
 assign [class="REAPER"]															$ws3
 assign [app_id="vesktop"]														$ws3
 assign [app_id="org.kde.kdeconnect.app"]						$ws3
+assign [class="zoom"]															  $ws3
 
 # -*- background -*-
 assign [app_id="mpv"]																$ws4

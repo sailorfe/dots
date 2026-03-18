@@ -25,6 +25,13 @@ default_border pixel 2
 
 exec swaymsg "exec $term"
 exec swaybar
+
+# -*- flatpak hell -*-
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 # exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id)
 
 # == key bindings ==========================================================
