@@ -40,9 +40,10 @@ if [ -z "${XDG_RUNTIME_DIR-}" ]; then
   unset _xdg_tmp
 fi
 
-# launch syncthing if not already running (for alpine)
-if ! pgrep -x syncthing >/dev/null; then
-  syncthing >/dev/null 2>&1 &
-fi
+# launch syncthing if not already running (for alpine 3.23)
+# removed 2026-03-14 because i wrote a user service!!
+#if ! pgrep -x syncthing >/dev/null; then
+#  syncthing >/dev/null 2>&1 &
+#fi
 
 unset _on_termux
