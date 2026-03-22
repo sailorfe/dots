@@ -16,7 +16,7 @@ if [ "$THEME" != "perona" ]; then
     --sf "${COLOR_BLACK}"
     --fn "Cozette 11"
     --hp 6
-    --line-height 20
+    --line-height 25
   )
 else
   BEMENU_ARGS=(
@@ -34,6 +34,6 @@ else
     --sf "${COLOR_BLACK}"
     --fn "Cozette 11"
     --hp 6
-    --line-height 20
+    --line-height 22
   )
 fi
