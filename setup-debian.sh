@@ -29,7 +29,6 @@ packages_base() {
 
   curl -fsSL https://tailscale.com/install.sh | sh
   sudo -u "$USERNAME" curl -LsSf https://astral.sh/uv/install.sh | sh
-
 }
 
 syncthing() {
