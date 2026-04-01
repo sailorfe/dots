@@ -8,8 +8,11 @@ export XDG_CACHE_HOME=$HOME/.local/cache
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
-export XDG_SESSION_TYPE=wayland
-export XDG_CURRENT_DESKTOP=sway
+
+if [[ "$HOSTNAME" == "goingmerry" || "$HOSTNAME" == "thousandsunny" ]]; then
+  export XDG_SESSION_TYPE=wayland
+  export XDG_CURRENT_DESKTOP=sway
+fi
 
 export XDG_DOCUMENTS_DIR=$HOME/d
 export XDG_DOWNLOAD_DIR=$HOME/m

@@ -11,9 +11,7 @@ case "$(hostname)" in
     ;;
   minimerry)
     THEME=moonqueen ;;
-  skypiea)
-    THEME=perona ;;
-  localhost) THEME=rose-pine ;;
+  *) THEME=rose-pine ;;
 esac
 
 export THEME
