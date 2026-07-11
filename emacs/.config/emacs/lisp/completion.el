@@ -1,9 +1,18 @@
 ;;; completion.el --- sailorfe's Emacs configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Completion skeleton pretty much lifted from Doom.
+;; Completion/code intelligence skeleton pretty much lifted from Doom.
 
 ;;; Code:
+
+(use-package eglot
+  :ensure nil
+  :hook
+  ((python-mode . eglot-ensure)
+   (sh-mode . eglot-ensure)
+   (lisp-mode . eglot-ensure)
+   (lua-mode . eglot-ensure)))
+
 (use-package vertico
   :ensure t
   :init
@@ -24,21 +33,18 @@
 
 (use-package corfu
   :ensure t
-  :init
-  (global-corfu-mode)
+  :hook (emacs-startup . global-corfu-mode)
   :custom
   (corfu-auto t)
   (corfu-cycle t))
 
 (use-package yasnippet
   :ensure t
-  :config
-  (yas-global-mode 1))
+  :hook (prog-mode . yas-minor-mode))
 
 (use-package flycheck
   :ensure t
-  :init
-  (global-flycheck-mode))
+  :hook (prog-mode . flycheck-mode))
 
 (add-hook 'text-mode-hook #'flyspell-mode)
 (add-hook 'org-mode-hook #'flyspell-mode)

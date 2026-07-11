@@ -6,11 +6,12 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(require 'core)
-(require 'pkgs)
+(require 'defaults)
+(require 'bootstrap)
 (require 'completion)
-(require 'ui)
 (require 'keys)
+(require 'ui)
+(require 'vcs)
 (require 'orgmode)
 (require 'writing)
 
@@ -19,10 +20,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(consult corfu dashboard evil flycheck general marginalia
-             markdown-mode mixed-pitch nerd-icons no-littering
-             olivetti orderless vertico yaml-mode yasnippet)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

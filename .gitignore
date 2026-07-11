@@ -8,3 +8,8 @@ sway/qutebrowser/.config/qutebrowser/bookmarks/urls
 sway/qutebrowser/.config/qutebrowser/quickmarks
 sway/qutebrowser/.config/qutebrowser/autoconfig.yml
 sway/qutebrowser/.config/qutebrowser/qsettings/QProject.conf
+*.pickle
+emacs/.config/emacs/eln-cache
+emacs/.config/emacs/elpa
+emacs/.config/emacs/etc
+emacs/.config/emacs/var

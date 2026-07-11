@@ -5,8 +5,39 @@
 
 ;;; Code:
 
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-startup-screen t)
+(setq frame-title-format "Emacs")
+(setopt use-dialog-box nil)
+(setopt use-short-answers t)
+
+(global-hl-line-mode +1)
+
+;; line numbers
+(use-package display-line-numbers
+  :ensure t)
+
+(setq display-line-numbers-type t)
+(global-display-line-numbers-mode 1)
+
+(add-hook 'prog-mode-hook
+          (lambda () (setq display-line-numbers-type 'relative)))
+
+(add-hook 'text-mode-hook
+          (lambda () (setq display-line-numbers-type t)))
+
 ;; font
-(set-face-attribute 'default nil :font "Moralerspace Neon-14")
+(add-to-list 'default-frame-alist '(font . "Maple Mono-14"))
+(dolist (font '("3270 Nerd Font" "nerd-icons"))
+  (set-fontset-font "fontset-default" 'unicode (font-spec :family font) nil 'prepend))
+
+(use-package nerd-icons
+  :ensure t
+  :config
+  (setq nerd-icons-scale-factor 0.8)
+  (setq nerd-icons-default-adjust 0.2))
 
 ;; theme
 (setq custom-theme-directory (expand-file-name "lisp/themes" user-emacs-directory))
@@ -17,14 +48,55 @@
       (load-theme (intern theme-var) t)
     (load-theme 'modus-operandi t)))
 
-;; basic ui
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(setq inhibit-startup-screen t)
-(setq frame-title-format "Emacs")
-(setopt use-dialog-box nil)
-(setopt use-short-answers t)
+;; splash screen
+(use-package desktop
+  :config
+  (setq desktop-restore-eager 8)
+  (desktop-save-mode 1))
+
+(use-package dashboard
+  :ensure t
+  :init
+  (setq dashboard-heading-shorcut-format " [%s]")
+  (setq dashboard-navigator-buttons
+      '((( "☽" "reload session" "SPC q l" (lambda (&rest _) (desktop-read)))
+         ( "☉" "org-agenda" "SPC o A" (lambda (&rest _) (org-agenda)))
+         ( "☿" "recent files" "SPC f r" (lambda (&rest _) (consult-recent-file)))
+         ( "♀" "open project" "SPC p p" (lambda (&rest _) (project-switch-project)))
+        ( "♂" "configuration" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
+         ( "♃" "bookmarks" "SPC RET" (lambda (&rest _) (bookmark-jump))))))
+
+  (setq dashboard-startupify-list
+        '(dashboard-insert-banner
+          dashboard-insert-newline
+          dashboard-insert-banner-title
+          dashboard-insert-newline
+          dashboard-insert-navigator
+          dashboard-insert-newline
+          dashboard-insert-init-info
+          dashboard-insert-newline
+          dashboard-insert-items
+          dashboard-insert-newline
+          dashboard-insert-footer))
+
+  :config
+  (setq dashboard-startup-banner (expand-file-name "banner.txt" user-emacs-directory))
+  (setq dashboard-center-content t)
+  (setq dashboard-vertically-center-content t)
+  (setq dashboard-banner-logo-title "おかえり!")
+  (setq dashboard-items-default-length 5)
+  (setq dashbaord-items
+        '((recents)
+          (bookmarks)
+          (projects)
+          (agenda)))
+ 
+  (dashboard-setup-startup-hook))
+
+;; modeline
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 (provide 'ui)
 ;;; ui.el ends here

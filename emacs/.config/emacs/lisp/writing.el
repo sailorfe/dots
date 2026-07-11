@@ -7,22 +7,13 @@
 (use-package olivetti
   :hook (text-mode . olivetti-mode)
   :config
-  (setq olivetti-body-width 80))
+  (setq olivetti-body-width 100))
 
 (use-package markdown-mode
   :ensure t
   :mode ("\\.md\\'" . gfm-mode)
   :config
-  (setq markdown-fontify-code-blocks-natively t)
-  (setq markdown-hide-markup t))
-
-(use-package yaml-mode
-  :ensure t)
-
-(use-package mixed-pitch
-  :ensure t
-  :hook
-  (markdown-mode . mixed-pitch-mode))
+  (setq markdown-fontify-code-blocks-natively t))
 
 (provide 'writing)
 ;;; writing.el ends here
