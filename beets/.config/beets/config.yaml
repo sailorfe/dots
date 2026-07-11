@@ -3,7 +3,12 @@ library: ~/m/mus/lib.db
 
 asciify_paths: yes
 
-plugins: fetchart
+plugins:
+  - fetchart
+  - musicbrainz
 
 fetchart:
   auto: yes
+
+musicbrainz:
+  searchlimit: 20
