@@ -140,6 +140,11 @@
    `(diff-indicator-removed ((t (:foreground ,mihawk))))
    `(diff-indicator-changed ((t (:foreground ,hollow))))
 
+   ;; --- diff-hl ----------------------------------------------------
+   `(diff-hl-insert ((t (:foreground ,garden))))
+   `(diff-hl-delete ((t (:foreground ,mihawk))))
+   `(diff-hl-change ((t (:foreground ,hollow))))
+   
    ;; --- flyspell ---------------------------------------------------
    `(flyspell-incorrect ((t (:foreground ,mihawk :underline (:style wave)))))
    `(flyspell-duplicate ((t (:foreground ,sangria :underline (:style wave)))))
@@ -270,8 +275,13 @@
    `(org-tag ((t (:foreground ,faint))))
    `(org-special-keyword ((t (:foreground ,muted))))
    `(org-quote ((t (:foreground ,faint :slant italic))))
+   ;; custom todo keywords
+   `(sailorfe-org-todo-next ((t (:foreground ,hollow :weight bold))))
+   `(sailorfe-org-todo-prog ((t (:foreground ,zombie :weight bold))))
+   `(sailorfe-org-todo-wait ((t (:foreground ,kumashi :weight bold))))
+   `(sailorfe-org-todo-void ((t (:foreground ,high :weight bold :strikethrough t))))
 
-   ;; --- org-agenda (separate face set from org-level-*, easy to miss) --
+   ;; --- org-agenda -----------------------------------------------------
    `(org-agenda-structure ((t (:foreground ,hollow :weight bold))))
    `(org-agenda-date ((t (:foreground ,kumashi))))
    `(org-agenda-date-weekend ((t (:foreground ,faint))))
