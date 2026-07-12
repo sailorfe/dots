@@ -35,7 +35,7 @@
    ;; --- core ui -------------------------------------------------
    `(default ((t (:background ,base :foreground ,text))))
    `(cursor ((t (:background ,text))))
-   `(region ((t (:background ,moon :foreground ,base))))
+   `(region ((t (:background ,high))))
    `(secondary-selection ((t (:background ,med :foreground ,venus))))
    `(highlight ((t (:background ,overlay :foreground ,moon))))
    `(hl-line ((t (:background ,overlay))))
@@ -96,7 +96,7 @@
    `(show-paren-match-expression ((t (:background ,overlay))))
    `(show-paren-mismatch ((t (:background ,mars :foreground ,light :weight bold))))
 
-   ;; --- font-lock (syntax highlighting) -------------------------------
+   ;; --- font-lock -----------------------------------------------------
    `(font-lock-comment-face ((t (:foreground ,faint :slant italic))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,faint :slant italic))))
    `(font-lock-doc-face ((t (:foreground ,faint :slant italic))))
@@ -139,6 +139,11 @@
    `(diff-indicator-removed ((t (:foreground ,mars))))
    `(diff-indicator-changed ((t (:foreground ,moon))))
 
+   ;; --- diff-hl ----------------------------------------------------
+   `(diff-hl-insert ((t (:foreground ,jupiter))))
+   `(diff-hl-delete ((t (:foreground ,mars))))
+   `(diff-hl-change ((t (:foreground ,moon))))
+ 
    ;; --- flyspell ---------------------------------------------------
    `(flyspell-incorrect ((t (:foreground ,mars :underline (:style wave)))))
    `(flyspell-duplicate ((t (:foreground ,venus :underline (:style wave)))))
@@ -178,7 +183,7 @@
    `(dired-set-id ((t (:foreground ,saturn :weight bold))))
    `(dired-special ((t (:foreground ,jupiter))))
 
-   ;; --- diredfl (colorful dired listings: perms, sizes, dates) ---------
+   ;; --- diredfl --------------------------------------------------------
    `(diredfl-dir-heading ((t (:foreground ,moon :weight bold))))
    `(diredfl-dir-name ((t (:foreground ,mercury))))
    `(diredfl-dir-priv ((t (:foreground ,mercury))))
@@ -204,7 +209,7 @@
    `(diredfl-autofile-name ((t (:foreground ,faint :slant italic))))
    `(diredfl-tagged-autofile-name ((t (:foreground ,moon :slant italic))))
 
-   ;; --- flymake (built-in diagnostics: checkdoc, package-lint, etc.) ---
+   ;; --- flymake --------------------------------------------------------
    `(flymake-error ((t (:underline (:style wave :color ,mars)))))
    `(flymake-warning ((t (:underline (:style wave :color ,venus)))))
    `(flymake-note ((t (:underline (:style wave :color ,mercury)))))
@@ -212,7 +217,7 @@
    `(flymake-warning-echo ((t (:foreground ,venus))))
    `(flymake-note-echo ((t (:foreground ,mercury))))
 
-   ;; --- flycheck (same role, popular third-party alternative) ----------
+   ;; --- flycheck -------------------------------------------------------
    `(flycheck-error ((t (:underline (:style wave :color ,mars)))))
    `(flycheck-warning ((t (:underline (:style wave :color ,venus)))))
    `(flycheck-info ((t (:underline (:style wave :color ,mercury)))))
@@ -228,7 +233,7 @@
    `(eldoc-box-body ((t (:background ,surface :foreground ,text))))
    `(eldoc-box-border ((t (:background ,muted))))
 
-   ;; --- markdown-mode (widely used, close analog of markdownH1-H6) ----
+   ;; --- markdown-mode ---------------------------------------------------
    `(markdown-header-face ((t (:foreground ,moon :weight bold))))
    `(markdown-header-face-1 ((t (:foreground ,moon :weight bold))))
    `(markdown-header-face-2 ((t (:foreground ,venus :weight bold))))
@@ -263,14 +268,19 @@
    `(org-code ((t (:foreground ,jupiter))))
    `(org-verbatim ((t (:foreground ,saturn))))
    `(org-link ((t (:foreground ,mercury :underline t))))
-   `(org-todo ((t (:foreground ,mars :weight bold))))
-   `(org-done ((t (:foreground ,jupiter :weight bold))))
+   `(org-todo ((t (:background ,mars :foreground ,base :weight bold))))
+   `(org-done ((t (:background ,jupiter :foreground ,base :weight bold))))
    `(org-date ((t (:foreground ,muted :underline t))))
    `(org-tag ((t (:foreground ,faint))))
    `(org-special-keyword ((t (:foreground ,muted))))
    `(org-quote ((t (:foreground ,faint :slant italic))))
+   ;; custom todo keywords
+   `(sailorfe-org-todo-next ((t (:background ,moon :foreground ,base :weight bold))))
+   `(sailorfe-org-todo-prog ((t (:background ,saturn :foreground ,base :weight bold))))
+   `(sailorfe-org-todo-wait ((t (:background ,mercury :foreground ,base :weight bold))))
+   `(sailorfe-org-todo-void ((t (:background ,high :foreground ,base :weight bold :strikethrough t))))
 
-   ;; --- org-agenda (separate face set from org-level-*, easy to miss) --
+   ;; --- org-agenda -----------------------------------------------------
    `(org-agenda-structure ((t (:foreground ,moon :weight bold))))
    `(org-agenda-date ((t (:foreground ,mercury))))
    `(org-agenda-date-weekend ((t (:foreground ,faint))))
@@ -325,7 +335,19 @@
    `(orderless-match-face-0 ((t (:foreground ,moon :weight bold))))
    `(orderless-match-face-1 ((t (:foreground ,mercury :weight bold))))
    `(orderless-match-face-2 ((t (:foreground ,jupiter :weight bold))))
-   `(orderless-match-face-3 ((t (:foreground ,saturn :weight bold))))))
+   `(orderless-match-face-3 ((t (:foreground ,saturn :weight bold))))
+
+  ;; --- vterm -----------------------------------------------------------
+  `(vterm-color-black ((t (:foreground ,low))))
+  `(vterm-color-red ((t (:foreground ,mars))))
+  `(vterm-color-green ((t (:foreground ,jupiter))))
+  `(vterm-color-yellow ((t (:foreground ,venus))))
+  `(vterm-color-blue ((t (:foreground ,mercury))))
+  `(vterm-color-magenta ((t (:foreground ,saturn))))
+  `(vterm-color-cyan ((t (:foreground ,moon))))
+  `(vterm-color-white ((t (:foreground ,text))))
+  `(vterm-color-underline ((t (:foreground ,moon))))
+  `(vterm-color-inverse-video ((t (:background ,base :inverse-video t))))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
