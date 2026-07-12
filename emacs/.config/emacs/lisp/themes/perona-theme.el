@@ -32,7 +32,6 @@
 
   (custom-theme-set-faces
    'perona
-
    ;; --- core ui -------------------------------------------------
    `(default ((t (:background ,base :foreground ,text))))
    `(cursor ((t (:background ,text))))
@@ -184,7 +183,7 @@
    `(dired-set-id ((t (:foreground ,zombie :weight bold))))
    `(dired-special ((t (:foreground ,garden))))
 
-   ;; --- diredfl (colorful dired listings: perms, sizes, dates) ---------
+   ;; --- diredfl --------------------------------------------------------
    `(diredfl-dir-heading ((t (:foreground ,hollow :weight bold))))
    `(diredfl-dir-name ((t (:foreground ,kumashi))))
    `(diredfl-dir-priv ((t (:foreground ,kumashi))))
@@ -210,7 +209,7 @@
    `(diredfl-autofile-name ((t (:foreground ,faint :slant italic))))
    `(diredfl-tagged-autofile-name ((t (:foreground ,hollow :slant italic))))
 
-   ;; --- flymake (built-in diagnostics: checkdoc, package-lint, etc.) ---
+   ;; --- flymake --------------------------------------------------------
    `(flymake-error ((t (:underline (:style wave :color ,mihawk)))))
    `(flymake-warning ((t (:underline (:style wave :color ,sangria)))))
    `(flymake-note ((t (:underline (:style wave :color ,kumashi)))))
@@ -218,7 +217,7 @@
    `(flymake-warning-echo ((t (:foreground ,sangria))))
    `(flymake-note-echo ((t (:foreground ,kumashi))))
 
-   ;; --- flycheck (same role, popular third-party alternative) ----------
+   ;; --- flycheck -------------------------------------------------------
    `(flycheck-error ((t (:underline (:style wave :color ,mihawk)))))
    `(flycheck-warning ((t (:underline (:style wave :color ,sangria)))))
    `(flycheck-info ((t (:underline (:style wave :color ,kumashi)))))
@@ -234,7 +233,7 @@
    `(eldoc-box-body ((t (:background ,surface :foreground ,text))))
    `(eldoc-box-border ((t (:background ,muted))))
 
-   ;; --- markdown-mode (widely used, close analog of markdownH1-H6) ----
+   ;; --- markdown-mode -------------------------------------------------
    `(markdown-header-face ((t (:foreground ,hollow :weight bold))))
    `(markdown-header-face-1 ((t (:foreground ,hollow :weight bold))))
    `(markdown-header-face-2 ((t (:foreground ,sangria :weight bold))))
@@ -328,7 +327,7 @@
    `(company-preview-common ((t (:foreground ,hollow :weight bold))))
    `(company-preview-search ((t (:background ,med :foreground ,sangria))))
 
-   ;; --- minibuffer completion UI (vertico / orderless) -----------------
+   ;; --- minibuffer completion UI ---------------------------------------
    `(vertico-current ((t (:background ,overlay :foreground ,hollow :weight bold))))
    `(vertico-group-title ((t (:foreground ,faint :weight bold))))
    `(vertico-group-separator ((t (:foreground ,muted :strike-through t))))
@@ -336,7 +335,19 @@
    `(orderless-match-face-0 ((t (:foreground ,hollow :weight bold))))
    `(orderless-match-face-1 ((t (:foreground ,kumashi :weight bold))))
    `(orderless-match-face-2 ((t (:foreground ,garden :weight bold))))
-   `(orderless-match-face-3 ((t (:foreground ,zombie :weight bold))))))
+   `(orderless-match-face-3 ((t (:foreground ,zombie :weight bold))))
+
+   ;; --- vterm -----------------------------------------------------------
+   `(vterm-color-black ((t (:foreground ,low))))
+   `(vterm-color-red ((t (:foreground ,mihawk))))
+   `(vterm-color-green ((t (:foreground ,garden))))
+   `(vterm-color-yellow ((t (:foreground ,sangria))))
+   `(vterm-color-blue ((t (:foreground ,kumashi))))
+   `(vterm-color-magenta ((t (:foreground ,zombie))))
+   `(vterm-color-cyan ((t (:foreground ,hollow))))
+   `(vterm-color-white ((t (:foreground ,text))))
+   `(vterm-color-underline ((t (:foreground ,hollow))))
+   `(vterm-color-inverse-video ((t (:background ,base :inverse-video t))))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
