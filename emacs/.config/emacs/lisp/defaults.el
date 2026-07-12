@@ -25,22 +25,5 @@
 (setq-default scroll-margin 12
               scroll-conservatively 101)
 
-;; clipboard
-;setq select-enable-clipboard t)
-;setq select-enable-primary t)
-
-;when (executable-find "wl-copy")
-; (setq interprogram-cut-function
-;       (lambda (text)
-;         (let ((process-connection-type nil))
-;           (let ((proc (start-process "wl-copy" "*wl-copy" "wl-copy" "-n")))
-;             (process-send-string proc text)
-;             (process-send-eof proc)))))
-; (setq interprogram-paste-function
-;       (lambda ()
-;         (let ((process-connection-type nil))
-;            (shell-command-to-string "wl-paste -n")))))
-            
-
 (provide 'defaults)
 ;;; defaults.el ends here

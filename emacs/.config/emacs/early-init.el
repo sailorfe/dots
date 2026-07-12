@@ -5,11 +5,11 @@
 
 ;;; Code:
 
+;; disable package.el
+(setq package-enable-at-startup nil)
+
 ;; XDG compliance
 (setq user-emacs-directory (expand-file-name "~/.config/emacs/"))
-
-;; disable default package loading
-(setq package-enable-at-startup nil)
 
 ;; defer GC during startup
 (setq gc-cons-threshold most-positive-fixnum

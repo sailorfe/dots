@@ -16,8 +16,7 @@
 (global-hl-line-mode +1)
 
 ;; line numbers
-(use-package display-line-numbers
-  :ensure t)
+(use-package display-line-numbers)
 
 (setq display-line-numbers-type t)
 (global-display-line-numbers-mode 1)
@@ -28,13 +27,18 @@
 (add-hook 'text-mode-hook
           (lambda () (setq display-line-numbers-type t)))
 
+;; vterm
+(use-package vterm
+  :commands vterm
+  :config
+  (setq vterm-shell "/bin/zsh"))
+
 ;; font
-(add-to-list 'default-frame-alist '(font . "Maple Mono-14"))
+(add-to-list 'default-frame-alist '(font . "Moralerspace Neon-14"))
 (dolist (font '("3270 Nerd Font" "nerd-icons"))
   (set-fontset-font "fontset-default" 'unicode (font-spec :family font) nil 'prepend))
 
 (use-package nerd-icons
-  :ensure t
   :config
   (setq nerd-icons-scale-factor 0.8)
   (setq nerd-icons-default-adjust 0.2))
@@ -46,7 +50,7 @@
 (let ((theme-var (getenv "THEME")))
   (if theme-var
       (load-theme (intern theme-var) t)
-    (load-theme 'modus-operandi t)))
+    (load-theme 'modus-vivendi-tinted t)))
 
 ;; splash screen
 (use-package desktop
@@ -55,7 +59,6 @@
   (desktop-save-mode 1))
 
 (use-package dashboard
-  :ensure t
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
   (setq dashboard-navigator-buttons
@@ -63,7 +66,7 @@
          ( "☉" "org-agenda" "SPC o A" (lambda (&rest _) (org-agenda)))
          ( "☿" "recent files" "SPC f r" (lambda (&rest _) (consult-recent-file)))
          ( "♀" "open project" "SPC p p" (lambda (&rest _) (project-switch-project)))
-        ( "♂" "configuration" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
+         ( "♂" "configuration" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
          ( "♃" "bookmarks" "SPC RET" (lambda (&rest _) (bookmark-jump))))))
 
   (setq dashboard-startupify-list
@@ -82,20 +85,18 @@
   :config
   (setq dashboard-startup-banner (expand-file-name "banner.txt" user-emacs-directory))
   (setq dashboard-center-content t)
-  (setq dashboard-vertically-center-content t)
   (setq dashboard-banner-logo-title "おかえり!")
   (setq dashboard-items-default-length 5)
-  (setq dashbaord-items
+  (setq dashboard-items
         '((recents)
           (bookmarks)
-          (projects)
-          (agenda)))
+          (projects)))
+  (setq dashboard-show-shortcuts nil)
  
   (dashboard-setup-startup-hook))
 
 ;; modeline
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1))
 
 (provide 'ui)

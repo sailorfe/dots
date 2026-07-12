@@ -1,7 +1,10 @@
 ;;; vcs.el --- sailorfe's Emacs configuration -*- lexical-binding: t; -*-
+;;; Commentary:
+;; Versin control UI.
 
-(use-package magit
-  :ensure t)
+;;; Code:
+
+(use-package magit)
 
 ;; gitsigns
 (use-package diff-hl

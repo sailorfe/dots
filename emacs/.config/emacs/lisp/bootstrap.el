@@ -1,25 +1,31 @@
 ;;; bootstrap.el --- sailorfe's Emacs configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; this needs severe organization lol
+;; From straight.el's README.
 
 ;;; Code:
 
-;; repos
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+;; bootstrap straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(setq package-quickstart t)
-(package-initialize)
-
-;; bootstrap use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 
 (require 'use-package)
-(setq use-package-always-ensure t)
 
 ;; xdg compliance
 (use-package no-littering

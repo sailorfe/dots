@@ -26,7 +26,6 @@
 (global-set-key (kbd "<escape>") #'keyboard-escape-quit)
 
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode))
 
@@ -70,6 +69,8 @@
     "c c" 'org-capture
     "c s" 'org-capture-string
     "c w" 'org-refile
+    ;;
+    "o m" #'olivetti-mode
     ))
 
 

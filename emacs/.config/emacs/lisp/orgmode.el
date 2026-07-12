@@ -5,6 +5,7 @@
 ;;; Code:
 
 (use-package org
+  :straight (:type built-in)
   :defer t
   :init
   (setq org-directory "~/d/flor/org")

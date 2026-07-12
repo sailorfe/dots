@@ -10,7 +10,6 @@
   (setq olivetti-body-width 100))
 
 (use-package markdown-mode
-  :ensure t
   :mode ("\\.md\\'" . gfm-mode)
   :config
   (setq markdown-fontify-code-blocks-natively t))
