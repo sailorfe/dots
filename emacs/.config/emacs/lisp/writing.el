@@ -12,6 +12,7 @@
 (use-package markdown-mode
   :mode ("\\.md\\'" . gfm-mode)
   :config
+  (setq olivetti-style t)
   (setq markdown-fontify-code-blocks-natively t))
 
 (provide 'writing)
