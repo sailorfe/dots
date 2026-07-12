@@ -67,10 +67,10 @@
            (file org-default-notes-file)
            "* %U %?\n")
 
-         ("e" "Event"
-          entry
-          (file (expand-file-name "/calendar.org" org-directory))
-          "* %?\nSCHEDULED: %^T\n"))))
+          ("e" "Event"
+            entry
+            (file org-default-notes-file)
+            "* %?\nSCHEDULED: %^T\n"))))
 
 (provide 'orgmode)
 ;;; orgmode.el ends here
