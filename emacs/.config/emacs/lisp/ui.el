@@ -87,10 +87,6 @@
   (setq dashboard-center-content t)
   (setq dashboard-banner-logo-title "おかえり!")
   (setq dashboard-items-default-length 5)
-  (setq dashboard-items
-        '((recents)
-          (bookmarks)
-          (projects)))
   (setq dashboard-show-shortcuts nil)
  
   (dashboard-setup-startup-hook))

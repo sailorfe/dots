@@ -70,7 +70,12 @@
           ("e" "Event"
             entry
             (file org-default-notes-file)
-            "* %?\nSCHEDULED: %^T\n"))))
+            "* %?\nSCHEDULED: %^T\n")
+
+          ("k" "Knitting project"
+           entry
+           (file org-default-notes-file)
+           "* PROG %?\n:PROPERTIES:\n:STARTED: %U\n:NEEDLES: \n:YARN: \n:END:"))))
 
 (provide 'orgmode)
 ;;; orgmode.el ends here

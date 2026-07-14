@@ -9,7 +9,7 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-undo-system 'undo-redo)
-  (setq evil-want-C-d-scroll t)
+  (setq evil-want-C-u-scroll t)
   (setq evil-want-C-d-scroll t)
   (setq evil-disable-insert-state-bindings t)
   :config

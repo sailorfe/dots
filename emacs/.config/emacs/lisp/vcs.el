@@ -7,13 +7,14 @@
 (use-package magit)
 
 (use-package diff-hl
-  :ensure t
-  :init
-  (global-diff-hl-mode 1)
+  :straight t
+  :hook ((prog-mode . diff-hl-mode)
+         (text-mode . diff-hl-mode)
+         (dired-mode . diff-hl-dired-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
-  (diff-hl-margin-mode 1) ;; cut this...
-  (add-hook 'find-file-hook #'diff-hl-magit-post-refresh)
-  (add-hook 'after-save-hook #'diff-hl-mark-maybe-updated))
+  (diff-hl-margin-mode 1)
+  (diff-hl-flydiff-mode 1))
 
 (provide 'vcs)
 ;;; vcs.el ends here
