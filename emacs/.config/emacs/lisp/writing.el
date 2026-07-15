@@ -7,7 +7,7 @@
 (use-package olivetti
   :hook (text-mode . olivetti-mode)
   :config
-  (setq olivetti-body-width 100))
+  (add-hook 'olivetti-mode-hook (lambda () (setq-local olivetti-body-width 100))))
 
 (use-package markdown-mode
   :mode ("\\.md\\'" . gfm-mode)
