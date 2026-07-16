@@ -42,7 +42,7 @@
   (setq vterm-shell "/bin/zsh"))
 
 ;; font
-(add-to-list 'default-frame-alist '(font . "Moralerspace Neon-14"))
+(add-to-list 'default-frame-alist '(font . "Moralerspace Neon-12"))
 (dolist (font '("3270 Nerd Font" "nerd-icons"))
   (set-fontset-font "fontset-default" 'unicode (font-spec :family font) nil 'prepend))
 
@@ -55,10 +55,12 @@
 (setq custom-theme-directory (expand-file-name "lisp/themes" user-emacs-directory))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
 
-(let ((theme-var (getenv "THEME")))
-  (if theme-var
-      (load-theme (intern theme-var) t)
-    (load-theme 'modus-vivendi-tinted t)))
+(load-theme
+ (pcase (system-name)
+   ("goingmerry" 'perona)
+   ("thousandsunny"  'luna)
+   (_ 'modus-vivendi-tinted))
+ t)
 
 ;; splash screen
 (use-package desktop
@@ -96,8 +98,9 @@
   (setq dashboard-banner-logo-title "おかえり!")
   (setq dashboard-items-default-length 5)
   (setq dashboard-show-shortcuts nil)
-  
-  (dashboard-setup-startup-hook))
+
+  (dashboard-setup-startup-hook)
+  (add-hook 'server-after-make-frame-hook (lambda () (dashboard-open))))
 
 ;; modeline
 (use-package doom-modeline
