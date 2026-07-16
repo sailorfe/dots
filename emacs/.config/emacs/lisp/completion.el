@@ -13,6 +13,10 @@
    (lisp-mode . eglot-ensure)
    (lua-mode . eglot-ensure)))
 
+(use-package apheleia
+  :config
+  (apheleia-global-mode +1))
+
 (use-package vertico
   :init
   (vertico-mode))
