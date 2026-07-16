@@ -27,6 +27,14 @@
 (add-hook 'text-mode-hook
           (lambda () (setq display-line-numbers-type t)))
 
+;; colorcolumn
+(setq-default fill-column 80)
+(global-display-fill-column-indicator-mode 1)
+
+;; indentation guides
+(use-package indent-bars
+  :hook (prog-mode . indent-bars-mode))
+
 ;; vterm
 (use-package vterm
   :commands vterm
@@ -62,12 +70,12 @@
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
   (setq dashboard-navigator-buttons
-      '((( "☽" "reload session" "SPC q l" (lambda (&rest _) (desktop-read)))
-         ( "☉" "org-agenda" "SPC o A" (lambda (&rest _) (org-agenda)))
-         ( "☿" "recent files" "SPC f r" (lambda (&rest _) (consult-recent-file)))
-         ( "♀" "open project" "SPC p p" (lambda (&rest _) (project-switch-project)))
-         ( "♂" "configuration" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
-         ( "♃" "bookmarks" "SPC RET" (lambda (&rest _) (bookmark-jump))))))
+        '((( "☽" "reload session" "SPC q l" (lambda (&rest _) (desktop-read)))
+           ( "☉" "org-agenda" "SPC o A" (lambda (&rest _) (org-agenda)))
+           ( "☿" "recent files" "SPC f r" (lambda (&rest _) (consult-recent-file)))
+           ( "♀" "open project" "SPC p p" (lambda (&rest _) (project-switch-project)))
+           ( "♂" "configuration" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
+           ( "♃" "bookmarks" "SPC RET" (lambda (&rest _) (bookmark-jump))))))
 
   (setq dashboard-startupify-list
         '(dashboard-insert-banner
@@ -88,7 +96,7 @@
   (setq dashboard-banner-logo-title "おかえり!")
   (setq dashboard-items-default-length 5)
   (setq dashboard-show-shortcuts nil)
- 
+  
   (dashboard-setup-startup-hook))
 
 ;; modeline
