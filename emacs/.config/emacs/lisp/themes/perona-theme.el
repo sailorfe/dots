@@ -38,7 +38,7 @@
    `(region ((t (:background ,hollow :foreground ,base))))
    `(secondary-selection ((t (:background ,med :foreground ,sangria))))
    `(highlight ((t (:background ,overlay :foreground ,hollow))))
-   `(hl-line ((t (:background ,overlay))))
+   `(hl-line ((t (:background ,surface))))
    `(fringe ((t (:background ,base :foreground ,muted))))
    `(vertical-border ((t (:foreground ,surface))))
    `(window-divider ((t (:foreground ,surface))))
@@ -53,7 +53,7 @@
    `(tooltip ((t (:background ,surface :foreground ,text))))
    `(trailing-whitespace ((t (:background ,overlay))))
    `(nobreak-space ((t (:foreground ,muted :underline t))))
-   `(fill-column-indicator ((t (:foreground ,surface))))
+   `(fill-column-indicator ((t (:foreground ,med))))
 
    ;; --- errors / warnings / success ------------------------------
    `(error ((t (:foreground ,mihawk :weight bold))))
