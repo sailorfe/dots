@@ -13,22 +13,34 @@
 (deftheme perona
   "Bubblegum goth pirate theme.")
 
-(let ((base    "#261720")   ; darkest background
-      (surface "#331f2b")   ; slightly raised background
-      (overlay "#3f2735")   ; selections, popups
-      (text    "#eac3da")   ; main foreground
-      (light   "#ffebf7")   ; brightest foreground, used on strong bg
-      (mihawk  "#d0435f")   ; red - errors, deletions
-      (garden  "#d18de2")   ; lavender - types, additions, ok
-      (sangria "#e28d8d")   ; coral - warnings, strings/constants
-      (kumashi "#8dafe2")   ; blue - keywords, info, links
-      (zombie  "#d65c8d")   ; magenta - identifiers, special
-      (hollow  "#ed82c2")   ; bubblegum pink - functions, titles, hints
-      (low     "#31212a")   ; folds
-      (med     "#48323f")   ; search bg, header-line bg
-      (high    "#5f4554")   ; strong emphasis bg
-      (faint   "#ad859d")   ; comments, dimmed text
-      (muted   "#896c7d"))  ; line numbers, very dimmed text
+(let (; backgrounds
+      (base "#261720")
+      (surface "#331f2b")
+      (overlay "#3f2735")
+                                        ; foregrounds
+      (text "#eac3da")
+      (light "#ffebf7")
+      (faint "#ad859d")
+      (muted "#896c7d")
+                                        ; main
+      (mihawk "#d0435f")
+      (garden "#d18de2")
+      (sangria "#e28d8d")
+      (kumashi "#8dafe2")
+      (zombie "#d65c8d")
+      (hollow "#ed82c2")
+                                        ; contrast highlights
+      (low "#31212a")
+      (med "#48323f")
+      (high "#5f4554")
+                                        ; just for terminal brights
+      (dracule "#f76e89")
+      (wonder "#e4a3f5")
+      (fruit "#f5a3a3")
+      (beary "#a3c4f5")
+      (surprise "#f075a6")
+      (negative "#fa9ed5")
+      )
 
   (custom-theme-set-faces
    'perona
@@ -38,7 +50,7 @@
    `(region ((t (:background ,hollow :foreground ,base))))
    `(secondary-selection ((t (:background ,med :foreground ,sangria))))
    `(highlight ((t (:background ,overlay :foreground ,hollow))))
-   `(hl-line ((t (:background ,surface))))
+   `(hl-line ((t (:background ,overlay))))
    `(fringe ((t (:background ,base :foreground ,muted))))
    `(vertical-border ((t (:foreground ,surface))))
    `(window-divider ((t (:foreground ,surface))))
@@ -53,7 +65,8 @@
    `(tooltip ((t (:background ,surface :foreground ,text))))
    `(trailing-whitespace ((t (:background ,overlay))))
    `(nobreak-space ((t (:foreground ,muted :underline t))))
-   `(fill-column-indicator ((t (:foreground ,med))))
+   `(fill-column-indicator ((t (:foreground ,high))))
+   `(bookmark-face ((t (:foreground ,zombie))))
 
    ;; --- errors / warnings / success ------------------------------
    `(error ((t (:foreground ,mihawk :weight bold))))
@@ -271,10 +284,14 @@
    `(org-link ((t (:foreground ,kumashi :underline t))))
    `(org-todo ((t (:background ,mihawk :foreground ,light :weight bold))))
    `(org-done ((t (:background ,garden :foreground ,light :weight bold))))
+   `(org-headline-todo ((t (:foreground ,mihawk))))
+   `(org-headline-done ((t (:foreground ,garden))))
    `(org-date ((t (:foreground ,muted :underline t))))
    `(org-tag ((t (:foreground ,faint))))
    `(org-special-keyword ((t (:foreground ,muted))))
    `(org-quote ((t (:foreground ,faint :slant italic))))
+   `(org-macro ((t (:foreground ,sangria))))
+   `(org-table ((t (:foreground ,kumashi))))
    ;; custom todo keywords
    `(sailorfe-org-todo-next ((t (:background ,hollow :foreground ,light :weight bold))))
    `(sailorfe-org-todo-prog ((t (:background ,zombie :foreground ,light :weight bold))))
@@ -418,14 +435,22 @@
    `(orderless-match-face-3 ((t (:foreground ,zombie :weight bold))))
 
    ;; --- vterm -----------------------------------------------------------
-   `(vterm-color-black ((t (:foreground ,low))))
-   `(vterm-color-red ((t (:foreground ,mihawk))))
-   `(vterm-color-green ((t (:foreground ,garden))))
-   `(vterm-color-yellow ((t (:foreground ,sangria))))
-   `(vterm-color-blue ((t (:foreground ,kumashi))))
-   `(vterm-color-magenta ((t (:foreground ,zombie))))
-   `(vterm-color-cyan ((t (:foreground ,hollow))))
-   `(vterm-color-white ((t (:foreground ,text))))
+   `(vterm-color-black ((t (:foreground ,low :background ,low))))
+   `(vterm-color-bright-black ((t (:foreground ,med :background ,med))))
+   `(vterm-color-red ((t (:foreground ,mihawk :background ,mihawk))))
+   `(vterm-color-bright-red ((t (:foreground ,dracule :background ,dracule))))
+   `(vterm-color-green ((t (:foreground ,garden :background ,garden))))
+   `(vterm-color-bright-green ((t (:foreground ,wonder :background ,wonder))))
+   `(vterm-color-yellow ((t (:foreground ,sangria :background ,sangria))))
+   `(vterm-color-bright-yellow ((t (:foreground ,fruit :background ,fruit))))
+   `(vterm-color-blue ((t (:foreground ,kumashi :background ,kumashi))))
+   `(vterm-color-bright-blue ((t (:foreground ,beary :background ,beary))))
+   `(vterm-color-magenta ((t (:foreground ,zombie :background ,zombie))))
+   `(vterm-color-bright-magenta ((t (:foreground ,surprise :background ,surprise))))
+   `(vterm-color-cyan ((t (:foreground ,hollow :background ,hollow))))
+   `(vterm-color-bright-cyan ((t (:foreground ,negative :background ,negative))))
+   `(vterm-color-white ((t (:foreground ,text :background ,text))))
+   `(vterm-color-bright-white ((t (:foreground ,light :background ,light))))
    `(vterm-color-underline ((t (:foreground ,hollow))))
    `(vterm-color-inverse-video ((t (:background ,base :inverse-video t))))))
 
