@@ -69,6 +69,8 @@
     "c c" 'org-capture
     "c s" 'org-capture-string
     "c w" 'org-refile
+    "c k" 'org-capture-kill
+    "c t" 'org-todo
     ;;
     "o m" #'olivetti-mode
     ))

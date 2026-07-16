@@ -20,6 +20,14 @@
   (setq org-refile-targets
         '((org-agenda-files :maxlevel . 3)))
 
+  (setq org-log-done 'time)
+
+  (setq org-startup-indented t)
+
+  (setq org-hide-emphasis-markers t)
+
+  (setq org-agenda-start-on-weekday 1)
+
   (setq org-todo-keywords
         '((sequence
            "TODO(t)"
@@ -68,9 +76,9 @@
            "* %U %?\n")
 
           ("e" "Event"
-            entry
-            (file org-default-notes-file)
-            "* %?\nSCHEDULED: %^T\n")
+           entry
+           (file org-default-notes-file)
+           "* %?\nSCHEDULED: %^T\n")
 
           ("k" "Knitting project"
            entry
