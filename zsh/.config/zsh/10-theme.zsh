@@ -3,7 +3,7 @@
 case "$(hostname)" in
   goingmerry)
     THEME=perona
-    TERM_FONT_SIZE=10.0
+    TERM_FONT_SIZE=12.0
     ;;
   thousandsunny)
     THEME=luna
@@ -11,7 +11,7 @@ case "$(hostname)" in
     ;;
   minimerry)
     THEME=moonqueen ;;
-  *) THEME=rose-pine ;;
+  *) THEME=ulti ;;
 esac
 
 export THEME
