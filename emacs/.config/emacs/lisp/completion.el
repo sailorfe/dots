@@ -32,7 +32,8 @@
 (use-package consult)
 
 (use-package corfu
-  :hook (emacs-startup . global-corfu-mode)
+  :init
+  (global-corfu-mode)
   :custom
   (corfu-auto t)
   (corfu-cycle t))
