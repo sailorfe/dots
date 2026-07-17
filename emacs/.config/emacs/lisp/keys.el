@@ -44,12 +44,13 @@
   (sailorfe/leader-keys
     "f f" 'find-file
     "f s" 'save-buffer
-    ;; buffer management
+    ;; buffer/window management
     "b b" 'consult-buffer
     "p b" 'project-switch-to-buffer
     "b q" #'kill-current-buffer
-    "b k" #'kill-buffer
+    "x k" #'kill-buffer ; C-x k
     "q q" 'save-buffers-kill-terminal
+    "x 0" #'delete-window ; C-x 0
     ;; dashboard
     "q l" #'desktop-read
     "o A" #'org-agenda
@@ -71,8 +72,9 @@
     "c w" 'org-refile
     "c k" 'org-capture-kill
     "c t" 'org-todo
-    ;;
+    ;; misc
     "o m" #'olivetti-mode
+    "v t" #'vterm-other-window
     ))
 
 
