@@ -98,6 +98,9 @@
   (setq dashboard-banner-logo-title "おかえり!")
   (setq dashboard-items-default-length 5)
   (setq dashboard-show-shortcuts nil)
+  (setq dashboard-items '((recents . 5)
+                          (bookmarks . 5)
+                          (projects . 5 )))
 
   (dashboard-setup-startup-hook)
   (add-hook 'server-after-make-frame-hook (lambda () (dashboard-open))))
@@ -105,6 +108,9 @@
 ;; modeline
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
+
+(line-number-mode 1)
+(column-number-mode 1)
 
 (provide 'ui)
 ;;; ui.el ends here

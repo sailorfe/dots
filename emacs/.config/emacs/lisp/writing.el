@@ -4,6 +4,14 @@
 ;; Packages for writing markdown prose.
 
 ;;; Code:
+;; dictionaries
+(setq ispell-program-name "hunspell"
+      ispell-personal-dictionary
+      (expand-file-name "emacs/hunspell"
+                        (or (getenv "XDG_DATA_HOME")
+                            (expand-file-name "~/.local/share"))))
+
+;; packages
 (use-package olivetti
   :hook (text-mode . olivetti-mode)
   :config
