@@ -23,7 +23,7 @@ default_border pixel 2
 
 # == startup ===============================================================
 
-exec swaymsg "exec $term"
+exec emacsclient -c
 exec swaybar
 
 # -*- flatpak hell -*-
@@ -32,6 +32,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
+# this is from alpine <23 i think
 # exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id)
 
 # == key bindings ==========================================================

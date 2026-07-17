@@ -21,32 +21,32 @@ bar {
 # == workspaces ================================================================
 
 # -*- just emacs? -*-
-assign [class="Emacs"] $ws2
+assign [class="Emacs"] $ws1
 
 # -*- browsers -*-
-assign [app_id="org.qutebrowser.qutebrowser"]				$ws3
-assign [app_id="librewolf"]													$ws3
-assign [app_id="firefox-esr"]												$ws3
-assign [app_id="Tor Browser"]												$ws3
+assign [app_id="org.qutebrowser.qutebrowser"]				$ws2
+assign [app_id="librewolf"]													$ws2
+assign [app_id="firefox-esr"]												$ws2
+assign [app_id="Tor Browser"]												$ws2
 
 # -*- GUIs -*-
-assign [app_id="org.musescore.mscore"]							$ws4
-assign [app_id="gimp"]															$ws4
-assign [app_id="obsidian"]													$ws4
-assign [class="REAPER"]															$ws4
-assign [class="Code"]																$ws4
-assign [class="libreoffice-startcenter"]						$ws4
-assign [app_id="calibre-gui"]                       $ws4
+assign [app_id="org.musescore.mscore"]							$ws3
+assign [app_id="gimp"]															$ws3
+assign [app_id="obsidian"]													$ws3
+assign [class="REAPER"]															$ws3
+assign [class="Code"]																$ws3
+assign [class="libreoffice-startcenter"]						$ws3
+assign [app_id="calibre-gui"]                       $ws3
 
 # -*- fullscreen -*-
-assign [app_id="org.pwmt.zathura"]									$ws5
-assign [app_id="mpv"]																$ws5
-assign [class="Stardew Valley"]											$ws5
+assign [app_id="org.pwmt.zathura"]									$ws4
+assign [app_id="mpv"]																$ws4
+assign [class="Stardew Valley"]											$ws4
 
 # -*- background -*-
-assign [class="QjackCtl"]														$ws6
-assign [class="steam"]															$ws6
-assign [app_id="org.kde.kdeconnect.app"]						$ws6
+assign [class="QjackCtl"]														$ws5
+assign [class="steam"]															$ws5
+assign [app_id="org.kde.kdeconnect.app"]						$ws5
 
 # -*- chat -*-
 assign [class="slack"]															$ws6
