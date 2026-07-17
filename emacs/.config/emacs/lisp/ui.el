@@ -58,14 +58,34 @@
 (use-package perona
   :straight (perona
              :type git
+             :local-repo "~/p/lua/perona.nvim"
              :repo "ssh://softserve/perona.nvim"
-             :files ("extras/emacs/perona-theme.el"))
+             :files ("extras/emacs/*.el"))
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "perona")))
+
+(use-package luna
+  :straight (luna
+             :type git
+             :local-repo "~/p/lua/luna.nvim"
+             :repo "ssh://softserve/luna.nvim"
+             :files ("extras/emacs/*.el"))
+  :config
+  (add-to-list 'custom-theme-load-path (straight--build-dir "luna")))
+
+(use-package moonqueen
+  :straight (moonqueen
+             :type git
+             :local-repo "~/p/lua/moonqueen.nvim"
+             :repo "ssh://softserve/moonqueen.nvim"
+             :files ("extras/emacs/*.el"))
+  :config
+  (add-to-list 'custom-theme-load-path (straight--build-dir "moonqueen")))
 
 (use-package ulti
   :straight (ulti
              :type git
+             :local-repo "~/p/lisp/ulti"
              :repo "ssh://softserve/ulti")
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "ulti")))
@@ -74,7 +94,8 @@
  (pcase (system-name)
    ("goingmerry" 'perona)
    ("thousandsunny"  'luna)
-   (_ 'modus-vivendi-tinted))
+   ("minimerry"  'moonqueen)
+   (_ 'ulti))
  t)
 
 ;; splash screen
@@ -123,6 +144,10 @@
 ;; modeline
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
+
+;; colorful-mode
+(use-package colorful-mode)
+(set-face-attribute 'colorful-base nil :box nil)
 
 (line-number-mode 1)
 (column-number-mode 1)
