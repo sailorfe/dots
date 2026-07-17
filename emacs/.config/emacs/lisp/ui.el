@@ -55,6 +55,21 @@
 (setq custom-theme-directory (expand-file-name "lisp/themes" user-emacs-directory))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
 
+(use-package perona
+  :straight (perona
+             :type git
+             :repo "ssh://softserve/perona.nvim"
+             :files ("extras/emacs/perona-theme.el"))
+  :config
+  (add-to-list 'custom-theme-load-path (straight--build-dir "perona")))
+
+(use-package ulti
+  :straight (ulti
+             :type git
+             :repo "ssh://softserve/ulti")
+  :config
+  (add-to-list 'custom-theme-load-path (straight--build-dir "ulti")))
+
 (load-theme
  (pcase (system-name)
    ("goingmerry" 'perona)
