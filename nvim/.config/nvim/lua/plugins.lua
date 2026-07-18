@@ -1,6 +1,9 @@
 -- perona
 require("perona").setup({
   transparent = true,
+  overrides = {
+    RenderMarkdownDash = { bg = "#ed82c2" }
+  }
 })
 
 -- luna

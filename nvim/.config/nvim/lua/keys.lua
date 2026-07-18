@@ -22,20 +22,20 @@ vim.keymap.set("n", "<leader>dt", function()
   insert_date("%F %R")
 end, { desc = "Insert date + time (YYYY-MM-DD HH:mm)" })
 
--- Full ISO timestamp to minute with offset
+-- full ISO timestamp to minute with offset
 vim.keymap.set("n", "<leader>im", function()
   insert_date("%FT%R%z")
 end, { desc = "Insert ISO 8601 timestamp (minutes)" })
 
--- Full ISO timestamp to second with offset
+-- full ISO timestamp to second with offset
 vim.keymap.set("n", "<leader>is", function()
   insert_date("%FT%T%z")
 end, { desc = "Insert ISO 8601 timestamp (seconds)" })
 
--- chil and wee
+-- chill and wee
 vim.keymap.set("n", "<leader>td", function()
-	insert_date("%m/%d")
-end, { desc = "Insert date as MM/DD"})
+  insert_date("%m-%d")
+end, { desc = "Insert date as MM-DD" })
 
 -- "AP style"
 vim.keymap.set("n", "<leader>ap", function()
@@ -68,6 +68,7 @@ vim.keymap.set("n", "bp", "<Cmd>bprev<CR>")
 vim.keymap.set("n", "bq", "<Cmd>bdelete<CR>")
 
 -- tabs
-vim.keymap.set("n", "tn", "<Cmd>tabnext<CR>")
-vim.keymap.set("n", "tp", "<Cmd>tabprev<CR>")
-vim.keymap.set("n", "tq", "<Cmd>tabclose<CR>")
+-- i don't actually use these
+-- vim.keymap.set("n", "tn", "<Cmd>tabnext<CR>")
+-- vim.keymap.set("n", "tp", "<Cmd>tabprev<CR>")
+-- vim.keymap.set("n", "tq", "<Cmd>tabclose<CR>")
