@@ -41,12 +41,9 @@
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode))
 
-(use-package flycheck
-  :hook (prog-mode . flycheck-mode))
-
-(add-hook 'text-mode-hook #'flyspell-mode)
-(add-hook 'org-mode-hook #'flyspell-mode)
-(add-hook 'markdown-mode-hook #'flyspell-mode)
+(use-package jinx
+  :hook (text-mode . jinx-mode)
+  :bind (("C-;" . jinx-correct)))
 
 (provide 'completion)
 ;;; completion.el ends here
