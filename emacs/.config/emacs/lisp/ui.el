@@ -5,15 +5,24 @@
 
 ;;; Code:
 
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+;; un-GUI
+(if (display-graphic-p)
+    (progn
+      (scroll-bar-mode -1)
+      (tool-bar-mode -1)
+      (menu-bar-mode -1)))
+
 (setq inhibit-startup-screen t)
+
 (setq frame-title-format "Emacs")
 (setopt use-dialog-box nil)
 (setopt use-short-answers t)
 
 (global-hl-line-mode +1)
+
+;; in the modeline
+(line-number-mode 1)
+(column-number-mode 1)
 
 ;; line numbers
 (use-package display-line-numbers)
@@ -42,9 +51,10 @@
   (setq vterm-shell "/bin/zsh"))
 
 ;; font
-(add-to-list 'default-frame-alist '(font . "Moralerspace Neon-12"))
-(dolist (font '("3270 Nerd Font" "nerd-icons"))
-  (set-fontset-font "fontset-default" 'unicode (font-spec :family font) nil 'prepend))
+(when (display-graphic-p)
+  (add-to-list 'default-frame-alist '(font . "Moralerspace Neon-12"))
+  (dolist (font '("3270 Nerd Font" "nerd-icons"))
+    (set-fontset-font "fontset-default" 'unicode (font-spec :family font) nil 'prepend)))
 
 (use-package nerd-icons
   :config
@@ -148,9 +158,6 @@
 ;; colorful-mode
 (use-package colorful-mode)
 (set-face-attribute 'colorful-base nil :box nil)
-
-(line-number-mode 1)
-(column-number-mode 1)
 
 (provide 'ui)
 ;;; ui.el ends here
