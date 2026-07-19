@@ -7,6 +7,7 @@
 (use-package magit)
 
 (use-package diff-hl
+  ;; alpine busybox: apk add diffutils (gnu)
   :straight t
   :hook ((prog-mode . diff-hl-mode)
          (text-mode . diff-hl-mode)
