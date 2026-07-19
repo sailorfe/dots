@@ -41,6 +41,9 @@
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode))
 
+(use-package flycheck
+  :hook (prog-mode . flycheck-mode))
+
 (use-package jinx
   ;; requires libenchant-dev (debian) enchant2-dev (alpine)
   :hook (text-mode . jinx-mode)
