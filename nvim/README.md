@@ -1,3 +1,6 @@
+[!NOTE]
+> **the directory is deprecated as of july 2026**, but i'm keeping my old README here for detailed neovim instructions.
+
 ![perona](previews/perona.png)
 
 # dots
