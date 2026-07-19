@@ -51,10 +51,16 @@
   (setq vterm-shell "/bin/zsh"))
 
 ;; font
-(when (display-graphic-p)
-  (add-to-list 'default-frame-alist '(font . "Moralerspace Neon-12"))
-  (dolist (font '("3270 Nerd Font" "nerd-icons"))
-    (set-fontset-font "fontset-default" 'unicode (font-spec :family font) nil 'prepend)))
+(defun sailorfe/setup-fonts (&optional frame)
+  (when (display-graphic-p frame)
+    (with-selected-frame (or frame (selected-frame))
+      (set-frame-font "Rec Mono Casual-12" nil t)
+      (dolist (font '("3270 Nerd Font" "nerd-icons"))
+        (set-fontset-font t 'unicode (font-spec :family font) frame 'prepend)))))
+
+(if (daemonp)
+    (add-hook 'server-after-make-frame-hook #'sailorfe/setup-fonts)
+  (sailorfe/setup-fonts))
 
 (use-package nerd-icons
   :config
