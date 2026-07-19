@@ -3,14 +3,15 @@ set hidden
 
 " == paths =======================
 
-let data_dir = $XDG_DATA_HOME . '/vim'
-
 if empty($XDG_DATA_HOME)
   let $XDG_DATA_HOME = $HOME . '/.local/share'
 endif
+
 if empty($XDG_STATE_HOME)
   let $XDG_STATE_HOME = $HOME . '/.local/state'
 endif
+
+let data_dir = $XDG_DATA_HOME . '/vim'
 
 set runtimepath^=$XDG_DATA_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim/after
@@ -18,57 +19,36 @@ set runtimepath+=$XDG_DATA_HOME/vim/after
 " == plugins =======================
 
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  silent execute '!curl -fLo ' . shellescape(data_dir . '/autoload/plug.vim') . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin(data_dir . '/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
-    " linter
-    Plug 'dense-analysis/ale'
-    " completion
-    Plug 'davidhalter/jedi-vim'
-    Plug 'alvan/vim-closetag'
-    Plug 'jiangmiao/auto-pairs'
-    " syntax highligthing
     Plug 'sheerun/vim-polyglot'
-    " markdown
-    Plug 'preservim/vim-markdown'
-    Plug 'bullets-vim/bullets.vim'
-    " colorschemes
-    Plug 'rose-pine/vim', { 'as': 'rose-pine' }
-    Plug 'https://codeberg.org/sailorfe/luna.nvim', { 'as': 'luna', 'branch': 'vim' }
-    Plug 'https://codeberg.org/sailorfe/moonqueen.nvim', { 'as': 'moonqueen', 'branch': 'vim' }
-    Plug 'https://codeberg.org/sailorfe/perona.nvim', { 'as': 'perona', 'branch': 'vim' }
+    Plug '~/p/lisp/ulti', { 'rtp': 'extras/vim', 'as': 'ulti' }
 call plug#end()
 
 " == editing =======================
 
 filetype on
 filetype plugin on
+
 set background=dark
 set termguicolors
-syntax on
+syntax enable
 
-if $THEME == 'luna'
-    colorscheme luna
-elseif $THEME == 'perona'
-    colorscheme perona
-elseif $THEME == "rose-pine"
-    colorscheme rosepine
-else
-    colorscheme moonqueen
-endif
+colorscheme ulti
 
 set autoindent
-set backspace	  =indent,eol,start
+set backspace=indent,eol,start
 set breakindent
 set expandtab
 set linebreak
-set re          =0
-set softtabstop =4
-set shiftwidth	=4
+set re=0
+set softtabstop=4
+set shiftwidth=4
 set shiftround
 set showmatch
 set wrap
@@ -76,21 +56,20 @@ set nofoldenable
 
 " == display =======================
 
-set colorcolumn =80,100
-set display     =lastline
-set number 
+set colorcolumn=80
+set display=lastline
+set number
 set modeline
-set report      =0
+set report=0
 set showcmd
 set showmode
 set ruler
-set t_Co        =16
 set novisualbell
 set noerrorbells
 
 " == navigation ====================
 
-set scrolloff   =4
+set scrolloff=12
 set ttyfast
 set lazyredraw
 set hlsearch
@@ -106,7 +85,7 @@ set backup
 set writebackup
 set noswapfile
 
-set spellfile=$XDG_DATA_HOME/vim/spell/en.utf-8.add
+set spellfile=$XDG_DATA_HOME/nvim/spell/en.utf-8.add " shared with neovim 
 set viminfofile=$XDG_STATE_HOME/vim/viminfo
 set backupdir=$XDG_STATE_HOME/vim/backup//
 set undodir=$XDG_STATE_HOME/vim/undo//
@@ -128,16 +107,19 @@ nnoremap bd :bdelete<CR>
 
 " windows
 nnoremap <leader>vs :vsplit<CR>
-" move between
+
+" move between windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-" resize
+
+" resize windows
 nnoremap <A-h> 1<C-w>>
 nnoremap <A-j> 1<C-w>-
 nnoremap <A-k> 1<C-w>+
 nnoremap <A-l> 1<C-w><
+
 " close
 nnoremap <leader>x :close<CR>
 
@@ -145,38 +127,5 @@ nnoremap <leader>x :close<CR>
 vnoremap <Tab> >
 vnoremap <S-Tab> <
 
-" date
+" date insertion
 inoremap <C-d> <C-r>=strftime('%Y-%m-%dT%H:%M:%S%z')<CR>
-
-" == md wc =========================
-function! MarkdownWordCount()
-    let l:lines = getline(1, '$')
-
-    if &filetype == 'markdown' && get(l:lines, 0) == '---'
-        let l:end_idx = -1
-        for i in range(1, len(l:lines) - 1)
-            if l:lines[i] == '---'
-                let l:end_idx = i
-                break
-            endif
-        endfor
-
-        if l:end_idx != -1
-            let l:lines = l:lines[l:end_idx + 1 :]
-        endif
-    endif
-
-    let l:input_text = join(l:lines, "\n")
-    let l:output = system('wc', l:input_text)
-
-    let l:parts = split(l:output)
-    if len(l:parts) >= 3
-        if &filetype == 'markdown'
-            echo l:parts[1] . " words"
-        else
-            echo printf("%s lines, %s words, %s bytes", l:parts[0], l:parts[1], l:parts[2])
-        endif
-    endif
-endfunction
-
-nnoremap <leader>wc :call MarkdownWordCount()<CR>
