@@ -1,4 +1,5 @@
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:$PATH"
+export COLORTERM=truecolor
 
 # check if termux
 _on_termux=0
