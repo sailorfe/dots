@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+NOTES="/home/sailorfe/d/flor"
+LOGFILE="/home/sailorfe/.local/state/autosave-notes.log"
+
+cd "$NOTES" || exit
+
+git add -A
+
+git diff --cached --quiet && exit
+
+echo "$(date -Is) notes autosaved." >> "$LOGFILE"
