@@ -20,6 +20,12 @@
 
 (global-hl-line-mode +1)
 
+;; monospace eww
+(add-hook 'eww-mode-hook
+          (lambda ()
+            (setq-local buffer-face-mode-face 'fixed-pitch)
+            (buffer-face-mode t)))
+
 ;; in the modeline
 (line-number-mode 1)
 (column-number-mode 1)
@@ -30,6 +36,13 @@
 (setq display-line-numbers-type t)
 (global-display-line-numbers-mode 1)
 
+(defun sailorfe/disable-line-numbers ()
+  "Disable line numbers."
+  (display-line-numbers-mode -1))
+
+(add-hook 'eww-mode-hook #'sailorfe/disable-line-numbers)
+(add-hook 'vterm-mode-hook #'sailorfe/disable-line-numbers)
+
 (add-hook 'prog-mode-hook
           (lambda () (setq display-line-numbers-type 'relative)))
 
@@ -39,6 +52,9 @@
 ;; colorcolumn
 (setq-default fill-column 80)
 (global-display-fill-column-indicator-mode 1)
+
+(add-hook 'vterm-mode-hook
+          (lambda () (display-fill-column-indicator-mode -1)))
 
 ;; indentation guides
 (use-package indent-bars
@@ -56,7 +72,7 @@
     (with-selected-frame (or frame (selected-frame))
       (set-frame-font
        (pcase (system-name)
-         ("thousandsunny" "Rec Mono Casual-14")
+         ("thousandsunny" "Rec Mono Casual-13")
          (_               "Rec Mono Casual-11"))
        nil t)
       (dolist (font '("3270 Nerd Font" "nerd-icons"))
