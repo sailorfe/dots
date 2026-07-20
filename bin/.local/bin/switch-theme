@@ -19,10 +19,6 @@ while [[ "$#" -gt 0 ]]; do
       render bemenu ~/.config/bemenu/template.sh ~/.config/bemenu/args.sh
       shift
       ;;
-    --alacritty)
-      render alacritty ~/.config/alacritty/template.toml ~/.config/alacritty/alacritty.toml
-      shift
-      ;;
     --foot)
       render foot ~/.config/foot/template.ini ~/.config/foot/foot.ini
       shift
@@ -33,10 +29,6 @@ while [[ "$#" -gt 0 ]]; do
       ;;
     --swaylock)
       render swaylock ~/.config/swaylock/template ~/.config/swaylock/config
-      shift
-      ;;
-    --wezterm)
-      render wezterm ~/.config/wezterm/template.lua ~/.config/wezterm/wezterm.lua
       shift
       ;;
     --mako)
