@@ -3,7 +3,7 @@
 case "$(hostname)" in
   goingmerry)
     THEME=perona
-    TERM_FONT_SIZE=12.0
+    TERM_FONT_SIZE=10.0
     ;;
   thousandsunny)
     THEME=luna

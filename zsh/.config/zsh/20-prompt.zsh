@@ -2,6 +2,7 @@ FG_TIME=$COLOR_MAGENTA
 FG_DIR=$COLOR_WHITE
 FG_VENV=$COLOR_BRIGHT_CYAN
 FG_GIT=$COLOR_BRIGHT_MAGENTA
+FG_HG=$COLOR_BRIGHT_BLUE
 FG_GLYPH=$COLOR_MAGENTA
 NEWLINE=$'\n'
 
@@ -21,6 +22,14 @@ git_info() {
   echo " %F{$FG_GIT}$branch$symbol%f"
 }
 
+hg_info() {
+  local branch hg_status symbol
+  branch=$(hg branch 2>/dev/null) || return
+  hg_status=$(hg status --modified --added --removed --deleted --unknown 2>/dev/null)
+  [[ -n $hg_status ]] && symbol="*" || symbol=""
+  echo " %F{$FG_HG}$branch$symbol%f"
+}
+
 # helper for virtualenv
 venv_info() {
   if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -35,9 +44,10 @@ set_prompt() {
   venv=$(venv_info)
   current_dir="%F{$FG_DIR}%2~%f"
   gitinfo=$(git_info)
+  hginfo=$(hg_info)
   fun_glyph=" %F{$FG_GLYPH}%f "
 
-  PROMPT="$NEWLINE${venv}${clock}${current_dir}${gitinfo}${fun_glyph}"
+  PROMPT="$NEWLINE${venv}${clock}${current_dir}${gitinfo}${hginfo}${fun_glyph}"
 }
 
 precmd_functions+=(set_prompt)
