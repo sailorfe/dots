@@ -68,7 +68,7 @@ i configure both neovim and emacs by hand and try to keep extensions on the lean
 
 i used vim and neovim for four years, neovim for the latter two with [[https://github.com/folke/lazy.nvim][lazy.nvim]] as my plugin manager until some (entirely solvable) frustrations with ssh led me to abandon it for pulling plugins as git submodules in ~$XDG_DATA_HOME/nvim/site/pack/plugins~, part of nvim's default runtime path. this worked great for me because (1) i had only 22 plugins and lazy loading them was as simple as dividing them across ~start/~ and ~opt/~ and (2) i tend to either use whatever nvim is in my distribution's package repository or build it from stable. i've used nvim 0.9, 0.10 and 0.11, none of this nightly business, so i had no reason to keep plugins on the bleeding edge.
 
-[[file:nvim/README.md][my legacy README]] in this repo's nvim package has my pure git plugin workflow.
+see [[file:nvim/README.org][the nvim package's README]] for detailed instructions on rawdogging plugin management.
 
 *** emacs
 

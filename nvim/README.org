@@ -1,0 +1,64 @@
+* sailorfe/nvim
+
+neovim without a package manager via git submodules.
+
+** stow package structure
+
+#+BEGIN_SRC
+├── .config
+│   └── nvim
+│       ├── ftplugin
+│       ├── init.lua
+│       ├── lua
+│       └── pack -> $XDG_DATA_HOME/nvim/site/pack
+└── .local
+    └── share
+        └── nvim
+            └── site
+                └── pack
+                    └── plugins
+                        ├── opt
+                        └── start
+#+END_SRC
+
+** installation
+
+1. set up filetree:
+   #+BEGIN_SRC sh
+     mkdir -p .config .local/{share,state}
+     mkdir -p .local/share/nvim/site
+     mkdir -p .local/state/nvim
+   #+END_SRC
+   creating ~site/~ is a conservative approach that ensures /only/ pack is under version control, but if you make use of the vim convention ~site/plugin/after~, you might want to let stow own ~site/~, too, e.g. only make ~.local/share/nvim~.
+2. clone this repository:
+   #+BEGIN_SRC sh
+     git clone https://codeberg.org/sailorfe/dots.git
+     cd dots
+     git config --global url."https://codeberg.org/sailorfe/".insteadOf "ssh://softserve/"
+     git submodule update --init --recursive
+   #+END_SRC
+3. ~stow -t ~ nvim~
+
+** plugins
+
+install a new plugin:
+#+BEGIN_SRC sh
+cd dots/nvim/.local/share/nvim/site/pack/plugins/{opt,start}
+git submodule add $SOURCE 
+#+END_SRC
+
+update plugins:
+#+BEGIN_SRC sh
+git submodule update --remote --merge
+#+END_SRC
+
+remove plugins:
+#+BEGIN_SRC sh
+git submodule deinit -f nvim/.local/share/nvim/site/pack/plugins/{opt,start}/..
+git rm -f nvim/.local/share/nvim/site/pack/plugins/{opt,start}/..
+#+END_SRC
+
+** see also
+
++ [[https://neovim.io/doc/user/pack/][Pack - Neovim docs]]
++ [[https://whynothugo.nl/journal/2026/01/08/you-dont-need-a-neovim-plugin-manager/][You don't need a Neovim plugin manager - WhyNotHugo (雨果)]]
