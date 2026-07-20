@@ -54,7 +54,11 @@
 (defun sailorfe/setup-fonts (&optional frame)
   (when (display-graphic-p frame)
     (with-selected-frame (or frame (selected-frame))
-      (set-frame-font "Rec Mono Casual-12" nil t)
+      (set-frame-font
+       (pcase (system-name)
+         ("thousandsunny" "Rec Mono Casual-14")
+         (_               "Rec Mono Casual-11"))
+       nil t)
       (dolist (font '("3270 Nerd Font" "nerd-icons"))
         (set-fontset-font t 'unicode (font-spec :family font) frame 'prepend)))))
 
