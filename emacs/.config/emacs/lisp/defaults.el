@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-;;; history
+;; history
 (let ((backup-dir (expand-file-name "emacs/backups/" (or (getenv "XDG_STATE_HOME") "~/.local/state"))))
   (unless (file-exists-p backup-dir)
     (make-directory backup-dir t))
