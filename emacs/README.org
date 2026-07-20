@@ -1,0 +1,15 @@
+* sailorfe/emacs
+
+my packages have a few external dependencies that differ between linux distributions:
+
++ *[[https://github.com/akermu/emacs-libvterm][emacs-libvterm]]* requires [[https://www.leonerd.org.uk/code/libvterm/][libvterm]]
++ *[[https://github.com/minad/jinx][jinx]]* requires [[https://github.com/rrthomas/enchant][enchant]] development libraries, which tend to include aspell, hunspell and nuspell as subpackages
++ (/alpine-only/) *[[https://github.com/dgutov/diff-hl][diff-hl]]* requires [[https://www.gnu.org/software/diffutils/][gnu diffutils]], which ships with most gnu linuxes
+
+#+BEGIN_SRC sh
+# debian
+apt install libvterm libenchant-2-dev
+
+# alpine
+apk add libvterm enchant2-dev diffutils
+#+END_SRC

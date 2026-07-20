@@ -1,6 +1,6 @@
 * dots
 
-the main marks of this little unix environment are *text-first* and *keyboard-driven*, stubborn *manual configuration*, and *XDG compliance*. it also prioritizes portability,  prose, and for alliteration, python.
+the main marks of this little unix environment are *text-first* and *keyboard-driven*, *handwritten configuration*, and *XDG compliance*. it also prioritizes portability,  prose, and for alliteration, python.
 
 |                   |                            |
 |-------------------+----------------------------|
@@ -21,7 +21,7 @@ the first thing i do in any new homedir is create the following filetree, which 
   mkdir -p .local/state/{bash,emacs,nvim,vim,zsh}
 #+END_SRC
 
-i manage my dotfiles with [[https://gnu.org/software/stow][gnu stow]]. if ~.config~ and ~.local~ don't already exist, stow will create them as symlinks because these packages are structured ~$APP/.config/$APP~, from there, i stow packages as needed with =stow -t ~ [package]=. at minimum, i start with
+i manage my dotfiles with [[https://gnu.org/software/stow][gnu stow]]. if ~.config~ and ~.local~ don't already exist, stow will create them as symlinks because these packages are structured ~$APP/.config/$APP~. from there, i stow packages as needed with =stow -t ~ [package]=. at minimum, i start with
 
 #+BEGIN_SRC
 # essential packages, mostly text-based
@@ -46,15 +46,15 @@ there are also setup scripts really intended only for my use at the root of this
 
 i use [[https://zsh.org][zsh]] as my interactive shell and script in bash. zsh was my first shell via macOS monterey, and i keep a minimal ~.bashrc~ that lags a bit behind. i find zsh plenty luxurious with extensions like [[https://github.com/zsh-users/zsh-autosuggestions][zsh-autosuggestions]], [[https://github.com/zsh-users/zsh-completions][zsh-completions]], and [[https://github.com/zsh-users/zsh-syntax-highlighting][zsh-syntax-highlighting]], which all purport to be ~fish~-like.
 
-the most esoteric thing i do with my shell is export 16 variables for custom palettes and switch between them based on ~$(hostname)~. i work across a [[https://tailscale.com][tailnet]] of four physical devices and a hetzner VPS. to know where tf i am, i don't rely on the text of my zsh prompt alone, but foreground colors that differ per theme, /and/ changing the terminal emulator background with the OSCs (operating system commands) ~11~ and ~111~[fn:1].
+the most esoteric thing i do with my shell is export 16 variables for custom palettes and switch between them based on ~$(hostname)~. i work across a [[https://tailscale.com][tailnet]] of four physical devices and a hetzner VPS. to know where tf i am, i don't rely on the text of my zsh prompt alone, but foreground colors that differ per theme /and/ changing the terminal emulator background with the OSCs (operating system commands) ~11~ and ~111~[fn:1].
 
-my custom palettes are all [[https://en.wikipedia.org/wiki/Toei_Animation][toei-animation]]-themed and mostly started as [[https://github.com/rktjmp/lush.nvim][lush.nvim]] colorschemes: [[https://codeberg.org/sailorfe/perona.nvim][perona]], [[https://codeberg.org/sailorfe/luna.nvim][luna]], [[https://codeberg.org/sailorfe/moonqueen.nvim][moonqueen]] and most recently, emacs-native [[https://codeberg.org/sailorfe/ulti][ulti]]. i don't go crazy with syntax highlighting. after much experimentation, i follow the [[https://rosepinetheme.com][rosé pine]] model of six accent colors and a range of backgrounds and foregrounds where bright versions of the accents are only used for terminal ANSI.
+my custom palettes are all [[https://en.wikipedia.org/wiki/Toei_Animation][toei-animation]]-themed and mostly started as [[https://github.com/rktjmp/lush.nvim][lush.nvim]] colorschemes: [[https://codeberg.org/sailorfe/perona.nvim][perona]], [[https://codeberg.org/sailorfe/luna.nvim][luna]], [[https://codeberg.org/sailorfe/moonqueen.nvim][moonqueen]] and most recently, emacs-native [[https://codeberg.org/sailorfe/ulti][ulti]]. after much experimentation, i follow the [[https://rosepinetheme.com][rosé pine]] model of six accent colors used for syntax highlighting plus a range of backgrounds and foregrounds where bright versions of the accents are only used for terminal ANSI.
 
-these shell variables are also consumed by ~envsubst~ for gui ricing in [[https://swaywm.org][sway]] where my version-controlled configs for [[https://codeberg.org/dnkl/foot][foot]], [[https://github.com/emersion/mako][mako]] et al are all templates. 
+these shell variables are also consumed by ~envsubst~ for gui ricing in [[https://swaywm.org][sway]] where my version-controlled configs for [[https://codeberg.org/dnkl/foot][foot]], [[https://github.com/emersion/mako][mako]] et al are all templates. in the case of [[https://qutebrowser.org/][qutebrowser]], my config uses environmental variables directly thanks to python ~os~. 
 
-besides colors, i export all manner of environmental variables to wrangle file paths into XDG submission, especially pesky language libraries like ~cargo~ that germinate all over ~$HOME~ if left alone. there's also a few (again, host-based) conditionals that help with portability between linux distributions and between clients with sway and servers without. my only aliases append ~--color=auto~ and ~--group-directories-first~ to ~ls~ and ~grep~ commands.
+besides colors, i export all manner of environmental variables to wrangle file paths into XDG submission, especially pesky language libraries like ~cargo~ that germinate all over ~$HOME~ if left alone. there's also a few (again, host-based) conditionals that help with portability between linux distributions, and between clients with sway and servers without. my only aliases append ~--color=auto~ and ~--group-directories-first~ to ~ls~ and ~grep~ commands.
 
-i handwrote my zsh prompt to just be a HH:MM:SS timestamp plus ~.venv~ and VCS awareness, of course in shell-informed colors.
+i wrote my zsh prompt to just be ~HH:MM:SS~ plus ~.venv~ and VCS awareness, of course in shell-informed colors.
 
 [fn:1] [[https://www.xfree86.org/current/ctlseqs.html][XFree66, ctlseqs]]: Under "Operating System Controls," ~"P s = 1 1 → Change VT100 text background color to P t."~
 
@@ -68,7 +68,7 @@ i configure both neovim and emacs by hand and try to keep extensions on the lean
 
 i used vim and neovim for four years, neovim for the latter two with [[https://github.com/folke/lazy.nvim][lazy.nvim]] as my plugin manager until some (entirely solvable) frustrations with ssh led me to abandon it for pulling plugins as git submodules in ~$XDG_DATA_HOME/nvim/site/pack/plugins~, part of nvim's default runtime path. this worked great for me because (1) i had only 22 plugins and lazy loading them was as simple as dividing them across ~start/~ and ~opt/~ and (2) i tend to either use whatever nvim is in my distribution's package repository or build it from stable. i've used nvim 0.9, 0.10 and 0.11, none of this nightly business, so i had no reason to keep plugins on the bleeding edge.
 
-[[file:nvim/.config/nvim/README.md][my legacy README]] in this repo's nvim package has my pure git plugin workflow.
+[[file:nvim/README.md][my legacy README]] in this repo's nvim package has my pure git plugin workflow.
 
 *** emacs
 
