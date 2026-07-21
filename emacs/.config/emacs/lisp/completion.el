@@ -5,17 +5,34 @@
 
 ;;; Code:
 
+;; lsp
+
 (use-package eglot
   :ensure nil
   :hook
   ((python-mode . eglot-ensure)
    (sh-mode . eglot-ensure)
-   (lisp-mode . eglot-ensure)
-   (lua-mode . eglot-ensure)))
+   (lisp-mode . eglot-ensure)))
+
+(use-package lua-mode
+  :ensure t
+  :mode "\\.lua\\'"
+  :hook ((lua-mode . eglot-ensure)
+         (lua-ts-mode . eglot-ensure))
+  :config
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '(lua-mode . ("lua-language-server")))
+    (add-to-list 'eglot-server-programs
+                 '(lua-ts-mode . ("lua-language-server")))))
+
+;; formatting
 
 (use-package apheleia
   :config
   (apheleia-global-mode +1))
+
+;; completion
 
 (use-package vertico
   :init
@@ -40,6 +57,8 @@
 
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode))
+
+;; spellcheck / diagnostics
 
 (use-package flycheck
   :hook (prog-mode . flycheck-mode))
