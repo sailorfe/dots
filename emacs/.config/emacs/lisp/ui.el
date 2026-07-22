@@ -56,6 +56,9 @@
 (add-hook 'vterm-mode-hook
           (lambda () (display-fill-column-indicator-mode -1)))
 
+;; trailing whitespace
+(setq-default show-trailing-whitespace t)
+
 ;; indentation guides
 (use-package indent-bars
   :hook (prog-mode . indent-bars-mode))
