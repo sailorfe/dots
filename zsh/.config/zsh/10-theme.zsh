@@ -6,12 +6,12 @@ case "$(hostname)" in
     TERM_FONT_SIZE=10.0
     ;;
   thousandsunny)
-    THEME=luna
-    TERM_FONT_SIZE=14.0
+    THEME=ulti
+    TERM_FONT_SIZE=12.0
     ;;
   minimerry)
-    THEME=moonqueen ;;
-  *) THEME=ulti ;;
+    THEME=luna ;;
+  *) THEME=moonqueen ;;
 esac
 
 export THEME

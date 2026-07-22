@@ -1,17 +1,25 @@
 #!/usr/bin/env bash
+CHANGED=()
 
 render() {
   local name="$1"
   local template="$2"
   local output="$3"
   local hook="$4"
-
   if [ -f "$template" ]; then
     echo "switching $name..."
     envsubst <"$template" >"$output"
     [ -n "$hook" ] && eval "$hook"
+    CHANGED+=("$name")
   fi
 }
+
+if [ "$#" -eq 0 ]; then
+  set -- --bemenu --foot --sway --swaylock --mako --x
+  ARGS_GIVEN=false
+else
+  ARGS_GIVEN=true
+fi
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
@@ -35,6 +43,10 @@ while [[ "$#" -gt 0 ]]; do
       render mako ~/.config/mako/template ~/.config/mako/config "command -v makoctl >/dev/null 2>&1 && makoctl reload"
       shift
       ;;
+    --x)
+      render xresources ~/.config/X11/template.Xresources ~/.config/X11/Xresources "xrdb merge ~/.config/X11/Xresources"
+      shift
+      ;;
     *)
       echo "Unknown parameter passed: $1"
       shift
@@ -42,8 +54,14 @@ while [[ "$#" -gt 0 ]]; do
   esac
 done
 
-if command -v notify-send >/dev/null 2>&1; then
-  notify-send "Switched theme" "$THEME"
+if [ "$ARGS_GIVEN" = true ]; then
+  body="$THEME: $(IFS=,; echo "${CHANGED[*]}")"
 else
-  echo "Switched theme: $THEME"
+  body="$THEME"
+fi
+
+if command -v notify-send >/dev/null 2>&1; then
+  notify-send "Switched theme" "$body"
+else
+  echo "Switched theme: $body"
 fi

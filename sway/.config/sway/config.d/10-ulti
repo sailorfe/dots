@@ -1,12 +1,12 @@
 # == colors ===============================================================
 
-set $base #271b2d
-set $surface #372640
-set $overlay #483253
-set $text #ead9f2
-set $red #f87575
-set $accent #b27de8
-set $light #c99df6
+set $base #131629
+set $surface #1a1e37
+set $overlay #202545
+set $text #c7cbe4
+set $red #f286bc
+set $accent #5692e5
+set $light #82aeec
 
 # -*- windows -*-
 #												border	  bg			  fg		indicator		child_border
@@ -20,10 +20,10 @@ client.background       $overlay
 # == (g)i-dle  ===========================================================
 
 exec swayidle -w \
-	timeout 3000 'swaylock -f -c 2c1f33' \
+	timeout 3000 'swaylock -f -c 131649' \
   timeout 6000 'swaymsg "output * dpms off"' \
 		resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 2c1f33'
+  before-sleep 'swaylock -f -c 131649'
 
 # == display =============================================================
 
@@ -33,5 +33,4 @@ set $tv "HDMI-A-2"
 # == output ==============================================================
 
 output $builtin mode 1920x1080 bg $surface solid_color
-# output $builtin mode 1920x1080 bg /home/sailorfe/m/img/wall/page009-crop.jpg fill
 output $tv mode 3840x2160 bg $base solid_color
