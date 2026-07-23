@@ -132,9 +132,9 @@
 (load-theme
  (pcase (system-name)
    ("goingmerry" 'perona)
-   ("thousandsunny"  'luna)
-   ("minimerry"  'moonqueen)
-   (_ 'ulti))
+   ("thousandsunny"  'ulti)
+   ("minimerry"  'luna)
+   (_ 'moonqueen))
  t)
 
 ;; splash screen
