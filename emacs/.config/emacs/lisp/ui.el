@@ -59,6 +59,9 @@
 ;; trailing whitespace
 (setq-default show-trailing-whitespace t)
 
+(add-hook 'dashboard-mode-hook
+          (lambda () (setq show-trailing-whitespace nil)))
+
 ;; indentation guides
 (use-package indent-bars
   :hook (prog-mode . indent-bars-mode))
@@ -147,12 +150,12 @@
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
   (setq dashboard-navigator-buttons
-        '((( "☽" "reload session" "SPC q l" (lambda (&rest _) (desktop-read)))
-           ( "☉" "org-agenda" "SPC o A" (lambda (&rest _) (org-agenda)))
-           ( "☿" "recent files" "SPC f r" (lambda (&rest _) (consult-recent-file)))
-           ( "♀" "open project" "SPC p p" (lambda (&rest _) (project-switch-project)))
-           ( "♂" "configuration" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
-           ( "♃" "bookmarks" "SPC RET" (lambda (&rest _) (bookmark-jump))))))
+        '((( "☽" "wake" "SPC q l" (lambda (&rest _) (desktop-read)))
+           ( "☉" "log" "SPC o A" (lambda (&rest _) (org-agenda)))
+           ( "☿" "recent" "SPC f r" (lambda (&rest _) (consult-recent-file)))
+           ( "♀" "forge" "SPC p p" (lambda (&rest _) (project-switch-project)))
+           ( "♂" "engine" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
+           ( "♃" "saved" "SPC RET" (lambda (&rest _) (bookmark-jump))))))
 
   (setq dashboard-startupify-list
         '(dashboard-insert-banner
@@ -163,7 +166,6 @@
           dashboard-insert-newline
           dashboard-insert-init-info
           dashboard-insert-newline
-          dashboard-insert-items
           dashboard-insert-newline
           dashboard-insert-footer))
 
@@ -171,11 +173,7 @@
   (setq dashboard-startup-banner (expand-file-name "banner.txt" user-emacs-directory))
   (setq dashboard-center-content t)
   (setq dashboard-banner-logo-title "おかえり!")
-  (setq dashboard-items-default-length 5)
-  (setq dashboard-show-shortcuts nil)
-  (setq dashboard-items '((recents . 5)
-                          (bookmarks . 5)
-                          (projects . 5 )))
+  (setq dashboard-vertically-center-content t)
 
   (dashboard-setup-startup-hook)
   (add-hook 'server-after-make-frame-hook (lambda () (dashboard-open))))
