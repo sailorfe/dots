@@ -1,5 +1,31 @@
 * sailorfe/emacs
 
+** terminal truecolor with the emacs daemon
+
+emacs is a heavier program in large part because it has a gui, in my case =emacs-ptgk=, and it's common for emacs users to either launch the emacs daemon with their shell, WM/compositor, or as a user-level system service, all via =emacs --fg-daemon=. with a daemon running, emacs reads your =init.el= and other lisp config once at startup and simply reattaches to the same client in a new frame with =emacsclient -c= for the gui or =emacsclient -nw/-t/--ty/--no-window-system= for the terminal.
+
+two of my machines are headless servers where i only install =emacs-nox=, but i like to use =emacsclient -nw= in =foot= sometimes. this requires declaring ~COLORTERM=truecolor~ with the daemon or else you'll be stuck with 8-bit 256 colors even in a modern terminal emulator.
+
+*** systemd (debian)
+
+1. Run =systemctl --user edit emacs.service= and copy the following from [[file:services/override.conf]]:
+#+begin_src conf
+  [Service]
+  Environment=COLORTERM=truecolor
+#+end_src
+3. =systemctl --user daemon-reload=
+4. =systemctl --user restart emacs.service=
+
+this change will appear in =$XDG_CONFIG_HOME/systemd/user/emacs.service.d/override.conf=.
+
+*** openrc (alpine)
+
+1. Copy [[file:services/emacs]] to =$XDG_CONFIG_HOME/rc/init.d= and make it executable.
+2. =rc-update -U add emacs sysinit= to add it to your user's sysinit runlevel.
+3. =rc-service -U emacs restart=
+
+** package dependencies
+
 my packages have a few external dependencies that differ between linux distributions:
 
 + *[[https://github.com/akermu/emacs-libvterm][emacs-libvterm]]* requires [[https://www.leonerd.org.uk/code/libvterm/][libvterm]]

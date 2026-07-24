@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+name="emacs"
+description="Emacs daemon"
+
+supervisor="supervise-daemon"
+
+export COLORTERM=truecolor
+
+command="/usr/bin/emacs"
+command_args="--fg-daemon"
+
+pidfile="${XDG_RUNTIME_DIR}/emacs.pid"
