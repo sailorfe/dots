@@ -1,3 +1,5 @@
+[[file:previews/ulti.png]]
+
 * dots
 
 the main marks of this little unix environment are *text-first* and *keyboard-driven*, *handwritten configuration*, and *XDG compliance*. it also prioritizes portability,  prose, and for alliteration, python.
@@ -60,7 +62,7 @@ i wrote my zsh prompt to just be ~HH:MM:SS~ plus ~.venv~ and VCS awareness, of c
 
 ** text editors
 
-these days i use [[https://gnu.org/software/emacs][gnu emacs]] for intensive work and hop into either current vim or, on my alpine laptop, [[https://vim-classic.org][vim classic]] for quick edits, but this repository includes my [[https://neovim.io][neovim]] setup for posterity.
+these days i use [[https://gnu.org/software/emacs][gnu emacs]] for intensive work and hop into [[https://vim-classic.org][vim classic]] for quick edits, but this repository includes my [[https://neovim.io][neovim]] setup for posterity.
 
 i configure both neovim and emacs by hand and try to keep extensions on the lean side. as of writing, my lisp files explicitly name 32 packages compared to the 22 plugins in my nvim ~pack/~ directory. per ~straight.el~, i have a total of 62 emacs packages including dependencies. by "by hand," i mean i have a resistance to text editor distributions that one could call ascetic, but honestly arises from most of what i write is english. i have narrow needs and a narrow language stack, and i don't think the communities behind frameworks and IDE layers really have "writer who only programs a few days a week" in mind.
 
@@ -68,13 +70,15 @@ i configure both neovim and emacs by hand and try to keep extensions on the lean
 
 i used vim and neovim for four years, neovim for the latter two with [[https://github.com/folke/lazy.nvim][lazy.nvim]] as my plugin manager until some (entirely solvable) frustrations with ssh led me to abandon it for pulling plugins as git submodules in ~$XDG_DATA_HOME/nvim/site/pack/plugins~, part of nvim's default runtime path. this worked great for me because (1) i had only 22 plugins and lazy loading them was as simple as dividing them across ~start/~ and ~opt/~ and (2) i tend to either use whatever nvim is in my distribution's package repository or build it from stable. i've used nvim 0.9, 0.10 and 0.11, none of this nightly business, so i had no reason to keep plugins on the bleeding edge.
 
-see [[file:nvim/README.org][the nvim package's README]] for detailed instructions on rawdogging plugin management.
+see [[file:nvim/README.org][my nvim README]] for detailed instructions on rawdogging plugin management.
 
 *** emacs
 
 however, the grass is always greener, and by grass i mean [[https://orgmode.org][org-mode]]. i used the classic [[https://github.com/vimwiki/vimwiki][vimwiki]] in vim and later [[https://github.com/serenevoide/kiwi.nvim][kiwi.nvim]] for project management and organizing my markdown notes, and each lasted no more than a month or so. for context, my markdown notes have followed a [[https://en.wikipedia.org/wiki/Zettelkasten][zettelkasten]] system to varying degrees of success and at this point have years of rot, so the org-mode feature that fits into my habits best is org-capture to replace zettelkasten's "fleeting." i used a bash script with bemenu to add fleeting notes, never had a great discipline about refiling them, and chafed at needing sway for this workflow. converting existing markdown files to org would be absurd, so my .org files link to extant .md files while new notes originate in .org.
 
 before this, i had a few false starts trying emacs where i never got further than crying and puking over chorded keybindings (not helped by using a 40% keyboard), but some videos about [[https://github.com/doomemacs/core][doom emacs]] finally pushed me for the mere prospect of [[https://github.com/emacs-evil/evil][evil mode]] out of the box. i gave doom a shot for a good few days, less than a week, and liked it enough to throw it out and start from scratch. /which is an earnest compliment!/ i treated doom as a tasting menu, more or less, the same way my earliest neovim config was frankensteined together from blogs and public dotfiles. doom is an opinionated, generous configuration that isn't actually that prescriptive; the toggleable ~doom/init.el~ surveys the package landscape with overlapping options per domain. i walked away with a place to start.
+
+see [[file:emacs/README.org][my emacs README]] for a few external package dependencies and my systemd and openrc user services for the daemon. 
 
 *** prose extensions
 
