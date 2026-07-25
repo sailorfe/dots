@@ -147,20 +147,24 @@
   (desktop-save-mode 1))
 
 (use-package dashboard
+  ;; this is my own fork with truly just dashboard-navigator UI opinions: vertical layout without creating single-item lists (my old workaround) and most importantly a defcustom to replace the default square brackets around the buttons. i hesitate about publishing it because it's a bit crude and invasive to the existing code.
+  :straight (dashboard
+             :type git
+             :local-repo "~/p/lisp/dashboard"
+             :repo "ssh://softserve/dashboard")
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
   (setq dashboard-navigator-buttons
-        '((( "☽" "wake" "SPC q l" (lambda (&rest _) (desktop-read)))
-           ( "☉" "log" "SPC o A" (lambda (&rest _) (org-agenda)))
-           ( "☿" "recent" "SPC f r" (lambda (&rest _) (consult-recent-file)))
-           ( "♀" "forge" "SPC p p" (lambda (&rest _) (project-switch-project)))
-           ( "♂" "engine" "SPC f c" (lambda (&rest _) (sailorfe/open-emacs-config)))
-           ( "♃" "saved" "SPC RET" (lambda (&rest _) (bookmark-jump))))))
+        '(("☽" "wake" "SPC q l" "resume last session" (lambda (&rest _) (desktop-read)))
+          ("☉" "log" "SPC o A" "open org-agenda" (lambda (&rest _) (org-agenda)))
+          ("☿" "dream" "SPC f r" "recently opened files" (lambda (&rest _) (consult-recent-file)))
+          ("♀" "forge" "SPC p p" "open project" (lambda (&rest _) (project-switch-project)))
+          ("♂" "tinker" "SPC f c" "open emacs configuration" (lambda (&rest _) (sailorfe/open-emacs-config)))
+          ("♃" "revisit" "SPC RET" "jump to bookmarks" (lambda (&rest _) (bookmark-jump)))))
 
   (setq dashboard-startupify-list
-        '(dashboard-insert-banner
-          dashboard-insert-newline
-          dashboard-insert-banner-title
+        '(dashboard-insert-banner-title
+          dashboard-insert-banner
           dashboard-insert-newline
           dashboard-insert-navigator
           dashboard-insert-newline
@@ -174,6 +178,11 @@
   (setq dashboard-center-content t)
   (setq dashboard-banner-logo-title "おかえり!")
   (setq dashboard-vertically-center-content t)
+  ;; my fork
+  (setq dashboard-navigator-layout 'vertical)
+  (setq dashboard-navigator-shortcut-prefix "[ ")
+  (setq dashboard-navigator-shortcut-suffix " ]")
+  (setq dashboard-navigator-shortcut-padding 18)
 
   (dashboard-setup-startup-hook)
   (add-hook 'server-after-make-frame-hook (lambda () (dashboard-open))))
