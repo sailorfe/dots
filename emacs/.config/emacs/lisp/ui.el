@@ -150,7 +150,6 @@
   ;; this is my own fork with truly just dashboard-navigator UI opinions: vertical layout without creating single-item lists (my old workaround) and most importantly a defcustom to replace the default square brackets around the buttons. i hesitate about publishing it because it's a bit crude and invasive to the existing code.
   :straight (dashboard
              :type git
-             :local-repo "~/p/lisp/dashboard"
              :repo "ssh://softserve/dashboard")
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
