@@ -1,7 +1,7 @@
-;;; defaults.el
+;;; defaults.el --- sailorfe's Emacs configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; History and file wrangling.
+;; History and editing behavior.
 
 ;;; Code:
 
@@ -22,7 +22,7 @@
 (global-visual-line-mode +1)
 
 ;; navigation
-(setq-default scroll-margin 12
+(setq-default scroll-margin 6
               scroll-conservatively 101)
 
 (provide 'defaults)

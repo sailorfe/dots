@@ -74,6 +74,7 @@
 
 ;; font
 (defun sailorfe/setup-fonts (&optional frame)
+  "Ignore if FRAME is -nw/-tty."
   (when (display-graphic-p frame)
     (with-selected-frame (or frame (selected-frame))
       (set-frame-font
@@ -100,35 +101,39 @@
 (use-package perona
   :straight (perona
              :type git
-             :local-repo "~/p/lua/perona.nvim"
+             :host nil
              :repo "ssh://softserve/perona.nvim"
              :files ("extras/emacs/*.el"))
+  :no-require t
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "perona")))
 
 (use-package luna
   :straight (luna
              :type git
-             :local-repo "~/p/lua/luna.nvim"
+             :host nil
              :repo "ssh://softserve/luna.nvim"
              :files ("extras/emacs/*.el"))
+  :no-require t
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "luna")))
 
 (use-package moonqueen
   :straight (moonqueen
              :type git
-             :local-repo "~/p/lua/moonqueen.nvim"
+             :host nil
              :repo "ssh://softserve/moonqueen.nvim"
              :files ("extras/emacs/*.el"))
+  :no-require t
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "moonqueen")))
 
 (use-package ulti
   :straight (ulti
              :type git
-             :local-repo "~/p/lisp/ulti"
+             :host nil
              :repo "ssh://softserve/ulti")
+  :no-require t
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "ulti")))
 
@@ -150,7 +155,9 @@
   ;; this is my own fork with truly just dashboard-navigator UI opinions: vertical layout without creating single-item lists (my old workaround) and most importantly a defcustom to replace the default square brackets around the buttons. i hesitate about publishing it because it's a bit crude and invasive to the existing code.
   :straight (dashboard
              :type git
-             :repo "ssh://softserve/dashboard")
+             :host nil
+             :repo "ssh://softserve/dashboard.git")
+  :no-require t
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
   (setq dashboard-navigator-buttons
@@ -173,6 +180,7 @@
           dashboard-insert-footer))
 
   :config
+  (require 'dashboard)
   (setq dashboard-startup-banner (expand-file-name "banner.txt" user-emacs-directory))
   (setq dashboard-center-content t)
   (setq dashboard-banner-logo-title "おかえり!")
