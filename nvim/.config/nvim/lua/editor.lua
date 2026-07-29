@@ -20,7 +20,7 @@ vim.opt.wrapmargin = 0
 vim.opt.hidden = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 
 -- navigation
 vim.opt.scrolloff = 12

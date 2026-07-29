@@ -1,6 +1,6 @@
-* sailorfe/nvim
+* dots/nvim
 
-neovim without a package manager via git submodules.
+neovim without a package manager via git submodules where =.gitmodules= becomes your "lockfile."
 
 ** stow package structure
 
@@ -49,10 +49,10 @@ git submodule add $SOURCE
 
 update plugins:
 #+BEGIN_SRC sh
-git submodule update --remote --merge
+git submodule update --remote --recursive
 #+END_SRC
 
-remove plugins:
+remove a plugin:
 #+BEGIN_SRC sh
 git submodule deinit -f nvim/.local/share/nvim/site/pack/plugins/{opt,start}/..
 git rm -f nvim/.local/share/nvim/site/pack/plugins/{opt,start}/..
