@@ -80,6 +80,7 @@
       (set-frame-font
        (pcase (system-name)
          ("thousandsunny" "Rec Mono Casual-13")
+         ("northblue"     "Recursive Monospace Casual-11"))
          (_               "Rec Mono Casual-11"))
        nil t)
       (dolist (font '("3270 Nerd Font" "nerd-icons"))
@@ -139,7 +140,7 @@
 
 (load-theme
  (pcase (system-name)
-   ("goingmerry" 'perona)
+   ("northblue" 'perona)
    ("thousandsunny"  'ulti)
    ("minimerry"  'luna)
    (_ 'moonqueen))

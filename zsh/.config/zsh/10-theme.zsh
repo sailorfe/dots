@@ -1,7 +1,7 @@
 # set theme per host
 
 case "$(hostname)" in
-  goingmerry)
+  northblue)
     THEME=perona
     TERM_FONT_SIZE=10.0
     ;;
