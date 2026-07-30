@@ -27,7 +27,7 @@ call plug#begin(data_dir . '/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'sheerun/vim-polyglot'
-    Plug '~/p/lisp/ulti', { 'rtp': 'extras/vim', 'as': 'ulti' }
+    Plug 'ssh://softserve/ulti', { 'rtp': 'extras/vim', 'as': 'ulti' }
 call plug#end()
 
 " == editing =======================

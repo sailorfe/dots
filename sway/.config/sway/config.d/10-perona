@@ -27,5 +27,5 @@ exec swayidle -w \
 
 # == output ==============================================================
 
-output * mode 1920x1080 pos 0 0 bg $surface solid_color
-#output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/mihopero-alt.png fill
+#output * mode 1920x1080 pos 0 0 bg $surface solid_color
+output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/mihopero-alt.png fill

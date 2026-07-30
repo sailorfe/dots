@@ -41,6 +41,11 @@ if [ -z "${XDG_RUNTIME_DIR-}" ]; then
   unset _xdg_tmp
 fi
 
+# this is pmo
+if [ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+fi
+
 # launch syncthing if not already running (for alpine 3.23)
 # removed 2026-03-14 because i wrote a user service!!
 #if ! pgrep -x syncthing >/dev/null; then
@@ -48,3 +53,5 @@ fi
 #fi
 
 unset _on_termux
+
+. "$HOME/.local/share/../bin/env"

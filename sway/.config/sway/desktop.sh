@@ -26,6 +26,10 @@ memory="󰍛 $(free -h | awk '/^Mem/ {print $3}')"
 et="$(date +'%a %F %H:%M') ET"
 utc="$(date -u +'%H:%M') UTC"
 asc="$(asc)"
-wifi="󰖩  $(nmcli device | awk '/^wlx7419f816d5c2/ {print $1}') $(nmcli device | awk '/^wlx7419f816d5c2/ {print $3}') $(ip addr | grep 'inet 192' | awk '{print $2}')"
+
+wifi_state=$(ip -o link show wlp4s0 | awk '{print $9}')
+wifi_ip=$(ip -4 -o addr show wlp4s0 | awk '{print $4}' | cut -d'/' -f1)
+
+wifi="󰖩  wlp4s0 $wifi_state $wifi_ip"
 
 echo "$mpd | $volume | $disk | $memory | $wifi | $asc | $et / $utc"
