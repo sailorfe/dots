@@ -50,4 +50,4 @@ assign [app_id="org.kde.kdeconnect.app"]						$ws5
 
 # -*- chat -*-
 assign [class="slack"]															$ws6
-assign [class="discord"]														$ws6
+assign [app_id="vesktop"]														$ws6
