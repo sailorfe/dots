@@ -12,7 +12,10 @@
   :hook
   ((python-mode . eglot-ensure)
    (sh-mode . eglot-ensure)
-   (lisp-mode . eglot-ensure)))
+   (lisp-mode . eglot-ensure))
+  :config
+  (add-to-list 'eglot-server-programs '((sh-mode bash-ts-mode) . ("bash-language-server" "start")))
+  )
 
 (use-package lua-mode
   :ensure t
