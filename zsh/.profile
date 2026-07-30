@@ -41,7 +41,7 @@ if [ -z "${XDG_RUNTIME_DIR-}" ]; then
   unset _xdg_tmp
 fi
 
-# this is pmo
+# this is pmo/not sure i need it
 if [ -S "$XDG_RUNTIME_DIR/ssh-agent.socket" ]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
