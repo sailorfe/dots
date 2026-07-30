@@ -5,7 +5,7 @@ source "$HOME/.config/bemenu/args.sh"
 
 FOLDER="$HOME/d/flor"
 TERMINAL=foot
-EDITOR=nvim
+EDITOR="vim"
 
 open_note() {
   "${TERMINAL[@]}" -e "$EDITOR" "$1" >/dev/null 2>&1 &
