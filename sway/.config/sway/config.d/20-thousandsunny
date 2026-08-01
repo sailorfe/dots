@@ -1,4 +1,5 @@
 # == services etc ========================================================
+# this is only for alpine openrc
 
 exec openrc -U gui
 

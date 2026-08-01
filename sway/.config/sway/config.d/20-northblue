@@ -6,12 +6,12 @@ bar {
 		statusline	$light
 		separator		$overlay
 
-#												border	bg			fg
-		focused_workspace		$accent	$accent	$base
-		active_workspace		$accent	$accent	$text
-		inactive_workspace	$surface	$surface	$text
-		urgent_workspace		$red	$red	$text
-		binding_mode				$accent	$accent	$surface
+#												border          bg        fg
+		focused_workspace		$accent	        $accent   $base
+		active_workspace		$accent	        $accent   $text
+		inactive_workspace	$surface        $surface	$text
+		urgent_workspace		$red	          $red	    $text
+		binding_mode				$accent	        $accent   $surface
 	}
 	font pango:Cozette 11
 	position top

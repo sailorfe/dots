@@ -137,6 +137,14 @@
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "ulti")))
 
+(use-package kamakura
+  :straight (kamakura
+             :type git
+             :local-repo "~/p/lisp/kamakura")
+  :no-require t
+  :config
+  (add-to-list 'custom-theme-load-path "~/p/lisp/kamakura"))
+
 (load-theme
  (pcase (system-name)
    ("northblue" 'perona)

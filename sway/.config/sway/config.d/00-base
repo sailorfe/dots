@@ -35,6 +35,20 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 # this is from alpine <23 i think
 # exec dbus-launch --autolaunch=$(cat /var/lib/dbus/machine-id)
 
+# == (g)i-dle  ===========================================================
+
+# exec swayidle -w \
+# 	timeout 3000 swaylock \
+#   timeout 6000 'swaymsg "output * dpms off"' \
+# 		resume 'swaymsg "output * dpms on"' \
+#   before-sleep swaylock
+
+exec swayidle -w \
+    timeout 300 'playerctl -a status 2>/dev/null | grep -q Playing || swaylock -f' \
+    timeout 600 'playerctl -a status 2>/dev/null | grep -q Playing || swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f'
+
 # == key bindings ==========================================================
 
 bindsym $mod+Return exec $term

@@ -17,14 +17,6 @@ client.urgent           $red	    $red	    $text	$red	      $red
 client.placeholder      $base	    $base	    $text	$base	      $base
 client.background       $overlay
 
-# == (g)i-dle  ===========================================================
-
-exec swayidle -w \
-	timeout 3000 'swaylock -f -c 261720' \
-  timeout 6000 'swaymsg "output * dpms off"' \
-		resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 261720'
-
 # == output ==============================================================
 
 #output * mode 1920x1080 pos 0 0 bg $surface solid_color

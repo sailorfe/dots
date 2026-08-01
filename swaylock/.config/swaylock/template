@@ -1,14 +1,10 @@
 # indicator
-# no-unlock-indicator
-# daemonize
 indicator-caps-lock
-# datestr=%A
 color=${COLOR_BACKGROUND}
 font=Cozette
-font-size=26
+font-size=13
 
-# Ring
-indicator-radius=144
+indicator-radius=84
 line-uses-ring
 line-color=${COLOR_BLACK}
 text-color=${COLOR_FOREGROUND}

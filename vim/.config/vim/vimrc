@@ -28,6 +28,7 @@ call plug#begin(data_dir . '/plugged')
     Plug 'tpope/vim-surround'
     Plug 'sheerun/vim-polyglot'
     Plug 'ssh://softserve/ulti', { 'rtp': 'extras/vim', 'as': 'ulti' }
+    Plug '~/p/lisp/kamakura', { 'rtp': 'extras/vim', 'as': 'kamakura' }
 call plug#end()
 
 " == editing =======================
@@ -35,11 +36,11 @@ call plug#end()
 filetype on
 filetype plugin on
 
-set background=dark
+set background=light
 set termguicolors
 syntax enable
 
-colorscheme ulti
+colorscheme kamakura
 
 set autoindent
 set backspace=indent,eol,start
@@ -85,7 +86,7 @@ set backup
 set writebackup
 set noswapfile
 
-set spellfile=$XDG_DATA_HOME/nvim/spell/en.utf-8.add " shared with neovim 
+set spellfile=$XDG_DATA_HOME/vim/spell/en.utf-8.add " shared with neovim 
 set viminfofile=$XDG_STATE_HOME/vim/viminfo
 set backupdir=$XDG_STATE_HOME/vim/backup//
 set undodir=$XDG_STATE_HOME/vim/undo//

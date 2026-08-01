@@ -1,12 +1,12 @@
-# == colors =============================================================
+# == colors ===============================================================
 
-set $base #1b1429
-set $surface #291e2e
-set $overlay #362853
-set $text #e1d9f2
-set $red #d65c5c
-set $accent #8f7de8
-set $light #b293ed
+set $base #f9f3e0
+set $surface #f8efd2
+set $overlay #f9e6c2
+set $text #5d4c3b
+set $red #aa172a
+set $accent #af9ccd
+set $light #937abc
 
 # -*- windows -*-
 #												border	  bg			  fg		indicator		child_border
@@ -19,4 +19,4 @@ client.background       $overlay
 
 # == output ==============================================================
 
-output $builtin mode 1920x1080 bg /home/sailorfe/m/img/wall/poster4.jpg fill
+output * mode 1920x1080 bg $surface solid_color
