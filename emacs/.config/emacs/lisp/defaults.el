@@ -25,5 +25,8 @@
 (setq-default scroll-margin 6
               scroll-conservatively 101)
 
+;; eww
+(setq browse-url-browser-function 'browse-url-eww)
+
 (provide 'defaults)
 ;;; defaults.el ends here
