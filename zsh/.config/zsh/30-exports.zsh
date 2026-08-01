@@ -40,3 +40,9 @@ fi
 if command -v go >/dev/null 2>&1; then
   export GOPATH=$HOME/.local/lib/go
 fi
+
+if command -v npm >/dev/null 2>&1; then
+    export npm_config_cache="$XDG_CACHE_HOME/npm"
+    export npm_config_userconfig="$XDG_CONFIG_HOME/npm/npmrc"
+    export npm_config_init_module="$XDG_CONFIG_HOME/npm/config/npm-init.js"
+fi
