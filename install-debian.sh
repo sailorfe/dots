@@ -1,20 +1,38 @@
 #!/usr/bin/env bash
 #
-# sailorfe's debian 13 trixie recipe for 2026.
+# sailorfe's debian 13 trixie recipe for 2026 👻🦖⛩️
 #
 # 1. log in as root, install sudo, usermod -aG sudo user
 # 2. log in as user, run this script with sudo
 #
-# i cannot get `sudo -u "$USERNAME" [COMMAND]` working in this for the life of me, which is useful for enabling user-level systemd services. you'll have to do this manually:
-# - wireplumber.service
-# - mpd.service
-# - emacs.service
-# - syncthing.service
-
 set -euox pipefail
 
 USERNAME="$(logname)"
 USER_HOME="/home/$USERNAME"
+USER_SERVICES="$USER_HOME/.config/systemd/user"
+
+enable_user_service() {
+    local service="$1"
+    local unit_path=""
+    local dir
+    for dir in "$USER_HOME/.config/systemd/user" /etc/systemd/user /usr/lib/systemd/user /lib/systemd/user; do
+        if [ -f "$dir/$service" ]; then
+            unit_path="$dir/$service"
+            break
+        fi
+    done
+    if [ -z "$unit_path" ]; then
+        echo "warning: unit $service not found, skipping"
+        return 0
+    fi
+    local wanted_by
+    wanted_by=$(grep -oP '^WantedBy=\K.*' "$unit_path" | head -n1)
+    wanted_by="${wanted_by:-default.target}"
+    local wants_dir="$USER_HOME/.config/systemd/user/${wanted_by}.wants"
+    mkdir -p "$wants_dir"
+    ln -sf "$unit_path" "$wants_dir/$service"
+    chown -R "$USERNAME":"$USERNAME" "$USER_HOME/.config/systemd/user"
+}
 
 check_sudo() {
     if [ "$EUID" -ne 0 ]; then
@@ -43,34 +61,48 @@ packages_base() {
         zsh zsh-autosuggestions zsh-syntax-highlighting \
         rsync sshfs zip unzip \
         build-essential cmake \
+        python3-full golang npm nodejs rustc cargo \
         emacs-nox libenchant-2-dev libvterm-dev \
         gnupg pass \
-        python3-full \
         btop fastfetch lf \
         ufw
     echo "moving zdotdir..."
     echo "export ZDOTDIR=$HOME/.config/zsh" >>/etc/zsh/zshenv
     chsh -s /bin/zsh "$USERNAME"
-    # sudo -u "$USERNAME" systemctl --user enable emacs.service
+    echo "eanabling emacs user service with truecolor..."
+    enable_user_service emacs.service
+    mkdir -p "$USER_SERVICES"/emacs.service.d
+    cat << 'EOF' >> "$USER_SERVICES/emacs.service.d/override.conf"
+[Service]
+Environment=COLORTERM=truecolor
+EOF
+    chown -R "$USERNAME":"$USERNAME" "$USER_SERVICES"
 }
 
 packages_sway() {
     echo "installing wayland with sway..."
     apt install -y \
+        # wayland
         xdg-desktop-portal-wlr xwayland xwaylandvideobridge \
         wayland-protocols wayland-utils \
         cliphist wl-clipboard \
+        # sway
         sway swaybg swayidle swaylock bemenu \
         foot xterm foot-terminfo terminfo \
-        grim slurp mako-notifier libnotify-bin \
+        grim slurp mako-notifier libnotify-bin imagemagick \
         fonts-3270 fonts-unifont fonts-noto-color-emoji fonts-noto-cjk fonts-noto-cjk-extra \
+        # audio
         pipewire bluetooth libspa-0.2-bluetooth \
         kdeconnect \
-        emacs-pgtk qutebrowser
-    local user_services
-    user_services="$USER_HOME"/.config/systemd/user
-    mkdir -p "$user_services"
-    cat << 'EOF' >> "$user_services/kdeconnect.service"
+        # gui programs
+        emacs-pgtk gimp qutebrowser \
+        zathura zathura-cb zathura-pdf-poppler \
+        # VMs
+        qemu-system libvirt-daemon-system
+    mkdir -p "$USER_HOME"/.config/{bemenu,foot,sway,swaylock,mako,X11}
+    usermod -aG libvirt "$USERNAME"
+    mkdir -p "$USER_SERVICES"
+    cat << 'EOF' >> "$USER_SERVICES/kdeconnect.service"
 [Unit]
 Description=KDE Connect Daemon
 
@@ -84,10 +116,10 @@ StandardError=journal
 [Install]
 WantedBy=default.target
 EOF
-    chown -R "$USERNAME":"$USERNAME" "$user_services"
+    chown -R "$USERNAME":"$USERNAME" "$USER_SERVICES" "$USER_HOME"/.config
     systemctl enable bluetooth
-    # sudo -u "$USERNAME" systemctl --user enable wireplumber.service
-    # sudo -u "$USERNAME" systemctl --user enable kdeconnect.service
+    enable_user_service wireplumber.service
+    enable_user_service kdeconnect.service
 }
 
 packages_audio() {
@@ -100,10 +132,8 @@ packages_media() {
     echo "installing media playback packages..."
     apt install -y mpd mpc mpv ncmpcpp playerctl mpv-mpris
     mkdir -p "$USER_HOME"/.local/{share,state}/mpd
-    mkdir -p "$USER_HOME"/.config/mpv/scripts
-    ln -s /usr/lib/mpv-mpris/mpris.so "$USER_HOME"/.config/mpv/scripts/
-    chown -R "$USERNAME":"$USERNAME" "$USER_HOME"/.config/mpv "$USER_HOME"/.local/{share,state}/mpd
-    # sudo -u "$USERNAME" systemctl --user enable mpd.service
+    chown -R "$USERNAME":"$USERNAME" "$USER_HOME"/.local/{share,state}/mpd
+    enable_user_service enable mpd.service
 }
 
 packages_laptop() {
@@ -114,6 +144,11 @@ packages_laptop() {
     systemctl restart NetworkManager
 }
 
+packages_amd() {
+    echo "installing AMD GPU library..."
+    apt install -y rocm-smi
+    }
+
 packages_web_server() {
     echo "installing web server packages..."
     apt install -y fail2ban caddy
@@ -121,7 +156,6 @@ packages_web_server() {
 }
 
 # external packages
-# install astral python tools as user later
 
 install_tailscale() {
     # https://tailscale.com/download
@@ -139,7 +173,7 @@ install_syncthing() {
          >/etc/apt/sources.list.d/syncthing.list
     apt-get update
     apt-get install -y syncthing
-    # sudo -u "$USERNAME" systemctl --user enable syncthing.service
+    enable_user_service syncthing.service
 }
 
 install_librewolf() {
@@ -168,6 +202,10 @@ install_fonts() {
     echo "enable bitmap fonts in fontconfig in 5s..."
     sleep 5 && dpkg-reconfigure fontconfig-config
     cd "$USER_HOME"
+}
+
+install_uv() {
+    sudo -u "$USERNAME" sh -c 'curl -LsSf https://astral.sh/uv/install.sh | sh'
 }
 
 build_vim() {
@@ -199,19 +237,20 @@ clone_dotfiles() {
 # cli
 
 declare -A PROFILES=(
-    [console]="setup_homedir packages_base install_tailscale install_syncthing build_vim clone_dotfiles"
-    [desktop]="setup_homedir packages_base packages_sway packages_audio packages_media build_vim install_fonts install_tailscale install_syncthing install_librewolf clone_dotfiles"
-    [laptop]="setup_homedir packages_base packages_laptop packages_sway packages_media build_vim install_fonts install_tailscale install_syncthing install_librewolf clone_dotfiles"
-    [web]="setup_homedir packages_base packages_web_server build_vim clone_dotfiles"
+    [console]="setup_homedir packages_base install_tailscale install_syncthing install_uv build_vim clone_dotfiles"
+    [desktop]="setup_homedir packages_base packages_sway packages_audio packages_media packages_amd build_vim install_fonts install_tailscale install_syncthing install_librewolf install_uv clone_dotfiles"
+    [laptop]="setup_homedir packages_base packages_laptop packages_sway packages_media build_vim install_fonts install_tailscale install_syncthing install_librewolf install_uv clone_dotfiles"
+    [web]="setup_homedir packages_base packages_web_server build_vim install_uv clone_dotfiles"
 )
 
 usage() {
-    echo "usage: sudo $0 [--tty|--full|--laptop|--web]"
-    echo "  --tty     minimal tty-only setup"
-    echo "  --full    full desktop (sway) setup"
-    echo "  --laptop  full desktop setup + laptop hardware"
-    echo "  --web     web server setup"
-    exit 1
+    cat <<EOF
+usage: sudo $0 [--tty|--full|--laptop|--web]
+    --tty     minimal tty-only setup
+    --full    full desktop (sway) setup
+    --laptop  full desktop setup + laptop hardware
+    --web     web server setup
+EOF
 }
 
 profile=""
@@ -220,7 +259,9 @@ case "${1:-}" in
     --full) profile=desktop ;;
     --laptop) profile=laptop ;;
     --web) profile=web ;;
-    *) usage ;;
+    *)
+        usage
+        exit 1 ;;
 esac
 
 check_sudo
