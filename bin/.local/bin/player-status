@@ -7,7 +7,6 @@
 # depends on playerctl, mpd-mpris, mpv-mpris
 #
 # go install github.com/natsukagami/mpd-mpris/cmd/mpd-mpris@latest
-# debian: ln -s /usr/lib/mpv-mpris/mpris.so ~/.config/mpv/scripts/
 #
 set -euo pipefail
 
