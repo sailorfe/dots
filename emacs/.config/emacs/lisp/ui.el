@@ -42,12 +42,25 @@
 
 (add-hook 'eww-mode-hook #'sailorfe/disable-line-numbers)
 (add-hook 'vterm-mode-hook #'sailorfe/disable-line-numbers)
+(add-hook 'doc-view-mode-hook #'sailorfe/disable-line-numbers)
 
 (add-hook 'prog-mode-hook
           (lambda () (setq display-line-numbers-type 'relative)))
 
 (add-hook 'text-mode-hook
           (lambda () (setq display-line-numbers-type t)))
+
+;; vcs sign column
+(use-package diff-hl
+  ;; alpine busybox: apk add diffutils (gnu)
+  :straight t
+  :hook ((prog-mode . diff-hl-mode)
+         (text-mode . diff-hl-mode)
+         (dired-mode . diff-hl-dired-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh))
+  :config
+  (diff-hl-margin-mode 1)
+  (diff-hl-flydiff-mode 1))
 
 ;; colorcolumn
 (setq-default fill-column 80)
@@ -131,8 +144,8 @@
 (use-package ulti
   :straight (ulti
              :type git
-             :host nil
-             :repo "ssh://softserve/ulti")
+             :host codeberg
+             :repo "sailorfe/ulti")
   :no-require t
   :config
   (add-to-list 'custom-theme-load-path (straight--build-dir "ulti")))
@@ -153,12 +166,12 @@
    (_ 'moonqueen))
  t)
 
-;; splash screen
 (use-package desktop
   :config
   (setq desktop-restore-eager 8)
   (desktop-save-mode 1))
 
+;; splash screen
 (use-package dashboard
   ;; this is my own fork with truly just dashboard-navigator UI opinions: vertical layout without creating single-item lists (my old workaround) and most importantly a defcustom to replace the default square brackets around the buttons. i hesitate about publishing it because it's a bit crude and invasive to the existing code.
   :straight (dashboard
@@ -189,7 +202,8 @@
 
   :config
   (require 'dashboard)
-  (setq dashboard-startup-banner (expand-file-name "banner.txt" user-emacs-directory))
+  (setq banners-directory "~/.config/emacs/banners")
+  (setq dashboard-startup-banner (expand-file-name "chopper.txt" banners-directory))
   (setq dashboard-center-content t)
   (setq dashboard-banner-logo-title "おかえり!")
   (setq dashboard-vertically-center-content t)
@@ -209,6 +223,22 @@
 ;; colorful-mode
 (use-package colorful-mode)
 (set-face-attribute 'colorful-base nil :box nil)
+
+;; popper
+(use-package popper
+  :bind (("C-`"   . popper-toggle)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          "\\*vterm\\*"
+          help-mode
+          compilation-mode))
+  (popper-mode +1)
+  (popper-echo-mode +1)) ; for echo area hints
 
 (provide 'ui)
 ;;; ui.el ends here
