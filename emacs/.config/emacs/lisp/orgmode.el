@@ -7,7 +7,7 @@
   :straight (:type built-in)
   :defer t
   :init
-  (setq org-directory "~/d/flor/org")
+  (setq org-directory "~/d/org")
 
   :config
   (setq org-agenda-files (list org-directory))
