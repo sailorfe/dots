@@ -5,7 +5,7 @@
 # 1. log in as root, install sudo, usermod -aG sudo user
 # 2. log in as user, run this script with sudo
 #
-set -euox pipefail
+set -euo pipefail
 
 USERNAME="$(logname)"
 USER_HOME="/home/$USERNAME"
@@ -64,12 +64,14 @@ packages_base() {
         python3-full golang npm nodejs rustc cargo \
         emacs-nox libenchant-2-dev libvterm-dev \
         gnupg pass \
+        tmux \
+        pandoc \
         btop fastfetch lf \
         ufw
     echo "moving zdotdir..."
     echo "export ZDOTDIR=$HOME/.config/zsh" >>/etc/zsh/zshenv
     chsh -s /bin/zsh "$USERNAME"
-    echo "eanabling emacs user service with truecolor..."
+    echo "enabling emacs user service with truecolor..."
     enable_user_service emacs.service
     mkdir -p "$USER_SERVICES"/emacs.service.d
     cat << 'EOF' >> "$USER_SERVICES/emacs.service.d/override.conf"
@@ -82,25 +84,22 @@ EOF
 packages_sway() {
     echo "installing wayland with sway..."
     apt install -y \
-        # wayland
         xdg-desktop-portal-wlr xwayland xwaylandvideobridge \
         wayland-protocols wayland-utils \
         cliphist wl-clipboard \
-        # sway
         sway swaybg swayidle swaylock bemenu \
         foot xterm foot-terminfo terminfo \
         grim slurp mako-notifier libnotify-bin imagemagick \
         fonts-3270 fonts-unifont fonts-noto-color-emoji fonts-noto-cjk fonts-noto-cjk-extra \
-        # audio
         pipewire bluetooth libspa-0.2-bluetooth \
         kdeconnect \
-        # gui programs
         emacs-pgtk gimp qutebrowser \
         zathura zathura-cb zathura-pdf-poppler \
-        # VMs
-        qemu-system libvirt-daemon-system
-    mkdir -p "$USER_HOME"/.config/{bemenu,foot,sway,swaylock,mako,X11}
+        qemu-system libvirt-daemon-system libvirt-daemon-system libvirt-clients bridge-utils virtinst virt-manager virt-viewer \
+        flatpak
+    mkdir -p "$USER_HOME"/.config/{bemenu,foot,sway,swaylock,mako,qutebrowser,X11,zathura}
     usermod -aG libvirt "$USERNAME"
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     mkdir -p "$USER_SERVICES"
     cat << 'EOF' >> "$USER_SERVICES/kdeconnect.service"
 [Unit]
@@ -246,6 +245,7 @@ declare -A PROFILES=(
 usage() {
     cat <<EOF
 usage: sudo $0 [--tty|--full|--laptop|--web]
+
     --tty     minimal tty-only setup
     --full    full desktop (sway) setup
     --laptop  full desktop setup + laptop hardware
