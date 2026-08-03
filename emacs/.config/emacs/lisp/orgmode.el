@@ -18,6 +18,10 @@
   (setq org-refile-targets
         '((org-agenda-files :maxlevel . 3))))
 
+;; keybindings
+(global-set-key (kbd "C-c a") 'org-agenda))
+(global-set-key (kbd "C-c c") 'org-capture))
+
 (setq org-log-done 'time)
 
 (setq org-startup-indented t)

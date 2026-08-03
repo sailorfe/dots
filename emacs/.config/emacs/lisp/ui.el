@@ -1,7 +1,7 @@
 ;;; ui.el --- sailorfe's Emacs configuration -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;; Host-based theme switching and stripping the mouse GUI wherever possible.
+;; Honestly a bit miscellaneous; un-GUI Emacs and a few modes from packages.
 
 ;;; Code:
 
@@ -18,7 +18,21 @@
 (setopt use-dialog-box nil)
 (setopt use-short-answers t)
 
-(global-hl-line-mode +1)
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(defun sailorfe/open-emacs-config ()
+  "Open `user-emacs-directory` in Dired."
+  (interactive)
+  (dired user-emacs-directory))
+
+(global-set-key (kbd "C-x c") #'sailorfe/open-emacs-config)
+
+;; prettier dired
+(use-package diredfl)
+
+(add-hook 'dired-mode-hook #'diredfl-mode)
 
 ;; monospace eww
 (add-hook 'eww-mode-hook
@@ -26,58 +40,8 @@
             (setq-local buffer-face-mode-face 'fixed-pitch)
             (buffer-face-mode t)))
 
-;; in the modeline
-(line-number-mode 1)
-(column-number-mode 1)
-
-;; line numbers
-(use-package display-line-numbers)
-
-(setq display-line-numbers-type t)
-(global-display-line-numbers-mode 1)
-
-(defun sailorfe/disable-line-numbers ()
-  "Disable line numbers."
-  (display-line-numbers-mode -1))
-
-(add-hook 'eww-mode-hook #'sailorfe/disable-line-numbers)
-(add-hook 'vterm-mode-hook #'sailorfe/disable-line-numbers)
-(add-hook 'doc-view-mode-hook #'sailorfe/disable-line-numbers)
-
-(add-hook 'prog-mode-hook
-          (lambda () (setq display-line-numbers-type 'relative)))
-
-(add-hook 'text-mode-hook
-          (lambda () (setq display-line-numbers-type t)))
-
-;; vcs sign column
-(use-package diff-hl
-  ;; alpine busybox: apk add diffutils (gnu)
-  :straight t
-  :hook ((prog-mode . diff-hl-mode)
-         (text-mode . diff-hl-mode)
-         (dired-mode . diff-hl-dired-mode)
-         (magit-post-refresh . diff-hl-magit-post-refresh))
-  :config
-  (diff-hl-margin-mode 1)
-  (diff-hl-flydiff-mode 1))
-
-;; colorcolumn
-(setq-default fill-column 80)
-(global-display-fill-column-indicator-mode 1)
-
-(add-hook 'vterm-mode-hook
-          (lambda () (display-fill-column-indicator-mode -1)))
-
-;; trailing whitespace
-(setq-default show-trailing-whitespace t)
-
-(add-hook 'dashboard-mode-hook
-          (lambda () (setq show-trailing-whitespace nil)))
-
-;; indentation guides
-(use-package indent-bars
-  :hook (prog-mode . indent-bars-mode))
+;; docview
+'(doc-view-continuous t)
 
 ;; vterm
 (use-package vterm
@@ -85,91 +49,29 @@
   :config
   (setq vterm-shell "/bin/zsh"))
 
-;; font
-(defun sailorfe/setup-fonts (&optional frame)
-  "Ignore if FRAME is -nw/-tty."
-  (when (display-graphic-p frame)
-    (with-selected-frame (or frame (selected-frame))
-      (set-frame-font
-       (pcase (system-name)
-         ("thousandsunny" "Rec Mono Casual-13")
-         (_               "Rec Mono Casual-10"))
-       nil t)
-      (dolist (font '("3270 Nerd Font" "nerd-icons"))
-        (set-fontset-font t 'unicode (font-spec :family font) frame 'prepend)))))
+;; modeline
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
 
-(if (daemonp)
-    (add-hook 'server-after-make-frame-hook #'sailorfe/setup-fonts)
-  (sailorfe/setup-fonts))
+;; colorful-mode
+(use-package colorful-mode)
+(set-face-attribute 'colorful-base nil :box nil)
 
-(use-package nerd-icons
-  :config
-  (setq nerd-icons-scale-factor 0.8)
-  (setq nerd-icons-default-adjust 0.2))
-
-;; theme
-(setq custom-theme-directory (expand-file-name "lisp/themes" user-emacs-directory))
-(add-to-list 'custom-theme-load-path custom-theme-directory)
-
-(use-package perona
-  :straight (perona
-             :type git
-             :host nil
-             :repo "ssh://softserve/perona.nvim"
-             :files ("extras/emacs/*.el"))
-  :no-require t
-  :config
-  (add-to-list 'custom-theme-load-path (straight--build-dir "perona")))
-
-(use-package luna
-  :straight (luna
-             :type git
-             :host nil
-             :repo "ssh://softserve/luna.nvim"
-             :files ("extras/emacs/*.el"))
-  :no-require t
-  :config
-  (add-to-list 'custom-theme-load-path (straight--build-dir "luna")))
-
-(use-package moonqueen
-  :straight (moonqueen
-             :type git
-             :host nil
-             :repo "ssh://softserve/moonqueen.nvim"
-             :files ("extras/emacs/*.el"))
-  :no-require t
-  :config
-  (add-to-list 'custom-theme-load-path (straight--build-dir "moonqueen")))
-
-(use-package ulti
-  :straight (ulti
-             :type git
-             :host codeberg
-             :repo "sailorfe/ulti")
-  :no-require t
-  :config
-  (add-to-list 'custom-theme-load-path (straight--build-dir "ulti")))
-
-(use-package kamakura
-  :straight (kamakura
-             :type git
-             :local-repo "~/p/lisp/kamakura")
-  :no-require t
-  :config
-  (add-to-list 'custom-theme-load-path "~/p/lisp/kamakura"))
-
-(load-theme
- (pcase (system-name)
-   ("northblue" 'perona)
-   ("thousandsunny"  'ulti)
-   ("minimerry"  'luna)
-   (_ 'moonqueen))
- t)
-
-(use-package desktop
-  :config
-  (setq desktop-restore-eager 8)
-  (desktop-save-mode 1))
+;; popper
+(use-package popper
+  :bind (("C-`"   . popper-toggle)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          "\\*vterm\\*"
+          help-mode
+          compilation-mode))
+  (popper-mode +1)
+  (popper-echo-mode +1)) ; for echo area hints
 
 ;; splash screen
 (use-package dashboard
@@ -182,12 +84,11 @@
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
   (setq dashboard-navigator-buttons
-        '(("☽" "wake" "SPC q l" "resume last session" (lambda (&rest _) (desktop-read)))
-          ("☉" "log" "SPC o A" "open org-agenda" (lambda (&rest _) (org-agenda)))
-          ("☿" "dream" "SPC f r" "recently opened files" (lambda (&rest _) (consult-recent-file)))
-          ("♀" "forge" "SPC p p" "open project" (lambda (&rest _) (project-switch-project)))
-          ("♂" "tinker" "SPC f c" "open emacs configuration" (lambda (&rest _) (sailorfe/open-emacs-config)))
-          ("♃" "revisit" "SPC RET" "jump to bookmarks" (lambda (&rest _) (bookmark-jump)))))
+        '(("☉" "log" "C-c a " "open org-agenda" (lambda (&rest _) (org-agenda)))
+          ("☿" "dream" "C-x C-r" "recently opened files" (lambda (&rest _) (consult-recent-file)))
+          ("♀" "forge" "C-x p p" "open project" (lambda (&rest _) (project-switch-project)))
+          ("♂" "tinker" "C-x c " "open emacs configuration" (lambda (&rest _) (sailorfe/open-emacs-config)))
+          ("♃" "revisit" "C-x r b" "jump to bookmarks" (lambda (&rest _) (bookmark-jump)))))
 
   (setq dashboard-startupify-list
         '(dashboard-insert-banner-title
@@ -215,30 +116,6 @@
 
   (dashboard-setup-startup-hook)
   (add-hook 'server-after-make-frame-hook (lambda () (dashboard-open))))
-
-;; modeline
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
-
-;; colorful-mode
-(use-package colorful-mode)
-(set-face-attribute 'colorful-base nil :box nil)
-
-;; popper
-(use-package popper
-  :bind (("C-`"   . popper-toggle)
-         ("M-`"   . popper-cycle)
-         ("C-M-`" . popper-toggle-type))
-  :init
-  (setq popper-reference-buffers
-        '("\\*Messages\\*"
-          "Output\\*$"
-          "\\*Async Shell Command\\*"
-          "\\*vterm\\*"
-          help-mode
-          compilation-mode))
-  (popper-mode +1)
-  (popper-echo-mode +1)) ; for echo area hints
 
 (provide 'ui)
 ;;; ui.el ends here

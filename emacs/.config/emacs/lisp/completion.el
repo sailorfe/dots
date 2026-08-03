@@ -49,7 +49,12 @@
   :init
   (marginalia-mode))
 
-(use-package consult)
+(use-package consult
+  :config
+  :bind (
+         ("C-x b" . consult-buffer)
+         ("C-x C-r" . consult-recent-file)
+         ))
 
 (use-package corfu
   :init
