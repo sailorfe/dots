@@ -1,0 +1,3 @@
+set font "Cozette 11"
+
+include /home/sailorfe/.config/zathura/${THEME_NAME}

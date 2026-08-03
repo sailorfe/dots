@@ -19,4 +19,7 @@ client.background       $overlay
 
 # == output ==============================================================
 
-output * mode 1920x1080 bg $surface solid_color
+#output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/hojo-bg.jpg tile
+output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/kv_11_crop.jpg fill
+#output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/kv_12.jpg fill
+
