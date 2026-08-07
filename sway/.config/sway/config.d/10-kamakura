@@ -5,8 +5,8 @@ set $surface #f8efd2
 set $overlay #f9e6c2
 set $text #5d4c3b
 set $red #aa172a
-set $accent #af9ccd
-set $light #937abc
+set $accent #937abc
+set $light #7b659e
 
 # -*- windows -*-
 #												border	  bg			  fg		indicator		child_border
