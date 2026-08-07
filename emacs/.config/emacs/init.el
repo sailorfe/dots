@@ -7,10 +7,11 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (require 'bootstrap)
-(require 'editor)
-(require 'completion)
-(require 'theme)
+(require 'state)
+(require 'tools)
+(require 'evil)
 (require 'ui)
+(require 'completion)
 (require 'orgmode)
 (require 'writing)
 
@@ -20,13 +21,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   '("/home/sailorfe/d/flor/org/calendar.org" "/home/sailorfe/d/flor/org/inbox.org"
-     "/home/sailorfe/d/flor/org/knitting.org"
-     "/home/sailorfe/d/flor/org/media.org"
-     "/home/sailorfe/d/flor/org/personal.org"
-     "/home/sailorfe/d/flor/org/projects.org"
-     "/home/sailorfe/d/flor/org/shopping.org")))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
