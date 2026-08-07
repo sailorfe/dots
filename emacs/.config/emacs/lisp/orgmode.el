@@ -72,6 +72,11 @@
          (file org-default-notes-file)
          "* TODO %?\n%U\n")
 
+        ("h" "Habit"
+         entry
+         (file org-default-notes-file)
+         "* TODO %?\n%U\n\n:PROPERTIES:\n:STYLE: habit\n:END:")
+
         ("n" "Quick note"
          entry
          (file org-default-notes-file)
@@ -87,6 +92,16 @@
          (file org-default-notes-file)
          "* PROG %?\n:PROPERTIES:\n:STARTED: %U\n:NEEDLES: \n:YARN: \n:END:")))
 
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages '(
+                             (C . t)
+                             (python . t)
+                             (shell . t)
+                             (emacs-lisp . t)
+                             (lua . t)
+                             )
+ )
 
 (provide 'orgmode)
 ;;; orgmode.el ends here
