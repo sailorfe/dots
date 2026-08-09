@@ -3,7 +3,8 @@
 case "$(hostname)" in
   northblue)
     THEME=perona
-    TERM_FONT_SIZE=10.0
+    TERM_FONT_SIZE=16.0
+    FONT_PANGO="Cozette 16"
     ;;
   thousandsunny)
     THEME=ulti
@@ -11,11 +12,14 @@ case "$(hostname)" in
     ;;
   minimerry)
     THEME=luna ;;
-  *) THEME=moonqueen ;;
+  *)
+      THEME=moonqueen
+      FONT_PANGO="Cozette 11" ;;
 esac
 
 export THEME
 export TERM_FONT_SIZE
+export FONT_PANGO
 
 # env vars
 source "$HOME/.config/themes/$THEME.sh"

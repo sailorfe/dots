@@ -1,12 +1,12 @@
-font=Cozette 11
+font=${FONT_PANGO}
 
-width=360
+width=480
 height=540
-padding=18
-margin=18
+padding=36
+margin=36
 max-icon-size=70
 layer=overlay
-border-size=2
+border-size=3
 border-radius=0
 
 default-timeout=10000

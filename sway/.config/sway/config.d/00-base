@@ -16,13 +16,9 @@ set $ws6 workspace 6
 set $term foot
 set $menu bemenu-custom
 
-# == output ================================================================
-
-font pango:Cozette 11
-default_border pixel 2
-
 # == startup ===============================================================
 
+exec $term
 exec emacsclient -c
 exec swaybar
 

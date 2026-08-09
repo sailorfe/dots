@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$THEME" != "perona" ]; then
+if [ "$HOSTNAME" != "northblue" ]; then
   BEMENU_ARGS=(
     --tb "${COLOR_BLACK}"
     --tf "${COLOR_BRIGHT_WHITE}"
@@ -14,7 +14,7 @@ if [ "$THEME" != "perona" ]; then
     --hf "${COLOR_BLACK}"
     --sb "${COLOR_MAGENTA}"
     --sf "${COLOR_BLACK}"
-    --fn "Cozette 11"
+    --fn "${FONT_PANGO}"
     --hp 6
     --line-height 20
   )
@@ -32,8 +32,8 @@ else
     --hf "${COLOR_BLACK}"
     --sb "${COLOR_CYAN}"
     --sf "${COLOR_BLACK}"
-    --fn "Cozette 11"
+    --fn "${FONT_PANGO}"
     --hp 6
-    --line-height 22
+    --line-height 32
   )
 fi

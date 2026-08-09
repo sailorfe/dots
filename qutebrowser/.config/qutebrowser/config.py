@@ -161,7 +161,7 @@ config.set('fonts.web.family.standard', 'sans-serif')
 
 config.bind('gJ', 'tab-move +')
 config.bind('gK', 'tab-move -')
-config.bind('tT', 'config-cycle tabs.position top left')
+config.bind('tT', 'config-cycle tabs.position left top')
 config.bind('zl', 'spawn --userscript qute-pass')
 config.bind('zpl', 'spawn --userscript qute-pass --password-only')
 config.bind('tD', 'config-cycle colors.webpage.darkmode.enabled True False')
@@ -174,9 +174,9 @@ config.set('tabs.padding', {
     })
 config.set('tabs.title.format', "{audio}{private}{index} {current_title}")
 config.set('tabs.title.format_pinned', "{index} {current_title}")
-config.set('tabs.position', 'top')
+config.set('tabs.position', 'left')
 config.set('tabs.show', 'multiple')
-config.set('tabs.width', '15%')
+config.set('tabs.width', '10%')
 
 config.set('statusbar.padding', {
     'bottom': 3,

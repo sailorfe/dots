@@ -10,6 +10,10 @@ exec_always kdeconnectd
 
 exec brightnessctl set 300
 
+# == output ================================================================
+
+font pango:Cozette 11
+default_border pixel 2
 
 # == swaybar =============================================================
 
@@ -36,25 +40,23 @@ bar {
 workspace 1 output $builtin
 workspace 2 output $builtin
 workspace 3 output $builtin
-workspace 4 output $tv
+workspace 5 output $tv
+
+assign [app_id="Emacs"]                             $ws2
 
 # -*- browsers -*-
-assign [app_id="org.qutebrowser.qutebrowser"]				$ws2
-assign [app_id="librewolf"]													$ws2
+assign [app_id="org.qutebrowser.qutebrowser"]				$ws3
+assign [app_id="librewolf"]													$ws3
 
 # -*- GUIs -*-
-assign [app_id="org.pwmt.zathura"]									$ws3
-assign [app_id="gimp"]															$ws3
-assign [class="obsidian"]														$ws3
-assign [class="REAPER"]															$ws3
-assign [app_id="vesktop"]														$ws3
-assign [app_id="org.kde.kdeconnect.app"]						$ws3
-assign [class="zoom"]															  $ws3
+assign [app_id="org.pwmt.zathura"]									$ws4
+assign [app_id="gimp"]															$ws4
+assign [class="REAPER"]															$ws4
+assign [app_id="org.kde.kdeconnect.app"]						$ws4
+
+# -*- full-sreen -*-
+assign [app_id="mpv"]																$ws5
+assign [app_id='virt-manager']											$ws5
 
 # -*- background -*-
-assign [app_id="mpv"]																$ws4
-assign [app_id='virt-manager']											$ws6
-
-# -*- gaming -*-
-assign [class="Stardew Valley"]											$ws5
-assign [class="steam"]															$ws6
+assign [app_id="vesktop"]														$ws6
