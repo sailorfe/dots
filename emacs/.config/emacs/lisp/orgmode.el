@@ -30,6 +30,8 @@
 
 (setq org-agenda-start-on-weekday 1)
 
+(setq org-log-into-drawer t)
+
 (setq org-todo-keywords
       '((sequence
          "TODO(t)"
