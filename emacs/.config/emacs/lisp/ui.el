@@ -84,7 +84,7 @@
             (setq-local buffer-face-mode-face 'fixed-pitch)
             (buffer-face-mode t))
           #'sailorfe/disable-line-numbers)
-(setq browse-url-browser-function 'browse-url-eww)
+;; (setq browse-url-browser-function 'browse-url-eww)
 
 (add-hook 'vterm-mode-hook #'sailorfe/disable-line-numbers
           (lambda () (display-fill-column-indicator-mode -1)))
@@ -128,7 +128,7 @@
       (set-frame-font
        (pcase (system-name)
          ("thousandsunny" "Rec Mono Casual-13")
-         (_               "Rec Mono Casual-10"))
+         (_               "Rec Mono Casual-16"))
        nil t)
       (dolist (font '("3270 Nerd Font" "nerd-icons"))
         (set-fontset-font t 'unicode (font-spec :family font) frame 'prepend)))))
