@@ -28,7 +28,10 @@ call plug#begin(data_dir . '/plugged')
     Plug 'tpope/vim-surround'
     Plug 'sheerun/vim-polyglot'
     Plug 'ssh://softserve/ulti', { 'rtp': 'extras/vim', 'as': 'ulti' }
-    Plug '~/p/lisp/kamakura', { 'rtp': 'extras/vim', 'as': 'kamakura' }
+    Plug 'ssh://softserve/kamakura', { 'rtp': 'extras/vim', 'as': 'kamakura' }
+    Plug 'ssh://softserve/perona.nvim', { 'rtp': 'extras/vim', 'as': 'perona' }
+    Plug 'ssh://softserve/luna.nvim', { 'rtp': 'extras/vim', 'as': 'luna' }
+    Plug 'ssh://softserve/moonqueen.nvim', { 'rtp': 'extras/vim', 'as': 'moonqueen' }
 call plug#end()
 
 " == editing =======================
@@ -36,11 +39,22 @@ call plug#end()
 filetype on
 filetype plugin on
 
-set background=light
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 set termguicolors
 syntax enable
 
-colorscheme kamakura
+if $HOSTNAME == 'northblue'
+    colorscheme perona
+elseif $HOSTNAME == 'thousandsunny'
+    colorscheme ulti
+else
+    colorscheme kamakura
+endif
 
 set autoindent
 set backspace=indent,eol,start
