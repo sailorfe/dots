@@ -10,12 +10,15 @@
 (use-package eglot
   :ensure nil
   :hook
-  ((python-mode . eglot-ensure)
+  ((c-mode . eglot-ensure)
+   (c-ts-mode . eglot-ensure)
+   (python-mode . eglot-ensure)
    (sh-mode . eglot-ensure)
    (lisp-mode . eglot-ensure))
   :config
-  (add-to-list 'eglot-server-programs '((sh-mode bash-ts-mode) . ("bash-language-server" "start")))
-  )
+  (add-to-list 'eglot-server-programs
+               '((sh-mode bash-ts-mode)
+                 . ("bash-language-server" "start"))))
 
 (use-package lua-mode
   :ensure t
@@ -66,15 +69,17 @@
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode))
 
-;; spellcheck / diagnostics
-
-(use-package flycheck
-  :hook (prog-mode . flycheck-mode))
+;; spellling
 
 (use-package jinx
   ;; requires libenchant-dev (debian) enchant2-dev (alpine)
   :hook (text-mode . jinx-mode)
   :bind (("C-;" . jinx-correct)))
+
+;; my beloathed
+
+;; (with-eval-after-load 'flycheck
+;;  (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc))
 
 (provide 'completion)
 ;;; completion.el ends here
