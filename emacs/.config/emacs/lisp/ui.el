@@ -127,7 +127,7 @@
     (with-selected-frame (or frame (selected-frame))
       (set-frame-font
        (pcase (system-name)
-         ("thousandsunny" "Rec Mono Casual-13")
+         ("thousandsunny" "Rec Mono Casual-11")
          (_               "Rec Mono Casual-16"))
        nil t)
       (dolist (font '("3270 Nerd Font" "nerd-icons"))

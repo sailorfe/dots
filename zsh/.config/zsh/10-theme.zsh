@@ -7,8 +7,8 @@ case "$(hostname)" in
     FONT_PANGO="Cozette 16"
     ;;
   thousandsunny)
-    THEME=ulti
-    TERM_FONT_SIZE=12.0
+    THEME=kamakura
+    TERM_FONT_SIZE=11.0
     ;;
   minimerry)
     THEME=luna ;;

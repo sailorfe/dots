@@ -36,7 +36,8 @@ packages_base() {
     uuidgen \
     syncthing \
     mandoc man-pages mandoc-apropos \
-    build-base cmake coreutils gettext-tiny-dev neovim tree-sitter-lua # neovim deps
+    build-base cmake coreutils gettext-tiny-dev neovim tree-sitter-lua \
+    emacs-nox diff-utils enchant2-dev libvterm
 
   # enable unicode
   sed -i 's/#unicode="NO"/#unicode="NO"\nunicode="YES"/' /etc/rc.conf
@@ -76,6 +77,7 @@ packages_sway() {
     mpd mpc mpv ncmpcpp ffmpeg playerctl mpd-mpris \
     font-noto font-iosevka font-unifont font-noto-cjk font-noto-emoji font-terminus-nerd \
     zathura zathura-pdf-mupdf zathura-cb \
+    emacs-pgtk \
     flatpak
 
   # start pipewire with "exec openrc -U gui" in .config/sway/config
