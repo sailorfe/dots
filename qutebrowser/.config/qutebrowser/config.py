@@ -176,7 +176,7 @@ config.set('tabs.title.format', "{audio}{private}{index} {current_title}")
 config.set('tabs.title.format_pinned', "{index} {current_title}")
 config.set('tabs.position', 'left')
 config.set('tabs.show', 'multiple')
-config.set('tabs.width', '10%')
+config.set('tabs.width', '15%')
 
 config.set('statusbar.padding', {
     'bottom': 3,
