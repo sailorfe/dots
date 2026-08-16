@@ -73,3 +73,6 @@
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/ulti"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/ulti
 	url = ssh://softserve/ulti
+[submodule "nvim/.local/share/nvim/site/pack/plugins/start/kamakura"]
+	path = nvim/.local/share/nvim/site/pack/plugins/start/kamakura
+	url = ssh://softserve/kamakura.git
