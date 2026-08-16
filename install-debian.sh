@@ -67,7 +67,7 @@ packages_base() {
         tmux \
         pandoc \
         btop fastfetch lf \
-        ufw
+        ufw wireguard resolvconf
     echo "moving zdotdir..."
     echo "export ZDOTDIR=$HOME/.config/zsh" >>/etc/zsh/zshenv
     chsh -s /bin/zsh "$USERNAME"
@@ -124,7 +124,7 @@ EOF
 packages_audio() {
     printf "\a"
     echo "installing advanced audio packages. jack will prompt you..."
-    apt install -y jackd
+    apt install -y jackd qpwgraph
 }
 
 packages_media() {
