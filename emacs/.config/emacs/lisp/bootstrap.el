@@ -27,10 +27,4 @@
 
 (require 'use-package)
 
-;; xdg compliance
-(use-package no-littering
-  :config
-  (setq auto-save-file-name-transforms
-        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
-
 (provide 'bootstrap)
