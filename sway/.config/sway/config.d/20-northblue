@@ -30,9 +30,7 @@ assign [app_id="emacs"] $ws2
 
 # -*- browsers -*-
 assign [app_id="org.qutebrowser.qutebrowser"]				$ws3
-assign [app_id="librewolf"]													$ws3
-assign [app_id="firefox-esr"]												$ws3
-assign [app_id="Tor Browser"]												$ws3
+assign [app_id="librewolf"]													$ws6 # because it's just for streaming
 
 # -*- GUIs -*-
 assign [app_id="org.musescore.mscore"]							$ws4
@@ -42,9 +40,10 @@ assign [class="REAPER"]															$ws4
 assign [class="Code"]																$ws4
 assign [class="libreoffice-startcenter"]						$ws4
 assign [app_id="calibre-gui"]                       $ws4
+assign [class="KiCad"]                              $ws4
+assign [app_id="org.pwmt.zathura"]									$ws5
 
 # -*- fullscreen -*-
-assign [app_id="org.pwmt.zathura"]									$ws5
 assign [app_id="mpv"]																$ws5
 assign [class="Stardew Valley"]											$ws5
 

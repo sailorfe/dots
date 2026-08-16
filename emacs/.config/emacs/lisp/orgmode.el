@@ -22,6 +22,18 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+(defun sailorfe/org-timestamp-now-active ()
+  (interactive)
+  (org-time-stamp '(16)))
+
+(defun sailorfe/org-timestamp-now-inactive ()
+  (interactive)
+  (org-time-stamp '(16) t))
+
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c C-/") #'sailorfe/org-timestamp-now-active)
+  (define-key org-mode-map (kbd "C-c /") #'sailorfe/org-timestamp-now-inactive))
+
 (setq org-log-done 'time)
 
 (setq org-startup-indented t)
@@ -69,14 +81,15 @@
         ("VOID" . sailorfe-org-todo-void)))
 
 (setq org-capture-templates
-      '(("t" "Todo"
+      `(("t" "Todo"
          entry
          (file org-default-notes-file)
          "* TODO %?\n%U\n")
 
         ("h" "Habit"
          entry
-         (file org-default-notes-file)
+         (file ,(expand-file-name "personal.org" org-directory))
+         (headline "routines")
          "* TODO %?\n%U\n\n:PROPERTIES:\n:STYLE: habit\n:END:")
 
         ("n" "Quick note"
@@ -86,13 +99,26 @@
 
         ("e" "Event"
          entry
-         (file org-default-notes-file)
+         (file ,(expand-file-name "calendar.org" org-directory))
          "* %?\nSCHEDULED: %^T\n")
 
         ("k" "Knitting project"
          entry
-         (file org-default-notes-file)
-         "* PROG %?\n:PROPERTIES:\n:STARTED: %U\n:NEEDLES: \n:YARN: \n:END:")))
+         (file ,(expand-file-name "knitting.org" org-directory))
+         "* PROG %?\n:PROPERTIES:\n:STARTED: %U\n:NEEDLES: \n:YARN: \n:END:")
+
+        ("p" "Protein"
+         entry
+         (file+headline ,(expand-file-name "protein.org" org-directory) "daily logs")
+         "* protein for day %t
+| timestamp | source | protein (g) |
+|-----------+--------+-------------|
+|           |        |             |
+|           |        |             |
+|-----------+--------+-------------|
+| total     |        |             |
+#+TBLFM: @>$3 = vsum(@I..@>)"
+         )))
 
 
 (org-babel-do-load-languages

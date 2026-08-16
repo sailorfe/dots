@@ -23,7 +23,7 @@ export GRIM_DEFAULT_DIR=$HOME/m/img/cap
 
 # default programs
 export BROWSER=qutebrowser
-export EDITOR="emacsclient -nw"
+export EDITOR="vim"
 export VISUAL="emacsclient -c"
 
 # libraries
