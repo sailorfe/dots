@@ -25,30 +25,29 @@ default_border pixel 4
 
 # == workspaces ================================================================
 
-# -*- just emacs? -*-
-assign [app_id="emacs"] $ws2
-
-# -*- browsers -*-
+# -*- core -*-
+assign [app_id="emacs"]                             $ws2
 assign [app_id="org.qutebrowser.qutebrowser"]				$ws3
-assign [app_id="librewolf"]													$ws6 # because it's just for streaming
 
 # -*- GUIs -*-
 assign [app_id="org.musescore.mscore"]							$ws4
-assign [app_id="gimp"]															$ws4
-assign [app_id="obsidian"]													$ws4
 assign [class="REAPER"]															$ws4
 assign [class="Code"]																$ws4
 assign [class="libreoffice-startcenter"]						$ws4
 assign [app_id="calibre-gui"]                       $ws4
+assign [app_id="org.pwmt.zathura"]									$ws4
 assign [class="KiCad"]                              $ws4
-assign [app_id="org.pwmt.zathura"]									$ws5
+assign [app_id="gimp"]															$ws4
 
-# -*- fullscreen -*-
+# -*- fullscreen/video -*-
 assign [app_id="mpv"]																$ws5
-assign [class="Stardew Valley"]											$ws5
+assign [app_id="librewolf"]													$ws5
+
+# -*- games -*-
+assign [class="Stardew Valley"]											$ws6
 
 # -*- background -*-
-assign [class="QjackCtl"]														$ws6
-assign [class="steam"]															$ws6
-assign [app_id="org.kde.kdeconnect.app"]						$ws6
-assign [app_id="vesktop"]														$ws6
+assign [class="QjackCtl"]														$ws7
+assign [class="steam"]															$ws7
+assign [app_id="org.kde.kdeconnect.app"]						$ws7
+assign [app_id="vesktop"]														$ws7

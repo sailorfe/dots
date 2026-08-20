@@ -6,12 +6,13 @@ set $down j
 set $up k
 set $right l
 
-set $ws1 workspace 1
-set $ws2 workspace 2
-set $ws3 workspace 3
-set $ws4 workspace 4
-set $ws5 workspace 5
-set $ws6 workspace 6
+set $ws1 workspace ☽
+set $ws2 workspace ☉
+set $ws3 workspace ☿
+set $ws4 workspace ♀
+set $ws5 workspace ♂
+set $ws6 workspace ♃
+set $ws7 workspace ♄
 
 set $term foot
 set $menu bemenu-custom
@@ -88,6 +89,7 @@ bindsym $mod+3 $ws3
 bindsym $mod+4 $ws4
 bindsym $mod+5 $ws5
 bindsym $mod+6 $ws6
+bindsym $mod+7 $ws7
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to $ws1
@@ -96,6 +98,7 @@ bindsym $mod+Shift+3 move container to $ws3
 bindsym $mod+Shift+4 move container to $ws4
 bindsym $mod+Shift+5 move container to $ws5
 bindsym $mod+Shift+6 move container to $ws6
+bindsym $mod+Shift+7 move container to $ws7
 
 # -*- layout -*-
 
