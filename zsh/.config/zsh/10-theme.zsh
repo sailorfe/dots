@@ -9,12 +9,13 @@ case "$(hostname)" in
   thousandsunny)
     THEME=kamakura
     TERM_FONT_SIZE=11.0
+    FONT_PANGO="Cozette 11"
     ;;
   minimerry)
     THEME=luna ;;
   *)
       THEME=moonqueen
-      FONT_PANGO="Cozette 11" ;;
+      ;;
 esac
 
 export THEME

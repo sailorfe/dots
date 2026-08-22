@@ -51,9 +51,9 @@ syntax enable
 if $HOSTNAME == 'northblue'
     colorscheme perona
 elseif $HOSTNAME == 'thousandsunny'
-    colorscheme ulti
-else
     colorscheme kamakura
+else
+    colorscheme ulti
 endif
 
 set autoindent

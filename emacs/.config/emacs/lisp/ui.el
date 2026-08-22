@@ -188,7 +188,7 @@
 (load-theme
  (pcase (system-name)
    ("northblue" 'perona)
-   ("thousandsunny"  'ulti)
+   ("thousandsunny" 'kamakura)
    ("minimerry"  'luna)
    (_ 'moonqueen))
  t)
