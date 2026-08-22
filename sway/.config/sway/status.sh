@@ -49,7 +49,17 @@ get_memory() {
 }
 
 get_wifi() {
-    local iface="wlan0" wifi_state wifi_ip
+    local wifi_state wifi_ip
+
+    case "$(hostname)" in
+        northblue)
+            local iface="wlp4s0"
+            ;;
+        thousandsunny)
+            local iface="wlan0"
+            ;;
+    esac
+
     wifi_state=$(ip -o link show "$iface" | awk '{print $9}')
     wifi_ip=$(ip -4 -o addr show "$iface" | awk '{print $4}' | cut -d'/' -f1)
     echo "󰖩  $iface $wifi_state $wifi_ip"
@@ -60,6 +70,14 @@ get_time() {
     et="$(date +'%a %F %H:%M') ET"
     utc="$(date -u +'%H:%M') UTC"
     echo "$et / $utc"
+}
+
+get_ascendant() {
+    if ! command -v asc &> /dev/null; then
+        echo "Install sailorfe/ascendant from PyPI or Codeberg."
+    else
+        echo "$(asc)"
+    fi
 }
 
 get_battery() {
@@ -114,24 +132,32 @@ main() {
     local disk_cache wifi_cache
 
     while true; do
-        # cheap/fast metrics: refresh every iteration
-        local mpd volume cpu_temp et_utc
+        local mpris volume cpu_temp et_utc battery ascendant
         mpris="$(get_mpris)"
         volume="$(get_volume)"
         cpu_temp="$(get_cpu_temp)"
         et_utc="$(get_time)"
         battery="$(get_battery)"
+        ascendant="$(get_ascendant)"
 
-        # expensive/slow metrics: refresh every 10th iteration
         if (( i % 10 == 0 )); then
             disk_cache="$(get_disk)"
             wifi_cache="$(get_wifi)"
         fi
 
-        echo "$mpris | $volume | $disk_cache | $(get_memory) | $cpu_temp | $wifi_cache | $battery | $(asc) | $et_utc"
+        case "$(hostname)" in
+            northblue)
+                echo "$mpris | $volume | $disk_cache | $(get_memory) | $cpu_temp | $wifi_cache | $ascendant | $et_utc"
+                ((i++))
+                sleep 1
+                ;;
+            thousandsunny)
+                echo "$mpris | $volume | $disk_cache | $(get_memory) | $cpu_temp | $wifi_cache | $battery | $ascendant | $et_utc"
+                ((i++))
+                sleep 1
+                ;;
+        esac
 
-        ((i++))
-        sleep 1
     done
 }
 
