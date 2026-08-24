@@ -3,3 +3,5 @@ include config.d/10-${THEME}
 include config.d/20-${HOSTNAME}
 
 include /etc/sway/config.d/*
+
+font pango:${FONT_PANGO}

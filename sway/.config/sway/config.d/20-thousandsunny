@@ -1,3 +1,5 @@
+default_border pixel 2
+
 # == services etc ==============================================================
 # this is only for alpine openrc
 
@@ -9,11 +11,6 @@ exec_always battery-alert
 exec_always kdeconnectd
 
 exec brightnessctl set 300
-
-# == output ====================================================================
-
-font pango:Cozette 11
-default_border pixel 2
 
 # == swaybar ===================================================================
 

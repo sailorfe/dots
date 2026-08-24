@@ -1,3 +1,5 @@
+default_border pixel 4
+
 # == swaybar ===================================================================
 
 bar {
@@ -13,21 +15,16 @@ bar {
 		urgent_workspace		$red	          $red	    $text
 		binding_mode				$accent	        $accent   $surface
 	}
-	font pango:Cozette 16
 	position top
-  status_command while ~/.config/sway/desktop.sh; do sleep 1; done
+  status_command while ~/p/dots/sway/.config/sway/status.sh; do sleep 1; done
 }
-
-# == output ================================================================
-
-font pango:Cozette 16
-default_border pixel 4
 
 # == workspaces ================================================================
 
 # -*- core -*-
 assign [app_id="emacs"]                             $ws2
 assign [app_id="org.qutebrowser.qutebrowser"]				$ws3
+assign [app_id="librewolf"]													$ws3
 
 # -*- GUIs -*-
 assign [app_id="org.musescore.mscore"]							$ws4
@@ -37,11 +34,11 @@ assign [class="libreoffice-startcenter"]						$ws4
 assign [app_id="calibre-gui"]                       $ws4
 assign [app_id="org.pwmt.zathura"]									$ws4
 assign [class="KiCad"]                              $ws4
+assign [class="UltiMaker-Cura"]                     $ws4
 assign [app_id="gimp"]															$ws4
 
 # -*- fullscreen/video -*-
 assign [app_id="mpv"]																$ws5
-assign [app_id="librewolf"]													$ws5
 
 # -*- games -*-
 assign [class="Stardew Valley"]											$ws6

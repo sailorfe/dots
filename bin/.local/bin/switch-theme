@@ -15,7 +15,7 @@ render() {
 }
 
 if [ "$#" -eq 0 ]; then
-  set -- --bemenu --foot --sway --swaylock --mako --x
+  set -- --bemenu --foot --sway --swaylock --mako --x --zathura
   ARGS_GIVEN=false
 else
   ARGS_GIVEN=true
@@ -32,7 +32,7 @@ while [[ "$#" -gt 0 ]]; do
       shift
       ;;
     --sway)
-      render sway ~/.config/sway/template ~/.config/sway/config "command -v sway >/dev/null 2>&1 && sway & swaymsg exit"
+      render sway ~/.config/sway/template ~/.config/sway/config "command -v sway >/dev/null 2>&1 && swaymsg reload"
       shift
       ;;
     --swaylock)
