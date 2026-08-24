@@ -1,3 +1,46 @@
+-- kamakura
+local kamakura_path = vim.fn.stdpath("data") .. "/site/pack/plugins/start/kamakura/extras/nvim"
+
+vim.opt.rtp:append(kamakura_path)
+
+local out = vim.fn.stdpath("cache") .. "/kamakura-diagnostic.txt"
+
+local function log(...)
+  local lines = {}
+  for _, value in ipairs({ ... }) do
+    vim.list_extend(lines, vim.split(vim.inspect(value), "\n"))
+  end
+  vim.fn.writefile(lines, out, "a")
+end
+
+vim.fn.writefile({}, out)
+
+log("colorscheme files", vim.api.nvim_get_runtime_file("colors/kamakura.*", true))
+log("runtime files", vim.api.nvim_get_runtime_file("*", true))
+
+local ok, err = pcall(vim.cmd, "colorscheme kamakura")
+log("colorscheme result", ok, err)local kamakura_path = vim.fn.stdpath("data") .. "/site/pack/plugins/start/kamakura/extras/nvim"
+
+vim.opt.rtp:append(kamakura_path)
+
+local out = vim.fn.stdpath("cache") .. "/kamakura-diagnostic.txt"
+
+local function log(...)
+  local lines = {}
+  for _, value in ipairs({ ... }) do
+    vim.list_extend(lines, vim.split(vim.inspect(value), "\n"))
+  end
+  vim.fn.writefile(lines, out, "a")
+end
+
+vim.fn.writefile({}, out)
+
+log("colorscheme files", vim.api.nvim_get_runtime_file("colors/kamakura.*", true))
+log("runtime files", vim.api.nvim_get_runtime_file("*", true))
+
+local ok, err = pcall(vim.cmd, "colorscheme kamakura")
+log("colorscheme result", ok, err)
+
 -- ulti
 local ulti_path = vim.fn.stdpath("data") .. "/site/pack/plugins/start/ulti/extras/nvim"
 
