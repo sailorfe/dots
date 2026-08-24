@@ -33,6 +33,8 @@ if command -v cargo >/dev/null 2>&1; then
   export CARGO_HOME=$HOME/.local/lib/cargo
 fi
 
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
 if command -v rustup >/dev/null 2>&1; then
   export RUSTUP_HOME=$HOME/.local/lib/rustup
 fi
