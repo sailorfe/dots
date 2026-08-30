@@ -60,7 +60,8 @@
 
 (setq auto-revert-verbose nil
       auto-revert-check-vc-info t
-      auto-revert-interval 1)
+      auto-revert-avoid-polling-method 'watch
+      auto-revert-interval 30)
 
 ;; persistence
 (use-package desktop
