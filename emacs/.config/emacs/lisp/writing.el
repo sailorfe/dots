@@ -21,5 +21,13 @@
   :config
   (setq markdown-fontify-code-blocks-natively t))
 
+(use-package pdf-tools
+  :demand t
+  :config
+  (pdf-loader-install)
+  (add-hook 'pdf-view-mode-hook #'pdf-view-roll-minor-mode))
+
+(add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
+
 (provide 'writing)
 ;;; writing.el ends here
