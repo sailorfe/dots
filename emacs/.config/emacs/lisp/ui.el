@@ -95,8 +95,8 @@
 (add-hook 'dired-mode-hook #'diredfl-mode)
 
 ;; modeline
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
+(use-package mood-line
+  :init (mood-line-mode 1))
 
 ;; colorful-mode
 (use-package colorful-mode)
@@ -189,7 +189,7 @@
 (load-theme
  (pcase (system-name)
    ("northblue" 'perona)
-   ("thousandsunny" 'kamakura)
+   ("thousandsunny" 'ulti)
    ("minimerry"  'luna)
    (_ 'moonqueen))
  t)
