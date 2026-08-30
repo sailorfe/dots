@@ -72,5 +72,10 @@
   :config
   (desktop-save-mode 1))
 
+;; SHELL PATH
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
+
 (provide 'paths)
 ;;; paths.el ends here

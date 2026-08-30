@@ -24,7 +24,7 @@ export GRIM_DEFAULT_DIR=$HOME/m/img/cap
 # default programs
 export BROWSER=qutebrowser
 export EDITOR="vim"
-export VISUAL="emacsclient -c"
+export VISUAL="vim"
 
 # libraries
 export GNUPGHOME=$XDG_DATA_HOME/gpg

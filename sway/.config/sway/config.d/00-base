@@ -6,13 +6,13 @@ set $down j
 set $up k
 set $right l
 
-set $ws1 workspace ☽
-set $ws2 workspace ☉
-set $ws3 workspace ☿
-set $ws4 workspace ♀
-set $ws5 workspace ♂
-set $ws6 workspace ♃
-set $ws7 workspace ♄
+set $ws1 workspace 1
+set $ws2 workspace 2
+set $ws3 workspace 3
+set $ws4 workspace 4
+set $ws5 workspace 5
+set $ws6 workspace 6
+set $ws7 workspace 7
 
 set $term foot
 set $menu bemenu-custom

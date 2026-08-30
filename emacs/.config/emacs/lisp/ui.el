@@ -72,6 +72,7 @@
 ;; --- mode hooks -------------------------------------------------------
 
 (add-hook 'doc-view-mode-hook #'sailorfe/disable-line-numbers)
+(add-hook 'pdf-view-mode-hook #'sailorfe/disable-line-numbers)
 
 (add-hook 'prog-mode-hook
           (lambda () (setq display-line-numbers-type 'relative)))
