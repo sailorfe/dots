@@ -17,9 +17,16 @@ client.urgent           $red	    $red	    $text	$red	      $red
 client.placeholder      $base	    $base	    $text	$base	      $base
 client.background       $overlay
 
+
+# == display =============================================================
+
+set $builtin "eDP-1"
+set $tv "HDMI-A-2"
+
 # == output ==============================================================
 
 #output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/hojo-bg.jpg tile
-output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/kv_11_crop.jpg fill
+output $builtin mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/kv_11_crop.jpg fill
+output $tv mode 3840x2160 bg $base solid_color
 #output * mode 1920x1080 pos 0 0 bg /home/sailorfe/m/img/wall/kv_12.jpg fill
 

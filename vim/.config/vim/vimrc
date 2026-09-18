@@ -27,6 +27,7 @@ call plug#begin(data_dir . '/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'sheerun/vim-polyglot'
+    Plug 'https://codeberg.org/turysaz/vim-zenmode.git'
     Plug 'ssh://softserve/ulti', { 'rtp': 'extras/vim', 'as': 'ulti' }
     Plug 'ssh://softserve/kamakura', { 'rtp': 'extras/vim', 'as': 'kamakura' }
     Plug 'ssh://softserve/perona.nvim', { 'rtp': 'extras/vim', 'as': 'perona' }
@@ -48,12 +49,10 @@ endif
 set termguicolors
 syntax enable
 
-if $HOSTNAME == 'northblue'
-    colorscheme perona
-elseif $HOSTNAME == 'thousandsunny'
-    colorscheme ulti
+if empty($THEME)
+    let colorcheme default
 else
-    colorscheme moonqueen
+    colorscheme $THEME
 endif
 
 set autoindent
@@ -144,3 +143,6 @@ vnoremap <S-Tab> <
 
 " date insertion
 inoremap <C-d> <C-r>=strftime('%Y-%m-%dT%H:%M:%S%z')<CR>
+
+" zen mode
+nnoremap <leader>zm :ZEN<CR>

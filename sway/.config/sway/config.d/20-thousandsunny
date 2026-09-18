@@ -50,6 +50,7 @@ assign [app_id="org.pwmt.zathura"]									$ws4
 assign [app_id="gimp"]															$ws4
 assign [class="REAPER"]															$ws4
 assign [app_id="org.kde.kdeconnect.app"]						$ws4
+assign [class="UltiMaker-Cura"]                     $ws4
 
 # -*- full-screen -*-
 assign [app_id="mpv"]																$ws5
