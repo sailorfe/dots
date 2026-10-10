@@ -129,7 +129,7 @@
       (set-frame-font
        (pcase (system-name)
          ("thousandsunny" "Rec Mono Casual-11")
-         (_               "Rec Mono Casual-16"))
+         (_               "Rec Mono Casual-20"))
        nil t)
       (dolist (font '("3270 Nerd Font" "nerd-icons"))
         (set-fontset-font t 'unicode (font-spec :family font) frame 'prepend)))))

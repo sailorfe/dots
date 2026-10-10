@@ -3,7 +3,7 @@
 case "$(hostname)" in
   northblue)
     THEME=perona
-    TERM_FONT_SIZE=16.0
+    TERM_FONT_SIZE=18.0
     FONT_PANGO="Cozette 16"
     ;;
   thousandsunny)
