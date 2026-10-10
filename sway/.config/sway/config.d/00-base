@@ -13,6 +13,8 @@ set $ws4 workspace 4
 set $ws5 workspace 5
 set $ws6 workspace 6
 set $ws7 workspace 7
+set $ws8 workspace 8
+set $ws9 workspace 9
 
 set $term foot
 set $menu bemenu-custom
@@ -90,6 +92,8 @@ bindsym $mod+4 $ws4
 bindsym $mod+5 $ws5
 bindsym $mod+6 $ws6
 bindsym $mod+7 $ws7
+bindsym $mod+8 $ws8
+bindsym $mod+9 $ws9
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to $ws1
@@ -99,6 +103,8 @@ bindsym $mod+Shift+4 move container to $ws4
 bindsym $mod+Shift+5 move container to $ws5
 bindsym $mod+Shift+6 move container to $ws6
 bindsym $mod+Shift+7 move container to $ws7
+bindsym $mod+Shift+8 move container to $ws8
+bindsym $mod+Shift+9 move container to $ws9
 
 # -*- layout -*-
 

@@ -21,30 +21,39 @@ bar {
 
 # == workspaces ================================================================
 
-# -*- core -*-
+# -*- text editing -*-
 assign [app_id="emacs"]                             $ws2
+assign [class="Code"]																$ws2
+
+# -*- browsers -*-
 assign [app_id="org.qutebrowser.qutebrowser"]				$ws3
 assign [app_id="librewolf"]													$ws3
 
-# -*- GUIs -*-
-assign [app_id="org.musescore.mscore"]							$ws4
-assign [class="REAPER"]															$ws4
-assign [class="Code"]																$ws4
-assign [class="libreoffice-startcenter"]						$ws4
+# -*- reading -*-
 assign [app_id="calibre-gui"]                       $ws4
 assign [app_id="org.pwmt.zathura"]									$ws4
-assign [class="KiCad"]                              $ws4
-assign [class="UltiMaker-Cura"]                     $ws4
-assign [app_id="gimp"]															$ws4
 
-# -*- fullscreen/video -*-
-assign [app_id="mpv"]																$ws5
+# -*- making -*-
+assign [app_id="org.musescore.mscore"]							$ws5
+assign [class="REAPER"]															$ws5
+assign [class="libreoffice-startcenter"]						$ws5
 
-# -*- games -*-
-assign [class="Stardew Valley"]											$ws6
+# -*- graphical -*-
+assign [app_id="gimp"]															$ws6
+assign [class="KiCad"]                              $ws6
+assign [class="FreeCAD"]                            $ws6
+assign [class="BambuStudio"]                        $ws6
+
+# -*- fullscreen -*-
+assign [app_id="mpv"]																$ws7
+assign [class="Stardew Valley"]											$ws8
+# disco elyisum
+assign [class="steam_app_3858934551"]               $ws8
+assign [class="Minecraft 26.2"]											$ws8
 
 # -*- background -*-
-assign [class="QjackCtl"]														$ws7
-assign [class="steam"]															$ws7
-assign [app_id="org.kde.kdeconnect.app"]						$ws7
-assign [app_id="vesktop"]														$ws7
+assign [class="QjackCtl"]														$ws9
+assign [class="steam"]															$ws9
+assign [class="Minecraft Launcher"]							    $ws9
+assign [app_id="org.kde.kdeconnect.app"]						$ws9
+assign [app_id="vesktop"]														$ws9

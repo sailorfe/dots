@@ -20,6 +20,8 @@
                '((sh-mode bash-ts-mode)
                  . ("bash-language-server" "start"))))
 
+(add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1)))
+
 (use-package lua-mode
   :ensure t
   :mode "\\.lua\\'"
@@ -31,6 +33,8 @@
                  '(lua-mode . ("lua-language-server")))
     (add-to-list 'eglot-server-programs
                  '(lua-ts-mode . ("lua-language-server")))))
+
+(use-package csv-mode)
 
 ;; formatting
 
