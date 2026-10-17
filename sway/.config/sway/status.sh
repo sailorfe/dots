@@ -41,7 +41,13 @@ get_cpu_temp() {
 }
 
 get_disk() {
-    echo "󱛟 $(df /home | awk '/^\/dev/ {print $5}')"
+    local size used available usage
+    size=$(df -h /home | awk '/^\/dev/ {print $2}')
+    used=$(df -h /home | awk '/^\/dev/ {print $3}')
+    available=$(df -h /home | awk '/^\/dev/ {print $4}')
+    usage=$(df -h /home | awk '/^\/dev/ {print $5}')
+
+    echo "󱛟 $used/$size ($usage)"
 }
 
 get_memory() {
@@ -69,15 +75,20 @@ get_time() {
     local et utc
     et="$(date +'%a %F %H:%M') ET"
     utc="$(date -u +'%H:%M') UTC"
-    echo "$et / $utc"
+    echo "$et ($utc)"
 }
 
 get_ascendant() {
     if ! command -v asc &> /dev/null; then
         echo "Install sailorfe/ascendant from PyPI or Codeberg."
     else
-        echo "$(asc)"
+        echo "↑ $(asc -g)"
     fi
+}
+
+get_watch() {
+    bell=$(ships-bell status)
+    echo " $bell"
 }
 
 get_battery() {
@@ -138,6 +149,7 @@ main() {
         cpu_temp="$(get_cpu_temp)"
         et_utc="$(get_time)"
         battery="$(get_battery)"
+        ships_bell="$(get_watch)"
         ascendant="$(get_ascendant)"
 
         if (( i % 10 == 0 )); then
@@ -147,7 +159,7 @@ main() {
 
         case "$(hostname)" in
             northblue)
-                echo "$mpris | $volume | $disk_cache | $(get_memory) | $cpu_temp | $wifi_cache | $ascendant | $et_utc"
+                echo "$mpris | $volume | $disk_cache | $(get_memory) | $cpu_temp | $wifi_cache | $ships_bell | $ascendant | $et_utc"
                 ((i++))
                 sleep 1
                 ;;

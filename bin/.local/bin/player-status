@@ -10,7 +10,7 @@
 #
 set -euo pipefail
 
-players=(firefox chromium mpv mpd)
+players=(firefox chromium mpv mpd kew)
 paused_player="mpd"
 
 get_track_info() {

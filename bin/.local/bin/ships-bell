@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+
+# nautical time management
+# https://en.wikipedia.org/wiki/Ship's_bell
+#
+# notifies or echoes bell just rung + current watch, so changes go
+#
+#   8 bells – Middle (0:00)
+#   8 bells – Morning (4:00)
+#   8 bells – Forenoon (8:00)
+#   8 bells – Afternoon (12:00)
+#   8 bells – 1st Dog (16:00)
+#   4 bells - 2nd Dog (18:00)
+#   4 bells - First (20:00)
+#
+# even though those bells are of the previous watch
+
+BELL_SOUND="/usr/share/sounds/freedesktop/stereo/bell.oga"
+
+get_minutes() {
+    local time
+    time=$(date +%H:%M)
+    echo "$((10#${time%:*} * 60 + 10#${time#*:}))"
+}
+
+get_watch() {
+    local minutes
+    minutes=$(get_minutes)
+
+    case $((minutes / 60)) in
+        0|1|2|3)     echo "Middle" ;;
+        4|5|6|7)     echo "Morning" ;;
+        8|9|10|11)   echo "Forenoon" ;;
+        12|13|14|15) echo "Afternoon" ;;
+        16|17)       echo "1st Dog" ;;
+        18|19)       echo "2nd Dog" ;;
+        20|21|22|23) echo "First" ;;
+    esac
+}
+
+get_bells() {
+    local minutes start elapsed previous
+
+    minutes=$(get_minutes)
+    case $((minutes / 60)) in
+        0|1|2|3)     start=0;    previous=8 ;;
+        4|5|6|7)     start=240;  previous=8 ;;
+        8|9|10|11)   start=480;  previous=8 ;;
+        12|13|14|15) start=720;  previous=8 ;;
+        16|17)       start=960;  previous=8 ;;
+        18|19)       start=1080; previous=4 ;;
+        20|21|22|23) start=1200; previous=4 ;;
+    esac
+
+    elapsed=$((minutes - start))
+
+    if (( elapsed < 30 )); then
+        echo "$previous"
+    else
+        echo "$((elapsed / 30))"
+    fi
+}
+
+get_message() {
+    local count
+
+    count=$(get_bells)
+
+    if [ $count = 1 ]; then
+        echo "$count bell"
+    else
+        echo "$count bells"
+    fi
+}
+
+ring_bells() {
+    local count=$1
+    local i
+
+    for ((i = 0; i < count; i++)); do
+        pw-play "$BELL_SOUND"
+
+        if (( i + 1 < count )); then
+            if (( i % 2 == 0 )); then
+                sleep 0.25
+            else
+                sleep 1
+            fi
+        fi
+    done
+}
+
+notify_bells() {
+    local watch message
+
+    watch=$(get_watch)
+    message=$(get_message)
+
+    notify-send "$watch Watch" "$message"
+    echo "$message — $watch"
+}
+
+status_bells() {
+    local watch message
+
+    watch=$(get_watch)
+    message=$(get_message "$count")
+
+    echo "$message — $watch"
+}
+
+daemon() {
+    local last_slot slot count
+
+    # don't ring immediately when starting betwen bells
+    last_slot=$(($(date +%s) / 1800))
+
+    while true; do
+        slot=$(($(date +%s) / 1800))
+
+        if (( slot != last_slot )); then
+            count=$(get_bells)
+            notify_bells
+            ring_bells "$count"
+            last_slot=$slot
+        fi
+
+        sleep 1
+    done
+}
+
+case "${1:-}" in
+    daemon)
+        daemon
+        ;;
+    notify)
+        notify_bells
+        ;;
+    status)
+        status_bells
+        ;;
+    *)
+        echo "Usage: ships-bell {daemon|notify|status}" >&2
+        exit 2
+        ;;
+esac
