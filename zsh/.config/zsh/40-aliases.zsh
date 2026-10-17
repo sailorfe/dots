@@ -11,5 +11,7 @@ alias vdir='vdir --color=auto --group-directories-first'
 
 # tmux
 alias tl="tmux list-sessions"
-alias tv="tmux new -s vault -c /home/sailorfe/d/flor"
 alias tmux="tmux -u"
+
+# 4k
+alias qtu="QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCALE_FACTOR=1.5"
