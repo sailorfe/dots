@@ -73,8 +73,8 @@ get_wifi() {
 
 get_time() {
     local et utc
-    et="$(date +'%a %F %H:%M') ET"
-    utc="$(date -u +'%H:%M') UTC"
+    et="$(date +'%a %F %H:%M %Z')"
+    utc="$(date -u +'%H:%M %Z')"
     echo "$et ($utc)"
 }
 
@@ -82,7 +82,14 @@ get_ascendant() {
     if ! command -v asc &> /dev/null; then
         echo "Install sailorfe/ascendant from PyPI or Codeberg."
     else
-        echo "↑ $(asc -g)"
+        case "$(hostname)" in 
+            northblue)
+                echo "↑ $(asc -g)"
+                ;;
+        thousandsunny)
+                echo "↑ $(asc)"
+                ;;
+        esac
     fi
 }
 
@@ -164,7 +171,7 @@ main() {
                 sleep 1
                 ;;
             thousandsunny)
-                echo "$mpris | $volume | $disk_cache | $(get_memory) | $cpu_temp | $wifi_cache | $battery | $ascendant | $et_utc"
+                echo "$mpris | $volume | $disk_cache | $(get_memory) | $cpu_temp | $wifi_cache | $battery | $ships_bell | $ascendant | $et_utc"
                 ((i++))
                 sleep 1
                 ;;
