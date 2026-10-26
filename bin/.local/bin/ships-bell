@@ -32,8 +32,8 @@ get_watch() {
         4|5|6|7)     echo "Morning" ;;
         8|9|10|11)   echo "Forenoon" ;;
         12|13|14|15) echo "Afternoon" ;;
-        16|17)       echo "1st Dog" ;;
-        18|19)       echo "2nd Dog" ;;
+        16|17)       echo "First Dog" ;;
+        18|19)       echo "Last Dog" ;;
         20|21|22|23) echo "First" ;;
     esac
 }
