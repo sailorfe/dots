@@ -53,5 +53,3 @@ fi
 #fi
 
 unset _on_termux
-
-. "$HOME/.local/share/../bin/env"
