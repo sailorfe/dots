@@ -106,5 +106,9 @@
                t))
 
 
+;; --- ghosttext -------------------------------------------------------
+(use-package atomic-chrome)
+(atomic-chrome-start-server)
+
 (provide 'tools)
 ;;; tools.el ends here

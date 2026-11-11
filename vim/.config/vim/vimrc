@@ -50,7 +50,7 @@ set termguicolors
 syntax enable
 
 if empty($THEME)
-    let colorcheme default
+    let colorscheme default
 else
     colorscheme $THEME
 endif

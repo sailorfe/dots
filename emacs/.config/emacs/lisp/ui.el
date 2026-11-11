@@ -24,6 +24,21 @@
   (which-key-mode))
 
 ;; ======================================================================
+;; tabs
+;; ======================================================================
+
+(tab-bar-mode 1)
+
+(defun sailorfe/tab-new-dashboard ()
+  "Open a new tab and show the dashboard in it."
+  (interactive)
+  (tab-new)
+  (dashboard-open))
+
+(keymap-set tab-prefix-map "2" #'sailorfe/tab-new-dashboard)
+(keymap-set tab-prefix-map "l" #'tab-recent)
+
+;; ======================================================================
 ;; in-buffer feedback
 ;; ======================================================================
 
