@@ -33,9 +33,12 @@ my packages have a few external dependencies that differ between linux distribut
 + (/alpine-only/) *[[https://github.com/dgutov/diff-hl][diff-hl]]* requires [[https://www.gnu.org/software/diffutils/][gnu diffutils]], which ships with most gnu linuxes
 
 #+begin_src sh
-# debian
-apt install build-essential libvterm-dev libenchant-2-dev
+  # debian
+  apt install build-essential libvterm-dev libenchant-2-dev
 
-# alpine
-apk add build-base libvterm enchant2-dev diffutils
+  # alpine
+  apk add build-base libvterm enchant2-dev diffutils
+
+  # termux
+  pkg add libvterm enchant
 #+end_src
