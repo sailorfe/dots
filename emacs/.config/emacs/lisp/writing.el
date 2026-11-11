@@ -29,5 +29,19 @@
 
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 
+(defun insert-iso-date-minutes ()
+  "Insert the current local ISO 8601 timestamp, to the minute."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M%:z")))
+
+(global-set-key (kbd "C-c d") #'insert-iso-date-minutes)
+
+(defun insert-iso-date-minutes-utc ()
+  "Insert the current UTC ISO 8601 timestamp, to the minute."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%MZ" nil t)))
+
+(global-set-key (kbd "C-c u") #'insert-iso-date-minutes-utc )
+
 (provide 'writing)
 ;;; writing.el ends here
