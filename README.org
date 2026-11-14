@@ -1,6 +1,5 @@
 [[file:previews/ulti.png]]
 
-
 * dots
 
 the main marks of this little unix environment are *text-first* and *keyboard-driven*, *handwritten configuration*, and *XDG compliance*. it also prioritizes portability, prose, and for alliteration, python.
