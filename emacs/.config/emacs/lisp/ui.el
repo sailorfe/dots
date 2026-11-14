@@ -185,7 +185,7 @@
   :straight (luna
              :type git
              :host nil
-             :repo "ssh://egghead/luna.nvim.git"
+             :repo "ssh://egghead/home/vcs/repos/git/luna.nvim.git"
              :files ("extras/emacs/*.el"))
   :no-require t
   :config
@@ -195,7 +195,7 @@
   :straight (moonqueen
              :type git
              :host nil
-             :repo "ssh://egghead/moonqueen.nvim.git"
+             :repo "ssh://egghead/home/vcs/repos/git/moonqueen.nvim.git"
              :files ("extras/emacs/*.el"))
   :no-require t
   :config

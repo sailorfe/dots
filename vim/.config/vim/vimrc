@@ -28,11 +28,11 @@ call plug#begin(data_dir . '/plugged')
     Plug 'tpope/vim-surround'
     Plug 'sheerun/vim-polyglot'
     Plug 'https://codeberg.org/turysaz/vim-zenmode.git'
-    Plug 'ssh://softserve/ulti', { 'rtp': 'extras/vim', 'as': 'ulti' }
-    Plug 'ssh://softserve/kamakura', { 'rtp': 'extras/vim', 'as': 'kamakura' }
-    Plug 'ssh://softserve/perona.nvim', { 'rtp': 'extras/vim', 'as': 'perona' }
-    Plug 'ssh://softserve/luna.nvim', { 'rtp': 'extras/vim', 'as': 'luna' }
-    Plug 'ssh://softserve/moonqueen.nvim', { 'rtp': 'extras/vim', 'as': 'moonqueen' }
+    Plug 'ssh://egghead/home/vcs/repos/git/ulti.git', { 'rtp': 'extras/vim', 'as': 'ulti' }
+    Plug 'ssh://egghead/home/vcs/repos/git/kamakura.git', { 'rtp': 'extras/vim', 'as': 'kamakura' }
+    Plug 'ssh://egghead/home/vcs/repos/git/perona.nvim.git', { 'rtp': 'extras/vim', 'as': 'perona' }
+    Plug 'ssh://egghead/home/vcs/repos/git/luna.nvim.git', { 'rtp': 'extras/vim', 'as': 'luna' }
+    Plug 'ssh://egghead/home/vcs/repos/git/moonqueen.nvim.git', { 'rtp': 'extras/vim', 'as': 'moonqueen' }
 call plug#end()
 
 " == editing =======================

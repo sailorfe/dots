@@ -1,18 +1,18 @@
 [submodule "nvim/.config/nvim/lua/luna.nvim"]
 	path = nvim/.config/nvim/lua/luna.nvim
-	url = ssh://softserve/luna.nvim
+	url = ssh://egghead/home/vcs/repos/git/luna.nvim.git
 [submodule "nvim/.config/nvim/lua/perona.nvim"]
 	path = nvim/.config/nvim/lua/perona.nvim
-	url = ssh://softserve/perona.nvim
+	url = ssh://egghead/home/vcs/repos/git/perona.nvim.git
 [submodule "nvim/.config/nvim/lua/moonqueen.nvim"]
 	path = nvim/.config/nvim/lua/moonqueen.nvim
-	url = ssh://softserve/moonqueen.nvim
+	url = ssh://egghead/home/vcs/repos/git/moonqueen.nvim.git
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/perona.nvim"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/perona.nvim
-	url = ssh://softserve/perona.nvim
+	url = ssh://egghead/home/vcs/repos/git/perona.nvim.git
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/moonqueen.nvim"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/moonqueen.nvim
-	url = ssh://softserve/moonqueen.nvim
+	url = ssh://egghead/home/vcs/repos/git/moonqueen.nvim.git
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/mini.nvim"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/mini.nvim
 	url = https://github.com/nvim-mini/mini.nvim
@@ -69,10 +69,10 @@
 	url = https://github.com/rose-pine/neovim.git
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/ulti"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/ulti
-	url = ssh://softserve/ulti
+	url = ssh://egghead/home/vcs/repos/git/ulti.git
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/kamakura"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/kamakura
-	url = ssh://softserve/kamakura
+	url = ssh://egghead/home/vcs/repos/git/kamakura.git
 [submodule "nvim/.local/share/nvim/site/pack/plugins/start/luna.nvim"]
 	path = nvim/.local/share/nvim/site/pack/plugins/start/luna.nvim
-	url = ssh://softserve/luna.nvim
+	url = ssh://egghead/home/vcs/repos/git/luna.nvim.git

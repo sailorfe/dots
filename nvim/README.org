@@ -34,7 +34,7 @@ neovim without a package manager via git submodules where =.gitmodules= becomes 
    #+BEGIN_SRC sh
      git clone https://codeberg.org/sailorfe/dots.git
      cd dots
-     git config --global url."https://codeberg.org/sailorfe/".insteadOf "ssh://softserve/"
+     git config --global url."https://codeberg.org/sailorfe/".insteadOf "ssh://egghead/"
      git submodule update --init --recursive
    #+END_SRC
 3. ~stow -t ~ nvim~
