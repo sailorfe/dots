@@ -38,7 +38,7 @@
   :straight (dashboard
              :type git
              :host nil
-             :repo "ssh://softserve/dashboard.git")
+             :repo "ssh://egghead/dashboard.git")
   :no-require t
   :init
   (setq dashboard-heading-shorcut-format " [%s]")
