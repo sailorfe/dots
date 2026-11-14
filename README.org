@@ -4,8 +4,6 @@
 
 the main marks of this little unix environment are *text-first* and *keyboard-driven*, *handwritten configuration*, and *XDG compliance*. it also prioritizes portability, prose, and for alliteration, python.
 
-it is not really intended to be usable by anyone else for a number of reasons explained herein, but a major one is git submodule remotes on my tailnet. 
-
 |                   |                            |
 |-------------------+----------------------------|
 | distribution      | [[https://alpinelinux.org][alpine 3.23]], [[https://debian.org][debian trixie]] |
