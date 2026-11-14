@@ -2,7 +2,7 @@
 
 * dots
 
-the main marks of this little unix environment are *text-first* and *keyboard-driven*, *handwritten configuration*, and *XDG compliance*. it also prioritizes portability, prose, and for alliteration, python.
+the main marks of this little unix environment are *text-first* and *keyboard-driven*, *handwritten configuration*, and *XDG compliance*. it also prioritizes portability, prose, and for alliteration, python. this config is truly not intended for anyone else's use for several reasons, but especially git submodules with self-hosted, private remotes.
 
 |                   |                            |
 |-------------------+----------------------------|
